@@ -1,0 +1,260 @@
+{
+  "Central City": {
+    "areas": {
+      "Industrial District": {
+        "intro_dialogue_options": [
+          "The rhythmic clang of metal on metal fills the air as you enter the Industrial District, where towering factories and intricate machinery dominate the landscape.",
+          "Steam rises from numerous vents, and the scent of oil and molten steel permeates the atmosphere as workers hustle to and fro.",
+          "Mechanical constructs zip along overhead rails, transporting materials between workshops, while sparks fly from ongoing welding projects."
+        ],
+        "intro_dialogue_image_options": [
+          "https://example.com/industrialdistrict1.png",
+          "https://example.com/industrialdistrict2.png",
+          "https://example.com/industrialdistrict3.png"
+        ],
+        "encounters": [
+          {
+            "flavor_text": "A group of engineers huddles around a malfunctioning robotic assistant, debating the best way to fix its glitch.",
+            "image": "https://example.com/robotic_assistant.png",
+            "items": {
+              "type": "rollitems",
+              "params": {
+                "filter_keyword": "tool"
+              }
+            },
+            "mon": {
+              "type": "rollmons",
+              "params": {
+                "variant": "steel"
+              }
+            }
+          },
+          {
+            "flavor_text": "A sudden blackout plunges the district into darkness, and a Klinklang is spotted near the main generator, emitting unusual sparks.",
+            "image": "https://example.com/klinklang_generator.png",
+            "items": {
+              "type": "rollitems",
+              "params": {
+                "filter_keyword": "battery"
+              }
+            },
+            "mon": {
+              "type": "rollmons",
+              "params": {
+                "variant": "steel"
+              }
+            }
+          },
+          {
+            "flavor_text": "A blacksmith showcases a newly forged sword, claiming it's imbued with special properties due to the inclusion of a rare metal.",
+            "image": "https://example.com/blacksmith_sword.png",
+            "items": {
+              "type": "rollitems",
+              "params": {
+                "filter_keyword": "weapon"
+              }
+            },
+            "mon": null
+          },
+          {
+            "flavor_text": "A Magnemite hovers near a scrapyard, attracting loose metal pieces as it searches for companions.",
+            "image": "https://example.com/magnemite_scrapyard.png",
+            "items": {
+              "type": "rollitems",
+              "params": {
+                "filter_keyword": "magnet"
+              }
+            },
+            "mon": {
+              "type": "rollmons",
+              "params": {
+                "variant": "electric"
+              }
+            }
+          },
+          {
+            "flavor_text": "A factory worker approaches, asking for assistance in calibrating a complex piece of machinery that's been acting up.",
+            "image": "https://example.com/machinery_calibration.png",
+            "items": {
+              "type": "rollitems",
+              "params": {
+                "filter_keyword": "gear"
+              }
+            },
+            "mon": null
+          },
+          {
+            "flavor_text": "A Skarmory swoops down from the rafters of a warehouse, its metallic feathers glinting in the dim light as it searches for nesting materials.",
+            "image": "https://example.com/skarmory_warehouse.png",
+            "items": {
+              "type": "rollitems",
+              "params": {
+                "filter_keyword": "feather"
+              }
+            },
+            "mon": {
+              "type": "rollmons",
+              "params": {
+                "variant": "flying"
+              }
+            }
+          },
+          {
+            "flavor_text": "A merchant offers finely crafted mechanical companions, each designed to assist with various tasks, from household chores to personal defense.",
+            "image": "https://example.com/mechanical_companions.png",
+            "items": {
+              "type": "rollitems",
+              "params": {
+                "filter_keyword": "gadget"
+              }
+            },
+            "mon": null
+          },
+          {
+            "flavor_text": "A Lucario meditates amidst the industrial noise, its aura sensing the presence of those who approach with curiosity or ill intent.",
+            "image": "https://example.com/lucario_meditation.png",
+            "items": {
+              "type": "rollitems",
+              "params": {
+                "filter_keyword": "aura"
+              }
+            },
+            "mon": {
+              "type": "rollmons",
+              "params": {
+                "variant": "fighting"
+              }
+            }
+          },
+          {
+            "flavor_text": "A foreman supervises the construction of a massive bridge, directing both human workers and Machamp laborers to lift heavy steel beams into place.",
+            "image": "https://example.com/bridge_construction.png",
+            "items": {
+              "type": "rollitems",
+              "params": {
+                "filter_keyword": "blueprint"
+              }
+            },
+            "mon": null
+          }
+        ]
+      },
+      "Ancient Grove": {
+        "intro_dialogue_options": [
+          "An ancient grove welcomes you with whispering winds.",
+          "You feel the presence of old magic in this sacred grove."
+        ],
+        "intro_dialogue_image_options": [
+          "https://example.com/ancientgrove1.png"
+        ],
+        "encounters": [
+          {
+            "flavor_text": "The ground trembles as a massive creature emerges.",
+            "image": "https://example.com/creature.png",
+            "items": {
+              "type": "rollitems",
+              "params": {
+                "filter_keyword": "berry"
+              }
+            },
+            "mon": {
+              "type": "rollmons",
+              "params": {
+                "variant": "legendary"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "Mountain": {
+    "areas": {
+      "Snowy Peak": {
+        "intro_dialogue_options": [
+          "The chill of the mountain air invigorates you.",
+          "Snowflakes dance around you as you ascend."
+        ],
+        "intro_dialogue_image_options": [
+          "https://example.com/snowypeak.png"
+        ],
+        "encounters": [
+          {
+            "flavor_text": "A snow leopard crosses your path.",
+            "image": "https://example.com/leopard.png",
+            "items": null,
+            "mon": null
+          }
+        ]
+      }
+    }
+  },
+  "Desert": {
+    "areas": {
+      "Sandy Dunes": {
+        "intro_dialogue_options": [
+          "The scorching heat of the desert challenges your resolve.",
+          "Waves of sand shift around you in the vast dunes."
+        ],
+        "intro_dialogue_image_options": [
+          "https://example.com/sandydunes.png"
+        ],
+        "encounters": [
+          {
+            "flavor_text": "A mirage reveals a hidden oasis.",
+            "image": null,
+            "items": null,
+            "mon": null
+          }
+        ]
+      }
+    }
+  },
+  "Swamp": {
+    "areas": {
+      "Bog of Whispers": {
+        "intro_dialogue_options": [
+          "The swamp is alive with the sounds of unseen creatures.",
+          "A thick fog obscures your path in the murky bog."
+        ],
+        "intro_dialogue_image_options": [
+          "https://example.com/bog.png"
+        ],
+        "encounters": [
+          {
+            "flavor_text": "An eerie glow emanates from the murky water.",
+            "image": "https://example.com/glow.png",
+            "items": null,
+            "mon": null
+          }
+        ]
+      }
+    }
+  },
+  "Coast": {
+    "areas": {
+      "Sunset Beach": {
+        "intro_dialogue_options": [
+          "The sound of crashing waves sets a calming rhythm.",
+          "Golden hues paint the sky as you arrive at the beach."
+        ],
+        "intro_dialogue_image_options": [
+          "https://example.com/sunsetbeach.png"
+        ],
+        "encounters": [
+          {
+            "flavor_text": "Seagulls circle overhead, searching for scraps.",
+            "image": "https://example.com/seagull.png",
+            "items": {
+              "type": "rollitems",
+              "params": {
+                "game_corner": true
+              }
+            },
+            "mon": null
+          }
+        ]
+      }
+    }
+  }
+}

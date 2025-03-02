@@ -1,0 +1,1124 @@
+Color,Name,Stage,Rarity,Kind,Attribute,Evolves Into 1,Evolves Into 2,Evolves Into 3
+Green,Shurimon,Armor,Uncommon,Plant,Data,,,
+Green,Digmon,Armor,Rare,Plant,Data,,,
+Green,Lighdramon,Armor,Rare,Plant,Data,,,
+Yellow,Nefertimon,Armor,Uncommon,Light,Vacine,,,
+Yellow,Pegasusmon,Armor,Uncommon,Light,Vacine,,,
+Red,Flamedramon,Armor,Rare,Fire,Free,,,
+Blue,Submarimon,Armor,Uncommon,Wind,Data,,,
+Blue,Halsemon,Armor,Rare,Wind,Data,,,
+Yellow,Magnamon,Armor,Super Rare,Light,Vacine,,,
+Yellow,Rapidmon,Armor,Super Rare,Light,Vacine,,,
+Red,Birdramon,Champion (Lv4),Uncommon,Fire,Free,Volcanomon,MetalGreymon: Alterous Mode,Orochimon
+Red,DarkTyrannomon,Champion (Lv4),Common,Fire,Free,Zudomon,Gogmamon,Entmon
+Blue,Dolphmon,Champion (Lv4),Common,Wind,Data,Lillymon,HippoGryphonmon,Rebellimon
+Blue,Leomon,Champion (Lv4),Uncommon,Wind,Data,Shakkoumon,WereGarurumon,AeroVeedramon
+Blue,Garurumon,Champion (Lv4),Uncommon,Wind,Data,MetalTyrannomon,Angewomon,MetalGreymon
+Blue,Gorillamon,Champion (Lv4),Common,Wind,Data,Duramon,Scorpiomon,Myotismon
+Yellow,Reppamon,Champion (Lv4),Common,Light,Vacine,Myotismon,Infermon,LoaderLeomon
+Yellow,Seasarmon,Champion (Lv4),Common,Light,Vacine,Orochimon,Taomon,DexDoruGreymon
+Yellow,Darcmon,Champion (Lv4),Uncommon,Light,Vacine,WereGarurumon,GrapLeomon,Garudamon
+Yellow,Liamon,Champion (Lv4),Common,Light,Vacine,Taomon,Orochimon,Andromon
+Yellow,Angemon,Champion (Lv4),Rare,Light,Vacine,RizeGreymon,Paildramon,Megadramon
+Yellow,Petermon,Champion (Lv4),Uncommon,Light,Vacine,Etemon,BlackMachGaogamon,Andromon
+Green,Orgemon,Champion (Lv4),Common,Plant,Data,Cherrymon,WarGrowlmon,Betsumon
+Green,Kuwagamon,Champion (Lv4),Uncommon,Plant,Data,MasterTyrannomon,WereGarurumon,Dragomon
+Green,Vegiemon,Champion (Lv4),Common,Plant,Data,RizeGreymon,Angewomon,Piximon
+Green,Woodmon,Champion (Lv4),Uncommon,Plant,Data,Antylamon,Vermilimon,Maycrackmon: Vicious Mode
+Green,Kabuterimon,Champion (Lv4),Common,Plant,Data,Garbagemon,Piximon,MegaSeadramon
+Green,Togemon,Champion (Lv4),Rare,Plant,Data,Bastemon,Etemon,SkullSatamon
+Purple,Eyesmon: Scatter Mode,Champion (Lv4),Common,Electric,Virus,SaviorHuckmon,Kyukimon,RizeGreymon (X Antibody)
+Purple,Wendigomon,Champion (Lv4),Common,Electric,Virus,SkullGreymon,MagnaAngemon,OmniShoutmon (X Antibody)
+Black,Nanimon,Champion (Lv4),Common,Dark,Virus,Rebellimon,Angewomon,Blossomon
+Black,Machmon,Champion (Lv4),Rare,Dark,Virus,MagnaAngemon,MarinChimairamon,MagnaAngemon
+Black,Deputymon,Champion (Lv4),Common,Dark,Virus,Gogmamon,Meteormon,Meteormon
+Purple,Kinkakumon,Champion (Lv4),Common,Electric,Virus,MetalGreymon,Rebellimon,Angewomon
+Purple,Ogremon,Champion (Lv4),Rare,Electric,Virus,Giromon,Lillymon,Feresmon
+Purple,Ginkakumon,Champion (Lv4),Common,Electric,Virus,Arukenimon,Zudomon,MegaKabuterimon
+Purple,Boogiemon,Champion (Lv4),Common,Electric,Virus,MetalGreymon,Boutmon,DarkKnightmon
+Purple,Ginkakumon Promote,Champion (Lv4),Uncommon,Electric,Virus,Gigadramon,Dinobeemon,Lady Devimon
+Blue,Veedramon,Champion (Lv4),Secret Rare,Wind,Data,SkullScorpiomon,MetalGreymon,WarGrowlmon (X Antibody)
+Red,Birdramon,Champion (Lv4),Uncommon,Fire,Free,Rebellimon,OmniShoutmon (X Antibody),RizeGreymon
+Red,Growlmon,Champion (Lv4),Uncommon,Fire,Free,Okuwamon,Lillymon,MegaKabuterimon
+Red,Lavorvomon,Champion (Lv4),Common,Fire,Free,RizeGreymon,Vermilimon,Whamon
+Blue,Seadramon,Champion (Lv4),Common,Wind,Data,Kimeramon,WereGarurumon,Silphymon
+Blue,Ikkakumon,Champion (Lv4),Common,Wind,Data,Angewomon,MachGaogamon,RizeGreymon (X Antibody)
+Blue,Veedramon,Champion (Lv4),Uncommon,Wind,Data,Vermilimon,MegaKabuterimon,MetalGreymon
+Yellow,GeoGreymon,Champion (Lv4),Common,Light,Vacine,Sirenmon,CaptainHookmon,MetalGreymon
+Yellow,Gatomon,Champion (Lv4),Uncommon,Light,Vacine,Taomon,Arukenimon,MetalGreymon
+Green,Tyrannomon,Champion (Lv4),Common,Plant,Data,Zudomon,Dinobeemon,WereGarurumon: Sagittarius Mode
+Green,Argomon,Champion (Lv4),Uncommon,Plant,Data,Cerberusmon: Werewolf Mode,MetalGreymon,MetalGreymon
+Black,Numemon,Champion (Lv4),Common,Dark,Virus,SkullMeramon,Zudomon,Myotismon
+Black,Greymon,Champion (Lv4),Common,Dark,Virus,WaruMonzaemon,Rapidmon,RaijiLudomon
+Black,Guardromon,Champion (Lv4),Common,Dark,Virus,DexDoruGreymon,Bastemon,WereGarurumon (X Antibody)
+Black,Kurisarimon,Champion (Lv4),Uncommon,Dark,Virus,MetalMamemon,Angewomon,Cyberdramon
+Purple,Wizardmon,Champion (Lv4),Common,Electric,Virus,Bastemon,Scorpiomon,MegaKabuterimon
+Purple,Vilemon,Champion (Lv4),Common,Electric,Virus,WereGarurumon,Pistmon,MetalGreymon
+Purple,Garurumon,Champion (Lv4),Common,Electric,Virus,MetalGreymon: Alterous Mode,Andromon,MegaKabuterimon
+Purple,Devimon,Champion (Lv4),Uncommon,Electric,Virus,Monzaemon,Infermon,Paildramon
+White,Eosmon,Champion (Lv4),Common,Neutral,Vaccine,DexDoruGreymon,Climbmon,SkullGreymon
+White,Sistermon Ciel,Champion (Lv4),Rare,Neutral,Vaccine,MetalTyrannomon,MetalGreymon: Alterous Mode,Lillymon
+Green,Gargomon,Champion (Lv4),Common,Plant,Data,Kyukimon,Megadramon,AeroVeedramon Zero
+Yellow,Filmon,Champion (Lv4),Common,Light,Vacine,LadyDevimon,Jokermon,Giromon
+Red,ZubaEagermon,Champion (Lv4),Common,Fire,Free,Triceramon,Tankdramon,Silphymon
+Red,Greymon,Champion (Lv4),Uncommon,Fire,Free,Knightmon,Antylamon,Angewomon
+Red,Aquilamon,Champion (Lv4),Common,Fire,Free,Panjyamon,Piximon,DarkSuperStarmon
+Blue,Airdramon,Champion (Lv4),Uncommon,Wind,Data,Okumamon,Manticoremon,Megadramon
+Blue,ExVeemon,Champion (Lv4),Rare,Wind,Data,Garudamon,RizeGreymon,Climbmon
+Green,Gargomon,Champion (Lv4),Common,Plant,Data,Zamielmon,Paildramon,Argomon
+Green,Flymon,Champion (Lv4),Uncommon,Plant,Data,Zudomon,Garudamon,MachGaogamon
+Green,Stingmon,Champion (Lv4),Rare,Plant,Data,MetalGreymon,Lillymon,Triceramon
+Green,Dokugumon,Champion (Lv4),Common,Plant,Data,WarGrowlmon (X Antibody),Volcanomon,Locomon
+Black,Sukamon,Champion (Lv4),Common,Dark,Virus,AeroVeedramon Zero,Cyberdramon,Megadramon
+Black,TaiLudomon,Champion (Lv4),Common,Dark,Virus,WereGarurumon: Sagittarius Mode,Frozomon,Infermon
+Black,Gururumon,Champion (Lv4),Uncommon,Dark,Virus,Lavogaritamon,WarGrowlmon,LadyDevimon
+Black,Clockmon,Champion (Lv4),Common,Dark,Virus,Digitamamon,WereGarurumon: Sagittarius Mode,Rapidmon
+Black,Tankmon,Champion (Lv4),Common,Dark,Virus,WereGarurumon,Blossomon,MetalTyrannomon
+Purple,Saberdramon,Champion (Lv4),Common,Electric,Virus,Pistmon,DinoBeemon,DexDoruGreymon
+Purple,Devidramon,Champion (Lv4),Uncommon,Electric,Virus,Angewomon,Kimeramon,Cerberusmon
+Blue,Ikkakumon,Champion (Lv4),Rare,Wind,Data,DarkSuperStarmon,SaviorHuckmon,Hisyaryumon
+Purple,Meramon,Champion (Lv4),Common,Electric,Virus,Meteormon,Feresmon,Whamon
+Purple,Raremon,Champion (Lv4),Rare,Electric,Virus,Manticoremon,Silphymon,Rapidmon
+Red,Growlmon,Champion (Lv4),Common,Fire,Free,LadyDevimon,Silphymon,Garudamon
+Green,Tortomon,Champion (Lv4),Common,Plant,Data,BigMamemon,MetalTyrannomon,SkullScorpiomon
+Green,Monochromon,Champion (Lv4),Common,Plant,Data,Lillymon,Rapidmon,MetalGreymon
+Red,Fugamon,Champion (Lv4),Common,Fire,Free,Etemon,Megadramon,Pistmon
+Red,GeoGreymon,Champion (Lv4),Common,Fire,Free,WereGarurumon (X Antibody),MetalGreymon,Angewomon
+Blue,Tobiumon,Champion (Lv4),Common,Wind,Data,Lucemon: Chaos Mode,Whamon,Piranimon
+Blue,GaoGamon,Champion (Lv4),Common,Wind,Data,Mistymon,OmniShoutmon (X Antibody),WarGrowlmon
+Yellow,Growlmon,Champion (Lv4),Common,Light,Vacine,Entmon,MameTyramon,Okuwamon
+Yelllow,Diatrymon,Champion (Lv4),Common,,,MegaSeadramon,Giromon,Myotismon
+Yellow,Meicoomon,Champion (Lv4),Common,Light,Vacine,MetalGreymon,Mummymon,MameTyramon
+Yellow,Piddomon,Champion (Lv4),Common,Light,Vacine,Vajramon,MetalGreymon,JewelBeemon
+Green,Roachmon,Champion (Lv4),Uncommon,Plant,Data,MetalGreymon,Wingdramon,Locomon
+Green,Sunflowmon,Champion (Lv4),Uncommon,Plant,Data,Megadramon,WereGarurumon,Megadramon
+Green,Leomon,Champion (Lv4),Common,Plant,Data,Climbmon,WereGarurumon,Cherrymon
+Black,Golemon,Champion (Lv4),Common,Dark,Virus,MameTyramon,Angewomon,SkullGreymon
+Black,Sealsdramon,Champion (Lv4),Uncommon,Dark,Virus,Antylamon,Mamemon,Okuwamon
+Black,Baboongamon,Champion (Lv4),Uncommon,Dark,Virus,WereGarurumon,AeroVeedramon Zero,MetalGreymon
+Black,Blimpmon,Champion (Lv4),Common,Dark,Virus,RizeGreymon,MetalGreymon,Vermilimon
+Purple,Bakemon,Champion (Lv4),Uncommon,Electric,Virus,MachGaogamon,Meteormon,SkullGreymon
+Purple,Devimon,Champion (Lv4),Common,Electric,Virus,WereGarurumon: Sagittarius Mode,WereGarurumon,Tankdramon
+Purple,Dobermon,Champion (Lv4),Uncommon,Electric,Virus,Majiramon,BigMamemon,Myotismon
+Blue,IceDevimon,Champion (Lv4),Common,Wind,Data,BigMamemon,Paildramon,MetalMamemon
+Blue,Seasarmon,Champion (Lv4),Common,Wind,Data,Pistmon,Andromon,MetalGreymon
+Blue,Gorillamon,Champion (Lv4),Common,Wind,Data,Angewomon,Rapidmon,SkullSatamon
+Blue,Leomon,Champion (Lv4),Super Rare,Wind,Data,RaijiLudomon,Antylamon,Duramon
+Red,Tuskmon,Champion (Lv4),Common,Fire,Free,Antylamon,MetalTyrannomon,MagnaAngemon
+Red,Greymon,Champion (Lv4),Uncommon,Fire,Free,Phantomon,Pistmon,Angewomon
+Red,Meramon,Champion (Lv4),Common,Fire,Free,Megadramon,Megadramon,Myotismon
+Red,Monochromon,Champion (Lv4),Common,Fire,Free,WaruMonzaemon,WarGrowlmon,WereGarurumon: Sagittarius Mode
+Blue,Gesomon,Champion (Lv4),Common,Wind,Data,WereGarurumon,Andromon,Volcanomon
+Blue,Garurumon,Champion (Lv4),Common,Wind,Data,Lillymon,Bastemon,Mephistomon
+Blue,Paledramon,Champion (Lv4),Common,Wind,Data,Megadramon,Garudamon,Etemon
+Blue,Coelamon,Champion (Lv4),Common,Wind,Data,Infermon,DinoBeemon,Lillymon
+Yellow,Gladimon,Champion (Lv4),Common,Light,Vacine,WereGarurumon,WereGarurumon,Climbmon
+Yellow,Kyubimon,Champion (Lv4),Common,Light,Vacine,DoruGreymon,Duramon,Rapidmon
+Yellow,ShootingStarmon,Champion (Lv4),Uncommon,Light,Vacine,Majiramon,Matadormon,Etemon
+Green,Kiwimon,Champion (Lv4),Uncommon,Plant,Data,MegaSeadramon,RizeGreymon,Infermon
+Green,Weedmon,Champion (Lv4),Common,Plant,Data,Triceramon,Feresmon,Brachiomon
+Green,MoriShellmon,Champion (Lv4),Common,Plant,Data,Gusokumon,Silphymon,Infermon
+Black,Mekanorimon,Champion (Lv4),Common,Dark,Virus,WarGrowlmon,Betsumon,WaruMonzaemon
+Black,Kurisarimon,Champion (Lv4),Common,Dark,Virus,WarGrowlmon,WereGarurumon,WereGarurumon: Sagittarius Mode
+Black,BlackGaogamon,Champion (Lv4),Common,Dark,Virus,WereGarurumon,Maycrackmon: Vicious Mode,Kyukimon
+Black,Shademon,Champion (Lv4),Uncommon,Dark,Virus,Digitamamon,Deramon,Angewomon
+Purple,Troopmon,Champion (Lv4),Common,Electric,Virus,BigMamemon,Angewomon,Frozomon
+Purple,Musyamon,Champion (Lv4),Common,Electric,Virus,Jokermon,Triceramon,Matadormon
+Purple,BlackGrowlmon,Champion (Lv4),Common,Electric,Virus,Rapidmon,SkullSatamon,DexDoruGreymon
+Yellow,Kyubimon,Champion (Lv4),Data,Light,Vacine,Kimeramon,Rapidmon,Cerberusmon
+Blue,Shellmon,Champion (Lv4),Common,Wind,Data,Cerberusmon,Angewomon,Angewomon
+Yellow,Bulkmon,Champion (Lv4),Common,Light,Vacine,LoaderLiomon,MarinChimairamon,Garudamon
+Red,BaoHuckmon,Champion (Lv4),Common,Fire,Free,Taomon,RizeGreymon,RizeGreymon
+Red,Deltamon,Champion (Lv4),Common,Fire,Free,Zudomon,Vajramon,Cerberusmon
+Blue,Octomon,Champion (Lv4),Common,Wind,Data,Argomon,BlackMachGaogamon,RizeGreymon
+Blue,Mojyomon,Champion (Lv4),Uncommon,Wind,Data,CaptainHookmon,Sirenmon,Okuwamon
+Yellow,Wizardmon,Champion (Lv4),Uncommon,Light,Vacine,SaviorHuckmon,Zudomon,Etemon
+Yellow,Baluchimon,Champion (Lv4),Common,Light,Vacine,Hisyaryumon,Dinobeemon,WereGarurumon
+Yellow,Mimicmon,Champion (Lv4),Uncommon,Light,Vacine,WarGrowlmon,Wingdramon,MegaSeadramon
+Yellow,Bulkmon,Champion (Lv4),Common,Light,Vacine,Crowmon,Asuramon,SkullGreymon
+Yellow,Apemon,Champion (Lv4),Common,Light,Vacine,Andromon,SkullGreymon,MetalMamemon
+Green,Parasurmon,Champion (Lv4),Common,Plant,Data,MagnaAngemon,MagnaAngemon,Volcanomon
+Green,Namakemon,Champion (Lv4),Uncommon,Plant,Data,Piranimon,Lillymon,SuperStarmon
+Green,Exermon,Champion (Lv4),Common,Plant,Data,Matadormon,Etemon,WarGrowlmon
+Green,Drimogemon,Champion (Lv4),Common,Plant,Data,Entmon,SaviorHuckmon,Orochimon
+Black,Thundermon,Champion (Lv4),Common,Dark,Virus,NeoDevimon,Bastemon,Locomon
+Black,SkullKnightmon Cavalier Mode,Champion (Lv4),Uncommon,Dark,Virus,MarinChimairamon,Cyberdramon,Lucemon: Chaos Mode
+Black,Ginryumon,Champion (Lv4),Common,Dark,Virus,Matadormon,BigMamemon,Arukenimon
+Black,Greymon,Champion (Lv4),Common,Dark,Virus,Okumamon,Mammothmon,Mummymon
+Purple,Soulmon,Champion (Lv4),Common,Electric,Virus,WaruMonzaemon,Vermilimon,LoaderLeomon
+Purple,Kogamon,Champion (Lv4),Uncommon,Electric,Virus,Orochimon,Okuwamon,Manticoremon
+Purple,Fangmon,Champion (Lv4),Common,Electric,Virus,WarGrowlmon,Orochimon,Cerberusmon
+Purple,BlackGatomon,Champion (Lv4),Uncommon,Electric,Virus,Zamielmon,WaruMonzaemon,Sirenmon
+Purple,Devidramon,Champion (Lv4),Common,Electric,Virus,Chirinmon,Zudomon,Myotismon
+Purple,Dobermon,Champion (Lv4),Rare,Electric,Virus,MetalGreymon,Dragomon,MetalMamemon
+Purple,Eyesmon,Champion (Lv4),Common,Electric,Virus,MetalTyrannomon,MetalTyrannomon,Zudomon
+White,Sistermon Ciel (Awakened),Champion (Lv4),Rare,Neutral,Vaccine,Lavogaritamon,RizeGreymon,MetalMamemon
+Black,Guardromon,Champion (Lv4),Rare,Dark,Virus,MetalTyrannomon,Majiramon,Myotismon
+Black,Strikedramon,Champion (Lv4),Common,Dark,Virus,RizeGreymon,Infermon,Tankdramon
+Red,Atamadekachimon,Champion (Lv4),Common,Fire,Free,OmniShoutmon,Phantomon,Kimeramon
+Red,Growlmon (X Antibody),Champion (Lv4),Common,Fire,Free,MetalGreymon,MegaKabuterimon,WereGarurumon
+Red,Greymon (X Antibody),Champion (Lv4),Common,Fire,Free,Lillymon,Andromon,Taomon
+Blue,Ebidramon,Champion (Lv4),Common,Wind,Data,WarGrowlmon,WereGarurumon (X Antibody),WarGrowlmon
+Blue,KausGammamon,Champion (Lv4),Common,Wind,Data,Paildramon,Mammothmon,WereGarurumon: Sagittarius Mode
+Blue,Garurumon (X Antibody),Champion (Lv4),Common,Wind,Data,Chirinmon,Garudamon,SkullGreymon
+Blue,TeslaJellymon,Champion (Lv4),Common,Wind,Data,CaptainHookmon,MegaKabuterimon,Mephistomon
+Yellow,Starmon,Champion (Lv4),Common,Light,Vacine,LadyDevimon,WereGarurumon,Megadramon
+Yellow,Gatomon (X Antibody),Champion (Lv4),Common,Light,Vacine,Jokermon,Volcdramon,Zudomon
+Green,Ninjamon,Champion (Lv4),Common,Plant,Data,Infermon,Blossomon,Crowmon
+Green,Kuwagamon (X Antibody),Champion (Lv4),Common,Plant,Data,Majiramon,Toropiamon,Okuwamon
+Green,Leomon (X Antibody),Champion (Lv4),Common,Plant,Data,Angewomon,Megadramon,Gusokumon
+Green / Blue,Panjyamon (X Antibody),Champion (Lv4),Uncommon,,,MetalGreymon,Infermon,OmniShoutmon
+Black,Grizzlymon,Champion (Lv4),Common,Dark,Virus,Angewomon,MetalGreymon,Dinobeemon
+Black,Monochromon,Champion (Lv4),Common,Dark,Virus,Sirenmon,LadyDevimon,Dragomon
+Black,Raptordramon,Champion (Lv4),Common,Dark,Virus,Mephistomon,Vermilimon,Pumpkinmon
+Purple,Sangloupmon,Champion (Lv4),Common,Electric,Virus,Maycrackmon,NeoDevimon,MetalGreymon
+Purple,Meicoomon,Champion (Lv4),Rare,Electric,Virus,MetalGreymon (X Antibody),SkullSatamon,Matadormon
+Purple,DexDorugamon,Champion (Lv4),Uncommon,Electric,Virus,MetalTyrannomon,Pumpkinmon,Cherrymon
+Yellow,Gatomon,Champion (Lv4),Common,Light,Vacine,Lillymon,MetalGreymon,Mamemon
+Yellow,Ankylomon,Champion (Lv4),Uncommon,Light,Vacine,Giromon,CatchMamemon,WereGarurumon: Sagittarius Mode
+Yellow,Turuiemon,Champion (Lv4),Common,Light,Vacine,Paildramon,WereGarurumon,Megadramon
+Black,SkullKnightmon,Champion (Lv4),Rare,Dark,Virus,MarinChimairamon,Infermon,GrapLeomon
+Black,DeadlyAxemon,Champion (Lv4),Common,Dark,Virus,Boutmon,MetalTyrannomon,Jokermon
+Black,Dorugamon,Champion (Lv4),Common,Dark,Virus,MetalGreymon,Dinobeemon,Orochimon
+Red,Birdramon,Champion (LV4),Uncommon,Fire,Free,Andromon,Whamon,Angewomon
+Red,Greymon,Champion (LV4),Uncommon,Fire,Free,SaviorHuckmon,HippoGryphonmon,Volcdramon
+Blue,ExVeemon,Champion (LV4),Common,Wind,Data,RizeGreymon,RizeGreymon,MetalTyrannomon
+Blue,Garurumon,Champion (LV4),Uncommon,Wind,Data,Angewomon,CaptainHookmon,Okuwamon
+Blue,Ikkakumon,Champion (LV4),Common,Wind,Data,Okumamon,Rapidmon,CrysPaledramon
+Yellow,Gatomon,Champion (LV4),Uncommon,Light,Vacine,LoaderLeomon,Karatenmon,MetalGreymon
+Yellow,Leomon,Champion (LV4),Rare,Light,Vacine,DarkKnightmon,Chirinmon,Gigadramon
+Red,Kokatorimon,Champion (Lv4),Common,Fire,Free,OmniShoutmon,Chirinmon,Andromon
+Green,Kabuterimon,Champion (LV4),Uncommon,Plant,Data,Groundramon,WereGarurumon,MetalTyrannomon
+Green,Togemon,Champion (LV4),Common,Plant,Data,WarGrowlmon,Volcdramon,Majiramon
+Green,Kuwagamon,Champion (LV4),Rare,Plant,Data,Lady Devimon,Shakkoumon,BlackMachGaogamon
+Green,Stingmon,Champion (LV4),Common,Plant,Data,Giromon,WereGarurumon,Frozomon
+Black,Kurisarimon,Champion (LV4),Common,Dark,Virus,Lucemon: Chaos Mode,RizeGreymon (X Antibody),Vermilimon
+Black,Guardromon,Champion (LV4),Common,Dark,Virus,WereGarurumon,Garudamon,BigMamemon
+Purple,Wizardmon,Champion (LV4),Common,Electric,Virus,Rapidmon,Silphymon,DarkSuperStarmon
+Purple,Devimon,Champion (LV4),Common,Electric,Virus,Blossomon,AeroVeedramon,Zudomon
+Purple,Ogremon,Champion (LV4),Rare,Electric,Virus,Jagamon,Paildramon,RizeGreymon
+Yellow,Gatomon,Champion (Lv4),Promotion,Light,Vacine,Angewomon,Digitamamon,SkullSatamon
+Blue,Garurumon,Champion (Lv4),Promotion,Wind,Data,SkullScorpiomon,MarinChimairamon,Infermon
+Red,Greymon,Champion (Lv4),Promotion,Fire,Free,Andromon,Kimeramon,SkullSatamon
+Blue,Veedramon,Champion (Lv4),Promotion,Wind,Data,Rebellimon,Grademon,Garbagemon
+Black,Kurisarimon,Champion (Lv4),Promotion,Dark,Virus,Lilamon,Paildramon,RaijiLudomon
+Purple,Devimon,Champion (Lv4),Promotion,Electric,Virus,Garbagemon,Etemon,SkullSatamon
+Yellow,Gatomon,Champion (Lv4),Promotion,Light,Vacine,Andromon,Boutmon,MegaSeadramon
+Red,Aquilamon,Champion (Lv4),Common,Fire,Free,Rebellimon,RizeGreymon,Taomon
+Red,Cyclonemon,Champion (Lv4),Uncommon,Fire,Free,Megadramon,AeroVeedramon,Kyukimon
+Red,BetelGammamon,Champion (Lv4),Common,Fire,Free,Mamemon,Grademon,MetalGreymon (X Antibody)
+Black,Kurisarimon,Champion (Lv4),Promotion,Dark,Virus,CaptainHookmon,Maycrackmon: Vicious Mode,Piximon
+Purple,Wizardmon,Champion (Lv4),Promotion,Electric,Virus,Lillymon,Zudomon,MetalGreymon
+Green,Tyrannomon,Champion (Lv4),Promotion,Plant,Data,Jagamon,MegaKabuterimon,MetalTyrannomon
+Black,Deltamon,Champion (Lv4),Promotion,Dark,Virus,Mistymon,SkullMeramon,Asuramon
+Purple,Wizardmon,Champion (Lv4),Promotion,Electric,Virus,Silphymon,Pistmon,Vermilimon
+Red,Birdramon,Champion (Lv4),Common,Fire,Free,Angewomon,Blossomon,Argomon
+Blue,Frigimon,Champion (Lv4),Common,Wind,Data,RizeGreymon,BigMamemon,Okuwamon
+Red,Greymon,Champion (Lv4),Uncommon,Fire,Free,Myotismon,MachGaogamon,Zudomon
+Blue,Ikkakumon,Champion (Lv4),Common,Wind,Data,Silphymon,Piranimon,Lady Devimon
+Blue,Garurumon,Champion (Lv4),Uncommon,Wind,Data,WereGarurumon,Garudamon,Gusokumon
+Blue,Grizzlymon,Champion (Lv4),Common,Wind,Data,MegaKabuterimon,NeoDevimon,Andromon
+Red,Greymon,Champion (Lv4),Uncommon,Fire,Free,Angewomon,Gusokumon,Piximon
+Yellow,Gatomon,Champion (Lv4),Common,Light,Vacine,Andromon,Maycrackmon,Blossomon
+Yellow,Unimon,Champion (Lv4),Common,Light,Vacine,MetalTyrannomon,Bastemon,Maycrackmon
+Red,Tyrannomon,Champion (Lv4),Rare,Fire,Free,Okuwamon,MetalTyrannomon,Infermon
+Blue,Hookmon,Champion (Lv4),Common,Wind,Data,SkullGreymon,WarGrowlmon,AeroVeedramon
+Green,Togemon,Champion (Lv4),Common,Plant,Data,Sirenmon,Orochimon,Silphymon
+Green,Kuwagamon,Champion (Lv4),Common,Plant,Data,Rapidmon,Lavogaritamon,AeroVeedramon Zero
+Green,Kabuterimon,Champion (Lv4),Uncommon,Plant,Data,Antylamon,Phantomon,SkullMeramon
+Black,Greymon,Champion (Lv4),Common,Dark,Virus,LadyDevimon,WereGarurumon (X Antibody),Angewomon
+Black,Jazadmon,Champion (Lv4),Common,Dark,Virus,NeoDevimon,Infermon,Megadramon
+Black,DarkTyrannomon,Champion (Lv4),Uncommon,Dark,Virus,Angewomon,Okuwamon,Megadramon
+Purple,Garurumon,Champion (Lv4),Common,Electric,Virus,Myotismon,Mamemon,Taomon
+Purple,Youkomon,Champion (Lv4),Common,Electric,Virus,Infermon,AeroVeedramon,Silphymon
+Purple,Devimon,Champion (Lv4),Uncommon,Electric,Virus,Taomon,MetalGreymon: Alterous Mode,RizeGreymon
+Red,Growlmon,Champion (Lv4),Rare,Fire,Free,Antylamon,Cerberusmon: Werewolf Mode,GrapLeomon
+Red,GeoGreymon,Champion (Lv4),Uncommon,Fire,Free,Cerberusmon,Piximon,Garudamon
+Blue,Veedramon,Champion (Lv4),Rare,Wind,Data,Jokermon,Gigadramon,Kimeramon
+Blue,Coredramon,Champion (Lv4),Uncommon,Wind,Data,Bastemon,DexDoruGreymon,Andromon
+Yellow,Ankylomon,Champion (Lv4),Common,Light,Vacine,Deramon,MameTyramon,Toropiamon
+Yellow,Dinohyumon,Champion (Lv4),Uncommon,Light,Vacine,Megadramon,Deramon,Megadramon
+Red,Flarerizamon,Champion (Lv4),Common,Fire,Free,BigMamemon,Volcanomon,RizeGreymon
+Green,Stingmon,Champion (Lv4),Uncommon,Plant,Data,MegaKabuterimon,Vermilimon,Megadramon
+Green,Snimon,Champion (Lv4),Common,Plant,Data,Dinobeemon,Silphymon,Gigadramon
+Yellow,Gatomon,Champion (Lv4),Super Rare,Light,Vacine,Orochimon,HippoGryphonmon,MasterTyrannomon
+Purple,Witchmon,Champion (Lv4),Uncommon,Electric,Virus,MetalMamemon,Infermon,WereGarurumon
+Purple,Wizardmon,Champion (Lv4),Common,Electric,Virus,RaijiLudomon,MagnaAngemon,BigMamemon
+Purple,Loweemon,Hybrid ( Lv4),Common,Electric,Virus,,,
+Blue,Strabimon,Hybrid (Lv3),Common,Wind,Data,,,
+Red,Flamemon,Hybrid (Lv3),Rare,Fire,Free,,,
+Yellow,Kazemon,Hybrid (Lv4),Common,Light,Vacine,,,
+Yellow,Zephyrmon,Hybrid (Lv4),Uncommon,Light,Vacine,,,
+Green,Beetlemon,Hybrid (Lv4),Uncommon,Plant,Data,,,
+Green,MetalKakuterimon,Hybrid (Lv4),Common,Plant,Data,,,
+Red,Agunimon,Hybrid (Lv4),Uncommon,Fire,Free,,,
+Red,BurningGreymon,Hybrid (Lv4),Uncommon,Fire,Free,,,
+Blue,Lobomon,Hybrid (Lv4),Uncommon,Wind,Data,,,
+Blue,KendoGarurumon,Hybrid (Lv4),Uncommon,Wind,Data,,,
+Red,BurningGreymon,Hybrid (Lv4),Uncommon,Fire,Free,,,
+Blue,Kumamon,Hybrid (Lv4),Common,Wind,Data,,,
+Blue,KendoGarurumon,Hybrid (Lv4),Common,Wind,Data,,,
+Blue,Korikakumon,Hybrid (Lv4),Common,Wind,Data,,,
+Green,Arbormon,Hybrid (Lv4),Uncommon,Plant,Data,,,
+Green,Petaldramon,Hybrid (Lv4),Common,Plant,Data,,,
+Purple,KaiserLeomon,Hybrid (Lv4),Uncommon,Electric,Virus,,,
+Black,Grumblemon,Hybrid (Lv4),Common,Dark,Virus,,,
+Black,Gigasmon,Hybrid (Lv4),Common,Dark,Virus,,,
+Red,Agunimon,Hybrid (Lv4),Promotion,Fire,Free,,,
+Blue,Lobomon,Hybrid (Lv4),Promotion,Wind,Data,,,
+Yellow,JetSilphymon,Hybrid (Lv5),Uncommon,Light,Vacine,,,
+Green,RhinoKakuterimon,Hybrid (Lv5),Uncommon,Plant,Data,,,
+Red,Aldamon,Hybrid (Lv5),Super Rare,Fire,Free,,,
+Blue,Beowolfmon,Hybrid (Lv5),Super Rare,Wind,Data,,,
+Red,Aldamon,Hybrid (Lv5),Uncommon,Fire,Free,,,
+Blue,DaiPenmon,Hybrid (Lv5),Uncommon,Wind,Data,,,
+Blue,Beowolfmon,Hybrid (Lv5),Uncommon,Wind,Data,,,
+Purple,Rhihimon,Hybrid (Lv5),Uncommon,Electric,Virus,,,
+Red,EmperorGreymon,Hybrid (Lv6),Super Rare,Fire,Free,,,
+Blue,MegnaGarurumon,Hybrid (Lv6),Super Rare,Wind,Data,,,
+White,Argomon,In-Training (Lv1),Super Rare,Neutral,Free,Argomon,Yokomon,Gummymon
+White,Bombmon,In-Training (Lv1),Uncommon,Neutral,Free,Bebydomon,Bebydomon,Hopmon
+White,Bommon,In-Training (Lv1),Super Rare,Neutral,Free,Upamon,Upamon,Poromon
+White,Botamon,In-Training (Lv1),Rare,Neutral,Free,Koromon,Wanyamon,Minomon
+White,Chibickmon,In-Training (Lv1),Uncommon,Neutral,Free,Cupidmon,Kyaromon,Kakkinmon
+White,Chibomon,In-Training (Lv1),Rare,Neutral,Free,Tanemon,Cupidmon,DemiMeramon
+White,Conomon,In-Training (Lv1),Rare,Neutral,Free,Wanyamon,Tanemon,Sakuttomon
+White,Cotsucomon,In-Training (Lv1),Uncommon,Neutral,Free,Gummymon,Frimon,Bukamon
+White,Curimon,In-Training (Lv1),Rare,Neutral,Free,Gigimon,Gigimon,Koromon
+White,Datirimon,In-Training (Lv1),Uncommon,Neutral,Free,DemiVeemon,DemiVeemon,Budmon
+White,DemiMeramon,In-Training (Lv1),Uncommon,Neutral,Free,DemiMeramon,Nyaromon,Missimon
+White,Dodomon,In-Training (Lv1),Rare,Neutral,Free,Tsunomon,Argomon,Pusurimon
+White,Dokimon,In-Training (Lv1),Rare,Neutral,Free,Pagumon,Kapurimon,Dorimon
+White,Fufumon,In-Training (Lv1),Common,Neutral,Free,Yaamon,Tsunomon,Kokomon
+White,Fusamon,In-Training (Lv1),Super Rare,Neutral,Free,Xiaomon,Pagumon,Pickmon
+White,Jyarimon,In-Training (Lv1),Super Rare,Neutral,Free,Viximon,Yaamon,Tsumemon
+White,Keemon,In-Training (Lv1),Rare,Neutral,Free,Hopmon,Xiaomon,Pagumon
+White,Ketomon,In-Training (Lv1),Common,Neutral,Free,Poromon,Viximon,Yaamon
+White,Kuramon,In-Training (Lv1),Common,Neutral,Free,Minomon,Gummymon,Argomon
+White,Leafmon,In-Training (Lv1),Common,Neutral,Free,Kakkinmon,Hopmon,Bebydomon
+White,MetalKoromon,In-Training (Lv1),Common,Neutral,Free,Kapurimon,Poromon,Upamon
+White,Mokumon,In-Training (Lv1),Rare,Neutral,Free,Sakuttomon,Minomon,Koromon
+White,Nyokimon,In-Training (Lv1),Rare,Neutral,Free,Bukamon,Kakkinmon,Cupidmon
+White,Pabumon,In-Training (Lv1),Uncommon,Neutral,Free,Budmon,DemiMeramon,Tanemon
+White,Pafumon,In-Training (Lv1),Super Rare,Neutral,Free,Missimon,Sakuttomon,Wanyamon
+White,Paomon,In-Training (Lv1),Common,Neutral,Free,Pusurimon,Bukamon,Gummymon
+White,Petitmon,In-Training (Lv1),Uncommon,Neutral,Free,Dorimon,Koromon,Gigimon
+White,Pichimon,In-Training (Lv1),Rare,Neutral,Free,Kokomon,Budmon,DemiVeemon
+White,Popomon,In-Training (Lv1),Super Rare,Neutral,Free,Pickmon,Missimon,DemiMeramon
+White,Poyomon,In-Training (Lv1),Super Rare,Neutral,Free,Tsumemon,Pusurimon,Tsunomon
+White,Punimon,In-Training (Lv1),Rare,Neutral,Free,Puyoyomon,Dorimon,Pagumon
+White,Pupamon,In-Training (Lv1),Common,Neutral,Free,Tokomon (X Antibody),Kokomon,Yaamon
+White,Pururumon,In-Training (Lv1),Uncommon,Neutral,Free,Motimon,Pickmon,Xiaomon
+White,Pusumon,In-Training (Lv1),Super Rare,Neutral,Free,Tumblemon,Tsumemon,Viximon
+White,Puttimon,In-Training (Lv1),Super Rare,Neutral,Free,Gurimon,Bibimon,Hopmon
+White,Puwamon,In-Training (Lv1),Common,Neutral,Free,Hiyarimon,Pinamon,Poromon
+White,Puyomon,In-Training (Lv1),Uncommon,Neutral,Free,Kyokyomon,Puyoyomon,Minomon
+White,Pyonmon,In-Training (Lv1),Uncommon,Neutral,Free,Yokomon,Tokomon (X Antibody),DemiVeemon
+White,Relemon,In-Training (Lv1),Uncommon,Neutral,Free,Bebydomon,Motimon,Nyaromon
+White,Sakumon,In-Training (Lv1),Uncommon,Neutral,Free,Upamon,Tumblemon,Argomon
+White,Sandmon,In-Training (Lv1),Uncommon,Neutral,Free,Wanyamon,Gurimon,Kapurimon
+White,Tsubumon,In-Training (Lv1),Common,Neutral,Free,Kyaromon,Argomon,Tsunomon
+White,Yolkmon,In-Training (Lv1),Super Rare,Neutral,Free,Cupidmon,Bebydomon,Pagumon
+White,YukiBotamon,In-Training (Lv1),Super Rare,Neutral,Free,Tanemon,Upamon,Yaamon
+White,Yuramon,In-Training (Lv1),Rare,Neutral,Free,Frimon,Koromon,Xiaomon
+White,Zerimon,In-Training (Lv1),Super Rare,Neutral,Free,DemiVeemon,Cupidmon,Wanyamon
+White,Zurumon,In-Training (Lv1),Uncommon,Neutral,Free,Nyaromon,Tanemon,Kyaromon
+Red,Yokomon,In-Training (Lv2),Rare,Fire,Free,Veemon,Keramon,Goblimon
+Red,Bebydomon,In-Training (Lv2),Uncommon,Fire,Free,Labramon,Tapirmon,Lopmon
+Blue,Upamon,In-Training (Lv2),Rare,Wind,Data,Keramon,Patamon,DoKunemon
+Blue,Wanyamon,In-Training (Lv2),Uncommon,Wind,Data,Bearmon,Keramon,Dracmon
+Yellow,Kyaromon,In-Training (Lv2),Uncommon,Light,Vacine,Agumon,Pulsemon,Chuumon
+Yellow,Cupidmon,In-Training (Lv2),Rare,Light,Vacine,Terriermon,Goblimon,Jellymon
+Green,Tanemon,In-Training (Lv2),Rare,Plant,Data,Jellymon,Guilmon,Armadillomon
+Green,Frimon,In-Training (Lv2),Uncommon,Plant,Data,Pulsemon,ToyAgumon,Kudamon
+Red,Gigimon,In-Training (Lv2),Uncommon,Fire,Free,Tapirmon,Dorumon,Gabumon
+Red,Gigimon,In-Training (Lv2),Uncommon,Fire,Free,Gabumon,Kokuwamon,Gabumon
+Blue,DemiVeemon,In-Training (Lv2),Uncommon,Wind,Data,Tinkermon,Tentomon,Kunemon
+Yellow,Nyaromon,In-Training (Lv2),Uncommon,Light,Vacine,Tapirmon,Sistermon Blanc (Awakened),Kunemon
+Green,Argomon,In-Training (Lv2),Uncommon,Plant,Data,ToyAgumon,Gazimon (X Antibody),Dracmon
+Black,Kapurimon,In-Training (Lv2),Common,Dark,Virus,Gabumon,Dracomon,Junkmon
+Black,Tsunemon,In-Training (Lv2),Rare,Dark,Virus,Gabumon,Agumon,Candlemon
+Purple,Pagumon,In-Training (Lv2),Common,Electric,Virus,Lucemon,Tapirmon,Tinkermon
+Purple,Yaamon,In-Training (Lv2),Rare,Electric,Virus,Kokuwamon,Salamon,Tentomon
+Blue,Xiaomon,In-Training (Lv2),Uncommon,Wind,Data,Huckmon,Agumon,Ekakimon
+Yellow,Viximon,In-Training (Lv2),Uncommon,Light,Vacine,Kunemon,Agumon,Gabumon
+Green,Gummymon,In-Training (Lv2),Uncommon,Plant,Data,Gabumon (X Antibody),Herissmon,Guilmon
+Black,Hopmon,In-Training (Lv2),Uncommon,Dark,Virus,Palmon,Elecmon,Gomamon
+Purple,Yaamon,In-Training (Lv2),Uncommon,Electric,Virus,Impmon,Bulucomon,Goblimon
+Red,Poromon,In-Training (Lv2),Uncommon,Fire,Free,Gabumon,Wormmon,Biyomon
+Blue,DemiVeemon,In-Training (Lv2),Uncommon,Wind,Data,Terriermon Assistant,Gaomon,ToyAgumon
+Yellow,Upamon,In-Training (Lv2),Uncommon,Light,Vacine,Labramon,Salamon,DemiDevimon
+Green,Minomon,In-Training (Lv2),Uncommon,Plant,Data,Monodramon,Hawkmon,Gotsumon
+Black,Kakkinmon,In-Training (Lv2),Uncommon,Dark,Virus,Lucemon,Betamon,Psychemon
+Purple,DemiMeramon,In-Training (Lv2),Uncommon,Electric,Virus,Labramon,Agumon,Zubamon
+Red,Kapurimon,In-Training (Lv2),Uncommon,Fire,Free,Cutemon,Tapirmon,Impmon
+Red,Sakuttomon,In-Training (Lv2),Uncommon,Fire,Free,Biyomon,Pillomon,Sunarizamon
+Blue,Bukamon,In-Training (Lv2),Uncommon,Wind,Data,Espimon,Dracmon,Guilmon
+Yellow,Koromon,In-Training (Lv2),Uncommon,Light,Vacine,Kunemon,Floramon,ToyAgumon
+Green,Budmon,In-Training (Lv2),Uncommon,Plant,Data,Starmons,Kunemon,KoKabuterimon
+Black,Missimon,In-Training (Lv2),Uncommon,Dark,Virus,Lopmon,Tentomon,Veemon
+Purple,Xiaomon,In-Training (Lv2),Uncommon,Electric,Virus,Commandramon,Huckmon,Armadillomon
+Blue,Bukamon,In-Training (Lv2),Uncommon,Wind,Data,Agumon,Bulucomon,Agumon
+Yellow,Pusurimon,In-Training (Lv2),Uncommon,Light,Vacine,Keramon,Salamon,Bakomon
+Green,Koromon,In-Training (Lv2),Uncommon,Plant,Data,Gomamon,Shoutmon,Falcomon
+Black,Dorimon,In-Training (Lv2),Uncommon,Dark,Virus,Dracomon,Jellymon,SnowAgumon
+Purple,Kokomon,In-Training (Lv2),Uncommon,Electric,Virus,Gabumon,Vorvomon,DemiDevimon
+Red,Koromon,In-Training (Lv2),Uncommon,Fire,Free,Agumon,Monodramon,Ghostmon
+Blue,Tsunomon,In-Training (Lv2),Uncommon,Wind,Data,Liollmon,Argomon,Kudamon
+Yellow,Pickmon,In-Training (Lv2),Uncommon,Light,Vacine,Tapirmon,Salamon,Agumon (X Antibody)
+Green,Yokomon,In-Training (Lv2),Uncommon,Plant,Data,Kunemon,Lopmon,Monodramon
+Black,Tsumemon,In-Training (Lv2),Uncommon,Dark,Virus,Veemon,Tapirmon,ToyAgumon
+Purple,Gigimon,In-Training (Lv2),Uncommon,Electric,Virus,ToyAgumon,Betamon,Biyomon
+Red,DemiMeramon,In-Training (Lv2),Uncommon,Fire,Free,Patamon,Commandramon,Biyomon
+Blue,Kyaromon,In-Training (Lv2),Uncommon,Wind,Data,Agumon,Dracomon,Elecmon
+Yellow,Bibimon,In-Training (Lv2),Uncommon,Light,Vacine,Gomamon,Commandramon,Soundbirdmon
+Green,Pinamon,In-Training (Lv2),Uncommon,Plant,Data,Guilmon,Veemon,Agumon
+Black,Pagumon,In-Training (Lv2),Uncommon,Dark,Virus,Salamon,Huckmon,Guilmon
+Purple,Tsunomon,In-Training (Lv2),Uncommon,Electric,Virus,Gotsumon,Hagurumon,Betamon
+Red,Koromon,In-Training (Lv2),Uncommon,Fire,Free,Pillomon,Salamon,Veemon
+Blue,Puyoyomon,In-Training (Lv2),Uncommon,Wind,Data,Hawkmon,Dracmon,Tapirmon
+Yellow,Tokomon (X Antibody),In-Training (Lv2),Uncommon,Light,Vacine,Candlemon,Commandramon,Sistermon Blanc (Awakened)
+Green,Motimon,In-Training (Lv2),Uncommon,Plant,Data,Biyomon,Gammamon,Sunarizamon
+Black,Tumblemon,In-Training (Lv2),Uncommon,Dark,Virus,Shoutmon,Palmon,Gaomon
+Purple,Pagumon,In-Training (Lv2),Uncommon,Electric,Virus,Kunemon,Soundbirdmon,Aruraumon
+Red,Gurimon,In-Training (Lv2),Uncommon,Fire,Free,Jellymon,Ghostmon,Sunarizamon
+Purple,DemiMeramon,In-Training (Lv2),Uncommon,Electric,Virus,Gomamon,Cutemon,Agumon
+Blue,Hiyarimon,In-Training (Lv2),Uncommon,Wind,Data,Dorumon,Betamon,Gizamon
+Yellow,Frimon,In-Training (Lv2),Uncommon,Light,Vacine,DemiDevimon,Veemon,Dorumon
+Green,Bibimon,In-Training (Lv2),Uncommon,Plant,Data,Patamon,Agumon,Tinkermon
+Red,Koromon,In-Training (Lv2),Uncommon,Fire,Free,Agumon,Hagurumon,DemiDevimon
+Black,Kyokyomon,In-Training (Lv2),Uncommon,Dark,Virus,Ludomon,Elecmon,DemiDevimon
+Blue,Tsunomon,In-Training (Lv2),Uncommon,Wind,Data,Biyomon,Salamon,BushiAgumon
+Yellow,Tokomon,In-Training (Lv2),Uncommon,Light,Vacine,Armadillomon,Falcomon,Tinkermon
+Green,Motimon,In-Training (Lv2),Uncommon,Plant,Data,Veemon,Agumon,Tentomon
+Black,Kapurimon,In-Training (Lv2),Uncommon,Dark,Virus,Kotemon,Espimon,Minidekachimon
+Purple,Pagumon,In-Training (Lv2),Uncommon,Electric,Virus,Bulucomon,Patamon,Gaossmon
+Red,Gigimon,In-Training (Lv2),Uncommon,Fire,Free,Kotemon,Gaomon,Betamon
+Blue,DemiVeemon,In-Training (Lv2),Uncommon,Wind,Data,Impmon,Gomamon,Agumon
+Green,Minomon,In-Training (Lv2),Uncommon,Plant,Data,ModokiBetamon,Cutemon,Gabumon
+Purple,Nyaromon,In-Training (Lv2),Uncommon,Electric,Virus,Gomamon,Herissmon,Monodramon
+Red,WarGreymon,Mega (Lv6),Super Rare,Fire,Free,RagnaLoardmon,Omnimon X Anti-body,Omnimon Zwart Defeat
+Red,Breakdramon,Mega (Lv6),Uncommon,Fire,Free,Chaosmon,Omnimon Zwart,Milleniummon
+Blue,SaberLeomon,Mega (Lv6),Uncommon,Wind,Data,Omnimon: Merciful Mode,Omnimon X Anti-body,Omnimon Zwart Defeat
+Blue,MetalGarurumon,Mega (Lv6),Super Rare,Wind,Data,Omnimon,Omnimon Zwart Defeat,Agumon - Bond of Bravery
+Yellow,SlashAngemon,Mega (Lv6),Uncommon,Light,Vacine,Omnimon X Anti-body,Omnimon,Armageddemon
+Yellow,Seraphimon,Mega (Lv6),Super Rare,Light,Vacine,Omnimon,Omnimon X Anti-body,Armageddemon
+Green,Titamon,Mega (Lv6),Uncommon,Plant,Data,Agumon - Bond of Bravery,Omnimon,Gabumon Bond of Friendship
+Green,HerculesKabuterimon,Mega (Lv6),Super Rare,Plant,Data,Alphamon: Ouryuken,Agumon - Bond of Bravery,RagnaLoardmon
+Green,Rosemon,Mega (Lv6),Super Rare,Plant,Data,Omnimon: Merciful Mode,Omnimon,Omnimon Alter-S
+Green,GranKuwagamon,Mega (Lv6),Super Rare,Plant,Data,Chaosmon,Omnimon X Anti-body,Armageddemon
+White,Machinedramon,Mega (LV6),Secret Rare,Neutral,Vaccine,Omnimon: Merciful Mode,RagnaLoardmon,Omnimon Alter-S
+Black,Gundramon,Mega (Lv6),Rare,Dark,Virus,Omnimon,Omnimon: Merciful Mode,Omnimon
+Black,PileVolcamon,Mega (Lv6),Uncommon,Dark,Virus,Omnimon Zwart,Milleniummon,Omnimon Alter-S
+Black,Gankoomon,Mega (Lv6),Super Rare,Dark,Virus,Omnimon Alter-S,RagnaLoardmon,Omnimon Zwart Defeat
+Purple,Murukusmon,Mega (Lv6),Common,Electric,Virus,Armageddemon,Milleniummon,Alphamon: Ouryuken
+Red,VolcanicDramon,Mega (Lv6),Uncommon,Fire,Free,Ordinemon,Omnimon Alter-S,Milleniummon
+Red,Phoenixmon,Mega (Lv6),Rare,Fire,Free,Gabumon Bond of Friendship,Gabumon Bond of Friendship,Gabumon Bond of Friendship
+Red,Gallantmon,Mega (Lv6),Super Rare,Fire,Free,RagnaLoardmon,Gabumon Bond of Friendship,Gabumon Bond of Friendship
+Blue,MetalSeadramon,Mega (Lv6),Rare,Wind,Data,Alphamon: Ouryuken,Agumon - Bond of Bravery,Gabumon Bond of Friendship
+Blue,Vikemon,Mega (Lv6),Uncommon,Wind,Data,Milleniummon,Armageddemon,Agumon - Bond of Bravery
+Blue,UlforceVeedramon,Mega (Lv6),Super Rare,Wind,Data,Imperialdramon Paladin Mode,Gabumon Bond of Friendship,Omnimon: Merciful Mode
+Yellow,Magnadramon,Mega (Lv6),Uncommon,Light,Vacine,Omnimon Alter-S,Agumon - Bond of Bravery,Omnimon: Merciful Mode
+Yellow,Ophanimon,Mega (Lv6),Rare,Light,Vacine,Omnimon Zwart,Omnimon X Anti-body,Ordinemon
+Yellow,ShineGreymon,Mega (Lv6),Super Rare,Light,Vacine,Omnimon Zwart,Omnimon,Omnimon
+Green,Puppetmon,Mega (Lv6),Rare,Plant,Data,Omnimon Zwart Defeat,Milleniummon,Omnimon X Anti-body
+Green,Argomon,Mega (Lv6),Uncommon,Plant,Data,Omnimon Alter-S,Agumon - Bond of Bravery,Milleniummon
+Green,RustTyrannomon,Mega (Lv6),Super Rare,Plant,Data,Omnimon,Ordinemon,Gabumon Bond of Friendship
+Black,HiAndromon,Mega (Lv6),Uncommon,Dark,Virus,Omnimon X Anti-body,Omnimon Zwart,Chaosmon
+Black,WarGreymon,Mega (Lv6),Super Rare,Dark,Virus,Milleniummon,Agumon - Bond of Bravery,RagnaLoardmon
+Black,Machinedramon,Mega (Lv6),Super Rare,Dark,Virus,Chaosmon,RagnaLoardmon,Armageddemon
+Purple,VenomMyotismon,Mega (Lv6),Rare,Electric,Virus,Agumon - Bond of Bravery,Omnimon Alter-S,Alphamon: Ouryuken
+Purple,Piedmon,Mega (Lv6),Super Rare,Electric,Virus,Omnimon X Anti-body,Armageddemon,Omnimon Zwart
+Purple,MetalGarurumon,Mega (Lv6),Super Rare,Electric,Virus,Omnimon Zwart,Imperialdramon Paladin Mode,Omnimon X Anti-body
+White,Diabormon,Mega (Lv6),Super Rare,Neutral,Vaccine,Milleniummon,Alphamon: Ouryuken,Omnimon X Anti-body
+Purple,Ornismon,Mega (Lv6),Uncommon,Electric,Virus,Ordinemon,Alphamon: Ouryuken,Ordinemon
+Purple,Titamon,Mega (Lv6),Super Rare,Electric,Virus,Gabumon Bond of Friendship,Omnimon Alter-S,Alphamon: Ouryuken
+White,Eosmon,Mega (Lv6),Super Rare,Neutral,Vaccine,Alphamon: Ouryuken,Gabumon Bond of Friendship,Omnimon Alter-S
+Green,Parasitemon,Mega (Lv6),Uncommon,Plant,Data,Agumon - Bond of Bravery,Omnimon X Anti-body,Agumon - Bond of Bravery
+Green,MegaGargomon,Mega (Lv6),Super Rare,Plant,Data,Omnimon Zwart,Gabumon Bond of Friendship,Omnimon X Anti-body
+Yellow,Rasenmon,Mega (Lv6),Super Rare,Light,Vacine,Omnimon Zwart Defeat,Omnimon Alter-S,Omnimon: Merciful Mode
+Purple,Beelzemon,Mega (Lv6),Secret Rare,Electric,Virus,Ordinemon,Agumon - Bond of Bravery,Omnimon: Merciful Mode
+Black,BlackWarGreymon,Mega (Lv6),Secret Rare,Dark,Virus,Omnimon: Merciful Mode,Omnimon Zwart Defeat,RagnaLoardmon
+Red,Durandamon,Mega (Lv6),Rare,Fire,Free,Ordinemon,Omnimon X Anti-body,Milleniummon
+Red,Valkyrimon,Mega (Lv6),Uncommon,Fire,Free,Omnimon: Merciful Mode,Omnimon X Anti-body,Gabumon Bond of Friendship
+Red,BlitzGreymon,Mega (Lv6),Super Rare,Fire,Free,Chaosmon,Omnimon,Omnimon Zwart
+Yellow,Cherubimon,Mega (Lv6),Rare,Light,Vacine,Alphamon: Ouryuken,Imperialdramon Paladin Mode,Omnimon
+Green,Ceresmon,Mega (Lv6),Super Rare,Plant,Data,Ordinemon,Ordinemon,Omnimon X Anti-body
+Green,MegaGargomon,Mega (Lv6),Rare,Plant,Data,Imperialdramon Paladin Mode,Gabumon Bond of Friendship,RagnaLoardmon
+Green,BanchoStingmon,Mega (Lv6),Uncommon,Plant,Data,Chaosmon,Omnimon Zwart Defeat,Armageddemon
+Black,BryweLudramon,Mega (Lv6),Rare,Dark,Virus,Armageddemon,Omnimon X Anti-body,Ordinemon
+Black,CresGarurumon,Mega (Lv6),Super Rare,Dark,Virus,Omnimon Alter-S,Omnimon,RagnaLoardmon
+Black,MetalEtemon,Mega (Lv6),Uncommon,Dark,Virus,Omnimon,Milleniummon,Omnimon: Merciful Mode
+Black,Craniamon,Mega (Lv6),Super Rare,Dark,Virus,Omnimon Zwart Defeat,Armageddemon,Ordinemon
+Purple,Boltmon,Mega (Lv6),Uncommon,Electric,Virus,Ordinemon,Armageddemon,Chaosmon
+Purple,Mastemon,Mega (Lv6),Super Rare,Electric,Virus,Omnimon Zwart Defeat,Omnimon Zwart,Gabumon Bond of Friendship
+Purple,Lillithmon,Mega (Lv6),Super Rare,Electric,Virus,Agumon - Bond of Bravery,Omnimon Alter-S,Gabumon Bond of Friendship
+Purple,MaloMyotismon,Mega (Lv6),Rare,Electric,Virus,Armageddemon,Omnimon X Anti-body,Imperialdramon Paladin Mode
+Red,Gallantmon,Mega (Lv6),Super Rare,Fire,Free,Omnimon Zwart,Omnimon Zwart,Alphamon: Ouryuken
+Red,Megidramon,Mega (Lv6),Super Rare,Fire,Free,Omnimon Alter-S,Agumon - Bond of Bravery,Gabumon Bond of Friendship
+Yellow,Kazuchimon,Mega (Lv6),Super Rare,Light,Vacine,Milleniummon,Milleniummon,Omnimon Alter-S
+Yellow,AncientKazemon,Mega (Lv6),Rare,Light,Vacine,Omnimon Zwart,Omnimon X Anti-body,Chaosmon
+Black,Alphamon,Mega (Lv6),Secret Rare,Dark,Virus,Gabumon Bond of Friendship,Imperialdramon Paladin Mode,Agumon - Bond of Bravery
+Purple,BeelStarmon,Mega (Lv6),Secret Rare,Electric,Virus,Ordinemon,Ordinemon,Ordinemon
+Green,Imperialdramon Dragon Mode,Mega (Lv6),Secret Rare,Plant,Data,Omnimon X Anti-body,Ordinemon,Omnimon
+Red,Spinomon,Mega (Lv6),Uncommon,Fire,Free,Omnimon X Anti-body,Imperialdramon Paladin Mode,RagnaLoardmon
+Red,VictoryGreymon,Mega (Lv6),Rare,Fire,Free,Alphamon: Ouryuken,Armageddemon,Omnimon Zwart
+Red,ShineGreymon,Mega (Lv6),Rare,Fire,Free,Milleniummon,Omnimon Zwart,Chaosmon
+Blue,ZeedGarurumon,Mega (Lv6),Rare,Wind,Data,Omnimon Zwart,Omnimon X Anti-body,Imperialdramon Paladin Mode
+Blue,Regalecusmon,Mega (Lv6),Common,Wind,Data,RagnaLoardmon,Omnimon,Imperialdramon Paladin Mode
+Blue,MirageGaogamon,Mega (Lv6),Super Rare,Wind,Data,Milleniummon,RagnaLoardmon,Gabumon Bond of Friendship
+Yellow,Rasielmon,Mega (Lv6),Uncommon,Light,Vacine,Omnimon Alter-S,Agumon - Bond of Bravery,Armageddemon
+Yellow,WarGreymon,Mega (Lv6),Super Rare,Light,Vacine,Omnimon,Milleniummon,Omnimon X Anti-body
+Yellow,Varodurumon,Mega (Lv6),Rare,Light,Vacine,Alphamon: Ouryuken,Omnimon Zwart,Omnimon Zwart
+Green,Lotosmon,Mega (Lv6),Uncommon,Plant,Data,Ordinemon,Omnimon,Alphamon: Ouryuken
+Green,BanchoLeomon,Mega (Lv6),Rare,Plant,Data,Imperialdramon Paladin Mode,Alphamon: Ouryuken,Omnimon Zwart
+Green,Nidhoggmon,Mega (Lv6),Super Rare,Plant,Data,Gabumon Bond of Friendship,Imperialdramon Paladin Mode,Imperialdramon Paladin Mode
+Black,BanchoGolemon,Mega (Lv6),Uncommon,Dark,Virus,Omnimon Zwart,Omnimon: Merciful Mode,Imperialdramon Paladin Mode
+Black,Darkdramon,Mega (Lv6),Rare,Dark,Virus,Agumon - Bond of Bravery,Alphamon: Ouryuken,Alphamon: Ouryuken
+Black,Blastmon,Mega (Lv6),Super Rare,Dark,Virus,Agumon - Bond of Bravery,Armageddemon,Alphamon: Ouryuken
+Purple,Anubismon,Mega (Lv6),Uncommon,Electric,Virus,Gabumon Bond of Friendship,Omnimon: Merciful Mode,Omnimon Zwart Defeat
+Purple,DanDevimon,Mega (Lv6),Super Rare,Electric,Virus,Omnimon,Omnimon Zwart,Agumon - Bond of Bravery
+Purple,Plutomon,Mega (Lv6),Super Rare,Electric,Virus,Omnimon Alter-S,Omnimon: Merciful Mode,Alphamon: Ouryuken
+White,Chaosmon: Valdur Arm,Mega (Lv6),Super Rare,Neutral,Vaccine,Milleniummon,Ordinemon,Gabumon Bond of Friendship
+Blue,MarineAngemon,Mega (Lv6),Rare,Wind,Data,Chaosmon,Omnimon,Gabumon Bond of Friendship
+Red,AvengeKidmon,Mega (Lv6),Uncommon,Fire,Free,Armageddemon,Chaosmon,Omnimon Zwart Defeat
+Red,AncientGreymon,Mega (Lv6),Secret Rare,Fire,Free,Omnimon Alter-S,Imperialdramon Paladin Mode,RagnaLoardmon
+Blue,AncientGarurumon,Mega (Lv6),Secret Rare,Wind,Data,Milleniummon,Omnimon Zwart Defeat,Omnimon: Merciful Mode
+Red,WarGreymon,Mega (Lv6),Rare,Fire,Free,Agumon - Bond of Bravery,Agumon - Bond of Bravery,Agumon - Bond of Bravery
+Red,ZeigGreymon,Mega (Lv6),Uncommon,Fire,Free,Omnimon,Agumon - Bond of Bravery,Omnimon X Anti-body
+Red,Dorbickmon,Mega (Lv6),Common,Fire,Free,Omnimon Zwart Defeat,Milleniummon,Chaosmon
+Red,Shoutmon DX,Mega (Lv6),Super Rare,Fire,Free,Omnimon Zwart,Chaosmon,Omnimon X Anti-body
+Blue,Neptunemon,Mega (Lv6),Uncommon,Wind,Data,Gabumon Bond of Friendship,RagnaLoardmon,RagnaLoardmon
+Blue,MetalGarurumon,Mega (Lv6),Rare,Wind,Data,Armageddemon,Omnimon: Merciful Mode,Alphamon: Ouryuken
+Blue,Hexeblaumon,Mega (Lv6),Super Rare,Wind,Data,RagnaLoardmon,Omnimon X Anti-body,Imperialdramon Paladin Mode
+Yellow,Jijimon,Mega (Lv6),Uncommon,Light,Vacine,Armageddemon,Imperialdramon Paladin Mode,Omnimon Alter-S
+Yellow,Sakuyamon,Mega (Lv6),Rare,Light,Vacine,Armageddemon,Armageddemon,Omnimon X Anti-body
+Yellow,LordKnightmon,Mega (Lv6),Super Rare,Light,Vacine,Chaosmon,Agumon - Bond of Bravery,Agumon - Bond of Bravery
+Green,BanchoLillymon,Mega (Lv6),Uncommon,Plant,Data,Omnimon,RagnaLoardmon,Omnimon Zwart
+Green,Rafflesimon,Mega (Lv6),Super Rare,Plant,Data,Omnimon Zwart Defeat,Omnimon,Ordinemon
+Green,Rosemon,Mega (Lv6),Uncommon,Plant,Data,Armageddemon,Imperialdramon Paladin Mode,Omnimon Zwart
+Green,Argomon,Mega (Lv6),Rare,Plant,Data,Armageddemon,Agumon - Bond of Bravery,Milleniummon
+Black,BlackWarGreymon,Mega (Lv6),Rare,Dark,Virus,Omnimon Alter-S,Omnimon,Imperialdramon Paladin Mode
+Black,MetalGarurumon,Mega (Lv6),Super Rare,Dark,Virus,Omnimon Zwart Defeat,Omnimon Zwart,RagnaLoardmon
+Purple,BlackWarGreymon,Mega (Lv6),Rare,Electric,Virus,Milleniummon,Imperialdramon Paladin Mode,Alphamon: Ouryuken
+Purple,Zanbamon,Mega (Lv6),Uncommon,Electric,Virus,Imperialdramon Paladin Mode,Alphamon: Ouryuken,Omnimon Alter-S
+Purple,ChaosGallantmon,Mega (Lv6),Super Rare,Electric,Virus,Milleniummon,Omnimon,Omnimon Zwart
+Purple,Tactimon,Mega (Lv6),Super Rare,Electric,Virus,Ordinemon,Imperialdramon Paladin Mode,Omnimon Zwart Defeat
+Purple,Megidramon,Mega (Lv6),Rare,Electric,Virus,Omnimon Alter-S,Omnimon Alter-S,Omnimon Alter-S
+White,Diaboromon,Mega (Lv6),Rare,Neutral,Vaccine,Milleniummon,Omnimon X Anti-body,Imperialdramon Paladin Mode
+Yellow,Sakuyamon,Mega (Lv6),Super Rare,Light,Vacine,Armageddemon,Omnimon: Merciful Mode,Gabumon Bond of Friendship
+Red,Chaosdramon,Mega (Lv6),Rare,Fire,Free,Omnimon,Milleniummon,Alphamon: Ouryuken
+Yellow,ClavisAngemon,Mega (Lv6),Uncommon,Light,Vacine,Agumon - Bond of Bravery,Omnimon,Agumon - Bond of Bravery
+Blue,KingWhamon,Mega (Lv6),Common,Wind,Data,Ordinemon,Omnimon Zwart Defeat,Omnimon
+Blue,AncientMegatheriummon,Mega (Lv6),Rare,Wind,Data,Gabumon Bond of Friendship,Imperialdramon Paladin Mode,Ordinemon
+Yellow,Kentaurosmon,Mega (Lv6),Super Rare,Light,Vacine,Omnimon X Anti-body,Omnimon,Ordinemon
+Red,Jesmon,Mega (Lv6),Super Rare,Fire,Free,Omnimon,Omnimon Zwart,Omnimon Alter-S
+Red,MagnaKidmon,Mega (Lv6),Rare,Fire,Free,Omnimon,Omnimon X Anti-body,RagnaLoardmon
+Blue,Pukumon,Mega (Lv6),Uncommon,Wind,Data,Gabumon Bond of Friendship,Alphamon: Ouryuken,Gabumon Bond of Friendship
+Blue,Azulongmon,Mega (Lv6),Super Rare,Wind,Data,Agumon - Bond of Bravery,Chaosmon,Imperialdramon Paladin Mode
+Yellow,Babamon,Mega (Lv6),Uncommon,Light,Vacine,Chaosmon,Armageddemon,Omnimon
+Yellow,SkullMammothmon,Mega (Lv6),Common,Light,Vacine,Omnimon,Omnimon Zwart,Omnimon
+Yellow,Dynasmon,Mega (Lv6),Super Rare,Light,Vacine,Chaosmon,Omnimon X Anti-body,Imperialdramon Paladin Mode
+Green,Eldradimon,Mega (Lv6),Common,Plant,Data,RagnaLoardmon,RagnaLoardmon,Omnimon Zwart
+Green,AncientTroymon,Mega (Lv6),Rare,Plant,Data,Armageddemon,Omnimon Zwart,Omnimon
+Yellow,Cherubimon,Mega (Lv6),Uncommon,Light,Vacine,Armageddemon,Omnimon Zwart,Omnimon: Merciful Mode
+Yellow,Azulongmon,Mega (Lv6),Rare,Light,Vacine,Agumon - Bond of Bravery,Imperialdramon Paladin Mode,Omnimon Zwart
+Green,Spinomon,Mega (Lv6),Common,Plant,Data,Omnimon,Omnimon: Merciful Mode,Omnimon X Anti-body
+Green,Shivamon,Mega (Lv6),Super Rare,Plant,Data,Imperialdramon Paladin Mode,Omnimon: Merciful Mode,Agumon - Bond of Bravery
+Black,BanchoMamemon,Mega (Lv6),Rare,Dark,Virus,Agumon - Bond of Bravery,Omnimon: Merciful Mode,Armageddemon
+Black,Ouryumon,Mega (Lv6),Super Rare,Dark,Virus,Agumon - Bond of Bravery,Omnimon,RagnaLoardmon
+Black,BlackWarGreymon,Mega (Lv6),Super Rare,Dark,Virus,Omnimon X Anti-body,Imperialdramon Paladin Mode,Omnimon Zwart Defeat
+Purple,Rasenmon Fury Mode,Mega (Lv6),Uncommon,Electric,Virus,Ordinemon,Chaosmon,Omnimon Zwart
+Purple,Ophanimon Falldown Mode,Mega (Lv6),Super Rare,Electric,Virus,Omnimon Zwart Defeat,Agumon - Bond of Bravery,Armageddemon
+Purple,MaloMyotismon,Mega (Lv6),Super Rare,Electric,Virus,RagnaLoardmon,Armageddemon,Omnimon X Anti-body
+Black,Justimon Blitz Arm,Mega (Lv6),Super Rare,Dark,Virus,Alphamon: Ouryuken,Alphamon: Ouryuken,Omnimon
+Purple,Gulfmon,Mega (Lv6),Super Rare,Electric,Virus,Omnimon,RagnaLoardmon,Omnimon: Merciful Mode
+Purple,Beelzemon,Mega (Lv6),Super Rare,Electric,Virus,Omnimon Alter-S,Agumon - Bond of Bravery,Agumon - Bond of Bravery
+Blue,Goldramon,Mega (Lv6),Uncommon,Wind,Data,Omnimon: Merciful Mode,Omnimon Alter-S,Omnimon Alter-S
+Purple,Nidhoggmon,Mega (Lv6),Uncommon,Electric,Virus,Ordinemon,Armageddemon,Milleniummon
+Purple,AncientSphinxmon,Mega (Lv6),Rare,Electric,Virus,Ordinemon,Alphamon: Ouryuken,Omnimon
+Purple,Cherubimon,Mega (Lv6),Super Rare,Electric,Virus,Omnimon: Merciful Mode,RagnaLoardmon,Omnimon X Anti-body
+White,Eosmon,Mega (Lv6),Uncommon,Neutral,Vaccine,Omnimon Zwart,Omnimon,Alphamon: Ouryuken
+Purple,Creepymon,Mega (Lv6),Secret Rare,Electric,Virus,Omnimon,Omnimon Zwart Defeat,Omnimon Zwart
+Red,WarGreymon (X Antibody),Mega (Lv6),Super Rare,Fire,Free,RagnaLoardmon,Milleniummon,Omnimon X Anti-body
+Red,Gallantmon (X Antibody),Mega (Lv6),Super Rare,Fire,Free,Omnimon X Anti-body,Omnimon Alter-S,Omnimon: Merciful Mode
+Red,Dinorexmon,Mega (Lv6),Rare,Fire,Free,Ordinemon,Omnimon X Anti-body,Omnimon Zwart Defeat
+Blue,Suijinmon,Mega (Lv6),Uncommon,Wind,Data,Omnimon X Anti-body,Chaosmon,Armageddemon
+Blue,MetalPiranimon,Mega (Lv6),Common,Wind,Data,Gabumon Bond of Friendship,Ordinemon,Agumon - Bond of Bravery
+Blue,MetalGarurumon (X Antibody),Mega (Lv6),Super Rare,Wind,Data,Omnimon X Anti-body,Gabumon Bond of Friendship,RagnaLoardmon
+Yellow,Raijinmon,Mega (Lv6),Uncommon,Light,Vacine,Omnimon Zwart Defeat,RagnaLoardmon,Omnimon
+Yellow,Magnadramon (X Antibody),Mega (Lv6),Rare,Light,Vacine,Omnimon: Merciful Mode,Ordinemon,Omnimon Alter-S
+Yellow,Magnamon (X Antibody),Mega (Lv6),Super Rare,Light,Vacine,Ordinemon,Chaosmon,Omnimon: Merciful Mode
+Green,Fujinmon,Mega (Lv6),Uncommon,Plant,Data,Milleniummon,Omnimon,Omnimon Zwart Defeat
+Green,GrandisKuwagamon,Mega (Lv6),Super Rare,Plant,Data,Imperialdramon Paladin Mode,Milleniummon,Omnimon Alter-S
+Green,Dinotigermon,Mega (Lv6),Rare,Plant,Data,Chaosmon,Gabumon Bond of Friendship,Omnimon Alter-S
+Black,Alphamon,Mega (Lv6),Rare,Dark,Virus,Omnimon Alter-S,Armageddemon,Omnimon Alter-S
+Black,Raidenmon,Mega (Lv6),Rare,Dark,Virus,Omnimon X Anti-body,Ordinemon,RagnaLoardmon
+Black,Gaiomon,Mega (Lv6),Super Rare,Dark,Virus,Imperialdramon Paladin Mode,Omnimon Alter-S,Omnimon
+Black,Baihumon,Mega (Lv6),Super Rare,Dark,Virus,Omnimon: Merciful Mode,Imperialdramon Paladin Mode,Gabumon Bond of Friendship
+Purple,GranDracmon,Mega (Lv6),Rare,Electric,Virus,RagnaLoardmon,Omnimon Zwart,Gabumon Bond of Friendship
+Purple,Raguelmon,Mega (Lv6),Super Rare,Electric,Virus,Ordinemon,Armageddemon,Armageddemon
+Purple,DexDorugoramon,Mega (Lv6),Super Rare,Electric,Virus,Omnimon: Merciful Mode,Omnimon: Merciful Mode,Agumon - Bond of Bravery
+Blue,Leopardmon,Mega (Lv6),Super Rare,Wind,Data,Milleniummon,Imperialdramon Paladin Mode,Chaosmon
+Blue,Imperialdramon Dragon Mode,Mega (Lv6),Super Rare,Wind,Data,Omnimon Zwart,Imperialdramon Paladin Mode,RagnaLoardmon
+Black,GroundLocomon,Mega (Lv6),Common,Dark,Virus,Agumon - Bond of Bravery,Omnimon: Merciful Mode,Armageddemon
+Black,Reapermon,Mega (Lv6),Uncommon,Dark,Virus,Omnimon Zwart Defeat,Omnimon: Merciful Mode,Omnimon
+Green,SaberLeomon,Mega (Lv6),Common,Plant,Data,Imperialdramon Paladin Mode,Agumon - Bond of Bravery,Omnimon
+Green,Dinorexmon,Mega (Lv6),Rare,Plant,Data,Alphamon: Ouryuken,Milleniummon,Gabumon Bond of Friendship
+Green,AncientBeetlemon,Mega (Lv6),Rare,Plant,Data,Omnimon X Anti-body,Omnimon X Anti-body,Gabumon Bond of Friendship
+Green,Ebonwumnon,Mega (Lv6),Super Rare,Plant,Data,Imperialdramon Paladin Mode,Omnimon Zwart,Armageddemon
+Red,WarGreymon,Mega (LV6),Super Rare,Fire,Free,RagnaLoardmon,Milleniummon,Alphamon: Ouryuken
+Red,Phoenixmon,Mega (LV6),Uncommon,Fire,Free,Gabumon Bond of Friendship,Omnimon: Merciful Mode,Omnimon Zwart Defeat
+Blue,Plesiomon,Mega (LV6),Uncommon,Wind,Data,Milleniummon,Alphamon: Ouryuken,Milleniummon
+Blue,MetalGarurumon,Mega (LV6),Super Rare,Wind,Data,Omnimon: Merciful Mode,Omnimon,Alphamon: Ouryuken
+Blue,Imperialdramon Dragon Mode,Mega (LV6),Super Rare,Wind,Data,Ordinemon,Agumon - Bond of Bravery,Omnimon X Anti-body
+Yellow,Seraphimon,Mega (LV6),Rare,Light,Vacine,Omnimon X Anti-body,Omnimon,Ordinemon
+Yellow,Megnadramon,Mega (LV6),Uncommon,Light,Vacine,Chaosmon,Omnimon,RagnaLoardmon
+Green,Rosemon,Mega (LV6),Uncommon,Plant,Data,Alphamon: Ouryuken,Milleniummon,Armageddemon
+Green,HerculesKabuterimon,Mega (LV6),Super Rare,Plant,Data,Armageddemon,Milleniummon,Omnimon: Merciful Mode
+Black,MetalEtemon,Mega (LV6),Uncommon,Dark,Virus,Armageddemon,Gabumon Bond of Friendship,Omnimon Zwart Defeat
+Black,Boltmon,Mega (LV6),Uncommon,Dark,Virus,Omnimon,Omnimon,Milleniummon
+Purple,VenomMyotismon,Mega (LV6),Super Rare,Electric,Virus,Agumon - Bond of Bravery,Milleniummon,Omnimon
+Purple,Piedmon,Mega (LV6),Uncommon,Electric,Virus,Omnimon Zwart,Chaosmon,Omnimon: Merciful Mode
+White,Diabroromon,Mega (LV6),Super Rare,Neutral,Vaccine,Omnimon Zwart Defeat,Imperialdramon Paladin Mode,Gabumon Bond of Friendship
+White,Susanoomon,Mega (Lv6),Secret Rare,Neutral,Vaccine,Armageddemon,Imperialdramon Paladin Mode,Omnimon Zwart Defeat
+Black,Dorugoramon,Mega (Lv6),Super Rare,Dark,Virus,Omnimon,Agumon - Bond of Bravery,Agumon - Bond of Bravery
+Black,AncientVolcanomon,Mega (Lv6),Uncommon,Dark,Virus,Chaosmon,Alphamon: Ouryuken,Alphamon: Ouryuken
+Black,Diaboromon,Mega (Lv6),Promotion,Dark,Virus,Alphamon: Ouryuken,Alphamon: Ouryuken,Chaosmon
+Purple,VenomMyotismon,Mega (Lv6),Promotion,Electric,Virus,Chaosmon,Gabumon Bond of Friendship,RagnaLoardmon
+Green,GranKuwagamon,Mega (Lv6),Promotion,Plant,Data,Omnimon,Milleniummon,Omnimon
+Black,BlackWarGreymon,Mega (Lv6),Promotion,Dark,Virus,Ordinemon,Omnimon,Omnimon Alter-S
+Purple,MetalGarurumon,Mega (Lv6),Promotion,Electric,Virus,Chaosmon,Armageddemon,Omnimon Zwart
+Green,HerculesKabuterimon,Mega (Lv6),Promotion,Plant,Data,Omnimon Alter-S,Chaosmon,Ordinemon
+Blue,UlforceVeedramon Zero,Mega (Lv6),Promotion,Wind,Data,Chaosmon,Ordinemon,Armageddemon
+Red,Phoenixmon,Mega (Lv6),Promotion,Fire,Free,RagnaLoardmon,Omnimon,Armageddemon
+Red,WarGreymon,Mega (Lv6),Promotion,Fire,Free,Omnimon X Anti-body,RagnaLoardmon,Ordinemon
+Blue,MetalGarurumon,Mega (Lv6),Promotion,Wind,Data,Armageddemon,Ordinemon,Imperialdramon Paladin Mode
+Blue,Vikemon,Mega (Lv6),Promotion,Wind,Data,Omnimon Zwart Defeat,Gabumon Bond of Friendship,Omnimon Zwart
+Yellow,Ophanimon,Mega (Lv6),Promotion,Light,Vacine,Omnimon: Merciful Mode,Gabumon Bond of Friendship,Milleniummon
+Yellow,Seraphimon,Mega (Lv6),Promotion,Light,Vacine,Omnimon: Merciful Mode,Omnimon,Omnimon Zwart Defeat
+Green,HerculesKabuterimon,Mega (Lv6),Promotion,Plant,Data,Omnimon X Anti-body,Imperialdramon Paladin Mode,Omnimon: Merciful Mode
+Green,Rosemon,Mega (Lv6),Promotion,Plant,Data,Omnimon Alter-S,Omnimon,RagnaLoardmon
+Red,Phoenixmon,Mega (Lv6),Rare,Fire,Free,Ordinemon,Milleniummon,Armageddemon
+Red,WarGreymon,Mega (Lv6),Super Rare,Fire,Free,Imperialdramon Paladin Mode,Omnimon,Omnimon
+Red,UltimateBrachiomon,Mega (Lv6),Common,Fire,Free,Agumon - Bond of Bravery,Armageddemon,RagnaLoardmon
+Red,Marsmon,Mega (Lv6),Uncommon,Fire,Free,Omnimon,Omnimon,Ordinemon
+Red,Zhuqiaomon,Mega (Lv6),Super Rare,Fire,Free,Omnimon Alter-S,Omnimon Zwart,Omnimon Zwart
+Blue,Plesiomon,Mega (Lv6),Rare,Wind,Data,Imperialdramon Paladin Mode,RagnaLoardmon,Ordinemon
+Blue,MetalGarurumon,Mega (Lv6),Super Rare,Wind,Data,Omnimon Zwart Defeat,Milleniummon,Omnimon: Merciful Mode
+Red,Gallantmon Crimson Mode,Mega (Lv6),Secret Rare,Fire,Free,Chaosmon,Omnimon X Anti-body,Ordinemon
+Yellow,Magnadramon,Mega (Lv6),Rare,Light,Vacine,Omnimon X Anti-body,Omnimon,Omnimon Zwart
+Yellow,Seraphimon,Mega (Lv6),Super Rare,Light,Vacine,Agumon - Bond of Bravery,Alphamon: Ouryuken,Alphamon: Ouryuken
+Purple,Beelzemon Blast Mode,Mega (Lv6),Secret Rare,Electric,Virus,Omnimon Zwart,Omnimon Zwart,Imperialdramon Paladin Mode
+Green,Rosemon,Mega (Lv6),Rare,Plant,Data,Omnimon Zwart,Agumon - Bond of Bravery,Imperialdramon Paladin Mode
+Green,HerculesKakuterimon,Mega (Lv6),Super Rare,Plant,Data,Imperialdramon Paladin Mode,Omnimon Zwart Defeat,Agumon - Bond of Bravery
+Black,Machinedramon,Mega (Lv6),Rare,Dark,Virus,Omnimon Alter-S,Omnimon Alter-S,Omnimon X Anti-body
+Black,BlitzGreymon,Mega (Lv6),Super Rare,Dark,Virus,Omnimon Zwart Defeat,Omnimon Zwart Defeat,Omnimon Alter-S
+Blue,Surfimon,Mega (Lv6),Common,Wind,Data,RagnaLoardmon,Omnimon X Anti-body,Gabumon Bond of Friendship
+Blue,FrosVelgrmon,Mega (Lv6),Rare,Wind,Data,Ordinemon,Agumon - Bond of Bravery,Gabumon Bond of Friendship
+Purple,VenomMyotismon,Mega (Lv6),Rare,Electric,Virus,Omnimon Zwart Defeat,Alphamon: Ouryuken,Alphamon: Ouryuken
+Purple,CresGarurumon,Mega (Lv6),Super Rare,Electric,Virus,Ordinemon,Omnimon X Anti-body,Chaosmon
+Blue,Imperialdramon Fighter Mode,Mega (Lv6),Super Rare,Wind,Data,Agumon - Bond of Bravery,Armageddemon,Milleniummon
+Red,Gallantmon,Mega (Lv6),Super Rare,Fire,Free,Omnimon X Anti-body,Ordinemon,Armageddemon
+Red,ShineGreymon,Mega (Lv6),Rare,Fire,Free,Omnimon,Imperialdramon Paladin Mode,Omnimon
+Blue,Slayerdramon,Mega (Lv6),Rare,Wind,Data,Chaosmon,Omnimon,RagnaLoardmon
+Blue,UlforceVeedramon,Mega (Lv6),Super Rare,Wind,Data,Alphamon: Ouryuken,RagnaLoardmon,Omnimon
+Blue,Imperialdramon Dragon Mode,Mega (Lv6),Super Rare,Wind,Data,Omnimon,Gabumon Bond of Friendship,Ordinemon
+Green,GranKuwagamon,Mega (Lv6),Rare,Plant,Data,Omnimon,Chaosmon,Omnimon
+Yellow,Mastemon,Mega (Lv6),Super Rare,Light,Vacine,Alphamon: Ouryuken,Omnimon: Merciful Mode,Chaosmon
+Purple,Junomon,Mega (Lv6),Uncommon,Electric,Virus,Omnimon,Omnimon,Omnimon X Anti-body
+White,Omnimon,Mega (Lv7),Super Rare,Neutral,Vaccine,,,
+White,Milleniummon,Mega (Lv7),Super Rare,Neutral,Vaccine,,,
+Red,RagnaLoardmon,Mega (Lv7),Super Rare,Fire,Free,,,
+White,Omnimon Alter-S,Mega (Lv7),Secret Rare,Neutral,Vaccine,,,
+White,Chaosmon,Mega (Lv7),Rare,Neutral,Vaccine,,,
+White,Armageddemon,Mega (Lv7),Super Rare,Neutral,Vaccine,,,
+White,Omnimon,Mega (Lv7),Super Rare,Neutral,Vaccine,,,
+White,Omnimon Zwart,Mega (Lv7),Super Rare,Neutral,Vaccine,,,
+White,Omnimon X Anti-body,Mega (Lv7),Secret Rare,Neutral,Vaccine,,,
+White,Omnimon Zwart Defeat,Mega (Lv7),Secret Rare,Neutral,Vaccine,,,
+Red,Agumon - Bond of Bravery,Mega (Lv7),Super Rare,Fire,Free,,,
+Blue,Gabumon Bond of Friendship,Mega (Lv7),Super Rare,Wind,Data,,,
+White,Imperialdramon Paladin Mode,Mega (Lv7),Secret Rare,Neutral,Vaccine,,,
+Purple,Ordinemon,Mega (Lv7),Super Rare,Electric,Virus,,,
+White,Omnimon: Merciful Mode,Mega (Lv7),Super Rare,Neutral,Vaccine,,,
+Black,Alphamon: Ouryuken,Mega (Lv7),Secret Rare,Dark,Virus,,,
+Purple,DeathXmon,Mega (Lv7),Secret Rare,Electric,Virus,,,
+Red,Monodramon,Rookie (Lv3),Common,Fire,Free,TaiLudomon,Aquilamon,Octomon
+Red,Agumon,Rookie (Lv3),Rare,Fire,Free,MetalKakuterimon,Tyrannomon,BurningGreymon
+Red,Agumon Expert,Rookie (Lv3),Common,Fire,Free,Devimon,Kabuterimon,Meicoomon
+Red,Biyomon,Rookie (Lv3),Uncommon,Fire,Free,Namakemon,Lavorvomon,Devimon
+Blue,Armadillomon,Rookie (Lv3),Common,Wind,Data,Greymon,Garurumon,Aquilamon
+Blue,Elecmon,Rookie (Lv3),Common,Wind,Data,Gatomon,Sistermon Ciel (Awakened),Gladimon
+Blue,Gabumon,Rookie (Lv3),Rare,Wind,Data,Tuskmon,Piddomon,Kinkakumon
+Yellow,Tsukaimon,Rookie (Lv3),Common,Light,Vacine,Kurisarimon,Kinkakumon,SkullKnightmon Cavalier Mode
+Yellow,Kudamon,Rookie (Lv3),Common,Light,Vacine,Gargomon,Stingmon,Nanimon
+Yellow,Tinkermon,Rookie (Lv3),Uncommon,Light,Vacine,Ninjamon,Tyrannomon,Dokugumon
+Yellow,Patamon,Rookie (Lv3),Rare,Light,Vacine,Musyamon,Cyclonemon,Greymon
+Yellow,Labramon,Rookie (Lv3),Uncommon,Light,Vacine,Bakemon,Gargomon,Leomon
+Yellow,Liollmon,Rookie (Lv3),Common,Light,Vacine,Coredramon,Wizardmon,Weedmon
+Green,Goblimon,Rookie (Lv3),Common,Plant,Data,Thundermon,Liamon,Flamemon
+Green,Mushroomon,Rookie (Lv3),Common,Plant,Data,Bulkmon,Frigimon,Nanimon
+Green,Tentomon,Rookie (Lv3),Uncommon,Plant,Data,Kurisarimon,KendoGarurumon,Ikkakumon
+Green,Palmon,Rookie (Lv3),Uncommon,Plant,Data,Gatomon,Argomon,Ankylomon
+Green,Kokuwamon,Rookie (Lv3),Common,Plant,Data,Kyubimon,Gatomon,Growlmon (X Antibody)
+Purple,Lopmon,Rookie (Lv3),Rare,Electric,Virus,Greymon,Aquilamon,Monochromon
+Black,Chikurimon,Rookie (Lv3),Common,Dark,Virus,Wizardmon,IceDevimon,Birdramon
+Black,ToyAgumon,Rookie (Lv3),Common,Dark,Virus,Hookmon,Fugamon,Kurisarimon
+Purple,Impmon,Rookie (Lv3),Uncommon,Electric,Virus,Clockmon,Tyrannomon,Garurumon
+Purple,Goblimon,Rookie (Lv3),Common,Electric,Virus,Bakemon,Seasarmon,Grizzlymon
+Purple,Elecmon,Rookie (Lv3),Common,Electric,Virus,Birdramon,Ikkakumon,Strabimon
+Red,Guilmon,Rookie (Lv3),Common,Fire,Free,Greymon (X Antibody),Strabimon,Kogamon
+Red,Biyomon,Rookie (Lv3),Common,Fire,Free,KausGammamon,Devimon,Filmon
+Red,Vorvomon,Rookie (Lv3),Common,Fire,Free,Musyamon,Stingmon,Dokugumon
+Blue,Gomamon,Rookie (Lv3),Common,Wind,Data,Aquilamon,GaoGamon,Birdramon
+Blue,Veemon,Rookie (Lv3),Common,Wind,Data,Greymon,Meicoomon,Deltamon
+Blue,Betamon,Rookie (Lv3),Common,Wind,Data,Kuwagamon,Vegiemon,IceDevimon
+Blue,Gomamon,Rookie (Lv3),Common,Wind,Data,Kuwagamon,Baluchimon,Gorillamon
+Yellow,Agumon,Rookie (Lv3),Common,Light,Vacine,Seadramon,Meicoomon,Coelamon
+Yellow,Salamon,Rookie (Lv3),Uncommon,Light,Vacine,Greymon,Reppamon,Gorillamon
+Green,Argomon,Rookie (Lv3),Common,Plant,Data,Argomon,DarkTyrannomon,Veedramon
+Green,Agumon,Rookie (Lv3),Common,Plant,Data,Kuwagamon (X Antibody),Greymon,Drimogemon
+Black,Hagurumon,Rookie (Lv3),Common,Dark,Virus,Petermon,Gesomon,Dolphmon
+Black,Keramon,Rookie (Lv3),Rare,Dark,Virus,Kokatorimon,Witchmon,Sangloupmon
+Black,Gotsumon,Rookie (Lv3),Uncommon,Dark,Virus,Wizardmon,Deltamon,Ninjamon
+Black,ToyAgumon,Rookie (Lv3),Common,Dark,Virus,Meramon,Flarerizamon,Clockmon
+Purple,DemiDevimon,Rookie (Lv3),Uncommon,Electric,Virus,Hookmon,Baboongamon,Musyamon
+Purple,Impmon,Rookie (Lv3),Common,Electric,Virus,DarkTyrannomon,Seasarmon,Tuskmon
+Purple,Gabumon,Rookie (Lv3),Common,Electric,Virus,Gladimon,Wizardmon,Sistermon Ciel (Awakened)
+Purple,Tapirmon,Rookie (Lv3),Uncommon,Electric,Virus,Bakemon,MetalKakuterimon,Coredramon
+Red,Guilmon,Rookie (Lv3),Rare,Fire,Free,Dolphmon,Kyubimon,Eosmon
+White,Sistermon Blanc,Rookie (Lv3),Rare,Neutral,Vaccine,Fugamon,Blimpmon,Garurumon
+Green,Terriermon,Rookie (Lv3),Rare,Plant,Data,Drimogemon,Gatomon,Garurumon (X Antibody)
+Black,Monodramon,Rookie (Lv3),Uncommon,Dark,Virus,Ikkakumon,Kabuterimon,Kurisarimon
+Red,Agumon,Rookie (Lv3),Common,Fire,Free,Garurumon,Raremon,Meramon
+Red,Zubamon,Rookie (Lv3),Uncommon,Fire,Free,Guardromon,Gatomon,Wizardmon
+Red,Hawkmon,Rookie (Lv3),Common,Fire,Free,Growlmon,Monochromon,Garurumon
+Blue,Patamon,Rookie (Lv3),Common,Wind,Data,Reppamon,Dolphmon,Guardromon
+Blue,Veemon,Rookie (Lv3),Rare,Wind,Data,Garurumon (X Antibody),KendoGarurumon,Beetlemon
+Blue,Penguinmon,Rookie (Lv3),Common,Wind,Data,Kuwagamon,BlackGrowlmon,Greymon
+Red,Muchomon,Rookie (Lv3),Common,Fire,Free,Kabuterimon,Kabuterimon,Dokugumon
+Green,Kunemon,Rookie (Lv3),Common,Plant,Data,Greymon (X Antibody),Greymon,Greymon
+Green,Terriermon,Rookie (Lv3),Uncommon,Plant,Data,Devidramon,Sistermon Ciel (Awakened),Flymon
+Green,Wormmon,Rookie (Lv3),Rare,Plant,Data,Shellmon,TeslaJellymon,Raptordramon
+Black,Commandramon,Rookie (Lv3),Common,Dark,Virus,Gatomon,Shademon,GeoGreymon
+Black,Psychemon,Rookie (Lv3),Common,Dark,Virus,Starmon,KendoGarurumon,Devidramon
+Black,Chuumon,Rookie (Lv3),Common,Dark,Virus,GaoGamon,Dolphmon,Ikkakumon
+Black,Ludomon,Rookie (Lv3),Uncommon,Dark,Virus,GeoGreymon,Hookmon,SkullKnightmon
+Purple,Candlemon,Rookie (Lv3),Common,Electric,Virus,Gorillamon,Filmon,Veedramon
+Purple,Gazimon,Rookie (Lv3),Common,Electric,Virus,Leomon,Raremon,Kurisarimon
+Purple,Shamanmon,Rookie (Lv3),Common,Electric,Virus,Ogremon,Sistermon Ciel,Gatomon (X Antibody)
+Purple,Tsukaimon,Rookie (Lv3),Common,Electric,Virus,GeoGreymon,Beetlemon,Hookmon
+Green,Gotsumon,Rookie (Lv3),Common,Plant,Data,Coelamon,Nanimon,Diatrymon
+Green,Betamon,Rookie (Lv3),Rare,Plant,Data,Unimon,Ninjamon,Kurisarimon
+Red,Otamamon,Rookie (Lv3),Common,Fire,Free,Beetlemon,Birdramon,DarkTyrannomon
+Red,Agumon,Rookie (Lv3),Common,Fire,Free,Liamon,Growlmon,Birdramon
+Blue,Gaomon,Rookie (Lv3),Common,Wind,Data,Lobomon,Dorugamon,MoriShellmon
+Blue,Sangomon,Rookie (Lv3),Common,Wind,Data,Kabuterimon,Kuwagamon,Kazemon
+Yellow,Falcomon,Rookie (Lv3),Common,Light,Vacine,Octomon,Tyrannomon,Bulkmon
+Yellow,Kudamon,Rookie (Lv3),Common,Light,Vacine,Vegiemon,Stingmon,Troopmon
+Yellow,BushiAgumon,Rookie (Lv3),Uncommon,Light,Vacine,Ogremon,Garurumon,Wizardmon
+Green,Liollmon,Rookie (Lv3),Common,Plant,Data,Beetlemon,Kuwagamon,Snimon
+Green,DoKunemon,Rookie (Lv3),Common,Plant,Data,Leomon,Zephyrmon,Snimon
+Green,Lalamon,Rookie (Lv3),Uncommon,Plant,Data,Kumamon,Bulkmon,BurningGreymon
+Black,Commandramon,Rookie (Lv3),Rare,Dark,Virus,Apemon,Ikkakumon,Veedramon
+Black,Sunarizamon,Rookie (Lv3),Uncommon,Dark,Virus,Wizardmon,Nanimon,Mekanorimon
+Black,Gotsumon,Rookie (Lv3),Common,Dark,Virus,Strabimon,Sangloupmon,Apemon
+Purple,Gabumon,Rookie (Lv3),Common,Electric,Virus,Coredramon,Garurumon,Aquilamon
+Purple,Ghostmon,Rookie (Lv3),Rare,Electric,Virus,MetalKakuterimon,Garurumon,MetalKakuterimon
+Purple,Soundbirdmon,Rookie (Lv3),Uncommon,Electric,Virus,Tuskmon,Troopmon,Tuskmon
+Purple,Labramon,Rookie (Lv3),Common,Electric,Virus,Garurumon,Growlmon,Kumamon
+Blue,Labramon,Rookie (Lv3),Common,Wind,Data,KausGammamon,Argomon,BaoHuckmon
+Red,ToyAgumon,Rookie (Lv3),Common,Fire,Free,Greymon,Mojyomon,Monochromon
+Red,Huckmon,Rookie (Lv3),Common,Fire,Free,Jazadmon,Kurisarimon,Dobermon
+Yellow,Lucemon,Rookie (Lv3),Secret Rare,Light,Vacine,Devidramon,Eyesmon: Scatter Mode,Tankmon
+Red,Agumon,Rookie (Lv3),Common,Fire,Free,Garurumon (X Antibody),GeoGreymon,Wendigomon
+Red,Gaossmon,Rookie (Lv3),Common,Fire,Free,Garurumon (X Antibody),Garurumon,Piddomon
+Red,Shoutmon,Rookie (Lv3),Uncommon,Fire,Free,Argomon,Diatrymon,Gesomon
+Blue,Gabumon,Rookie (Lv3),Uncommon,Wind,Data,Sukamon,Garurumon,Kurisarimon
+Blue,Syakomon,Rookie (Lv3),Common,Wind,Data,Petermon,Gladimon,Devidramon
+Blue,Bulucomon,Rookie (Lv3),Rare,Wind,Data,Gatomon,Lavorvomon,Kazemon
+Yellow,Cutemon,Rookie (Lv3),Common,Light,Vacine,Wizardmon,Meramon,Shellmon
+Yellow,Kotemon,Rookie (Lv3),Common,Light,Vacine,Gorillamon,Veedramon,Veedramon
+Yellow,Starmons,Rookie (Lv3),Common,Light,Vacine,Devimon,Kiwimon,GeoGreymon
+Yellow,Renamon,Rookie (Lv3),Rare,Light,Vacine,Garurumon,Dokugumon,Eosmon
+Green,Terriermon Assistant,Rookie (Lv3),Rare,Plant,Data,Agunimon,Kuwagamon (X Antibody),Wizardmon
+Green,Palmon,Rookie (Lv3),Common,Plant,Data,Greymon,Vegiemon,GeoGreymon
+Green,Floramon,Rookie (Lv3),Common,Plant,Data,Frigimon,Kuwagamon,Kurisarimon
+Black,Keramon,Rookie (Lv3),Common,Dark,Virus,Unimon,Guardromon,Piddomon
+Black,Monitamon,Rookie (Lv3),Uncommon,Dark,Virus,Devimon,Strikedramon,Veedramon
+Black,Commandramon,Rookie (Lv3),Common,Dark,Virus,Guardromon,Greymon,Gesomon
+Purple,Guilmon,Rookie (Lv3),Uncommon,Electric,Virus,Hookmon,Tyrannomon,Veedramon
+Purple,Fake Agumon Expert,Rookie (Lv3),Uncommon,Electric,Virus,Flamemon,Guardromon,Garurumon
+Purple,Pillomon,Rookie (Lv3),Common,Electric,Virus,Machmon,Grizzlymon,Gururumon
+Yellow,Renamon,Rookie (Lv3),Rare,Light,Vacine,Togemon,Lobomon,Kurisarimon
+Yellow,Lopmon,Rookie (Lv3),Common,Light,Vacine,ZubaEagermon,Numemon,DexDorugamon
+Blue,Gomamon,Rookie (Lv3),Uncommon,Wind,Data,BlackGatomon,Gorillamon,Bulkmon
+Yellow,Herissmon,Rookie (Lv3),Rare,Light,Vacine,ShootingStarmon,Deltamon,Stingmon
+Yellow,Pulsemon,Rookie (Lv3),Common,Light,Vacine,Monochromon,Panjyamon (X Antibody),Wizardmon
+Red,Agumon,Rookie (Lv3),Uncommon,Fire,Free,Tankmon,Ginkakumon,Gatomon (X Antibody)
+Red,Shoutmon,Rookie (Lv3),Common,Fire,Free,Troopmon,Greymon,Deputymon
+Red,Huckmon,Rookie (Lv3),Rare,Fire,Free,Garurumon (X Antibody),Garurumon (X Antibody),Dolphmon
+Blue,Gabumon,Rookie (Lv3),Uncommon,Wind,Data,Wizardmon,Kabuterimon,BlackGrowlmon
+Blue,Gizamon,Rookie (Lv3),Common,Wind,Data,SkullKnightmon Cavalier Mode,Sistermon Ciel (Awakened),Wizardmon
+Blue,ModokiBetamon,Rookie (Lv3),Common,Wind,Data,Veedramon,Starmon,Clockmon
+Green,Aruraumon,Rookie (Lv3),Common,Plant,Data,Darcmon,Strabimon,Numemon
+Yellow,Tinkermon,Rookie (Lv3),Common,Light,Vacine,Hookmon,Baluchimon,BetelGammamon
+Yellow,Tapirmon,Rookie (Lv3),Common,Light,Vacine,Kuwagamon (X Antibody),Starmon,GeoGreymon
+Yellow,Pulsemon,Rookie (Lv3),Rare,Light,Vacine,Kuwagamon (X Antibody),Baboongamon,Greymon
+Green,Bakomon,Rookie (Lv3),Common,Plant,Data,Gatomon,Bulkmon,Soulmon
+Green,Pomumon,Rookie (Lv3),Uncommon,Plant,Data,GaoGamon,Kuwagamon,Veedramon
+Green,Morphomon,Rookie (Lv3),Rare,Plant,Data,Reppamon,Ikkakumon,Shellmon
+Black,Junkmon,Rookie (Lv3),Uncommon,Dark,Virus,Airdramon,Stingmon,Eyesmon: Scatter Mode
+Green,Ekakimon,Rookie (Lv3),Common,Plant,Data,Beetlemon,Monochromon,Baluchimon
+Green,Terriermon,Rookie (Lv3),Uncommon,Plant,Data,Dinohyumon,BurningGreymon,Seasarmon
+Green,Pulsemon,Rookie (Lv3),Common,Plant,Data,Saberdramon,Wendigomon,Ikkakumon
+Black,Agumon,Rookie (Lv3),Rare,Dark,Virus,Greymon,Gesomon,Stingmon
+Black,Kokuwamon,Rookie (Lv3),Common,Dark,Virus,Kabuterimon,Dolphmon,Tyrannomon
+Black,Ryudamon,Rookie (Lv3),Rare,Dark,Virus,Kokatorimon,SkullKnightmon,Roachmon
+Purple,Psychemon,Rookie (Lv3),Common,Electric,Virus,Kokatorimon,Ikkakumon,Wendigomon
+Purple,DemiDevimon,Rookie (Lv3),Uncommon,Electric,Virus,Ankylomon,Wizardmon,Deltamon
+Purple,Mushroomon,Rookie (Lv3),Common,Electric,Virus,Greymon,Flarerizamon,Devidramon
+Purple,Impmon,Rookie (Lv3),Rare,Electric,Virus,Deltamon,TeslaJellymon,Garurumon
+White,Neemon,Rookie (Lv3),Common,Neutral,Vaccine,Kurisarimon,Tortomon,Petermon
+White,Bokomon,Rookie (Lv3),Common,Neutral,Vaccine,Garurumon,Troopmon,Mekanorimon
+White,Sistermon Blanc (Awakened),Rookie (Lv3),Rare,Neutral,Vaccine,BurningGreymon,Thundermon,Vilemon
+Red,Minidekachimon,Rookie (Lv3),Common,Fire,Free,Kinkakumon,Kabuterimon,KendoGarurumon
+Red,Agumon (X Antibody),Rookie (Lv3),Uncommon,Fire,Free,Wizardmon,Arbormon,Bakemon
+Red,Guilmon (X Antibody),Rookie (Lv3),Uncommon,Fire,Free,Ankylomon,Seasarmon,Ebidramon
+Blue,Crabmon,Rookie (Lv3),Common,Wind,Data,Mekanorimon,BlackGaogamon,BaoHuckmon
+Blue,Gabumon (X Antibody),Rookie (Lv3),Uncommon,Wind,Data,Leomon,Zephyrmon,Vilemon
+Blue,Jellymon,Rookie (Lv3),Rare,Wind,Data,Kokatorimon,Ogremon,Ninjamon
+Yellow,ToyAgumon,Rookie (Lv3),Common,Light,Vacine,Birdramon,Dobermon,Wizardmon
+Yellow,Pillomon,Rookie (Lv3),Common,Light,Vacine,Kyubimon,Ginryumon,Leomon
+Yellow,Salamon (X Antibody),Rookie (Lv3),Common,Light,Vacine,Stingmon,Leomon,Sealsdramon
+Green,Elecmon,Rookie (Lv3),Common,Plant,Data,Meicoomon,BaoHuckmon,Leomon
+Green,Kokuwamon (X Antibody),Rookie (Lv3),Uncommon,Plant,Data,Wizardmon,Soulmon,Greymon
+Green,Pomumon,Rookie (Lv3),Common,Plant,Data,Growlmon (X Antibody),Drimogemon,TeslaJellymon
+Black,Bearmon,Rookie (Lv3),Common,Dark,Virus,Stingmon,Apemon,Tobiumon
+Black,Dorumon,Rookie (Lv3),Uncommon,Dark,Virus,Gatomon,Tortomon,Darcmon
+Black,Tapirmon,Rookie (Lv3),Common,Dark,Virus,Growlmon,Greymon (X Antibody),Veedramon
+Purple,Gazimon (X Antibody),Rookie (Lv3),Common,Electric,Virus,Tobiumon,Flamemon,Dobermon
+Purple,Dracmon,Rookie (Lv3),Uncommon,Electric,Virus,Greymon (X Antibody),Darcmon,Mojyomon
+Purple,Salamon,Rookie (Lv3),Common,Electric,Virus,Kabuterimon,Greymon,Seadramon
+Yellow,Armadillomon,Rookie (Lv3),Common,Light,Vacine,Meicoomon,Cyclonemon,Kabuterimon
+Yellow,Salamon,Rookie (Lv3),Rare,Light,Vacine,Greymon (X Antibody),Coelamon,Kuwagamon (X Antibody)
+Yellow,Lopmon,Rookie (Lv3),Uncommon,Light,Vacine,Stingmon,Ebidramon,Deputymon
+Black,Dorumon,Rookie (Lv3),Rare,Dark,Virus,Liamon,Guardromon,Birdramon
+Black,Monitamon,Rookie (Lv3),Common,Dark,Virus,Greymon (X Antibody),Weedmon,Atamadekachimon
+Red,Agumon,Rookie (LV3),Uncommon,Fire,Free,Grizzlymon,Turuiemon,Wizardmon
+Red,Biyomon,Rookie (LV3),Common,Fire,Free,Panjyamon (X Antibody),GeoGreymon,Kuwagamon (X Antibody)
+Blue,Monmon,Rookie (Lv3),Common,Wind,Data,Deputymon,Shellmon,Frigimon
+Blue,Gabumon,Rookie (LV3),Uncommon,Wind,Data,Growlmon,Flarerizamon,Eyesmon
+Blue,Gomamon,Rookie (LV3),Common,Wind,Data,ZubaEagermon,DarkTyrannomon,Unimon
+Blue,Veemon,Rookie (LV3),Rare,Wind,Data,KendoGarurumon,Wizardmon,Roachmon
+Yellow,Elecmon,Rookie (LV3),Common,Light,Vacine,Orgemon,Gargomon,Kiwimon
+Yellow,Patamon,Rookie (LV3),Uncommon,Light,Vacine,Kazemon,Gatomon,Leomon
+Yellow,Salamon,Rookie (LV3),Common,Light,Vacine,Kiwimon,Gatomon,Gargomon
+Green,Tentomon,Rookie (LV3),Common,Plant,Data,Troopmon,Gorillamon,Weedmon
+Green,Palmon,Rookie (LV3),Common,Plant,Data,Gururumon,Flymon,Veedramon
+Black,Keramon,Rookie (LV3),Common,Dark,Virus,Monochromon,Gatomon (X Antibody),Blimpmon
+Black,Hagurumon,Rookie (LV3),Common,Dark,Virus,KendoGarurumon,Sistermon Ciel,Atamadekachimon
+Purple,Tapirmon,Rookie (LV3),Common,Electric,Virus,Seadramon,Fugamon,Kogamon
+Purple,DemiDevimon,Rookie (LV3),Common,Electric,Virus,GeoGreymon,Octomon,Shellmon
+Purple,Ghostmon,Rookie (Lv3),Common,Electric,Virus,Mojyomon,Gatomon,Devimon
+Blue,Gomamon,Rookie (Lv3),Promotion,Wind,Data,MetalKakuterimon,Exermon,Jazadmon
+Yellow,Patamon,Rookie (Lv3),Promotion,Light,Vacine,Atamadekachimon,Octomon,Dolphmon
+Red,Agumon,Rookie (Lv3),Promotion,Fire,Free,Sangloupmon,Devidramon,Greymon
+Black,Keramon,Rookie (Lv3),Promotion,Dark,Virus,Gatomon,Eyesmon: Scatter Mode,Stingmon
+Purple,DemiDevimon,Rookie (Lv3),Promotion,Electric,Virus,Gatomon (X Antibody),Birdramon,Dorugamon
+Red,Gazimon,Rookie (Lv3),Common,Fire,Free,Monochromon,Growlmon,Wizardmon
+Red,Gammamon,Rookie (Lv3),Rare,Fire,Free,KendoGarurumon,Sealsdramon,Greymon
+Red,Hawkmon,Rookie (Lv3),Uncommon,Fire,Free,Parasurmon,Garurumon (X Antibody),Nanimon
+Yellow,Pulsemon,Rookie (Lv3),Promotion,Light,Vacine,Turuiemon,Youkomon,Strikedramon
+Green,Palmon,Rookie (Lv3),Promotion,Plant,Data,Baboongamon,Togemon,Ikkakumon
+Black,Sunarizamon,Rookie (Lv3),Promotion,Dark,Virus,Devimon,Tobiumon,Weedmon
+Purple,DemiDevimon,Rookie (Lv3),Promotion,Electric,Virus,Wizardmon,Greymon (X Antibody),GaoGamon
+Red,Guilmon,Rookie (Lv3),Promotion,Fire,Free,Greymon,Vilemon,Growlmon
+Blue,Gabumon,Rookie (Lv3),Promotion,Wind,Data,Baboongamon,BurningGreymon,Guardromon
+Yellow,Kudamon,Rookie (Lv3),Promotion,Light,Vacine,Birdramon,Gatomon (X Antibody),Devimon
+Red,Gammamon,Rookie (Lv3),Promotion,Fire,Free,Strikedramon,TeslaJellymon,BlackGatomon
+Red,Gammamon,Rookie (Lv3),Promotion,Fire,Free,Meicoomon,Musyamon,Zephyrmon
+Green,Angoramon,Rookie (Lv3),Promotion,Plant,Data,Growlmon,GeoGreymon,ExVeemon
+Blue,Jellymon,Rookie (Lv3),Promotion,Wind,Data,Baluchimon,Kuwagamon,Gururumon
+Red,Gammamon,Rookie (Lv3),Promotion,Fire,Free,MoriShellmon,Garurumon,Turuiemon
+Red,Huckmon,Rookie (Lv3),Promotion,Fire,Free,BlackGrowlmon,Togemon,Wizardmon
+Blie,Bulucomon,Rookie (Lv3),Promotion,,,Togemon,Eyesmon,Hookmon
+Yellow,Herissmon,Rookie (Lv3),Promotion,Light,Vacine,Agunimon,DeadlyAxemon,Fugamon
+Green,Pulsemon,Rookie (Lv3),Promotion,Plant,Data,Dobermon,DexDorugamon,Guardromon
+Black,Dorumon,Rookie (Lv3),Promotion,Dark,Virus,Piddomon,Unimon,KendoGarurumon
+Purple,Impmon,Rookie (Lv3),Promotion,Electric,Virus,Seasarmon,Tankmon,Gatomon
+Black,Espimon,Rookie (Lv3),Promotion,Dark,Virus,BurningGreymon,SkullKnightmon Cavalier Mode,Sangloupmon
+Red,Agumon,Rookie (Lv3),Promotion,Fire,Free,Devimon,Golemon,Togemon
+Purple,Labramon,Rookie (Lv3),Promotion,Electric,Virus,Garurumon,Bulkmon,Witchmon
+Yellow,Falcomon,Rookie (Lv3),Promotion,Light,Vacine,Apemon,Growlmon,Garurumon
+Red,Biyomon,Rookie (Lv3),Common,Fire,Free,Gatomon,Gatomon,MetalKakuterimon
+Red,Agumon,Rookie (Lv3),Uncommon,Fire,Free,Kyubimon,Reppamon,Wizardmon
+Red,Dracomon,Rookie (Lv3),Common,Fire,Free,Seasarmon,Greymon,Baboongamon
+Blue,Gomamon,Rookie (Lv3),Common,Wind,Data,Tobiumon,Bakemon,SkullKnightmon
+Blue,Gabumon,Rookie (Lv3),Uncommon,Wind,Data,Baboongamon,Meramon,Aquilamon
+Blue,Bearmon,Rookie (Lv3),Common,Wind,Data,Filmon,Shellmon,Agunimon
+Blue,Patamon,Rookie (Lv3),Common,Wind,Data,Gatomon,Strikedramon,Kinkakumon
+Blue,Veemon,Rookie (Lv3),Uncommon,Wind,Data,BlackGatomon,Shellmon,Kuwagamon
+Blue,SnowAgumon,Rookie (Lv3),Common,Wind,Data,Birdramon,Gatomon,Kurisarimon
+Yellow,Salamon,Rookie (Lv3),Common,Light,Vacine,Sangloupmon,Bulkmon,Devidramon
+Yellow,Tapirmon,Rookie (Lv3),Common,Light,Vacine,Greymon,Devidramon,Greymon (X Antibody)
+Yellow,Patamon,Rookie (Lv3),Uncommon,Light,Vacine,Greymon,Stingmon,Panjyamon (X Antibody)
+Green,Floramon,Rookie (Lv3),Common,Plant,Data,BurningGreymon,Kyubimon,Wendigomon
+Green,Tentomon,Rookie (Lv3),Uncommon,Plant,Data,Wizardmon,Kabuterimon,Greymon
+Green,Palmon,Rookie (Lv3),Common,Plant,Data,Fugamon,Meramon,Grizzlymon
+Green,Kunemon,Rookie (Lv3),Common,Plant,Data,Ninjamon,Monochromon,BetelGammamon
+Red,Agumon,Rookie (Lv3),Promotion,Fire,Free,Roachmon,Greymon,Petermon
+Black,Jazamon,Rookie (Lv3),Common,Dark,Virus,Nanimon,Baboongamon,Dorugamon
+Black,Agumon,Rookie (Lv3),Uncommon,Dark,Virus,Orgemon,Dorugamon,KendoGarurumon
+Black,ToyAgumon,Rookie (Lv3),Common,Dark,Virus,Numemon,GeoGreymon,Birdramon
+Black,Commandramon,Rookie (Lv3),Common,Dark,Virus,Bakemon,Tyrannomon,Gatomon
+Red,Biyomon,Rookie (Lv3),Promotion,Fire,Free,Devidramon,Angemon,SkullKnightmon Cavalier Mode
+Purple,DemiDevimon,Rookie (Lv3),Common,Electric,Virus,Witchmon,BlackGrowlmon,Ginkakumon
+Purple,Gabumon,Rookie (Lv3),Common,Electric,Virus,Sealsdramon,Gladimon,Kurisarimon
+Purple,Dracmon,Rookie (Lv3),Uncommon,Electric,Virus,Monochromon,Tyrannomon,Garurumon
+Purple,Elecmon,Rookie (Lv3),Common,Electric,Virus,Ebidramon,Kurisarimon,Strikedramon
+Blue,Gabumon,Rookie (Lv3),Promotion,Wind,Data,Gururumon,Deputymon,Soulmon
+Yellow,Armadillomon,Rookie (Lv3),Uncommon,Light,Vacine,Veedramon,Numemon,Shellmon
+Red,Agumon,Rookie (Lv3),Common,Fire,Free,Tyrannomon,Baboongamon,Greymon
+Red,Guilmon,Rookie (Lv3),Super Rare,Fire,Free,BlackGrowlmon,Youkomon,Reppamon
+Red,Biyomon,Rookie (Lv3),Common,Fire,Free,Korikakumon,Bulkmon,Petermon
+Yellow,Elecmon,Rookie (Lv3),Common,Light,Vacine,Kuwagamon,Coredramon,Gargomon
+Yellow,Candlemon,Rookie (Lv3),Common,Light,Vacine,Veedramon,Diatrymon,Meicoomon
+Blue,Gabumon,Rookie (Lv3),Common,Wind,Data,Machmon,Vegiemon,Garurumon
+Blue,Dracomon,Rookie (Lv3),Common,Wind,Data,Guardromon,Orgemon,Bulkmon
+Blue,Veemon,Rookie (Lv3),Super Rare,Wind,Data,Kogamon,Ginkakumon,Kumamon
+Blue,Veemon,Rookie (Lv3),Uncommon,Wind,Data,DeadlyAxemon,Sunflowmon,Monochromon
+Blue,Betamon,Rookie (Lv3),Common,Wind,Data,Eyesmon: Scatter Mode,Wizardmon,Angemon
+Green,KoKabuterimon,Rookie (Lv3),Common,Plant,Data,BaoHuckmon,Fugamon,Strabimon
+Green,Wormmon,Rookie (Lv3),Common,Plant,Data,Dorugamon,KendoGarurumon,BurningGreymon
+Yellow,Salamon,Rookie (Lv3),Common,Light,Vacine,Devimon,Gatomon,Devidramon
+Yellow,Lopmon,Rookie (Lv3),Common,Light,Vacine,Exermon,Devimon,Grizzlymon
+Purple,Ghostmon,Rookie (Lv3),Common,Electric,Virus,Kuwagamon (X Antibody),Sunflowmon,Meramon
+Purple,Tsukaimon,Rookie (Lv3),Uncommon,Electric,Virus,DeadlyAxemon,GaoGamon,Petermon
+Red,Garudamon,Ulitmate (Lv5),Uncommon,Fire,Free,MetalGarurumon,MegaGargomon,MagnaKidmon
+Red,MetalGreymon,Ulitmate (Lv5),Rare,Fire,Free,BanchoMamemon,Gallantmon,PileVolcamon
+Red,Groundramon,Ultimate (Lv5),Uncommon,Fire,Free,DanDevimon,MetalGarurumon,Shivamon
+Red,Garudamon,Ultimate (Lv5),Super Rare,Fire,Free,Eosmon,MaloMyotismon,BanchoLillymon
+Red,SkullGreymon,Ultimate (Lv5),Rare,Fire,Free,Gulfmon,BryweLudramon,DanDevimon
+Red,MetalTyrannomon,Ultimate (Lv5),Common,Fire,Free,BlitzGreymon,Titamon,Eldradimon
+Blue,Monzaemon,Ultimate (Lv5),Common,Wind,Data,MagnaKidmon,Dorugoramon,Magnadramon (X Antibody)
+Blue,Cerberusmon,Ultimate (Lv5),Rare,Wind,Data,Spinomon,HerculesKabuterimon,Babamon
+Blue,WereGarurumon,Ultimate (Lv5),Uncommon,Wind,Data,Magnadramon,MetalGarurumon,SlashAngemon
+Blue,Zudomon,Ultimate (Lv5),Super Rare,Wind,Data,Beelzemon Blast Mode,Dorbickmon,Murukusmon
+Blue,LoaderLiomon,Ultimate (Lv5),Uncommon,Wind,Data,Gaiomon,WarGreymon,Neptunemon
+Yellow,Sirenmon,Ultimate (Lv5),Uncommon,Light,Vacine,Murukusmon,Susanoomon,Titamon
+Yellow,Chirinmon,Ultimate (Lv5),Uncommon,Light,Vacine,Gundramon,Breakdramon,ShineGreymon
+Yellow,Piximon,Ultimate (Lv5),Common,Light,Vacine,Beelzemon,ShineGreymon,Blastmon
+Yellow,MagnaAngemon,Ultimate (Lv5),Super Rare,Light,Vacine,ClavisAngemon,VenomMyotismon,Plesiomon
+Yellow,Mistymon,Ultimate (Lv5),Rare,Light,Vacine,Titamon,DexDorugoramon,Diaboromon
+Green,Digitamamon,Ultimate (Lv5),Common,Plant,Data,Plesiomon,BanchoGolemon,Megidramon
+Green,MegaKabuterimon,Ultimate (Lv5),Uncommon,Plant,Data,MetalGarurumon,WarGreymon,AvengeKidmon
+Green,Okuwamon,Ultimate (Lv5),Common,Plant,Data,MaloMyotismon,BlitzGreymon,BlackWarGreymon
+Green,Jagamon,Ultimate (Lv5),Uncommon,Plant,Data,Seraphimon,Ebonwumnon,GrandisKuwagamon
+Green,Lillymon,Ultimate (Lv5),Rare,Plant,Data,Machinedramon,Fujinmon,MirageGaogamon
+Black,Gigadramon,Ultimate (Lv5),Common,Dark,Virus,Argomon,BryweLudramon,Tactimon
+Black,Volcanomon,Ultimate (Lv5),Uncommon,Dark,Virus,Sakuyamon,Gundramon,Imperialdramon Dragon Mode
+Black,BigMamemon,Ultimate (Lv5),Common,Dark,Virus,ShineGreymon,Darkdramon,MetalGarurumon
+Black,Mamemon,Ultimate (Lv5),Super Rare,Dark,Virus,Machinedramon,MaloMyotismon,Lotosmon
+Purple,Feresmon,Ultimate (Lv5),Common,Electric,Virus,Dinorexmon,VenomMyotismon,AncientGarurumon
+Purple,Rebellimon,Ultimate (Lv5),Rare,Electric,Virus,SlashAngemon,GranDracmon,ZeigGreymon
+Purple,SkullGreymon,Ultimate (Lv5),Super Rare,Electric,Virus,Phoenixmon,Dinotigermon,Murukusmon
+Red,MetalGreymon,Ultimate (Lv5),Secret Rare,Fire,Free,UltimateBrachiomon,BanchoLeomon,Eosmon
+Red,Lavogaritamon,Ultimate (Lv5),Common,Fire,Free,MetalGarurumon,Chaosdramon,Zhuqiaomon
+Red,WarGrowlmon,Ultimate (Lv5),Rare,Fire,Free,Rasielmon,Craniamon,UlforceVeedramon
+Blue,Zudomon,Ultimate (Lv5),Uncommon,Wind,Data,WarGreymon,Plutomon,Cherubimon
+Blue,AeroVeedramon,Ultimate (Lv5),Rare,Wind,Data,Rosemon,Parasitemon,GranKuwagamon
+Blue,MegaSeadramon,Ultimate (Lv5),Common,Wind,Data,Diaboromon,Diaboromon,Vikemon
+Yellow,Angewomon,Ultimate (Lv5),Common,Light,Vacine,Machinedramon,AncientBeetlemon,WarGreymon
+Yellow,RizeGreymon,Ultimate (Lv5),Rare,Light,Vacine,MetalGarurumon,Alphamon,AncientMegatheriummon
+Green,MetalTyrannomon,Ultimate (Lv5),Rare,Plant,Data,Rosemon,RustTyrannomon,Leopardmon
+Green,Argomon,Ultimate (Lv5),Common,Plant,Data,LordKnightmon,Marsmon,GranKuwagamon
+Green,Cherrymon,Ultimate (Lv5),Uncommon,Plant,Data,Azulongmon,ClavisAngemon,WarGreymon
+Black,Megadramon,Ultimate (Lv5),Uncommon,Dark,Virus,WarGreymon,AncientGreymon,BanchoLillymon
+Black,Andromon,Ultimate (Lv5),Common,Dark,Virus,Jesmon,ShineGreymon,SaberLeomon
+Black,Infermon,Ultimate (Lv5),Rare,Dark,Virus,Machinedramon,Machinedramon,GranKuwagamon
+Black,MetalGreymon,Ultimate (Lv5),Common,Dark,Virus,Ornismon,GranKuwagamon,DexDorugoramon
+Purple,Myotismon,Ultimate (Lv5),Uncommon,Electric,Virus,Diabormon,GranDracmon,Gallantmon
+Purple,Pumpkinmon,Ultimate (Lv5),Common,Electric,Virus,Lotosmon,GroundLocomon,MarineAngemon
+Purple,Kimeramon,Ultimate (Lv5),Rare,Electric,Virus,Raijinmon,Spinomon,Titamon
+Purple,WereGarurumon,Ultimate (Lv5),Common,Electric,Virus,Beelzemon,Tactimon,Mastemon
+Blue,Paildramon,Ultimate (Lv5),Rare,Wind,Data,MarineAngemon,WarGreymon,WarGreymon
+White,Eosmon,Ultimate (Lv5),Common,Neutral,Vaccine,MetalGarurumon,MegaGargomon,Anubismon
+Green,Rapidmon,Ultimate (Lv5),Uncommon,Plant,Data,Beelzemon,BlackWarGreymon,SlashAngemon
+Yellow,Boutmon,Ultimate (Lv5),Common,Light,Vacine,HerculesKabuterimon,Rasenmon Fury Mode,Shoutmon DX
+Yellow,Stefilmon,Ultimate (Lv5),Uncommon,Light,Vacine,Zhuqiaomon,HerculesKabuterimon,Kazuchimon
+Red,Duramon,Ultimate (Lv5),Common,Fire,Free,Plesiomon,HerculesKabuterimon,Spinomon
+Red,Silphymon,Ultimate (Lv5),Rare,Fire,Free,Titamon,AncientGarurumon,VolcanicDramon
+Red,MetalGreymon,Ultimate (Lv5),Rare,Fire,Free,Eldradimon,Imperialdramon Fighter Mode,Dynasmon
+Blue,MagnaAngemon,Ultimate (Lv5),Common,Wind,Data,Chaosmon: Valdur Arm,Titamon,BanchoGolemon
+Yellow,Antylamon,Ultimate (Lv5),Common,Light,Vacine,Varodurumon,Azulongmon,Surfimon
+Yellow,Shakkoumon,Ultimate (Lv5),Rare,Light,Vacine,Rosemon,Marsmon,AncientSphinxmon
+Green,Rapidmon,Ultimate (Lv5),Common,Plant,Data,Rosemon,Gundramon,Shivamon
+Green,JewelBeemon,Ultimate (Lv5),Common,Plant,Data,Ceresmon,Dinotigermon,Nidhoggmon
+Green,Blossomon,Ultimate (Lv5),Common,Plant,Data,HerculesKabuterimon,SlashAngemon,MetalGarurumon
+Green,DinoBeemon,Ultimate (Lv5),Rare,Plant,Data,Piedmon,AncientKazemon,Titamon
+Black,Giromon,Ultimate (Lv5),Common,Dark,Virus,ShineGreymon,CresGarurumon,AncientSphinxmon
+Black,RaijiLudomon,Ultimate (Lv5),Common,Dark,Virus,Gallantmon,Leopardmon,Eosmon
+Black,Etemon,Ultimate (Lv5),Rare,Dark,Virus,Valkyrimon,AncientSphinxmon,MirageGaogamon
+Black,MetalMamemon,Ultimate (Lv5),Rare,Dark,Virus,WarGreymon,Titamon,ClavisAngemon
+Purple,SkullMeramon,Ultimate (Lv5),Common,Electric,Virus,Cherubimon,Cherubimon,Babamon
+Purple,Arukenimon,Ultimate (Lv5),Common,Electric,Virus,Craniamon,Diaboromon,MetalGarurumon
+Purple,Mummymon,Ultimate (Lv5),Common,Electric,Virus,Eosmon,Rosemon,HiAndromon
+Purple,LadyDevimon,Ultimate (Lv5),Rare,Electric,Virus,Eosmon,MetalEtemon,BryweLudramon
+Red,WarGrowlmon,Ultimate (Lv5),Uncommon,Fire,Free,Varodurumon,AncientBeetlemon,MetalGarurumon (X Antibody)
+Green,MameTyramon,Ultimate (Lv5),Uncommon,Plant,Data,LordKnightmon,Vikemon,Raidenmon
+Green,Triceramon,Ultimate (Lv5),Common,Plant,Data,Gallantmon Crimson Mode,Blastmon,Ceresmon
+Yellow,Angewomon,Ultimate (Lv5),Rare,Light,Vacine,Phoenixmon,GrandisKuwagamon,Argomon
+Red,Vermilimon,Ultimate (Lv5),Common,Fire,Free,Suijinmon,VenomMyotismon,AncientKazemon
+Red,Volcdramon,Ultimate (Lv5),Common,Fire,Free,Imperialdramon Dragon Mode,Hexeblaumon,Creepymon
+Red,RizeGreymon,Ultimate (Lv5),Super Rare,Fire,Free,Rasenmon Fury Mode,Piedmon,Dorbickmon
+Blue,Piranimon,Ultimate (Lv5),Uncommon,Wind,Data,Phoenixmon,DexDorugoramon,Durandamon
+Blue,Gusokumon,Ultimate (Lv5),Common,Wind,Data,Seraphimon,AncientGreymon,Parasitemon
+Blue,MarinChimairamon,Ultimate (Lv5),Rare,Wind,Data,Ophanimon,Fujinmon,Kazuchimon
+Blue,MachGaogamon,Ultimate (Lv5),Rare,Wind,Data,BeelStarmon,ClavisAngemon,UlforceVeedramon
+Yellow,Crowmon,Ultimate (Lv5),Uncommon,Light,Vacine,Azulongmon,AncientGarurumon,GranKuwagamon
+Yellow,HippoGryphonmon,Ultimate (Lv5),Common,Light,Vacine,Raidenmon,Pukumon,Machinedramon
+Yellow,Maycrackmon,Ultimate (Lv5),Common,Light,Vacine,Seraphimon,Cherubimon,Gundramon
+Yellow,WarGrowlmon,Ultimate (Lv5),Rare,Light,Vacine,Dinorexmon,Imperialdramon Dragon Mode,HerculesKabuterimon
+Green,SkullScorpiomon,Ultimate (Lv5),Common,Plant,Data,AncientSphinxmon,MegaGargomon,Marsmon
+Green,GrapLeomon,Ultimate (Lv5),Common,Plant,Data,SaberLeomon,Seraphimon,Ebonwumnon
+Green,Orochimon,Ultimate (Lv5),Rare,Plant,Data,Nidhoggmon,Rosemon,Zanbamon
+Green,Lilamon,Ultimate (Lv5),Super Rare,Plant,Data,Seraphimon,Jijimon,Murukusmon
+Black,Meteormon,Ultimate (Lv5),Common,Dark,Virus,Rosemon,VictoryGreymon,BlitzGreymon
+Black,Tankdramon,Ultimate (Lv5),Common,Dark,Virus,Seraphimon,BanchoLillymon,Plesiomon
+Black,Gogmamon,Ultimate (Lv5),Super Rare,Dark,Virus,Cherubimon,Blastmon,VictoryGreymon
+Purple,Cerberusmon,Ultimate (Lv5),Common,Electric,Virus,Plutomon,MaloMyotismon,HerculesKabuterimon
+Purple,NeoDevimon,Ultimate (Lv5),Common,Electric,Virus,Slayerdramon,Rosemon,GranKuwagamon
+Purple,Phantomon,Ultimate (Lv5),Common,Electric,Virus,Craniamon,SkullMammothmon,MetalSeadramon
+Purple,Cerberusmon: Werewolf Mode,Ultimate (Lv5),Rare,Electric,Virus,AvengeKidmon,Dinotigermon,Fujinmon
+Red,Brachiomon,Ultimate (Lv5),Common,Fire,Free,VolcanicDramon,Varodurumon,Seraphimon
+Red,MetalGreymon,Ultimate (Lv5),Super Rare,Fire,Free,Kazuchimon,WarGreymon (X Antibody),GrandisKuwagamon
+Red,Triceramon,Ultimate (Lv5),Common,Fire,Free,UlforceVeedramon Zero,AncientVolcanomon,Megidramon
+Red,OmniShoutmon,Ultimate (Lv5),Rare,Fire,Free,BanchoStingmon,Argomon,Darkdramon
+Red,MetalGreymon: Alterous Mode,Ultimate (Lv5),Rare,Fire,Free,AncientBeetlemon,GranKuwagamon,Vikemon
+Blue,MarineDevimon,Ultimate (Lv5),Common,Wind,Data,MegaGargomon,Lotosmon,Shoutmon DX
+Blue,CrysPaledramon,Ultimate (Lv5),Uncommon,Wind,Data,AncientMegatheriummon,Zanbamon,BlackWarGreymon
+Blue,WereGarurumon: Sagittarius Mode,Ultimate (Lv5),Rare,Wind,Data,VenomMyotismon,MetalPiranimon,GranDracmon
+Yellow,SuperStarmon,Ultimate (Lv5),Uncommon,Light,Vacine,MegaGargomon,BeelStarmon,BanchoMamemon
+Yellow,Taomon,Ultimate (Lv5),Common,Light,Vacine,MetalSeadramon,Parasitemon,Breakdramon
+Yellow,Knightmon,Ultimate (Lv5),Common,Light,Vacine,Ornismon,SkullMammothmon,Imperialdramon Dragon Mode
+Green,Garbagemon,Ultimate (Lv5),Common,Plant,Data,VenomMyotismon,Magnadramon,ClavisAngemon
+Green,Deramon,Ultimate (Lv5),Common,Plant,Data,Phoenixmon,Gallantmon (X Antibody),Suijinmon
+Green,Piximon,Ultimate (Lv5),Common,Plant,Data,AncientGarurumon,Imperialdramon Dragon Mode,Reapermon
+Black,WaruMonzaemon,Ultimate (Lv5),Rare,Dark,Virus,Imperialdramon Dragon Mode,MarineAngemon,UlforceVeedramon Zero
+Black,Infermon,Ultimate (Lv5),Uncommon,Dark,Virus,Valkyrimon,HerculesKabuterimon,Gallantmon (X Antibody)
+Black,BlackMachGaogamon,Ultimate (Lv5),Common,Dark,Virus,Valkyrimon,Eosmon,Imperialdramon Dragon Mode
+Purple,Vajramon,Ultimate (Lv5),Common,Electric,Virus,UlforceVeedramon Zero,Seraphimon,Imperialdramon Fighter Mode
+Purple,Jokermon,Ultimate (Lv5),Common,Electric,Virus,FrosVelgrmon,MetalGarurumon (X Antibody),Vikemon
+Yellow,Antylamon,Ultimate (Lv5),Rare,Light,Vacine,AncientBeetlemon,Seraphimon,Titamon
+Yellow,Taomon,Ultimate (Lv5),Uncommon,Light,Vacine,AncientVolcanomon,Imperialdramon Dragon Mode,Rosemon
+Blue,WereGarurumon,Ultimate (Lv5),Super Rare,Wind,Data,Leopardmon,Lotosmon,BanchoLeomon
+Blue,Whamon,Ultimate (Lv5),Common,Wind,Data,GroundLocomon,Seraphimon,ShineGreymon
+Red,Megadramon,Ultimate (Lv5),Common,Fire,Free,Azulongmon,GranKuwagamon,Chaosdramon
+Red,Asuramon,Ultimate (Lv5),Common,Fire,Free,Parasitemon,AncientSphinxmon,Rosemon
+Red,SaviorHuckmon,Ultimate (Lv5),Uncommon,Fire,Free,ChaosGallantmon,Diabroromon,AncientKazemon
+Blue,Panjyamon,Ultimate (Lv5),Common,Wind,Data,Rasenmon,Imperialdramon Dragon Mode,MetalGarurumon
+Blue,Dragomon,Ultimate (Lv5),Common,Wind,Data,Nidhoggmon,WarGreymon,MetalSeadramon
+Blue,Majiramon,Ultimate (Lv5),Rare,Wind,Data,BlackWarGreymon,GranDracmon,Diaboromon
+Yellow,Mammothmon,Ultimate (Lv5),Common,Light,Vacine,Zanbamon,HerculesKabuterimon,Susanoomon
+Yellow,Mistymon,Ultimate (Lv5),Common,Light,Vacine,Plutomon,Chaosmon: Valdur Arm,ZeedGarurumon
+Yellow,Manticoremon,Ultimate (Lv5),Rare,Light,Vacine,Rasenmon,Ouryumon,SkullMammothmon
+Green,Toropiamon,Ultimate (Lv5),Uncommon,Plant,Data,Ophanimon,Dorbickmon,MegaGargomon
+Green,Entmon,Ultimate (Lv5),Rare,Plant,Data,Jijimon,SaberLeomon,WarGreymon
+Yellow,Shakkoumon,Ultimate (Lv5),Rare,Light,Vacine,AncientKazemon,Jesmon,Machinedramon
+Green,Pistmon,Ultimate (Lv5),Common,Plant,Data,MarineAngemon,MaloMyotismon,UltimateBrachiomon
+Green,Climbmon,Ultimate (Lv5),Rare,Plant,Data,Plutomon,MetalPiranimon,ChaosGallantmon
+Black,CatchMamemon,Ultimate (Lv5),Common,Dark,Virus,Rafflesimon,Rosemon,Dorbickmon
+Black,Hisyaryumon,Ultimate (Lv5),Common,Dark,Virus,Sakuyamon,MetalGarurumon,Dorugoramon
+Black,MetalGreymon,Ultimate (Lv5),Rare,Dark,Virus,Anubismon,DanDevimon,Lillithmon
+Purple,Karatenmon,Ultimate (Lv5),Common,Electric,Virus,Zanbamon,Gallantmon Crimson Mode,Parasitemon
+Purple,SkullSatamon,Ultimate (Lv5),Common,Electric,Virus,Darkdramon,DanDevimon,Rosemon
+Purple,Myotismon,Ultimate (Lv5),Rare,Electric,Virus,AncientGreymon,Alphamon,Slayerdramon
+White,Kimeramon,Ultimate (Lv5),Super Rare,Neutral,Vaccine,Nidhoggmon,BlackWarGreymon,Varodurumon
+Purple,Mephistomon,Ultimate (Lv5),Common,Electric,Virus,Azulongmon,Justimon Blitz Arm,KingWhamon
+Blue,Bastemon,Ultimate (Lv5),Uncommon,Wind,Data,DanDevimon,Rosemon,BanchoMamemon
+Purple,Antylamon,Ultimate (Lv5),Common,Electric,Virus,Sakuyamon,Seraphimon,HerculesKabuterimon
+Purple,Orochimon,Ultimate (Lv5),Common,Electric,Virus,GranKuwagamon,Titamon,MirageGaogamon
+Red,OmniShoutmon (X Antibody),Ultimate (Lv5),Uncommon,Fire,Free,Susanoomon,VenomMyotismon,Mastemon
+Red,WarGrowlmon (X Antibody),Ultimate (Lv5),Rare,Fire,Free,Imperialdramon Dragon Mode,Chaosdramon,Nidhoggmon
+Red,MetalGreymon (X Antibody),Ultimate (Lv5),Rare,Fire,Free,Cherubimon,AncientSphinxmon,Rosemon
+Blue,Piranimon,Ultimate (Lv5),Common,Wind,Data,SkullMammothmon,VenomMyotismon,MarineAngemon
+Blue,Divermon,Ultimate (Lv5),Common,Wind,Data,Suijinmon,Argomon,BryweLudramon
+Blue,WereGarurumon (X Antibody),Ultimate (Lv5),Rare,Wind,Data,Plutomon,ShineGreymon,Raguelmon
+Yellow,DarkSuperStarmon,Ultimate (Lv5),Common,Light,Vacine,Cherubimon,DexDorugoramon,Alphamon
+Yellow,Angewomon (X Antibody),Ultimate (Lv5),Uncommon,Light,Vacine,Rosemon,SlashAngemon,Breakdramon
+Yellow,RizeGreymon (X Antibody),Ultimate (Lv5),Rare,Light,Vacine,Lotosmon,AncientSphinxmon,WarGreymon
+Green,Okuwamon (X Antibody),Ultimate (Lv5),Uncommon,Plant,Data,BanchoLillymon,Imperialdramon Dragon Mode,AncientBeetlemon
+Green,Zamielmon,Ultimate (Lv5),Common,Plant,Data,Babamon,Jesmon,SlashAngemon
+Black,LoaderLeomon,Ultimate (Lv5),Common,Dark,Virus,Rosemon,VenomMyotismon,PileVolcamon
+Black,Grademon,Ultimate (Lv5),Rare,Dark,Virus,Beelzemon,UlforceVeedramon,Slayerdramon
+Black,Megadramon,Ultimate (Lv5),Uncommon,Dark,Virus,Ornismon,Imperialdramon Fighter Mode,Imperialdramon Dragon Mode
+Purple,Maycrackmon: Vicious Mode,Ultimate (Lv5),Common,Electric,Virus,Machinedramon,Slayerdramon,MetalPiranimon
+Purple,Matadormon,Ultimate (Lv5),Common,Electric,Virus,Rosemon,Hexeblaumon,RustTyrannomon
+Purple,DexDoruGreymon,Ultimate (Lv5),Uncommon,Electric,Virus,BryweLudramon,AvengeKidmon,VenomMyotismon
+Purple,Lucemon: Chaos Mode,Ultimate (Lv5),Secret Rare,Electric,Virus,Kentaurosmon,HerculesKakuterimon,CresGarurumon
+Black,Locomon,Ultimate (Lv5),Common,Dark,Virus,Argomon,WarGreymon,WarGreymon
+Black,Andromon,Ultimate (Lv5),Common,Dark,Virus,BanchoLeomon,Mastemon,Machinedramon
+Black,Cyberdramon,Ultimate (Lv5),Rare,Dark,Virus,BanchoStingmon,Goldramon,Jesmon
+Black,DarkKnightmon,Ultimate (Lv5),Super Rare,Dark,Virus,Jijimon,Varodurumon,Beelzemon
+Black,DoruGreymon,Ultimate (Lv5),Uncommon,Dark,Virus,ChaosGallantmon,Phoenixmon,Gallantmon
+Red,Garudamon,Ultimate (LV5),Common,Fire,Free,Imperialdramon Dragon Mode,Fujinmon,MetalGarurumon
+Red,Megadramon,Ultimate (LV5),Common,Fire,Free,DanDevimon,BryweLudramon,Ornismon
+Red,MetalGreymon,Ultimate (LV5),Rare,Fire,Free,BlitzGreymon,Imperialdramon Dragon Mode,AncientVolcanomon
+Blue,WereGarurumon,Ultimate (LV5),Common,Wind,Data,Seraphimon,Magnadramon,MetalGarurumon
+Blue,Zudomon,Ultimate (LV5),Common,Wind,Data,RustTyrannomon,MetalGarurumon (X Antibody),MetalGarurumon
+Blue,Paildramon,Ultimate (LV5),Rare,Wind,Data,UlforceVeedramon Zero,Babamon,SaberLeomon
+Yellow,MagnaAngemon,Ultimate (LV5),Super Rare,Light,Vacine,Sakuyamon,Raidenmon,Jesmon
+Yellow,Angewomon,Ultimate (LV5),Super Rare,Light,Vacine,Jijimon,Lillithmon,Gulfmon
+Green,Lillymon,Ultimate (LV5),Uncommon,Plant,Data,VenomMyotismon,Dinotigermon,MaloMyotismon
+Green,MegaKabuterimon,Ultimate (LV5),Rare,Plant,Data,Cherubimon,ChaosGallantmon,Rafflesimon
+Green,Dinobeemon,Ultimate (LV5),Uncommon,Plant,Data,BlackWarGreymon,Phoenixmon,Gundramon
+Black,Andromon,Ultimate (LV5),Common,Dark,Virus,Magnamon (X Antibody),BlackWarGreymon,ClavisAngemon
+Black,MetalTyrannomon,Ultimate (LV5),Common,Dark,Virus,Machinedramon,Seraphimon,Plesiomon
+Black,MetalMamemon,Ultimate (LV5),Common,Dark,Virus,Imperialdramon Dragon Mode,AncientBeetlemon,Nidhoggmon
+Black,Infermon,Ultimate (LV5),Rare,Dark,Virus,Seraphimon,Phoenixmon,Shivamon
+Black,Etemon,Ultimate (LV5),Uncommon,Dark,Virus,Surfimon,WarGreymon,Shivamon
+Purple,Lady Devimon,Ultimate (LV5),Uncommon,Electric,Virus,Ophanimon,MetalGarurumon,Kazuchimon
+Purple,Myotismon,Ultimate (LV5),Uncommon,Electric,Virus,AvengeKidmon,WarGreymon,Shivamon
+Purple,SkullGreymon,Ultimate (LV5),Rare,Electric,Virus,Shoutmon DX,Dorugoramon,GrandisKuwagamon
+Blue,WereGarurumon,Ultimate (Lv5),Promotion,Wind,Data,AncientGreymon,Ophanimon,Ouryumon
+Black,Infermon,Ultimate (Lv5),Promotion,Dark,Virus,Megidramon,Varodurumon,Cherubimon
+Purple,Myotismon,Ultimate (Lv5),Promotion,Electric,Virus,GrandisKuwagamon,MarineAngemon,BlackWarGreymon
+Red,MetalGreymon,Ultimate (Lv5),Uncommon,Fire,Free,Chaosdramon,BlackWarGreymon,VenomMyotismon
+Red,Silphymon,Ultimate (Lv5),Rare,Fire,Free,Nidhoggmon,HerculesKakuterimon,MetalGarurumon
+Blue,AeroVeedramon Zero,Ultimate (Lv5),Promotion,Wind,Data,Murukusmon,BlitzGreymon,Valkyrimon
+Red,MetalGreymon: Alterous Mode,Ultimate (Lv5),Promotion,Fire,Free,Shoutmon DX,Cherubimon,BanchoMamemon
+Blue,WereGarurumon: Sagittarius Mode,Ultimate (Lv5),Promotion,Wind,Data,Diabroromon,BlitzGreymon,Chaosmon: Valdur Arm
+Yellow,Boutmon,Ultimate (Lv5),Promotion,Light,Vacine,UlforceVeedramon,HerculesKabuterimon,Durandamon
+Green,Okuwamon,Ultimate (Lv5),Promotion,Plant,Data,Rasielmon,BlackWarGreymon,Phoenixmon
+Red,MasterTyrannomon,Ultimate (Lv5),Common,Fire,Free,Justimon Blitz Arm,Beelzemon Blast Mode,BlitzGreymon
+Blue,WereGarurumon,Ultimate (Lv5),Rare,Wind,Data,Imperialdramon Dragon Mode,MaloMyotismon,Tactimon
+Blue,Zudomon,Ultimate (Lv5),Uncommon,Wind,Data,Raijinmon,Rasenmon Fury Mode,HerculesKabuterimon
+Yellow,MagnaAngemon,Ultimate (Lv5),Rare,Light,Vacine,Diabroromon,Puppetmon,Dorbickmon
+Yellow,Angewomon,Ultimate (Lv5),Uncommon,Light,Vacine,MaloMyotismon,Reapermon,Imperialdramon Dragon Mode
+Blue,Scorpiomon,Ultimate (Lv5),Common,Wind,Data,Magnadramon,Phoenixmon,MaloMyotismon
+Green,Okumamon,Ultimate (Lv5),Common,Plant,Data,BanchoLeomon,Justimon Blitz Arm,AncientMegatheriummon
+Green,Lillymon,Ultimate (Lv5),Uncommon,Plant,Data,AncientVolcanomon,AncientSphinxmon,AncientGreymon
+Green,MegaKabuterimon,Ultimate (Lv5),Rare,Plant,Data,Seraphimon,LordKnightmon,VolcanicDramon
+Blue,CaptainHookmon,Ultimate (Lv5),Common,Wind,Data,Imperialdramon Dragon Mode,MaloMyotismon,Shoutmon DX
+Blue,Frozomon,Ultimate (Lv5),Common,Wind,Data,VenomMyotismon,Kazuchimon,Reapermon
+Black,MetalGreymon,Ultimate (Lv5),Uncommon,Dark,Virus,Puppetmon,ZeigGreymon,DanDevimon
+Black,MetalTyrannomon,Ultimate (Lv5),Common,Dark,Virus,Plesiomon,Imperialdramon Dragon Mode,Diabormon
+Black,Megadramon,Ultimate (Lv5),Rare,Dark,Virus,Zhuqiaomon,Creepymon,Titamon
+Purple,Kyukimon,Ultimate (Lv5),Common,Electric,Virus,SkullMammothmon,DanDevimon,Rasielmon
+Purple,SkullSatamon,Ultimate (Lv5),Uncommon,Electric,Virus,Jesmon,Dorugoramon,Rosemon
+Purple,WereGarurumon,Ultimate (Lv5),Rare,Electric,Virus,BlackWarGreymon,Diaboromon,Darkdramon
+Red,RizeGreymon,Ultimate (Lv5),Uncommon,Fire,Free,MetalEtemon,Nidhoggmon,Murukusmon
+Red,WarGrowlmon,Ultimate (Lv5),Rare,Fire,Free,Slayerdramon,Plesiomon,WarGreymon
+Blue,Wingdramon,Ultimate (Lv5),Uncommon,Wind,Data,Seraphimon,Ophanimon Falldown Mode,Dynasmon
+Blue,AeroVeedramon,Ultimate (Lv5),Rare,Wind,Data,Gankoomon,Boltmon,FrosVelgrmon
+Blue,Paildramon,Ultimate (Lv5),Super Rare,Wind,Data,AncientVolcanomon,Shoutmon DX,Ophanimon
+Green,Dinobeemon,Ultimate (Lv5),Rare,Plant,Data,BlitzGreymon,VictoryGreymon,MegaGargomon
+Green,JewelBeemon,Ultimate (Lv5),Common,Plant,Data,UltimateBrachiomon,AncientKazemon,BlitzGreymon
+Yellow,Angewomon,Ultimate (Lv5),Rare,Light,Vacine,Dinotigermon,DexDorugoramon,Rosemon
+Purple,Bastemon,Ultimate (Lv5),Common,Electric,Virus,Boltmon,Spinomon,Gallantmon
+Purple,LadyDevimon,Ultimate (Lv5),Rare,Electric,Virus,ZeigGreymon,VenomMyotismon,Rasenmon Fury Mode
+Yellow,Betsumon,Ultimate (Lv5),Common,Light,Vacine,Baihumon,Phoenixmon,Beelzemon
+Yellow,Kyukimon,Ultimate (Lv5),Common,Light,Vacine,AncientTroymon,Seraphimon,Spinomon
+White,Calumon,Unknown (Lv-),Rare,Neutral,Vaccine,,,

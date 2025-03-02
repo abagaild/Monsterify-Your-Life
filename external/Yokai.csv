@@ -1,0 +1,699 @@
+id,name,rank,tribe,attribute
+1,Sigh-Durr,E,Brave,Earth
+2,Flippit,E,Brave,Earth
+3,Pandle,E,Brave,Fire
+4,Undy,C,Brave,Fire
+5,Tanbo,B,Brave,Earth
+6,Cutta-nah,E,Brave,Wind
+7,Cutta-nah-nah,C,Brave,Wind
+8,Slacka-slash,B,Brave,Ice
+9,Brushido,E,Brave,Ice
+10,Washogun,B,Brave,Ice
+11,Lie-in,E,Brave,Ice
+12,Lie-in Heart,A,Brave,Ice
+13,Hissfit,E,Brave,Fire
+14,Zerberker,A,Brave,Fire
+15,Snartle,S,Brave,Ice
+16,Brutle,S,Brave,Ice
+17,Mochismo,D,Brave,Earth
+18,Minochi,D,Brave,Fire
+19,Minimoto,D,Brave,Wind
+20,Slumberhog,D,Brave,Fire
+21,Snortlehog,B,Brave,Fire
+22,Samureel,D,Brave,Water
+23,Time Keeler,B,Brave,Water
+24,Goofball,D,Brave,Ice
+25,Slugger,B,Brave,Ice
+26,Helmsman,D,Brave,Lightning
+27,Reuknight,A,Brave,Lightning
+28,Corptain,S,Brave,Drain
+29,SlicenriceS,D,Brave,Restoration
+30,FlamuriceS,A,Brave,Fire
+31,Tublappa,D,Brave,Lightning
+32,Lappinitup,A,Brave,Drain
+33,El Gutso,D,Brave,Fire
+34,Gutso Grande,A,Brave,Fire
+35,Mudmunch,C,Brave,Earth
+36,BBQvil,C,Brave,Fire
+37,Liarbird,C,Brave,Wind
+38,Benkei,C,Brave,Ice
+39,B3-NK1,B,Brave,Lightning
+40,Blazion,C,Brave,Fire
+41,Quaken,B,Brave,Earth
+42,Siro,A,Brave,Lightning
+43,Chansin,C,Brave,Fire
+44,Sheen,A,Brave,Wind
+45,Snee,A,Brave,Drain
+46,Gleam,S,Brave,Lightning
+47,Hovernyan,B,Brave,Wind
+48,Moximous N,B,Brave,Wind
+49,Moximous K,B,Brave,Water
+50,Hot Air Buffoon,B,Brave,Fire
+51,Sushiyama,B,Brave,Ice
+52,Kapunki,A,Brave,Fire
+53,Beetler,B,Brave,Earth
+54,Beetall,A,Brave,Ice
+55,Cruncha,S,Brave,Lightning
+56,Machonyan,A,Brave,Lightning
+57,Momonyan,A,Brave,Fire
+58,Sir Nyansalot,A,Brave,Ice
+59,Sgt. Burly,A,Brave,Lightning
+60,Bison Burly,S,Brave,Lightning
+61,Demuncher,S,Brave,Earth
+62,Devourer,S,Brave,Drain
+63,IlluminoctT,S,Brave,Lightning
+64,Arachnevil,S,Brave,Fire
+65,ShurikennyS,S,Brave,Wind
+66,Nunchucky,S,Brave,Wind
+67,Camellia,S,Brave,Restoration
+68,Brokenbrella,E,Mysterious,Wind
+69,Pittapatt,E,Mysterious,Earth
+70,Zip Unlock,E,Mysterious,Lightning
+71,Slippup,E,Mysterious,Ice
+72,Snotsolong,E,Mysterious,Water
+73,Duchoo,D,Mysterious,Ice
+74,D'wanna,E,Mysterious,Restoration
+75,N'more,C,Mysterious,Restoration
+76,Q'wit,C,Mysterious,Earth
+77,Wazzat,E,Mysterious,Wind
+78,Houzzat,B,Mysterious,Wind
+79,Dummkap,E,Mysterious,Lightning
+80,Who-Me,E,Mysterious,Wind
+81,2-Much-2-Take,A,Mysterious,Wind
+82,Why Naant,E,Mysterious,Lightning
+83,Naandhi,A,Mysterious,Lightning
+84,Faysoff,D,Mysterious,Water
+85,Snottle,D,Mysterious,Drain
+86,Legsit,D,Mysterious,Water
+87,Chukket,D,Mysterious,Earth
+88,Cornfused,D,Mysterious,Lightning
+89,Unshelltered,D,Mysterious,Ice
+90,Lafalotta,D,Mysterious,Drain
+91,Blips,C,Mysterious,Drain
+92,Tattletell,D,Mysterious,Restoration
+93,Tattlecast,B,Mysterious,Restoration
+94,Skranny,C,Mysterious,Restoration
+95,Cupistol,D,Mysterious,Wind
+96,Casanuva,A,Mysterious,Wind
+97,Casanono,A,Mysterious,Fire
+98,So-Sorree,D,Mysterious,Lightning
+99,Bowminos,A,Mysterious,Earth
+100,Smogling,D,Mysterious,Wind
+101,Smogmella,A,Mysterious,Wind
+102,Signibble,D,Mysterious,Lightning
+103,Signiton,A,Mysterious,Lightning
+104,Master Oden,A,Mysterious,Lightning
+105,Statiking,S,Mysterious,Lightning
+106,Failian,C,Mysterious,Ice
+107,Apelican,C,Mysterious,Wind
+108,Fuu 2,C,Mysterious,Wind
+109,Shrillington,C,Mysterious,Drain
+110,House PartayS,C,Mysterious,Fire
+111,SkulleidoscopeT,C,Mysterious,Water
+112,Lionguist,C,Mysterious,Fire
+113,Illoo,C,Mysterious,Water
+114,Elloo,C,Mysterious,Ice
+115,Alloo,B,Mysterious,Lightning
+116,Espy,C,Mysterious,Earth
+117,Infour,B,Mysterious,Drain
+118,Mirapo,C,Mysterious,Drain
+119,Miradox,A,Mysterious,Drain
+120,Mircle,A,Mysterious,Drain
+121,Verygoodsir,B,Mysterious,Restoration
+122,Statikid,B,Mysterious,Lightning
+123,Prof. Plumage,B,Mysterious,Wind
+124,Throne Wiper,B,Mysterious,Drain
+125,Imagenius,B,Mysterious,Wind
+126,Miss Teri,B,Mysterious,Ice
+127,Maginyan,A,Mysterious,Fire
+128,SquandeerS,A,Mysterious,Ice
+129,Tengu,S,Mysterious,Wind
+130,Flengu,S,Mysterious,Fire
+131,Kyubi,S,Mysterious,Fire
+132,Frostail,S,Mysterious,Ice
+133,Chymera,S,Mysterious,Lightning
+134,Kingmera,S,Mysterious,Lightning
+135,Toadal Demon,S,Mysterious,Wind
+136,Thurston,S,Mysterious,Fire
+137,Spect-hareS,S,Mysterious,Wind
+138,Sn. Spect-hare,S,Mysterious,Ice
+139,Oh Wheel,E,Tough,Fire
+140,Dulluma,E,Tough,Earth
+141,Darumacho,B,Tough,Earth
+142,Goruma,B,Tough,Wind
+143,WotchagotT,E,Tough,Ice
+144,Pride ShrimpT,B,Tough,Restoration
+145,No-Go Kart,E,Tough,Earth
+146,Mistank,B,Tough,Earth
+147,Terrorpotta,E,Tough,Earth
+148,Blownhistoppa,B,Tough,Earth
+149,Noway,E,Tough,Earth
+150,Impass,B,Tough,Earth
+151,Walldin,A,Tough,Earth
+152,Roughraff,E,Tough,Earth
+153,Badude,B,Tough,Earth
+154,Bruff,A,Tough,Earth
+155,Roughgraff,B,Tough,Earth
+156,Chilled Cowcao,E,Tough,Earth
+157,Stircrazy Stu,A,Tough,Earth
+158,NummskullT,E,Tough,Earth
+159,SkillskullT,A,Tough,Earth
+160,Armsman,D,Tough,Ice
+161,Mimikin,D,Tough,Ice
+162,Oh Bah Gah!,D,Tough,Lightning
+163,Sp mountain,D,Tough,Earth
+164,Blowkade,D,Tough,Water
+165,Ledballoon,C,Tough,Water
+166,Sumodon,D,Tough,Restoration
+167,Yokozudon,B,Tough,Restoration
+168,Whateverest,D,Tough,Fire
+169,Whatuption,B,Tough,Fire
+170,Fidgephant,D,Tough,Water
+171,Touphant,C,Tough,Water
+172,Enduriphant,A,Tough,Water
+173,Zappary,D,Tough,Lightning
+174,Frazzel,A,Tough,Lightning
+175,Ship. SailorS,D,Tough,Water
+176,Adm. AdmiralS,A,Tough,Water
+177,Swelton,C,Tough,Fire
+178,Sing Kong,C,Tough,Lightning
+179,Slippy,C,Tough,Water
+180,Repossessor,C,Tough,Earth
+181,Mr. Blockhead,C,Tough,Fire
+182,Mad Mountain,C,Tough,Ice
+183,Lava Lord,B,Tough,Lightning
+184,Castelius III,C,Tough,Earth
+185,Castelius II,B,Tough,Ice
+186,Castelius I,A,Tough,Lightning
+187,Castelius Max,S,Tough,Wind
+188,Puppynyan,B,Tough,Earth
+189,Rhinoggin,B,Tough,Earth
+190,Rhinormous,A,Tough,Earth
+191,Hornaplenty,S,Tough,Earth
+192,Kintaronyan,A,Tough,Earth
+193,Steaking,A,Tough,Fire
+194,Robonyan,A,Tough,Ice
+195,Robonyan F,A,Tough,Fire
+196,Showbonyan,A,Tough,Lightning
+197,Goldenyan,S,Tough,Lightning
+198,Dromp,A,Tough,Earth
+199,Swosh,S,Tough,Water
+200,Toadal Dude,S,Tough,Water
+201,Uber Geeko,S,Tough,Fire
+202,Gargaros,S,Tough,Fire
+203,Ogralus,S,Tough,Water
+204,Orcanos,S,Tough,Drain
+205,Kabuking,S,Tough,Lightning
+206,Jawsome KidT,S,Tough,Water
+207,El Sharkador,S,Tough,Water
+208,Silver LiningS,S,Tough,Water
+209,Leggly,E,Charming,Restoration
+210,Twirly Pie,E,Charming,Lightning
+211,Petty-Cake,E,Charming,Restoration
+212,Hoppy.,E,Charming,Wind
+213,Dazzabel,E,Charming,Fire
+214,Rattelle,C,Charming,Fire
+215,Skelebella,B,Charming,Water
+216,Cadin,E,Charming,Wind
+217,Cadable,C,Charming,Wind
+218,Singcada,B,Charming,Fire
+219,Buttered Blue,E,Charming,Earth
+220,Pch. Baguette,A,Charming,Earth
+221,Pupsicle,E,Charming,Ice
+222,Chilhuahua,A,Charming,Ice
+223,Swelterrier,S,Charming,Fire
+224,Unbelievaboy!,E,Charming,Fire
+225,Unbearaboy!T,S,Charming,Fire
+226,Inflammaboy!,S,Charming,Fire
+227,Jumbelina,D,Charming,Ice
+228,Boyclops,D,Charming,Ice
+229,Krystal FoxS,D,Charming,Restoration
+230,Runsure,D,Charming,Wind
+231,Kittylumbus,D,Charming,Water
+232,Zest-a-Minute,D,Charming,Water
+233,Baku,D,Charming,Drain
+234,Whapir,C,Charming,Drain
+235,Bakulia,B,Charming,Drain
+236,Panja Pupil,D,Charming,Ice
+237,Panja Pro,B,Charming,Ice
+238,Cue-Tee,D,Charming,Restoration
+239,Demandi,B,Charming,Restoration
+240,Walkappa,D,Charming,Water
+241,Appak,A,Charming,Water
+242,Supyo,A,Charming,Water
+243,Jibanyan,D,Charming,Fire
+244,Jibanyan B,B,Charming,Fire
+245,Jibanyan S,S,Charming,Fire
+246,Jiban. Liu Bei,S,Charming,Fire
+247,Rudy,C,Charming,Fire
+248,Thornyan,B,Charming,Wind
+249,Baddinyan,B,Charming,Fire
+250,Buchinyan,A,Charming,Lightning
+251,Komasan,D,Charming,Fire
+252,Komane,A,Charming,Fire
+253,Komasan B,B,Charming,Fire
+254,Komasan S,S,Charming,Fire
+255,Koma. Sun Ce,S,Charming,Fire
+256,Jibakoma,A,Charming,Fire
+257,Komajiro,D,Charming,Lightning
+258,Komiger,A,Charming,Lightning
+259,Komajiro S,S,Charming,Lightning
+260,Drizzelda,C,Charming,Water
+261,Nekidspeed,C,Charming,Ice
+262,Stinkeye,C,Charming,Ice
+263,SlackoonT,C,Charming,Water
+264,Puppiccino,C,Charming,Ice
+265,Ballin,C,Charming,Restoration
+266,Shmoopie,C,Charming,Restoration
+267,Pinkipoo,B,Charming,Restoration
+268,Pookivil,A,Charming,Drain
+269,Harry Barry,B,Charming,Restoration
+270,Wondernyan,B,Charming,Drain
+271,Jetnyan,B,Charming,Wind
+272,Chimpanyan,B,Charming,Lightning
+273,TomnyanT,B,Charming,Fire
+274,Koma KnomadsS,B,Charming,Restoration
+275,Frostina,B,Charming,Ice
+276,Blizzaria,S,Charming,Ice
+277,Damona,S,Charming,Ice
+278,Melonyan,A,Charming,Ice
+279,Oranyan,B,Charming,Lightning
+280,Kiwinyan,B,Charming,Earth
+281,Grapenyan,B,Charming,Water
+282,Strawbnyan,B,Charming,Fire
+283,Watermelnyan,A,Charming,Wind
+284,Sapphinyan,A,Charming,Water
+285,Emenyan,A,Charming,Restoration
+286,Rubinyan,A,Charming,Fire
+287,Topanyan,A,Charming,Lightning
+288,Dianyan,A,Charming,Ice
+289,Robokapp,A,Charming,Water
+290,Robokoma,A,Charming,Fire
+291,Sailornyan,A,Charming,Restoration
+292,Rubeus J,A,Charming,Fire
+293,Hardy Hound,A,Charming,Ice
+294,Whirlweasel,A,Charming,Wind
+295,Chocobonyan,A,Charming,Wind
+296,Mooglenyan,A,Charming,Restoration
+297,Wobblenyan,A,Charming,Water
+298,Wibblekoma,A,Charming,Wind
+299,Sushinyan,A,Charming,Fire
+300,Tempurasan,A,Charming,Fire
+301,Faux Kappa,A,Charming,Water
+302,Tigappa,S,Charming,Water
+303,Master Nyada,S,Charming,Wind
+304,Tenguriginal,S,Charming,Wind
+305,Tengulightened,S,Charming,Fire
+306,Pallysol,E,Heartful,Wind
+307,Bumblejack,E,Heartful,Earth
+308,In-Tune,E,Heartful,Restoration
+309,Wantston,E,Heartful,Lightning
+310,Grubsnitch,D,Heartful,Earth
+311,Wiglin,E,Heartful,Restoration
+312,Kelpacabana,C,Heartful,Restoration
+313,Steppa,E,Heartful,Restoration
+314,Rhyth,D,Heartful,Restoration
+315,Seaweed Sns.,C,Heartful,Restoration
+316,Hungramps,E,Heartful,Restoration
+317,Hungorge,B,Heartful,Restoration
+318,Grainpa,B,Heartful,Restoration
+319,Supersize G.,B,Heartful,Restoration
+320,Tongus,E,Heartful,Restoration
+321,Nurse Tongus,B,Heartful,Restoration
+322,Sandmeh,E,Heartful,Restoration
+323,Mr. Sandmeh,B,Heartful,Restoration
+324,Lil Blue Hood,E,Heartful,Water
+325,Bubble Beth,A,Heartful,Water
+326,Afronaut,D,Heartful,Ice
+327,Cereal Spiller,D,Heartful,Restoration
+328,Tomorrow Gal,D,Heartful,Restoration
+329,Swaycorn,D,Heartful,Earth
+330,Push Pup,D,Heartful,Restoration
+331,Happycane,D,Heartful,Restoration
+332,Starrycane,B,Heartful,Restoration
+333,Lodo,D,Heartful,Wind
+334,Supoor Hero,A,Heartful,Wind
+335,Chippa,C,Heartful,Water
+336,Gnomey,D,Heartful,Restoration
+337,High Gnomey,A,Heartful,Restoration
+338,Enerfly,D,Heartful,Restoration
+339,Enefly,D,Heartful,Drain
+340,Betterfly,A,Heartful,Restoration
+341,Peppillon,S,Heartful,Restoration
+342,Predictabull,D,Heartful,Restoration
+343,Smashibull,S,Heartful,Restoration
+344,DON-CHAN,C,Heartful,Restoration
+345,Ray O'Light,C,Heartful,Fire
+346,Ol' Saint Trick,C,Heartful,Restoration
+347,Ol' Fortune,C,Heartful,Restoration
+348,Ponderoo,C,Heartful,Water
+349,Tongue-Twister,C,Heartful,Fire
+350,Lazy Sundae,C,Heartful,Restoration
+351,Got It Maid,C,Heartful,Restoration
+352,Greengramps,C,Heartful,Restoration
+353,Right Brothers,C,Heartful,Water
+354,Tattlecakes,C,Heartful,Restoration
+355,Happierre,C,Heartful,Restoration
+356,Reversa,A,Heartful,Restoration
+357,Reversette,A,Heartful,Wind
+358,Pheasanyan,B,Heartful,Restoration
+359,Fundango,B,Heartful,Restoration
+360,Pearly White,B,Heartful,Restoration
+361,Robogramps,B,Heartful,Restoration
+362,Rollen,B,Heartful,Water
+363,Dubbles,A,Heartful,Water
+364,Scarasol,A,Heartful,Earth
+365,Odysseynyan,A,Heartful,Restoration
+366,Ghostess,A,Heartful,Restoration
+367,Papa Bolt,A,Heartful,Lightning
+368,Uncle Infinite,S,Heartful,Lightning
+369,Mama Aura,A,Heartful,Restoration
+370,Auntie Heart,S,Heartful,Restoration
+371,Kyryn,S,Heartful,Restoration
+372,Unikirin,S,Heartful,Restoration
+373,Double TimeT,S,Heartful,Restoration
+374,Sonic Bam,S,Heartful,Restoration
+375,Neggplant,E,Shady,Earth
+376,Snitchin,E,Shady,Drain
+377,Messyrai,E,Shady,Fire
+378,Leadoni,E,Shady,Ice
+379,Mynimo,D,Shady,Drain
+380,Ake,E,Shady,Earth
+381,Payn,C,Shady,Earth
+382,Agon,B,Shady,Earth
+383,Herbiboy,E,Shady,Water
+384,Carniboy,B,Shady,Fire
+385,Wydeawake,E,Shady,Lightning
+386,Allnyta,B,Shady,Lightning
+387,Treetter,E,Shady,Earth
+388,Retreeter,B,Shady,Earth
+389,Negatibuzz,E,Shady,Drain
+390,Moskevil,C,Shady,Drain
+391,Scritchy,A,Shady,Lightning
+392,Dimmy,E,Shady,Wind
+393,Blandon,B,Shady,Wind
+394,Nul,A,Shady,Wind
+395,Salty Bacon,D,Shady,Fire
+396,Suspicioni,D,Shady,Water
+397,Tantroni,D,Shady,Fire
+398,Contrarioni,B,Shady,Lightning
+399,Grumpus Khan,D,Shady,Wind
+400,Groupus Khan,B,Shady,Wind
+401,Hidabat,D,Shady,Wind
+402,Abodabat,A,Shady,Wind
+403,Belfree,A,Shady,Wind
+404,Yoink,D,Shady,Drain
+405,Gimme,A,Shady,Drain
+406,Indexter,D,Shady,Drain
+407,Hack King,A,Shady,Drain
+408,Yoodooit,C,Shady,Drain
+409,Count Zapaway,C,Shady,Ice
+410,Tyrat,C,Shady,Drain
+411,DisliKing,C,Shady,Ice
+412,Crook-a-doodle,C,Shady,Drain
+413,Rocky Badboya,C,Shady,Ice
+414,Injurnalist,C,Shady,Drain
+415,Misterr Typoo,C,Shady,Drain
+416,Tengloom,C,Shady,Wind
+417,Nird,B,Shady,Wind
+418,K'mon-K'mon,C,Shady,Wind
+419,Snobetty,B,Shady,Ice
+420,Dracunyan,B,Shady,Drain
+421,Lil Kappa,B,Shady,Water
+422,Horizontail,B,Shady,Lightning
+423,Usapyon,B,Shady,Ice
+424,Usapyon Foot.,B,Shady,Lightning
+425,Usapyon Scub.,B,Shady,Water
+426,Usapyon G.I.,B,Shady,Earth
+427,Usapyon Race.,B,Shady,Wind
+428,Usapyon B,B,Shady,Ice
+429,Usa. Zhongda,S,Shady,Ice
+430,Slimamander,A,Shady,Fire
+431,Negasus,A,Shady,Wind
+432,Neighfarious,A,Shady,Drain
+433,Gutsy Bones,A,Shady,Wind
+434,Timidevil,A,Shady,Fire
+435,Beelzebold,S,Shady,Fire
+436,Count Cavity,S,Shady,Fire
+437,Eyesoar,A,Shady,Earth
+438,Eyellure,S,Shady,Lightning
+439,Greesel,A,Shady,Fire
+440,Awevil,S,Shady,Water
+441,Wobblewok,S,Shady,Earth
+442,DarkyubiS,S,Shady,Drain
+443,Dr. E. RaserT,S,Shady,Drain
+444,Dr. Nocturne,S,Shady,Drain
+445,Tut 'n' K'mon,S,Shady,Wind
+446,Tie-red,E,Eerie,Fire
+447,Love-Torn,E,Eerie,Drain
+448,Shakey,E,Eerie,Lightning
+449,Quagmira,E,Eerie,Drain
+450,Coughkoff,E,Eerie,Water
+451,Hurchin,D,Eerie,Ice
+452,Droplette,E,Eerie,Water
+453,Drizzle,B,Eerie,Water
+454,Slush,E,Eerie,Ice
+455,Alhail,B,Eerie,Ice
+456,Gush,D,Eerie,Fire
+457,Peckpocket,E,Eerie,Drain
+458,Robbinyu,B,Eerie,Drain
+459,Rockabelly,D,Eerie,Drain
+460,Squeeky,E,Eerie,Ice
+461,Rawry,B,Eerie,Ice
+462,Buhu,E,Eerie,Wind
+463,Flumpy,C,Eerie,Wind
+464,Skreek,A,Eerie,Wind
+465,Manjimutt,E,Eerie,Fire
+466,Multimutt,B,Eerie,Fire
+467,Sir Berus,A,Eerie,Earth
+468,Furgus,E,Eerie,Earth
+469,Furdinand,A,Eerie,Earth
+470,Pergushin,E,Eerie,Drain
+471,Percrushionists,A,Eerie,Drain
+472,Nosirs,D,Eerie,Restoration
+473,Grubbles,D,Eerie,Drain
+474,Nervous Rex,D,Eerie,Ice
+475,Rinsin Repete,D,Eerie,Earth
+476,Chatalie,D,Eerie,Lightning
+477,Nagatha,C,Eerie,Drain
+478,Dismarelda,D,Eerie,Earth
+479,Drenchetta,C,Eerie,Drain
+480,Danke Sand,D,Eerie,Earth
+481,No Sandkyu,B,Eerie,Earth
+482,Papa Windbag,C,Eerie,Lightning
+483,Ben Tover,C,Eerie,Wind
+484,Compunzer,C,Eerie,Drain
+485,Lamedian,B,Eerie,Drain
+486,Soloman,C,Eerie,Lightning
+487,Rhumbastiltskin,C,Eerie,Drain
+488,Slax,C,Eerie,Water
+489,Cheeksqueek,C,Eerie,Ice
+490,Cuttincheez,A,Eerie,Ice
+491,Toiletta,C,Eerie,Drain
+492,Foiletta,A,Eerie,Drain
+493,Robomutt,B,Eerie,Wind
+494,Shedwin,B,Eerie,Ice
+495,Glumdango,B,Eerie,Drain
+496,Spewart,B,Eerie,Drain
+497,Grumples,B,Eerie,Drain
+498,Everfore,S,Eerie,Drain
+499,Eterna,S,Eerie,Drain
+500,Sproink,A,Eerie,Fire
+501,Darknyan,A,Eerie,Wind
+502,DecidevibleT,A,Eerie,Lightning
+503,Hairum Scarum,A,Eerie,Earth
+504,Insomni,A,Eerie,Ice
+505,Sandi,S,Eerie,Drain
+506,Arachnus,S,Eerie,Earth
+507,Arachnia,S,Eerie,Earth
+508,OridjinnS,S,Eerie,Drain
+509,Horridjinn,S,Eerie,Drain
+510,Little CharrmerT,S,Eerie,Fire
+511,Cricky,E,Slippery,Water
+512,Humtea Jumtea,E,Slippery,Water
+513,Snailspace,E,Slippery,Water
+514,Putasockinit,E,Slippery,Lightning
+515,Snidewinder,B,Slippery,Lightning
+516,Noko,E,Slippery,Earth
+517,Bloominoko,A,Slippery,Earth
+518,Pandanoko,A,Slippery,Ice
+519,Starry Noko,B,Slippery,Restoration
+520,Snaggly,E,Slippery,Lightning
+521,Whinona,A,Slippery,Lightning
+522,OMGator,D,Slippery,Water
+523,Nautaloss,D,Slippery,Water
+524,Shellebrity,D,Slippery,Water
+525,Heheheel,D,Slippery,Restoration
+526,Croonger,C,Slippery,Drain
+527,Urnaconda,C,Slippery,Restoration
+528,Takoyakid,D,Slippery,Fire
+529,Takoyaking,B,Slippery,Fire
+530,Fishpicable,D,Slippery,Lightning
+531,Rageon,B,Slippery,Lightning
+532,Tunatic,A,Slippery,Fire
+533,Flushback,D,Slippery,Restoration
+534,Vacuumory,A,Slippery,Restoration
+535,Irewig,D,Slippery,Fire
+536,Firewig,A,Slippery,Fire
+537,Draggie,D,Slippery,Earth
+538,Dragon Lord,S,Slippery,Earth
+539,Azure Dragon,S,Slippery,Water
+540,Mermaidyn,D,Slippery,Water
+541,Mermadonna,S,Slippery,Water
+542,Mermother,S,Slippery,Water
+543,T-Wrecks,D,Slippery,Earth
+544,D-StroyS,S,Slippery,Earth
+545,Clodzilla,S,Slippery,Earth
+546,Lady Longnek,C,Slippery,Restoration
+547,Whisper,C,Slippery,Drain
+548,Whispocrates,C,Slippery,Drain
+549,Snippity Cricket,C,Slippery,Wind
+550,Flocktopus,C,Slippery,Water
+551,Bitter Batter,C,Slippery,Fire
+552,Daiz,C,Slippery,Drain
+553,Confuze,B,Slippery,Drain
+554,Chummer,C,Slippery,Water
+555,Shrook,B,Slippery,Water
+556,Spenp,C,Slippery,Wind
+557,Almi,B,Slippery,Water
+558,Babblong,C,Slippery,Water
+559,Bananose,B,Slippery,Water
+560,Cocobanana,A,Slippery,Lightning
+561,Draaagin,B,Slippery,Ice
+562,Robonoko,B,Slippery,Earth
+563,Robodraggie,B,Slippery,Fire
+564,Ooze Zat,B,Slippery,Ice
+565,Copperled,B,Slippery,Fire
+566,Cynake,B,Slippery,Water
+567,Slitheref,A,Slippery,Lightning
+568,SV Snaggerjag,A,Slippery,Water
+569,Mython,A,Slippery,Water
+570,Venoct,S,Slippery,Lightning
+571,Shad. Venoct,S,Slippery,Restoration
+572,Frogetmenot,S,Slippery,Restoration
+573,Originyan,E,Charming,Fire
+574,Sighborg Y,B,WandroidIcon,Lightning
+575,Unfairy,S,Wicked,Drain
+576,Unkaind,S,Wicked,Water
+577,Untidy,S,Wicked,Earth
+578,Unpleasant,S,Wicked,Wind
+579,Unkeen,S,Wicked,Lightning
+580,Grublappa,C,Wicked,Lightning
+581,Madmunch,B,Wicked,Earth
+582,Badsmella,A,Wicked,Wind
+583,Mad Kappa,A,Wicked,Water
+584,Shamasol,D,Wicked,Wind
+585,Gnomine,C,Wicked,Restoration
+586,Defectabull,C,Wicked,Restoration
+587,Feargus,D,Wicked,Earth
+588,Scaremaiden,C,Wicked,Water
+589,Wrongnek,B,Wicked,Restoration
+590,King Jibanyan,A,Charming,Fire
+591,Qn. Usapyon,A,Shady,Ice
+592,Jackomasan,A,Charming,Fire
+593,Komajiro Ten,A,Charming,Lightning
+594,Acenyan,A,Brave,Wind
+595,Josper,A,Slippery,Drain
+596,Benzaiten,S,Charming,Lightning
+597,Hotei,S,Mysterious,Wind
+598,Daikokuten,S,Tough,Earth
+599,Ebisu,S,Slippery,Restoration
+600,Bishamonten,S,Brave,Fire
+601,Columbakat,S,Brave,Water
+602,T. Energison,S,Mysterious,Lightning
+603,Starwin,S,Heartful,Restoration
+604,Last Nyanmurai,S,Brave,Fire
+605,Koma Star,S,Mysterious,Lightning
+606,Platinos,S,Tough,Lightning
+607,Flash T. Cash,S,Heartful,Restoration
+608,Shogunyan,S,Brave,Wind
+609,Komashura,S,Mysterious,Fire
+610,Gilgaros,S,Tough,Lightning
+611,Spoilerina,S,Charming,Wind
+612,Elder Bloom,S,Heartful,Restoration
+613,Poofessor,S,Shady,Drain
+614,Dandoodle,S,Eerie,Restoration
+615,Slurpent,S,Slippery,Drain
+616,Re-Q-Perate,S,Eerie,Drain
+617,Princess PearlS,S,Charming,Water
+618,AsuraT,S,Brave,Fire
+619,Terminyanator,A,Tough,Fire
+620,Supernyan,A,Brave,Wind
+621,Hovernyan S,S,Brave,Wind
+622,Hover. Cao CaoSk,S,Brave,Wind
+623,YoganalistenSk,C,Mysterious,Earth
+624,Judgebrick,B,Tough,Earth
+625,UrnfulfilledSk,B,Tough,Earth
+626,Sad 2 the Bone,A,Tough,Drain
+627,Venoctobot,S,Tough,Lightning
+628,Orcanos Lu BuSk,S,Tough,Drain
+629,Kyubot,S,Tough,Lightning
+630,Ult. RobonyanSk,S,Tough,Wind
+631,Molar Petite,D,Charming,Restoration
+632,Life-is-Parfait,B,Charming,Restoration
+633,Mee 2Sk,B,Charming,Restoration
+634,KoalanyanSk,A,Charming,Restoration
+635,Jibanyan T,A,Charming,Earth
+636,Komasan T,A,Charming,Earth
+637,EggcelencySk,S,Charming,Restoration
+638,DeadcoolSk,S,Charming,Lightning
+639,Sweattuce,C,Heartful,Restoration
+640,Mr. Blue-Shy,C,Heartful,Water
+641,Amplifly,A,Heartful,Restoration
+642,Ulteria,A,Heartful,Restoration
+643,My-Baaad,C,Shady,Drain
+644,Sunk'nsoulSk,C,Shady,Drain
+645,Crummy Mum.,B,Shady,Drain
+646,Kaped Koma.,A,Shady,Drain
+647,Tofupyon,A,Shady,Restoration
+648,Ed ZoffSk,S,Shady,Drain
+649,Gorgeous Amb.,S,Shady,Lightning
+650,HinozallSk,S,Shady,Lightning
+651,Zazel,S,Shady,Drain
+652,Procrastino.Sk,C,Eerie,Drain
+653,Treasure Pest,C,Eerie,Drain
+654,J. Ne-Sais-Quoi,S,Eerie,Drain
+655,Whi. KongmingSk,A,Slippery,Drain
+656,Jurojin,S,Shady,Drain
+657,Fukurokuju,S,Heartful,Restoration
+658,Sarcophacurse,S,Mysterious,Lightning
+659,King Deadward,S,Tough,Earth
+660,Pandora,S,Charming,Drain
+661,Comic Genieus,S,Heartful,Wind
+662,Bastnetnyan,S,Shady,Drain
+663,Komanubis,S,Eerie,Drain
+664,Gabby,S,Charming,Wind
+665,Teducator,S,Shady,Drain
+666,Gentlemutt,S,Eerie,Ice
+667,City Licker,S,Slippery,Fire
+668,Whyvern KingSk,S,Slippery,Ice
+669,Lord Enma,S,King,Fire
+670,Rgt. Zazel,S,Brave,Restoration
+671,Hinozall Awk.,S,Shady,Lightning
+672,Ancient Enma,S,King,Fire
+673,Lord Enma Awk.,S,King,Lightning
+674,The Boracle,S,Slippery,Ice
+675,Rampajah,S,Brave,Fire
+676,Cymbalina,B,Charming,Restoration
+677,Mumbles,A,Tough,Water
+678,Roary,A,Tough,Fire
+679,Letsbifrenz,A,Shady,Drain
+680,Wack o' Lantern,B,Eerie,Fire
+681,Moolinda,S,Brave,Earth
+682,Neighthan,S,Brave,Ice
+683,Big FishS,S,Slippery,Water
+684,AlpinaT,S,Heartful,Restoration
+685,LunieSk,S,Shady,Lightning
+686,Blizzie,S,Charming,Ice
+687,KJ,B,Charming,Lightning
+688,Solar EnmaS,S,King,Fire
+689,Infinite EnmaT,S,King,Lightning
+690,Umbral EnmaSk,S,King,Drain
+691,Indiana JawsS,A,Slippery,Water
+692,Shovulcan,A,Mysterious,Lightning
+693,ZomboySk,A,Eerie,Fire
+694,Nyanses IIT,A,Heartful,Restoration
+695,Meopatra,S,Charming,Restoration
+696,Fitwit,S,Slippery,Earth
+697,El Dorago,S,Brave,Lightning
+698,The Hinix,S,Brave,Fire

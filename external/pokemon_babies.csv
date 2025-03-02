@@ -1,0 +1,1106 @@
+parent_species,baby_species
+Bulbasaur,Bulbasaur
+Ivysaur,Bulbasaur
+Venusaur,Bulbasaur
+Charmander,Charmander
+Charmeleon,Charmander
+Charizard,Charmander
+Squirtle,Squirtle
+Wartortle,Squirtle
+Blastoise,Squirtle
+Caterpie,Caterpie
+Metapod,Caterpie
+Butterfree,Caterpie
+Weedle,Weedle
+Kakuna,Weedle
+Beedrill,Weedle
+Pidgey,Pidgey
+Pidgeotto,Pidgey
+Pidgeot,Pidgey
+Rattata,Rattata
+Raticate,Rattata
+Spearow,Spearow
+Fearow,Spearow
+Ekans,Ekans
+Arbok,Ekans
+Pikachu,Pichu
+Raichu,Pichu
+Sandshrew,Sandshrew
+Sandslash,Sandshrew
+Nidoran♀,Nidoran♀
+Nidorina,Nidoran♀
+Nidoqueen,Nidoran♀
+Nidoran♂,Nidoran♂
+Nidorino,Nidoran♂
+Nidoking,Nidoran♂
+Clefairy,Clefairy
+Clefable,Clefairy
+Vulpix,Vulpix
+Ninetales,Vulpix
+Jigglypuff,Jigglypuff
+Wigglytuff,Jigglypuff
+Zubat,Zubat
+Golbat,Zubat
+Oddish,Oddish
+Gloom,Oddish
+Vileplume,Oddish
+Paras,Paras
+Parasect,Paras
+Venonat,Venonat
+Venomoth,Venonat
+Diglett,Diglett
+Dugtrio,Diglett
+Meowth,Meowth
+Persian,Meowth
+Psyduck,Psyduck
+Golduck,Psyduck
+Mankey,Mankey
+Primeape,Mankey
+Growlithe,Growlithe
+Arcanine,Growlithe
+Poliwag,Poliwag
+Poliwhirl,Poliwag
+Poliwrath,Poliwag
+Abra,Abra
+Kadabra,Abra
+Alakazam,Abra
+Machop,Machop
+Machoke,Machop
+Machamp,Machop
+Bellsprout,Bellsprout
+Weepinbell,Bellsprout
+Victreebel,Bellsprout
+Tentacool,Tentacool
+Tentacruel,Tentacool
+Geodude,Geodude
+Graveler,Geodude
+Golem,Geodude
+Ponyta,Ponyta
+Rapidash,Ponyta
+Slowpoke,Slowpoke
+Slowbro,Slowpoke
+Magnemite,Magnemite
+Magneton,Magnemite
+Farfetch'd,Farfetch'd
+Doduo,Doduo
+Dodrio,Doduo
+Seel,Seel
+Dewgong,Seel
+Grimer,Grimer
+Muk,Grimer
+Shellder,Shellder
+Cloyster,Shellder
+Gastly,Gastly
+Haunter,Gastly
+Gengar,Gastly
+Onix,Onix
+Drowzee,Drowzee
+Hypno,Drowzee
+Krabby,Krabby
+Kingler,Krabby
+Voltorb,Voltorb
+Electrode,Voltorb
+Exeggcute,Exeggcute
+Exeggutor,Exeggcute
+Cubone,Cubone
+Marowak,Cubone
+Hitmonlee,Tyrogue
+Hitmonchan,Tyrogue
+Lickitung,Lickitung
+Koffing,Koffing
+Weezing,Koffing
+Rhyhorn,Rhyhorn
+Rhydon,Rhyhorn
+Chansey,Happiny
+Tangela,Tangela
+Kangaskhan,Kangaskhan
+Horsea,Horsea
+Seadra,Horsea
+Goldeen,Goldeen
+Seaking,Goldeen
+Staryu,Staryu
+Starmie,Staryu
+Mr. Mime,Mime Jr.
+Scyther,Scyther
+Jynx,Smoochum
+Electabuzz,Elekid
+Magmar,Magby
+Pinsir,Pinsir
+Tauros,Tauros
+Magikarp,Magikarp
+Gyarados,Magikarp
+Lapras,Lapras
+Ditto,Ditto
+Eevee,Eevee
+Vaporeon,Eevee
+Jolteon,Eevee
+Flareon,Eevee
+Porygon,Porygon
+Omanyte,Omanyte
+Omastar,Omanyte
+Kabuto,Kabuto
+Kabutops,Kabuto
+Aerodactyl,Aerodactyl
+Snorlax,Munchlax
+Articuno,Articuno
+Zapdos,Zapdos
+Moltres,Moltres
+Dratini,Dratini
+Dragonair,Dratini
+Dragonite,Dratini
+Mewtwo,Mewtwo
+Mew,Mew
+Chikorita,Chikorita
+Bayleef,Chikorita
+Meganium,Chikorita
+Cyndaquil,Cyndaquil
+Quilava,Cyndaquil
+Typhlosion,Cyndaquil
+Hisuian Typhlosion,Cyndaquil
+Totodile,Totodile
+Croconaw,Totodile
+Feraligatr,Totodile
+Sentret,Sentret
+Furret,Sentret
+Hoothoot,Hoothoot
+Noctowl,Hoothoot
+Ledyba,Ledyba
+Ledian,Ledyba
+Spinarak,Spinarak
+Ariados,Spinarak
+Crobat,Zubat
+Chinchou,Chinchou
+Lanturn,Chinchou
+Pichu,Pichu
+Spiky-eared Pichu,Spiky-eared Pichu
+Cleffa,Cleffa
+Igglybuff,Cleffa
+Togepi,Togepi
+Togetic,Togepi
+Natu,Natu
+Xatu,Natu
+Mareep,Mareep
+Flaaffy,Mareep
+Ampharos,Mareep
+Bellossom,Bellossom
+Marill,Azurill
+Azumarill,Azurill
+Sudowoodo,Bonsly
+Politoed,Poliwag
+Hoppip,Hoppip
+Skiploom,Hoppip
+Jumpluff,Hoppip
+Aipom,Aipom
+Sunkern,Sunkern
+Sunflora,Sunkern
+Yanma,Yanma
+Wooper,Wooper
+Paldean Wooper,Paldean Wooper
+Quagsire,Wooper
+Espeon,Eevee
+Umbreon,Eevee
+Murkrow,Murkrow
+Slowking,Slowpoke
+Galarian Slowking,Galarian Slowpoke
+Misdreavus,Misdreavus
+Unown,Unown
+Wobbuffet,Wynaut
+Girafarig,Girafarig
+Pineco,Pineco
+Forretress,Pineco
+Dunsparce,Dunsparce
+Gligar,Gligar
+Steelix,Onix
+Snubbull,Snubbull
+Granbull,Snubbull
+Qwilfish,Qwilfish
+Hisuian Qwilfish,Hisuian Qwilfish
+Scizor,Syther
+Shuckle,Shuckle
+Heracross,Heracross
+Sneasel,Sneasel
+Hisuian Sneasel,Hisuian Sneasel
+Teddiursa,Teddiursa
+Ursaring,Teddiursa
+Slugma,Slugma
+Magcargo,Slugma
+Swinub,Swinub
+Piloswine,Swinub
+Corsola,Corsola
+Galarian Corsola,Galarian Corsola
+Remoraid,Remoraid
+Octillery,Octillery
+Delibird,Delibird
+Mantine,Mantyke
+Skarmory,Skarmory
+Houndour,Houndour
+Houndoom,Houndour
+Kingdra,Horsea
+Phanpy,Phanpy
+Donphan,Phanpy
+Porygon2,Porygon
+Stantler,Stantler
+Smeargle,Smeargle
+Tyrogue,Tyrogue
+Hitmontop,Tyrogue
+Smoochum,Smoochum
+Elekid,Elekid
+Magby,Magby
+Miltank,Miltank
+Blissey,Happiny
+Raikou,Raikou
+Entei,Entei
+Suicune,Suicune
+Larvitar,Larvitar
+Pupitar,Larvitar
+Tyranitar,Larvitar
+Lugia,Lugia
+Ho-oh,Ho-oh
+Celebi,Celebi
+Treecko,Treecko
+Grovyle,Treecko
+Sceptile,Treecko
+Torchic,Torchic
+Combusken,Torchic
+Blaziken,Torchic
+Mudkip,Mudkip
+Marshtomp,Mudkip
+Swampert,Mudkip
+Poochyena,Poochyena
+Mightyena,Poochyena
+Zigzagoon,Zigzagoon
+Galarian Zigzagoon,Galarian Zigzagoon
+Linoone,Zigzagoon
+Galarian Linoone,Galarian Zigzagoon
+Wurmple,Wurmple
+Silcoon,Wurmple
+Beautifly,Wurmple
+Cascoon,Wurmple
+Dustox,Wurmple
+Lotad,Lotad
+Lombre,Lotad
+Ludicolo,Lotad
+Seedot,Seedot
+Nuzleaf,Seedot
+Shiftry,Seedot
+Taillow,Taillow
+Swellow,Taillow
+Wingull,Wingull
+Pelipper,Wingull
+Ralts,Ralts
+Kirlia,Ralts
+Gardevoir,Ralts
+Surskit,Surskit
+Masquerain,Surskit
+Shroomish,Shroomish
+Breloom,Shroomish
+Slakoth,Slakoth
+Vigoroth,Slakoth
+Slaking,Slakoth
+Nincada,Nincada
+Ninjask,Nincada
+Shedinja,Nincada
+Whismur,Whismur
+Loudred,Whismur
+Exploud,Whismur
+Makuhita,Makuhita
+Hariyama,Makuhita
+Azurill,Azurill
+Nosepass,Nosepass
+Skitty,Skitty
+Delcatty,Skitty
+Sableye,Sableye
+Mawile,Mawile
+Aron,Aron
+Lairon,Aron
+Aggron,Aron
+Meditite,Meditite
+Medicham,Meditite
+Electrike,Electrike
+Manectric,Electrike
+Plusle,Plusle
+Minun,Minun
+Volbeat,Volbeat
+Illumise,Illumise
+Roselia,Roselia
+Gulpin,Gulpin
+Swalot,Gulpin
+Carvanha,Carvanha
+Sharpedo,Carvanha
+Wailmer,Wailmer
+Wailord,Wailmer
+Numel,Numel
+Camerupt,Numel
+Torkoal,Torkoal
+Spoink,Spoink
+Grumpig,Spoink
+Spinda,Spinda
+Trapinch,Trapinch
+Vibrava,Trapinch
+Flygon,Trapinch
+Cacnea,Cacnea
+Cacturne,Cacnea
+Swablu,Swablu
+Altaria,Swablu
+Zangoose,Zangoose
+Seviper,Seviper
+Lunatone,Lunatone
+Solrock,Solrock
+Barboach,Barboach
+Whiscash,Barboach
+Corphish,Corphish
+Crawdaunt,Corphish
+Baltoy,Baltoy
+Claydol,Baltoy
+Lileep,Lileep
+Cradily,Lileep
+Anorith,Anorith
+Armaldo,Anorith
+Feebas,Feebas
+Milotic,Feebas
+Castform,Castform
+Kecleon,Kecleon
+Shuppet,Shuppet
+Banette,Shuppet
+Duskull,Duskull
+Dusclops,Duskull
+Tropius,Tropius
+Chimecho,Chimecho
+Absol,Absol
+Wynaut,Wynaut
+Snorunt,Wynaut
+Glalie,Glalie
+Spheal,Spheal
+Sealeo,Spheal
+Walrein,Walrein
+Clamperl,Clamperl
+Huntail,Huntail
+Gorebyss,Gorebyss
+Relicanth,Relicanth
+Luvdisc,Luvdisc
+Bagon,Bagon
+Shelgon,Bagon
+Salamence,Bagon
+Beldum,Beldum
+Metang,Beldum
+Metagross,Beldum
+Regirock,Regirock
+Regice,Regice
+Registeel,Registeel
+Latias,Latias
+Latios,Latios
+Kyogre,Kyogre
+Groudon,Groudon
+Rayquaza,Rayquaza
+Jirachi,Jirachi
+Deoxys,Deoxys
+Attack Deoxys,Deoxys
+Defense Deoxys,Deoxys
+Speed Deoxys,Deoxys
+Turtwig,Turtwig
+Grotle,Turtwig
+Torterra,Turtwig
+Chimchar,Chimchar
+Monferno,Chimchar
+Infernape,Chimchar
+Piplup,Piplup
+Prinplup,Piplup
+Empoleon,Piplup
+Starly,Starly
+Staravia,Starly
+Staraptor,Starly
+Bidoof,Bidoof
+Bibarel,Bidoof
+Kricketot,Kricketot
+Kricketune,Kricketot
+Shinx,Shinx
+Luxio,Shinx
+Luxray,Shinx
+Budew,Budew
+Roserade,Budew
+Cranidos,Cranidos
+Rampardos,Cranidos
+Shieldon,Shieldon
+Bastiodon,Shieldon
+Plant Burmy,Plant Burmy
+Sandy Burmy,Sandy Burmy
+Trash Burmy,Trash Burmy
+Plant Burmy,Plant Burmy
+Sandy Wormadam,Sandy Burmy
+Sandy Wormadam,Sandy Burmy
+Trash Wormadam,Trash Burmy
+Plant Wormadam,Plant Burmy
+Mothim,Plant Burmy
+Combee,Combee
+Vespiquen,Combee
+Pachirisu,Pachirisu
+Buizel,Buizel
+Floatzel,Buizel
+Cherubi,Cherubi
+Cherrim,Cherubi
+Shellos,Shellos
+Gastrodon,Shellos
+Ambipom,Aipom
+Drifloon,Drifloon
+Drifblim,Drifloon
+Buneary,Buneary
+Lopunny,Buneary
+Mismagius,Misdreavous
+Honchkrow,Murkrow
+Glameow,Glameow
+Purugly,Glameow
+Chingling,Chingling
+Stunky,Stunky
+Skuntank,Stunky
+Bronzor,Bronzor
+Bronzong,Bronzor
+Bonsly,Bonsly
+Mime Jr.,Mime Jr.
+Happiny,Happiny
+Chatot,Chatot
+Spiritomb,Spiritomb
+Gible,Gible
+Gabite,Gible
+Garchomp,Gible
+Munchlax,Munchlax
+Riolu,Riolu
+Lucario,Riolu
+Hippopotas,Hippopotas
+Hippowdon,Hippopotas
+Skorupi,Skorupi
+Drapion,Skorupi
+Croagunk,Croagunk
+Toxicroak,Croagunk
+Carnivine,Carnivine
+Finneon,Finneon
+Lumineon,Finneon
+Mantyke,Mantyke
+Snover,Snover
+Abomasnow,Snover
+Weavile,Sneasle
+Magnezone,Magnemite
+Lickilicky,Likitung
+Rhyperior,Rhydon
+Tangrowth,Tangela
+Electivire,Elekid
+Magmortar,Magby
+Togekiss,Togepi
+Yanmega,Yanma
+Leafeon,Eevee
+Glaceon,Eevee
+Gliscor,Gligar
+Mamoswine,Swinub
+Porygon-Z,Porygon
+Gallade,Ralts
+Probopass,Nosepass
+Dusknoir,Duskull
+Froslass,Snorunt
+Rotom,Rotom
+Heat Rotom,Rotom
+Wash Rotom,Rotom
+Frost Rotom,Rotom
+Fan Rotom,Rotom
+Mow Rotom,Rotom
+Uxie,Uxie
+Mesprit,Mesprit
+Azelf,Azelf
+Dialga,Dialga
+Origin Dialga,Origin Dialga
+Palkia,Palkia
+Origin Palkia,Origin Palkia
+Heatran,Heatran
+Regigigas,Regigigas
+Giratina,Giratina
+Origin Giratina,Origin Giratina
+Cresselia,Cresselia
+Phione,Phione
+Manaphy,Phione
+Darkrai,Darkrai
+Shaymin,Shaymin
+Sky Shaymin,Shaymin
+Arceus,Arceus
+Victini,Victini
+Snivy,Snivy
+Servine,Snivy
+Serperior,Snivy
+Tepig,Tepig
+Pignite,Tepig
+Emboar,Tepig
+Oshawott,Oshawott
+Dewott,Oshawott
+Samurott,Oshawott
+Hisuian Samurott,Oshawott
+Patrat,Patrat
+Watchog,Patrat
+Lillipup,Lillipup
+Herdier,Lillipup
+Stoutland,Lillipup
+Purrloin,Purrloin
+Liepard,Purrloin
+Pansage,Pansage
+Simisage,Pansage
+Pansear,Pansear
+Simisear,Pansear
+Panpour,Panpour
+Simipour,Panpour
+Munna,Munna
+Musharna,Munna
+Pidove,Pidove
+Tranquill,Pidove
+Unfezant,Pidove
+Blitzle,Blitzle
+Zebstrika,Blitzle
+Roggenrola,Roggenrola
+Boldore,Roggenrola
+Gigalith,Roggenrola
+Woobat,Woobat
+Swoobat,Woobat
+Drilbur,Drilbur
+Excadrill,Drilbur
+Audino,Audino
+Timburr,Timburr
+Gurdurr,Timburr
+Conkeldurr,Timburr
+Tympole,Tympole
+Palpitoad,Tympole
+Seismitoad,Tympole
+Throh,Throh
+Sawk,Sawk
+Sewaddle,Sewaddle
+Swadloon,Sewaddle
+Leavanny,Sewaddle
+Venipede,Venipede
+Whirlipede,Venipede
+Scolipede,Venipede
+Cottonee,Cottonee
+Whimsicott,Cottonee
+Petilil,Petilil
+Lilligant,Petilil
+Hisuian Lilligant,Petilil
+Basculin,Basculin
+Hisuian Basculin,Hisuian Basculin
+Sandile,Sandile
+Krokorok,Sandile
+Krookodile,Sandile
+Darumaka,Darumaka
+Galarian Darumaka,Galarian Darumaka
+Darmanitan,Darumaka
+Zen Darmanitan,Darumaka
+Galarian Darmanitan,Galarian Darumaka
+Zen Galarian Darmanitan,Darumaka
+Maractus,Maractus
+Dwebble,Dwebble
+Crustle,Dwebble
+Scraggy,Scraggy
+Scrafty,Scraggy
+Sigilyph,Sigilyph
+Yamask,Yamask
+Galarian Yamask,Galarian Yamask
+Cofagrigus,Yamask
+Tirtouga,Tirtouga
+Carracosta,Tirtouga
+Archen,Archen
+Archeops,Archen
+Trubbish,Trubbish
+Garbodor,Trubbish
+Zorua,Zorua
+Hisuian Zorua,Hisuian Zorua
+Zoroark,Zorua
+Hisuian Zoroark,Hisuian Zorua
+Minccino,Minccino
+Cinccino,Minccino
+Gothita,Gothita
+Gothorita,Gothita
+Gothitelle,Gothita
+Solosis,Solosis
+Duosion,Solosis
+Reuniclus,Solosis
+Ducklett,Ducklett
+Swanna,Ducklett
+Vanillite,Vanillite
+Vanillish,Vanillite
+Vanilluxe,Vanillite
+Deerling,Deerling
+Sawsbuck,Deerling
+Emolga,Emolga
+Karrablast,Karrablast
+Escavalier,Karrablast
+Foongus,Foongus
+Amoonguss,Foongus
+Frillish,Frillish
+Jellicent,Frillish
+Alomomola,Alomomola
+Joltik,Joltik
+Galvantula,Joltik
+Ferroseed,Ferroseed
+Ferrothorn,Ferroseed
+Klink,Klink
+Klang,Klink
+Klinklang,Klink
+Tynamo,Tynamo
+Eelektrik,Tynamo
+Eelektross,Tynamo
+Elgyem,Elgyem
+Beheeyem,Elgyem
+Litwick,Litwick
+Lampent,Litwick
+Chandelure,Litwick
+Axew,Axew
+Fraxure,Axew
+Haxorus,Axew
+Cubchoo,Cubchoo
+Beartic,Cubchoo
+Cryogonal,Cryogonal
+Shelmet,Shelmet
+Accelgor,Shelmet
+Stunfisk,Stunfisk
+Galarian Stunfisk,Galarian Stunfisk
+Mienfoo,Mienfoo
+Mienshao,Mienfoo
+Druddigon,Druddigon
+Golett,Golett
+Golurk,Golett
+Pawniard,Pawniard
+Bisharp,Pawniard
+Bouffalant,Bouffalant
+Rufflet,Rufflet
+Braviary,Rufflet
+Hisuian Braviary,Rufflet
+Vullaby,Vullaby
+Mandibuzz,Vullaby
+Heatmor,Heatmor
+Durant,Durant
+Deino,Deino
+Zweilous,Deino
+Hydreigon,Deino
+Larvesta,Larvesta
+Volcarona,Larvesta
+Cobalion,Cobalion
+Terrakion,Terrakion
+Virizion,Virizion
+Tornadus,Tornadus
+Therian Tornadus,Therian Tornadus
+Thundurus,Thundurus
+Therian Thundurus,Therian Thundurus
+Reshiram,Reshiram
+Zekrom,Zekrom
+Landorus,Landorus
+Therian Landorus,Therian Landorus
+Kyurem,Kyurem
+Black Kyurem,Kyurem
+White Kyurem,Kyurem
+Keldeo,Keldeo
+Meloetta,Meloetta
+Pirouette Meloetta,Meloetta
+Genesect,Genesect
+Chespin,Chespin
+Quilladin,Chespin
+Chesnaught,Chespin
+Fennekin,Fennekin
+Braixen,Fennekin
+Delphox,Fennekin
+Froakie,Froakie
+Frogadier,Froakie
+Greninja,Froakie
+Bunnelby,Bunnelby
+Diggersby,Bunnelby
+Fletchling,Fletchling
+Fletchinder,Fletchling
+Talonflame,Fletchling
+Scatterbug,Scatterbug
+Spewpa,Scatterbug
+Vivillon,Scatterbug
+Litleo,Litleo
+Pyroar,Litleo
+Flabébé,Flabébé
+Floette,Flabébé
+AZ's Floette,AZ's Floette
+Florges,Flabébé
+Skiddo,Skiddo
+Gogoat,Skiddo
+Pancham,Pancham
+Pangoro,Pancham
+Furfrou,Furfrou
+Espurr,Espurr
+Meowstic♀,Espurr
+Meowstic♀,Espurr
+Meowstic♂,Espurr
+Honedge,Honedge
+Doublade,Honedge
+Aegislash,Honedge
+Blade Aegislash,Honedge
+Spritzee,Spritzee
+Aromatisse,Spritzee
+Swirlix,Swirlix
+Slurpuff,Swirlix
+Inkay,Inkay
+Malamar,Inkay
+Binacle,Binacle
+Barbaracle,Binacle
+Skrelp,Skrelp
+Dragalge,Skrelp
+Clauncher,Clauncher
+Clawitzer,Clauncher
+Helioptile,Helioptile
+Heliolisk,Helioptile
+Tyrunt,Tyrunt
+Tyrantrum,Tyrunt
+Amaura,Amaura
+Aurorus,Amaura
+Sylveon,Eevee
+Hawlucha,Hawlucha
+Dedenne,Dedenne
+Carbink,Carbink
+Goomy,Goomy
+Sliggoo,Goomy
+Hisuian Sliggoo,Goomy
+Goodra,Goomy
+Hisuian Goodra,Goomy
+Klefki,Klefki
+Phantump,Phantump
+Trevenant,Phantump
+Large Pumpkaboo,Large Pumpkaboo
+Small Pumpkaboo,Small Pumpkaboo
+Average Pumpkaboo,Average Pumpkaboo
+Large Pumpkaboo,Large Pumpkaboo
+SuperSize Pumpkaboo,SuperSize Pumpkaboo
+Average Gourgeist,Average Pumpkaboo
+Small Gourgeist,Small Pumpkaboo
+Average Gourgeist,Average Pumpkaboo
+Large Gourgeist,Large Pumpkaboo
+SuperSize Gourgeist,SuperSize Pumpkaboo
+Bergmite,Bergmite
+Avalugg,Bergmite
+Hisuian Avalugg,Bergmite
+Noibat,Noibat
+Noivern,Noibat
+Xerneas,Xerneas
+Yveltal,Yveltal
+50% Zygarde,10% Zygarde
+10% Zygarde,10% Zygarde
+Complete Zygarde,10% Zygarde
+Diancie,Diancie
+Hoopa,Hoopa
+Unbound Hoopa,Unbound Hoopa
+Volcanion,Volcanion
+Rowlet,Rowlet
+Dartrix,Rowlet
+Decidueye,Rowlet
+Hisuian Decidueye,Rowlet
+Litten,Litten
+Torracat,Litten
+Incineroar,Litten
+Popplio,Popplio
+Brionne,Popplio
+Primarina,Popplio
+Pikipek,Pikipek
+Trumbeak,Pikipek
+Toucannon,Pikipek
+Yungoos,Yungoos
+Gumshoos,Yungoos
+Grubbin,Grubbin
+Charjabug,Grubbin
+Vikavolt,Grubbin
+Crabrawler,Crabrawler
+Crabominable,Crabrawler
+Oricorio,Oricorio
+Cutiefly,Cutiefly
+Ribombee,Cutiefly
+Rockruff,Rockruff
+Dusk Lycanroc,Rockruff
+Midnight Lycanroc,Rockruff
+Dusk Lycanroc,Rockruff
+Midday Lycanroc,Rockruff
+Wishiwashi,Wishiwashi
+School Wishiwashi,Wishiwashi
+Mareanie,Mareanie
+Toxapex,Mareanie
+Mudbray,Mudbray
+Mudsdale,Mudbray
+Dewpider,Dewpider
+Araquanid,Dewpider
+Fomantis,Fomantis
+Lurantis,Fomantis
+Morelull,Morelull
+Shiinotic,Morelull
+Salandit,Salandit
+Salazzle,Salandit
+Stufful,Stufful
+Bewear,Stufful
+Bounsweet,Bounsweet
+Steenee,Bounsweet
+Tsareena,Bounsweet
+Comfey,Comfey
+Oranguru,Oranguru
+Passimian,Passimian
+Wimpod,Wimpod
+Golisopod,Wimpod
+Sandygast,Sandygast
+Palossand,Sandygast
+Pyukumuku,Pyukumuku
+Type: Null,Type: Null
+Silvally,Type: Null
+Minior,Minior
+Komala,Komala
+Turtonator,Turtonator
+Togedemaru,Togedemaru
+Mimikyu,Mimikyu
+Bruxish,Bruxish
+Drampa,Drampa
+Dhelmise,Dhelmise
+Jangmo-o,Jangmo-o
+Hakamo-o,Jangmo-o
+Kommo-o,Jangmo-o
+Tapu Koko,Tapu Koko
+Tapu Lele,Tapu Lele
+Tapu Bulu,Tapu Bulu
+Tapu Fini,Tapu Fini
+Cosmog,Cosmog
+Cosmoem,Cosmog
+Solgaleo,Cosmog
+Lunala,Cosmog
+Nihilego,Nihilego
+Buzzwole,Buzzwole
+Pheromosa,Pheromosa
+Xurkitree,Xurkitree
+Celesteela,Celesteela
+Kartana,Kartana
+Guzzlord,Guzzlord
+Necrozma,Necrozma
+Dusk Mane Necrozma,Necrozma
+Dawn Wings Necrozma,Necrozma
+Ultra Necrozma,Necrozma
+Magearna,Necrozma
+Marshadow,Marshadow
+Poipole,Poipole
+Naganadel,Poipole
+Stakataka,Stakataka
+Blacephalon,Blacephalon
+Zeraora,Zeraora
+Meltan,Meltan
+Melmetal,Meltan
+Grookey,Grookey
+Thwackey,Grookey
+Rillaboom,Grookey
+Scorbunny,Scorbunny
+Raboot,Scorbunny
+Cinderace,Scorbunny
+Sobble,Sobble
+Drizzile,Sobble
+Inteleon,Sobble
+Skwovet,Skwovet
+Greedent,Skwovet
+Rookidee,Rookidee
+Corvisquire,Rookidee
+Corviknight,Rookidee
+Blipbug,Blipbug
+Dottler,Blipbug
+Orbeetle,Blipbug
+Nickit,Nickit
+Thievul,Nickit
+Gossifleur,Gossifleur
+Eldegoss,Gossifleur
+Wooloo,Wooloo
+Dubwool,Wooloo
+Chewtle,Chewtle
+Drednaw,Chewtle
+Yamper,Yamper
+Boltund,Yamper
+Rolycoly,Rolycoly
+Carkol,Rolycoly
+Coalossal,Rolycoly
+Applin,Applin
+Flapple,Applin
+Appletun,Applin
+Silicobra,Silicobra
+Sandaconda,Silicobra
+Cramorant,Cramorant
+Arrokuda,Arrokuda
+Barraskewda,Arrokuda
+Toxel,Toxel
+Amped Toxtricity,Amped Toxtricity
+Amped Toxtricity,Amped Toxtricity
+Low Key Toxtricity,Low Key Toxtricity
+Sizzlipede,Sizzlipede
+Centiskorch,Sizzlipede
+Clobbopus,Clobbopus
+Grapploct,Clobbopus
+Sinistea,Sinistea
+Polteageist,Sinistea
+Hatenna,Hatenna
+Hattrem,Hatenna
+Hatterene,Hatenna
+Impidimp,Impidimp
+Morgrem,Impidimp
+Grimmsnarl,Impidimp
+Obstagoon,Galarain Zigzagoon
+Perrserker,Galarian Meowth
+Cursola,Galarian Corsola
+Sirfetch'd,Galarian Farfetched
+Mr. Rime,Galarian Mr.Mime
+Runerigus,Galarian Yamask
+Milcery,Milcery
+Alcremie,Milcery
+Falinks,Falinks
+Pincurchin,Pincurchin
+Snom,Snom
+Frosmoth,Snom
+Stonjourner,Stonjourner
+Eiscue,Eiscue
+No Ice Face Eiscue,Eiscue
+Indeedee♂,Indeedee♂
+Indeedee♀,Indeedee♀
+Indeedee♂,Indeedee♂
+Morpeko,Morpeko
+Hangry Morpeko,Hangry Morpeko
+Cufant,Cufant
+Copperajah,Cufant
+Dracozolt,Dracozolt
+Arctozolt,Arctozolt
+Dracovish,Dracovish
+Arctovish,Arctovish
+Duraludon,Duraludon
+Dreepy,Dreepy
+Drakloak,Dreepy
+Dragapult,Dreepy
+Zacian,Zacian
+Crowned Zacian,Zacian
+Zamazenta,Zamazenta
+Crowned Zamazenta,Zamazenta
+Eternatus,Eternatus
+Kubfu,Kubfu
+Rapid Strike Urshifu,Kubfu
+Single Strike Urshifu,Kubfu
+Rapid Strike Urshifu,Kubfu
+Zarude,Zarude
+Regieleki,Regieleki
+Regidrago,Regidrago
+Glastrier,Glastrier
+Spectrier,Spectrier
+Calyrex,Calyrex
+Ice Rider Calyrex,Calyrex
+Shadow Rider Calyrex,Calyrex
+Lava Rider Calyrex,Calyrex
+Dream Rider Calyrex,Calyrex
+Dust Rider Calyrex,Calyrex
+Thunder Rider Calyrex,Calyrex
+Rift Rider Calyrex,Calyrex
+Wyrdeer,Wyrdeer
+Kleavor,Scyther
+Ursaluna,Tediursa
+Bloodmoon Ursaluna,Tediursa
+Basculegion♀,Basculegion♀
+Basculegion♀,Basculegion♀
+Basculegion♂,Basculegion♂
+Sneasler,Sneasle
+Overqwil,Hisuian Quilfish
+Enamorus,Enamorus
+Therian Enamorus,Therian Enamorus
+Sprigatito,Sprigatito
+Floragato,Sprigatito
+Meowscarada,Sprigatito
+Fuecoco,Fuecoco
+Crocalor,Fuecoco
+Skeledirge,Fuecoco
+Quaxly,Quaxly
+Quaxwell,Quaxly
+Quaquaval,Quaxly
+Lechonk,Lechonk
+Oinkologne♂,Lechonk
+Oinkologne♀,Lechonk
+Oinkologne♂,Lechonk
+Tarountula,Tarountula
+Spidops,Tarountula
+Nymble,Nymble
+Lokix,Nymble
+Pawmi,Pawmi
+Pawmo,Pawmi
+Pawmot,Pawmi
+Tandemaus,Tandemaus
+Maushold,Tandemaus
+Fidough,Fidough
+Dachsbun,Fidough
+Smoliv,Smoliv
+Seance Smoliv,Smoliv
+Dolliv,Smoliv
+Arboliva,Smoliv
+Squawkabilly,Squawkabilly
+Nacli,Nacli
+Naclstack,Nacli
+Garganacl,Nacli
+Charcadet,Charcadet
+Armarouge,Charcadet
+Ceruledge,Charcadet
+Tadbulb,Tadbulb
+Bellibolt,Tadbulb
+Wattrel,Wattrel
+Kilowattrel,Wattrel
+Maschiff,Maschiff
+Mabosstiff,Maschiff
+Shroodle,Shroodle
+Grafaiai,Shroodle
+Bramblin,Bramblin
+Brambleghast,Bramblin
+Toedscool,Toedscool
+Toedscruel,Toedscool
+Klawf,Klawf
+Capsakid,Capsakid
+Scovillain,Capsakid
+Rellor,Rellor
+Rabsca,Rellor
+Flittle,Flittle
+Espathra,Flittle
+Tinkatink,Tinkatink
+Tinkatuff,Tinkatink
+Tinkaton,Tinkatink
+Wiglett,Wiglett
+Wugtrio,Wiglett
+Bombirdier,Bombirdier
+Finizen,Finizen
+Palafin,Finizen
+Hero Palafin,Finizen
+Varoom,Varoom
+Revavroom,Varoom
+Cyclizar,Cyclizar
+Orthworm,Orthworm
+Glimmet,Glimmet
+Glimmora,Glimmet
+Greavard,Greavard
+Houndstone,Greavard
+Flamigo,Flamigo
+Cetoddle,Cetoddle
+Cetitan,Cetoddle
+Veluza,Veluza
+Dondozo,Dondozo
+Tatsugiri,Tatsugiri
+Annihilape,Mankey
+Clodsire,Paldean Wooper
+Farigiraf,Girafirag
+Dudunsparce,Dunsparce
+Kingambit,Pawniard
+Frigibax,Frigibax
+Arctibax,Frigibax
+Baxcalibur,Frigibax
+Gimmighoul,Gimmighoul
+Gholdengo,Gimmighoul
+Wo-Chien,Wo-Chien
+Chien-Pao,Chien-Pao
+Ting-Lu,Ting-Lu
+Chi-Yu,Chi-Yu
+Koraidon,Koraidon
+Miraidon,Miraidon
+Dipplin,Applin
+Poltchageist,Poltchageist
+Sinistcha,Poltchageist
+Okidogi,Okidogi
+Munkidori,Munkidori
+Fezandipiti,Fezandipiti
+Ogerpon,Ogerpon
+Wellspring Ogerpon,Wellspring Ogerpon
+Hearthflame Ogerpon,Hearthflame Ogerpon
+Cornerstone Ogerpon,Cornerstone Ogerpon
+Archaludon,Archaludon
+Hydrapple,Hydrapple
+Terapagos,Terapagos
+Terastral Terapagos,Terastral Terapagos
+Pecharunt,Pecharunt
