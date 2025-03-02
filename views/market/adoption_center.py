@@ -88,3 +88,18 @@ class AdoptionTrainerSelect(discord.ui.Select):
         trainer_name = self.values[0]
         await interaction.response.defer(ephemeral=True)
         await start_adoption_activity(interaction, self.user_id, trainer_name)
+
+
+async def send_adoption_center_view(interaction: discord.Interaction, user_id: str,
+                                    target_channel: discord.TextChannel):
+    """
+    Starts the adoption center UI flow.
+
+    Since no trainer name is passed, start_adoption_activity will prompt the user
+    with a paginated dropdown to select a trainer. Once a trainer is selected,
+    the adoption flow continues (checking for a Daycare Daypass and rolling mons).
+    """
+    # You might want to send an initial message to indicate the process has started:
+    await target_channel.send("Starting Adoption Center flow...")
+    # Call the adoption flow function.
+    await start_adoption_activity(interaction, user_id)

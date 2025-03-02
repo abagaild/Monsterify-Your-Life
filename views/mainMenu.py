@@ -64,7 +64,7 @@ class MainMenuView(View):
         await channel.send(embed=embed, view=view)
 
     # Row 1: Visit Town & Character
-    @discord.ui.button(label="🏘 Visit Town", style=discord.ButtonStyle.primary, custom_id="menu_visit_town", row=1)
+    @discord.ui.button(label="🌇 Visit Town", style=discord.ButtonStyle.primary, custom_id="menu_visit_town", row=1)
     async def visit_town(self, interaction: discord.Interaction, button: discord.ui.Button):
         # Send the nested Visit Town view
         channel = interaction.channel  # or use get_target_channel with extra mapping if needed
@@ -131,9 +131,9 @@ class TownMenuView(View):
 
     @discord.ui.button(label="Adoption Center", style=discord.ButtonStyle.secondary, custom_id="town_adoption", row=1)
     async def adoption_center(self, interaction: discord.Interaction, button: discord.ui.Button):
-        from views.market.adoption_center import start_adoption_activity
-        channel = interaction.channel
-        await start_adoption_activity(interaction, str(interaction.user.id), str(interaction.user.id))
+        from views.market.adoption_center import send_adoption_center_view
+        # Send the adoption center UI in the current channel.
+        await send_adoption_center_view(interaction, str(interaction.user.id), target_channel=interaction.channel)
 
     @discord.ui.button(label="Pirate's Dock", style=discord.ButtonStyle.secondary, custom_id="town_pirate", row=1)
     async def pirate_dock(self, interaction: discord.Interaction, button: discord.ui.Button):

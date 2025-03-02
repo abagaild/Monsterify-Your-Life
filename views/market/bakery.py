@@ -12,7 +12,7 @@ class BakeryShopView(discord.ui.View):
 
     @discord.ui.button(label="Buy Pastries", style=discord.ButtonStyle.primary, custom_id="bakery_shop")
     async def shop_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await send_generic_shop_view(interaction, "bakery", self.user_id, category_filter="pastry")
+        await send_generic_shop_view(interaction, "bakery", self.user_id, category_filter="pastries")
 
     @discord.ui.button(label="Bakery Activity", style=discord.ButtonStyle.secondary, custom_id="bakery_activity")
     async def activity_button(self, interaction: discord.Interaction, button: discord.ui.Button):

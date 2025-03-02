@@ -1,3 +1,5 @@
+import discord
+
 IMAGES = [
     "https://i.imgur.com/83k5ZKf.png"
 ]
@@ -7,7 +9,8 @@ MESSAGES = [
 ]
 
 
-async def use_items_action(user_id: str, trainer_name: str, usage_data: dict) -> str:
+async def use_items_action(interaction: discord.Interaction, trainer_name: str, usage_data: dict) -> str:
+    await interaction.response.defer(ephemeral=True)
     used_items = []
     for item, amount in usage_data.items():
         from core.google_sheets import update_character_sheet_item

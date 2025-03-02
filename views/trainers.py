@@ -1,28 +1,31 @@
 import discord
 from core.trainer import get_trainer_pages, update_trainer_detail
-
-from core.core_views import BaseView  # our centralized base view
 from core.database import get_trainers_from_db
-
+from core.core_views import BaseView
+import asyncio
+import logging
 
 # ---------------------------------------------
-# Generic paginated trainers view
+# Paginated Trainers View – list trainers.
 # ---------------------------------------------
 class PaginatedTrainersView(BaseView):
     def __init__(self, trainers: list, editable: bool, user_id: str):
+        """
+        :param trainers: List of trainer dictionaries.
+        :param editable: If True, user can edit these trainers (their own trainers).
+        :param user_id: The current user's ID.
+        """
         super().__init__(timeout=None)
         self.trainers = trainers
-        self.editable = editable  # if True, you can edit the trainer details
+        self.editable = editable
         self.user_id = user_id
         self.current_index = 0
 
     def get_current_embed(self) -> discord.Embed:
         if not self.trainers:
             title = "No Trainers Found" if self.editable else "No Other Trainers Found"
-            description = (
-                "You have no trainers registered. Use the trainer add command."
-                if self.editable else "There are no other trainers available."
-            )
+            description = ("You have no trainers registered. Use the trainer add command."
+                           if self.editable else "There are no other trainers available.")
             return discord.Embed(title=title, description=description)
         trainer = self.trainers[self.current_index]
         embed = discord.Embed(title=f"Trainer: {trainer['name']}",
@@ -56,20 +59,22 @@ class PaginatedTrainersView(BaseView):
             await interaction.response.send_message("No trainers available.", ephemeral=True)
             return
         trainer = self.trainers[self.current_index]
-        # Use an editable detail view if this is your own character;
-        # otherwise, use the read-only (base) version.
-        detail_view = (EditableTrainerDetailView(trainer) if self.editable
-                       else BaseTrainerDetailView(trainer))
+        # Only allow editing if this is your own trainer.
+        if self.editable:
+            detail_view = EditableTrainerDetailView(trainer, self.user_id)
+        else:
+            detail_view = BaseTrainerDetailView(trainer)
         embed = detail_view.get_page_embed()
         await interaction.response.send_message(embed=embed, view=detail_view, ephemeral=True)
 
     @discord.ui.button(label="Back", style=discord.ButtonStyle.danger, custom_id="trainer_back", row=1)
     async def back(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # This callback can return the user to a main menu or previous view.
+        # This should return to a higher-level menu.
         await interaction.response.send_message("Returning to main menu...", ephemeral=True)
 
+
 # ---------------------------------------------
-# Base detail view for a trainer (read-only)
+# Base Trainer Detail View – read-only.
 # ---------------------------------------------
 class BaseTrainerDetailView(BaseView):
     def __init__(self, trainer: dict):
@@ -115,62 +120,64 @@ class BaseTrainerDetailView(BaseView):
 
     @discord.ui.button(label="Mons", style=discord.ButtonStyle.secondary, custom_id="detail_mons", row=1)
     async def open_mons(self, interaction: discord.Interaction, button: discord.ui.Button):
-        from views.mons import TrainerMonsView  # reuse the trainer mons view from view_mon.py
+        from views.mons import TrainerMonsView  # import your mon view here
         view = TrainerMonsView(self.trainer)
         embed = view.get_current_embed()
         await interaction.response.send_message("Trainer's mons:", embed=embed, view=view, ephemeral=True)
 
     @discord.ui.button(label="Back", style=discord.ButtonStyle.danger, custom_id="detail_back", row=1)
     async def back(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # Return to the paginated trainers view (for read-only trainers, you might have a different menu)
-        trainers = []  # you would load the other trainers list here if needed
         await interaction.response.send_message("Returning...", ephemeral=True)
 
+
 # ---------------------------------------------
-# Editable trainer detail view (inherits from base)
-# Adds an edit button.
+# Editable Trainer Detail View – for your own trainer.
 # ---------------------------------------------
 class EditableTrainerDetailView(BaseTrainerDetailView):
-    def __init__(self, trainer: dict):
+    def __init__(self, trainer: dict, current_user_id: str):
+        """
+        :param trainer: Trainer details dictionary.
+        :param current_user_id: The ID of the user viewing/editing.
+               (Assume trainer records for the current user are editable.)
+        """
         super().__init__(trainer)
+        self.current_user_id = current_user_id
+        # Only add edit button if the current user owns this trainer.
+        if str(trainer.get("user_id", "")) == current_user_id:
+            self.add_item(TrainerEditView(trainer))
 
-    @discord.ui.button(label="Edit Trainer", style=discord.ButtonStyle.secondary, custom_id="detail_edit", row=1)
-    async def edit_trainer(self, interaction: discord.Interaction, button: discord.ui.Button):
-        current_page = self.pages[self.current_page] if self.pages else {"items": []}
-        if not current_page.get("items"):
-            await interaction.response.send_message("There are no editable details on this page.", ephemeral=True)
-            return
-        await interaction.response.send_message("Select the detail you wish to edit:",
-                                                view=TrainerEditView(self.trainer, current_page["items"]),
-                                                ephemeral=True)
-
-    # Optionally, you could override the back button to return to your own characters view.
     @discord.ui.button(label="Back", style=discord.ButtonStyle.danger, custom_id="detail_edit_back", row=1)
     async def edit_back(self, interaction: discord.Interaction, button: discord.ui.Button):
-        trainers = get_trainers_from_db(str(interaction.user.id))
-        view = PaginatedTrainersView(trainers, editable=True, user_id=str(interaction.user.id))
-        await interaction.response.send_message("Returning to your trainers...", embed=view.get_current_embed(), view=view, ephemeral=True)
+        # Return to the paginated trainers view for current user.
+        trainers = get_trainers_from_db(self.current_user_id)
+        new_view = PaginatedTrainersView(trainers, editable=True, user_id=self.current_user_id)
+        await interaction.response.send_message("Returning to your trainers...", embed=new_view.get_current_embed(), view=new_view, ephemeral=True)
 
 # ---------------------------------------------
-# Trainer editing subview (for when a detail is selected)
+# Trainer Edit Subview – allows editing a detail field.
 # ---------------------------------------------
 class TrainerEditView(BaseView):
-    def __init__(self, trainer: dict, current_page_items: list):
+    def __init__(self, trainer: dict):
         super().__init__(timeout=120)
         self.trainer = trainer
+        # Build select options from the current trainer detail page.
+        self.pages = get_trainer_pages(trainer['name'])
+        current_page_items = self.pages[0]["items"] if self.pages else []
         seen = set()
         options = []
-        for k, v in current_page_items:
-            if k not in seen:
-                seen.add(k)
-                options.append(discord.SelectOption(label=k, value=k))
+        for key, _ in current_page_items:
+            if key not in seen:
+                seen.add(key)
+                options.append(discord.SelectOption(label=key, value=key))
         if options:
-            self.add_item(TrainerEditSelect(options))
+            self.add_item(TrainerEditSelect(options, trainer))
         self.add_item(TrainerEditBackButton(trainer))
 
 class TrainerEditSelect(discord.ui.Select):
-    def __init__(self, options):
+    def __init__(self, options, trainer: dict):
         super().__init__(placeholder="Select a detail to edit", min_values=1, max_values=1, options=options)
+        self.trainer = trainer
+
     async def callback(self, interaction: discord.Interaction):
         selected_key = self.values[0]
         await interaction.response.send_message(f"Please type the new value for **{selected_key}**", ephemeral=True)
@@ -182,12 +189,13 @@ class TrainerEditSelect(discord.ui.Select):
             await interaction.followup.send("Timed out waiting for input.", ephemeral=True)
             return
         new_value = msg.content.strip()
-        success = update_trainer_detail(self.view.trainer['name'], selected_key, new_value)
+        success = await update_trainer_detail(self.trainer['name'], selected_key, new_value)
         if success:
             await interaction.followup.send(f"Updated **{selected_key}** to **{new_value}**.", ephemeral=True)
         else:
             await interaction.followup.send(f"Failed to update **{selected_key}**.", ephemeral=True)
-        new_view = EditableTrainerDetailView(self.view.trainer)
+        # Refresh details.
+        new_view = EditableTrainerDetailView(self.trainer, str(interaction.user.id))
         embed = new_view.get_page_embed()
         await interaction.followup.send("Refreshing details...", embed=embed, view=new_view, ephemeral=True)
 
@@ -195,7 +203,8 @@ class TrainerEditBackButton(discord.ui.Button):
     def __init__(self, trainer: dict):
         super().__init__(label="Back", style=discord.ButtonStyle.danger, custom_id="trainer_edit_back")
         self.trainer = trainer
+
     async def callback(self, interaction: discord.Interaction):
-        new_view = EditableTrainerDetailView(self.trainer)
+        new_view = EditableTrainerDetailView(self.trainer, str(interaction.user.id))
         embed = new_view.get_page_embed()
         await interaction.response.send_message("Returning to details...", embed=embed, view=new_view, ephemeral=True)

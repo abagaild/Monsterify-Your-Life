@@ -7,7 +7,7 @@ class MegamartShopView(discord.ui.View):
     def __init__(self, user_id: str):
         super().__init__(timeout=None)
         self.user_id = user_id
-        self.image = random.choice(["https://example.com/megamart.png"])
+        self.image = random.choice(["https://i.imgur.com/ydK6tDb.png"])
         self.message = "Welcome to Megamart! Here you can purchase various items at competitive prices."
 
     @discord.ui.button(label="Shop", style=discord.ButtonStyle.primary, custom_id="megamart_shop")
@@ -52,8 +52,8 @@ class UseItemsModal(Modal, title="Use Items"):
             except Exception:
                 continue
         from logic.market.megamart import use_items_action
-        result = await use_items_action(interaction.user.id, trainer, usage_data)
-        await interaction.response.send_message(result, ephemeral=True)
+        result = await use_items_action(interaction, trainer, usage_data)
+        await interaction.followup.send(result, ephemeral=True)
 
 class UseItemsActivityView(View):
     def __init__(self, user_id: str):
