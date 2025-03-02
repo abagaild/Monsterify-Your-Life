@@ -463,3 +463,34 @@ def get_all_users() -> list:
     cursor.execute("SELECT user_id FROM users")
     rows = cursor.fetchall()
     return [{"user_id": row[0]} for row in rows]
+
+
+from core.database import cursor
+
+
+def fetch_mon_from_db(mon_id: int) -> dict:
+    """
+    Retrieves a mon record from the database given its ID and returns it as a dictionary.
+
+    Parameters:
+      mon_id (int): The unique identifier of the mon.
+
+    Returns:
+      dict: A dictionary with keys "id", "trainer_id", "player", "mon_name",
+            "species1", "species2", "species3", "type1", "type2", "type3", "type4", "type5",
+            "attribute", "img_link". If the mon is not found, returns an empty dict.
+    """
+    query = """
+    SELECT id, trainer_id, player, mon_name, species1, species2, species3,
+           type1, type2, type3, type4, type5, attribute, img_link
+    FROM mons
+    WHERE id = ?
+    """
+    cursor.execute(query, (mon_id,))
+    row = cursor.fetchone()
+    if row:
+        keys = ["id", "trainer_id", "player", "mon_name", "species1", "species2", "species3",
+                "type1", "type2", "type3", "type4", "type5", "attribute", "img_link"]
+        return dict(zip(keys, row))
+    else:
+        return {}

@@ -1,10 +1,12 @@
 import random
+from typing import Tuple, Any
+
 from core.database import cursor, db, add_currency
 from core.google_sheets import append_mon_to_sheet, update_character_sheet_level, update_character_sheet_item
 import discord
 
 from data.lists import no_evolution, mythical_list, legendary_list
-from logic.market.farm import get_species_from_parent, fetch_mon_from_db
+from logic.market.farm_breeding import get_parent_species
 
 
 import random
@@ -132,7 +134,7 @@ class RegisterMonModal(discord.ui.Modal, title="Register Mon"):
         )
         db.commit()
         # Prepare sheet row.
-        sheet_row = ["", final_name, "", species1, species2, species3] + types + [self.mon_data.get("attribute", ""), "", self.mon_data.get("img_link", "")]
+        sheet_row = ["", final_name, "", "", species1, species2, species3] + types + [self.mon_data.get("attribute", ""), "", self.mon_data.get("img_link", "")]
         error = await append_mon_to_sheet(trainer, sheet_row)
         if error:
             await interaction.followup.send(f"Mon added to database but failed to update sheet: {error}", ephemeral=True)
@@ -218,7 +220,7 @@ def is_mon_viable_for_breeding(mon_id: int) -> bool:
     if mon is None:
         return False
 
-    species_list = get_species_from_parent(mon)
+    species_list = get_parent_species(mon)
     if not species_list and len(mon) > 3 and mon[3]:
         species_list = [mon[3].strip()]
     if not species_list:
@@ -250,3 +252,23 @@ def is_mon_viable_for_breeding(mon_id: int) -> bool:
             elif stage in ["base stage", "middle stage"]:
                 return False
     return True
+
+
+
+def fetch_mon_from_db(mon_id: int) -> dict:
+    """
+    Retrieves a mon record from the database given its ID and returns a dictionary
+    with keys corresponding to the columns.
+    Assumes the 'mons' table has columns in the following order:
+      id, trainer_id, player, mon_name, level, species1, species2, species3,
+      type1, type2, type3, type4, type5, attribute, img_link
+    """
+    cursor.execute("SELECT * FROM mons WHERE id = ?", (mon_id,))
+    row = cursor.fetchone()
+    if row is None:
+        return {}
+    keys = ["id", "trainer_id", "player", "mon_name", "level",
+            "species1", "species2", "species3",
+            "type1", "type2", "type3", "type4", "type5",
+            "attribute", "img_link"]
+    return dict(zip(keys, row))

@@ -181,11 +181,9 @@ class TownMenuView(View):
 
     @discord.ui.button(label="Farm", style=discord.ButtonStyle.secondary, custom_id="town_farm", row=3)
     async def farm(self, interaction: discord.Interaction, button: discord.ui.Button):
-        from views.market.farm import FarmInitialView
-        view = FarmInitialView(str(interaction.user.id))
-        channel = interaction.channel
-        embed = discord.Embed(title="Farm", color=discord.Color.green())
-        await channel.send(embed=embed, view=view)
+        from views.market.farm import send_farm_view
+        await send_farm_view(interaction, str(interaction.user.id))
+
 
     @discord.ui.button(label="Nursery", style=discord.ButtonStyle.secondary, custom_id="town_nursery", row=3)
     async def nursery(self, interaction: discord.Interaction, button: discord.ui.Button):
