@@ -8,7 +8,7 @@ class FarmShopView(discord.ui.View):
 
     @discord.ui.button(label="Shop", style=discord.ButtonStyle.primary, custom_id="farm_shop")
     async def shop_button(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # Here you could launch a dedicated shop view.
+        # Launch a dedicated shop view (expandable in the future)
         await interaction.response.send_message(f"Farm Shop action for user {self.user_id} triggered.", ephemeral=True)
 
     @discord.ui.button(label="Activity (Breed)", style=discord.ButtonStyle.secondary, custom_id="farm_activity")

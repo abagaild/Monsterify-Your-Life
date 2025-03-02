@@ -1,7 +1,7 @@
 import random
 import discord
 
-# Farm shop configuration
+# Farm shop configuration data
 IMAGES = [
     "https://example.com/farm1.png",
     "https://example.com/farm2.png",
