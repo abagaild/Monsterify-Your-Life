@@ -1,28 +1,11 @@
 import logging
-
 import discord
-from logic.market.nursery_options import get_temp_inventory, collect_nursery_options
 
 from core.database import cursor
 from core.google_sheets import update_character_sheet_item
-# Assume register_mon is defined in core.mon (centralized registration modal)
-from core.mon import register_mon
-from core.rollmons import roll_single_mon
-
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-
-# Nursery images and messages.
-IMAGES = [
-    "https://example.com/nursery1.png",
-    "https://example.com/nursery2.png",
-    "https://example.com/nursery3.png"
-]
-MESSAGES = [
-    "Welcome to the Nursery!",
-    "Your eggs are about to hatch!",
-    "Step into the Nursery to nurture your new companions."
-]
-
+from logic.market.nursery_options import get_temp_inventory, collect_nursery_options
+from logic.market.nursery_roll import run_egg_roll
+from core.items import check_inventory  # Assumes check_inventory(user_id, trainer_name, item, amount)
 
 def get_trainers(user_id: str) -> list:
     """Retrieve trainers for the user from the database."""
@@ -33,67 +16,53 @@ def get_trainers(user_id: str) -> list:
         logging.error(f"Error fetching trainers for {user_id}: {e}")
         return []
 
-
 async def run_nursery_activity(interaction: discord.Interaction, user_id: str):
     """
     Runs the complete nursery activity:
-      1. Retrieve trainers (using the common get_trainers function)
-      2. If multiple trainers exist, select the first one (or use a generic selection if desired)
-      3. Check inventory for a Standard Egg and count available DNA Splicers
-      4. Retrieve temporary inventory and collect nursery options
-      5. Build a mon pool (by combining available Pokémon, Digimon, and Yo-Kai)
-      6. Roll 10 mons
-      7. Let the user register one mon (here we simply select the first rolled mon for simplicity)
-      8. Remove the used egg (and DNA Splicers) from the trainer’s inventory
+      1. Retrieve trainers.
+      2. If multiple trainers exist, present a dropdown for selection.
+      3. Check inventory for a Standard Egg and DNA Splicer count.
+      4. Retrieve temporary inventory and collect nursery options.
+      5. Run the egg roll using updated filters.
     """
     await interaction.response.defer(ephemeral=True)
-
-    # Step 1: Retrieve trainers.
     trainers = get_trainers(user_id)
     if not trainers:
         await interaction.followup.send("No trainers found.", ephemeral=True)
         return
-    # For simplicity, choose the first trainer.
-    trainer = trainers[0]
-    trainer_name = trainer['name']
-    trainer_id = trainer['id']
 
-    # Step 2: Check inventory for a Standard Egg and DNA Splicer count.
-    from core.items import check_inventory  # Assumes this function exists in your core Google Sheets module.
-    has_egg, egg_msg = check_inventory(user_id, trainer_name, "Standard Egg", 1)
-    if not has_egg:
-        await interaction.followup.send(f"{trainer_name} does not have a Standard Egg.", ephemeral=True)
-        return
-    splicer_count, _ = check_inventory(user_id, trainer_name, "DNA Splicer", 0)
-    max_select = 1 + splicer_count  # Allows one by default plus extras per splicer.
-
-    # Step 3: Retrieve temporary inventory and collect nursery options.
-    temp_inventory = get_temp_inventory(trainer_name)
-    selections = await collect_nursery_options(interaction, trainer_name, temp_inventory)
-    logging.debug(f"Nursery selections: {selections}")
-
-    # Step 4: Build the mon pool.
-    # For simplicity, combine all available mons from the data sources.
-    pokemon_pool = roll_single_mon.__globals__.get('fetch_pokemon_data', lambda: [])()
-    digimon_pool = roll_single_mon.__globals__.get('fetch_digimon_data', lambda: [])()
-    yokai_pool = roll_single_mon.__globals__.get('fetch_yokai_data', lambda: [])()
-    pool = pokemon_pool + digimon_pool + yokai_pool
-    if not pool:
-        await interaction.followup.send("No valid mons available.", ephemeral=True)
-        return
-
-    # Step 5: Roll 10 mons.
-    rolled_mons = [roll_single_mon(pool) for _ in range(10)]
-    mon_names = [mon['name'] for mon in rolled_mons]
-    await interaction.followup.send(f"Rolled mons: {mon_names}", ephemeral=True)
-
-    # Step 6: For simplicity, automatically register the first rolled mon.
-    selected_mon = rolled_mons[0]
-    await register_mon(interaction, selected_mon)
-
-    # Step 7: Remove used Standard Egg and DNA Splicer items.
-    await update_character_sheet_item(trainer_name, "Standard Egg", -1)
-    if splicer_count > 0:
-        await update_character_sheet_item(trainer_name, "DNA Splicer", -splicer_count)
-
-    await interaction.followup.send("Nursery activity complete.", ephemeral=True)
+    # If multiple trainers exist, present a dropdown for selection.
+    if len(trainers) > 1:
+        from core.core_views import create_paginated_trainers_dropdown
+        async def trainer_selected_callback(inter, selected_value):
+            selected_trainer = next((t for t in trainers if str(t["id"]) == selected_value), None)
+            if not selected_trainer:
+                await inter.response.send_message("Invalid trainer selection.", ephemeral=True)
+                return
+            await inter.response.send_message(f"Checking if **{selected_trainer['name']}** has eggs to hatch...", ephemeral=True)
+            has_egg, egg_msg = check_inventory(user_id, selected_trainer['name'], "Standard Egg", 1)
+            if has_egg:
+                await inter.followup.send(f"**{selected_trainer['name']}** has a Standard Egg. Proceeding with egg roll...", ephemeral=True)
+                temp_inventory = get_temp_inventory(selected_trainer['name'])
+                print(temp_inventory)
+                selections = await collect_nursery_options(inter, selected_trainer['name'], temp_inventory)
+                splicer_count, _ = check_inventory(user_id, selected_trainer['name'], "DNA Splicer", 0)
+                max_select = 1 + splicer_count
+                await run_egg_roll(inter, selected_trainer['name'], selections, max_select)
+            else:
+                await inter.followup.send(f"**{selected_trainer['name']}** does not have any Standard Eggs. {egg_msg}", ephemeral=True)
+        view = create_paginated_trainers_dropdown(trainers, "Select the trainer whose eggs you want to hatch:", trainer_selected_callback)
+        await interaction.followup.send("Please select a trainer:", view=view, ephemeral=True)
+    else:
+        trainer = trainers[0]
+        has_egg, egg_msg = check_inventory(user_id, trainer['name'], "Standard Egg", 1)
+        if not has_egg:
+            await interaction.followup.send(f"{trainer['name']} does not have a Standard Egg.", ephemeral=True)
+            return
+        await interaction.followup.send(f"Using trainer **{trainer['name']}**. Checking inventory...", ephemeral=True)
+        temp_inventory = get_temp_inventory(trainer['name'])
+        print(temp_inventory)
+        selections = await collect_nursery_options(interaction, trainer['name'], temp_inventory)
+        splicer_count, _ = check_inventory(user_id, trainer['name'], "DNA Splicer", 0)
+        max_select = 1 + splicer_count
+        await run_egg_roll(interaction, trainer['name'], selections, max_select)

@@ -1,8 +1,7 @@
-# logic/writing_submissions.py
 import math
 import discord
 from core.currency import add_currency
-from core.database import db
+from core.database import fetch_one, execute_query
 from core.google_sheets import update_character_sheet_level
 
 async def process_writing_submission(
@@ -15,6 +14,14 @@ async def process_writing_submission(
     recipient: str = None,
     interaction: discord.Interaction = None
 ) -> dict:
+    """
+    Processes a writing submission by computing bonus levels based on word count,
+    bonus options, and difficulty. It then awards coins and updates the trainer's sheet.
+    """
+    # Defer the interaction early to prevent timeouts.
+    if interaction and not interaction.response.is_done():
+        await interaction.response.defer(ephemeral=True)
+
     base_bonus = 2 if writing_type.lower() == "professional" else 0
     bonus = base_bonus
     if bonus_options.get("poetry"):
@@ -41,25 +48,26 @@ async def process_writing_submission(
         if participants:
             levels_each = math.ceil(total_levels / len(participants))
             assigned_levels = {participant: levels_each for participant in participants}
-            # For each trainer or mon, update their sheets accordingly…
         else:
             assigned_levels = {}
     else:
         if recipient:
             assigned_levels = {recipient: total_levels}
             if interaction:
+                # If recipient starts with "t:" we treat it as a trainer.
                 if recipient.lower().startswith("t:"):
-                    trainer_name = recipient[2:].strip()
-                    await update_character_sheet_level(trainer_name, trainer_name, total_levels)
+                    trainer_name_input = recipient[2:].strip()
+                    await update_character_sheet_level(trainer_name_input, trainer_name_input, total_levels)
                     assigned_levels = {}
+                # If recipient starts with "m:" we treat it as a mon.
                 elif recipient.lower().startswith("m:"):
-                    mon_name = recipient[2:].strip()
-                    row = db.fetch_one("SELECT trainer_id FROM mons WHERE mon_name = ?", (mon_name,))
+                    mon_name_input = recipient[2:].strip()
+                    row = fetch_one("SELECT trainer_id FROM mons WHERE mon_name = ?", (mon_name_input,))
                     if row:
                         trainer_id = row[0]
-                        trainer_row = db.fetch_one("SELECT name FROM trainers WHERE id = ?", (trainer_id,))
+                        trainer_row = fetch_one("SELECT name FROM trainers WHERE id = ?", (trainer_id,))
                         if trainer_row:
-                            await update_character_sheet_level(trainer_row[0], mon_name, total_levels)
+                            await update_character_sheet_level(trainer_row[0], mon_name_input, total_levels)
                     assigned_levels = {}
         else:
             assigned_levels = {}

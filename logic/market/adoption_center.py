@@ -52,7 +52,7 @@ async def start_adoption_activity(interaction, user_id: str, trainer_name: str =
 
     # If trainer not yet selected, prompt the user to choose one.
     if not trainer_name:
-        from views.trainers import create_paginated_trainers_dropdown
+        from core.core_views import create_paginated_trainers_dropdown
         from core.trainer import get_trainers
         trainers = get_trainers(user_id)
         if not trainers:

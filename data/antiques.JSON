@@ -1,0 +1,297 @@
+[
+  {
+    "name": "Resolution Rocket",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "force fusion": true,
+      "attribute": ["Future Paradox", "Past Paradox"]
+    },
+    "category": "American Holidays"
+  },
+  {
+    "name": "Love Velvet Cake",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "species_all": [
+    "Cupistol", "Dandoodle", "Ray O'Light", "Auntie Heart", "Love-tune", "Peppillon", "Lillymon", "Rosemon", "Curemon", "Lopmon (Cherubimon Virtue form)", "Pucchiemon", "CresGarurumon",
+    "Luvdisc", "Alomomola", "Smoochum", "Jynx", "Togekiss", "Togetic", "Fidough", "Dachsbun", "Milcery",
+    "Alcremie", "Spritzee", "Aromatisse", "Sylveon", "Chansey", "Blissey", "Lopunny", "Tandemaus", "Maushold"
+],
+      "type": ["Fairy", "Psychic", "Normal", "Flying"]
+    },
+    "category": "American Holidays"
+  },
+  {
+    "name": "Lucky Leprechaun’s Loot",
+    "roll_count": 1,
+    "override_parameters": {
+      "type": ["Grass"],
+      "attribute": ["Lucky"]
+    },
+    "category": "American Holidays"
+  },
+  {
+    "name": "Can’t Believe It’s Not Butter",
+    "roll_count": 1,
+    "force_fusion": false,
+    "override_parameters": {
+      "attribute": ["Trash", "Raccoon", "Snake", "Shoe"]
+    },
+    "category": "American Holidays"
+  },
+  {
+    "name": "Bunny’s Basket Bonanza",
+    "roll_count": 1,
+    "override_parameters": {
+      "species_all": [
+    "Robonyan", "Usapyon", "Blizzaria", "Frostail", "Shmoopie", "Happierre", "Peppillon",
+    "Antylamon", "Cutemon", "Lopmon", "Terriermon", "Gazimon", "Falcomon", "Harpymon", "Hououmon",
+    "Reppamon", "Deeromon", "Valkyrimon",
+    "Bunnelby", "Diggersby", "Scorbunny", "Buneary", "Lopunny", "Azumarill", "Pidgey", "Pidgeot",
+    "Noctowl", "Rowlet", "Decidueye", "Hoothoot", "Oricorio", "Sawsbuck", "Stantler", "Xerneas",
+    "Shaymin (Sky Form)", "Swanna"
+]
+    },
+    "category": "American Holidays"
+  },
+  {
+    "name": "Star-Spangled Sparkler",
+    "roll_count": 1,
+    "force_fusion": false,
+    "allow_fusion": false,
+    "override_parameters": {},
+    "category": "American Holidays"
+  },
+  {
+    "name": "Fright Night Fudge",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "species1": ["Pumpkin", "Gotsumon"],
+      "attribute": ["Spooky"]
+    },
+    "category": "American Holidays"
+  },
+  {
+    "name": "Turkey Trot Tonic",
+    "roll_count": 1,
+    "override_parameters": {
+      "species1": [
+    "Jibanyan", "Komasan", "Usapyon",
+    "Agumon", "Gabumon", "Terriermon", "Renamon", "Lopmon", "Dorumon",
+    "Bulbasaur", "Charmander", "Squirtle", "Chikorita", "Cyndaquil", "Totodile", "Treecko", "Torchic",
+    "Mudkip", "Turtwig", "Chimchar", "Piplup", "Snivy", "Tepig", "Oshawott", "Chespin", "Fennekin",
+    "Froakie", "Rowlet", "Litten", "Popplio", "Grookey", "Scorbunny", "Sobble", "Sprigatito", "Fuecoco", "Quaxly"
+],
+      "attribute": ["Thankful"]
+    },
+    "category": "American Holidays"
+  },
+  {
+    "name": "Jolly Holly Jamboree",
+    "roll_count": 1,
+    "override_parameters": {
+      "species all": [
+    "Illuminoct", "Blizzaria", "Frostail", "Dracunyan",
+    "SantaAgumon", "IceDevimon", "Frigimon", "Penguinmon", "Mojyamon",
+    "Delibird", "Snover", "Abomasnow", "Stantler", "Darmanitan (Galarian form)", "Eiscue",
+    "Alolan Vulpix", "Alolan Ninetales", "Froslass", "Chingling"
+],
+      "attribute": ["Vaccine"],
+      "type": ["Ice", "Fire", "Grass"]
+    },
+    "category": "American Holidays"
+  },
+  {
+    "name": "Sweet Shofar Surprise",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "species_all": ["Applin", "Sigh-Durr", "Appak"]
+    },
+    "category": "Jewish Holidays"
+  },
+  {
+    "name": "Day of Atonement Amulet",
+    "roll_count": 1,
+    "allow_fusion": false,
+    "override_parameters": {
+      "type": ["Normal"]
+    },
+    "category": "Jewish Holidays"
+  },
+  {
+    "name": "Harvest Haven Hummus",
+    "roll_count": 1,
+    "override_parameters": {
+      "type": ["Ground", "Rock"]
+    },
+    "category": "Jewish Holidays"
+  },
+  {
+    "name": "Latke Lightning in a Jar",
+    "roll_count": 1,
+    "override_parameters": {
+      "type": ["Electric"]
+    },
+    "category": "Jewish Holidays"
+  },
+  {
+    "name": "Sectored Cookie",
+    "roll_count": 1,
+    "force_fusion": true,
+    "force_min_types": 3,
+    "override_parameters": {},
+    "category": "Jewish Holidays"
+  },
+  {
+    "name": "Matzah Marvel",
+    "roll_count": 1,
+    "allow_fusion": false,
+    "override_parameters": {
+      "type": ["Fire"]
+    },
+    "category": "Jewish Holidays"
+  },
+  {
+    "name": "Frosty Czar’s Confection",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "type": ["Ice"]
+    },
+    "category": "Russian Holidays"
+  },
+  {
+    "name": "Snowflake Samovar",
+    "roll_count": 1,
+    "override_parameters": {
+      "species all": [
+    "Jibanyan", "Komashura", "Blazion", "Mochismo",
+    "Candlemon", "Meramon", "Volcdramon", "Firamon", "Flamon",
+    "Torkoal", "Cyndaquil", "Quilava", "Typhlosion", "Tepig", "Pignite", "Emboar", "Fuecoco",
+    "Polteageist", "Sinistea", "Alcremie", "Fidough", "Dachsbun", "Heatmor", "Ponyta", "Rapidash"
+]
+    },
+    "category": "Russian Holidays"
+  },
+  {
+    "name": "Brave Bear Barrel",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "species1": [
+    "Bearmon", "Kumamon",
+    "Bearmon", "Grizzlymon", "Pandamon", "Kumamon",
+    "Teddiursa", "Ursaring", "Pancham", "Pangoro", "Stufful", "Bewear", "Cubchoo", "Beartic"
+]
+    },
+    "category": "Russian Holidays"
+  },
+  {
+    "name": "Victory Vodka Vortex",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "attribute": ["Boozy", "Unpredictable"],
+      "type": ["Dual"]
+    },
+    "category": "Russian Holidays"
+  },
+  {
+    "name": "Pancake Palooza",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "species_all": ["Pancake"],
+      "attribute": ["Syrupy"]
+    },
+    "category": "Russian Holidays"
+  },
+  {
+    "name": "Diwali Dazzle Diyas",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "attribute": ["Radiant"],
+      "type": ["Fire", "Fairy"]
+    },
+    "category": "Indian Holidays"
+  },
+  {
+    "name": "Color Carnival Concoction",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "attribute": ["Vibrant"],
+      "type": ["Red", "Blue", "Green", "Yellow", "Purple"]
+    },
+    "category": "Indian Holidays"
+  },
+  {
+    "name": "Raksha Rhapsody",
+    "roll_count": 1,
+    "override_parameters": {
+      "speices all" : [
+    "Multimutt", "Manyard", "Tengloom",
+    "Shoutmon X4", "Knightmon & Pawns", "Sistermon Blanc & Noir", "Numemon",
+    "Tandemaus", "Maushold", "Falinks", "Dugtrio", "Dodrio", "Exeggcute", "Exeggutor"
+]
+    },
+    "category": "Indian Holidays"
+  },
+  {
+    "name": "Ganesh’s Glorious Goodie",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "species1": ["Milcery"],
+      "species2": ["Elephant"],
+      "attribute": ["Lucky", "Wise"]
+    },
+    "category": "Indian Holidays"
+  },
+  {
+    "name": "Tricolor Triumph Tonic",
+    "roll_count": 1,
+    "override_parameters": {
+      "attribute": ["Tricolor"]
+    },
+    "category": "Indian Holidays"
+  },
+  {
+    "name": "Lunar Lantern Loot",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "species all": [
+    "Sparklung", "Ratman", "Tigreus", "Snaggly",
+    "Monzaemon", "Dragomon", "Gazimon", "Terriermon", "Lopmon", "Apemon",
+    "Rattata", "Raticate", "Raichu", "Pikachu", "Minun", "Plusle", "Pachirisu", "Emolga",
+    "Morpeko", "Hisuian Lilligant", "Dratini", "Dragonair", "Dragonite", "Infernape",
+    "Serperior", "Bouffalant", "Pyroar"
+]
+    },
+    "category": "Chinese Holidays"
+  },
+  {
+    "name": "Dragon Dance Delight",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "type": ["Dragon"]
+    },
+    "category": "Chinese Holidays"
+  },
+  {
+    "name": "Fortune Cookie Fusions",
+    "roll_count": 1,
+    "force_fusion": true,
+    "override_parameters": {
+      "attribute": ["Fortunate"]
+    },
+    "category": "Chinese Holidays"
+  }
+]

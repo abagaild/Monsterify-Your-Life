@@ -7,7 +7,7 @@ GARDEN_WELCOME_FLAVOR_TEXTS = [
     "Nature greets you with whispers of growth."
 ]
 GARDEN_WELCOME_IMAGES = [
-    "https://example.com/welcome1.png",
+    "https://i.imgur.com/ic6A8iY.jpeg",
     "https://example.com/welcome2.png",
     "https://example.com/welcome3.png"
 ]
@@ -31,7 +31,7 @@ GARDEN_NO_HARVESTS_FLAVOR_TEXTS = [
     "The garden slumbers until tomorrow's dawn."
 ]
 GARDEN_NO_HARVESTS_IMAGES = [
-    "https://example.com/noharvest1.png",
+    "https://i.imgur.com/jtOqNRt.jpeg",
     "https://example.com/noharvest2.png",
     "https://example.com/noharvest3.png"
 ]
@@ -70,6 +70,83 @@ GARDEN_SPECIAL_IMAGES = [
     "https://example.com/special1.png",
     "https://example.com/special2.png",
     "https://example.com/special3.png"
+]
+
+"""
+Placeholder module for view images and messages.
+
+All images currently use the placeholder:
+'https://i.imgur.com/m8CtLFv.png'
+"""
+
+# Adoption Center
+ADOPTION_CENTER_IMAGES = ["https://i.imgur.com/m8CtLFv.png"]
+ADOPTION_CENTER_MESSAGES = [
+    "Welcome to the Adoption Center! Choose your new companion.",
+    "Your new friend awaits at the Adoption Center."
+]
+
+# Antique Store
+ANTIQUE_STORE_IMAGES = ["https://i.imgur.com/m8CtLFv.png"]
+ANTIQUE_STORE_MESSAGES = [
+    "Step into the Antique Store for rare finds.",
+    "Discover treasures at the Antique Store."
+]
+
+# Apothecary
+APOTHECARY_IMAGES = ["https://i.imgur.com/m8CtLFv.png"]
+APOTHECARY_MESSAGES = [
+    "Welcome to the Apothecary, where remedies abound.",
+    "Find healing potions at the Apothecary."
+]
+
+# Bakery
+BAKERY_IMAGES = ["https://i.imgur.com/m8CtLFv.png"]
+BAKERY_MESSAGES = [
+    "Freshly baked treats await you at the Bakery.",
+    "Enjoy delicious pastries from the Bakery."
+]
+
+# Farm
+FARM_IMAGES = ["https://i.imgur.com/m8CtLFv.png"]
+FARM_MESSAGES = [
+    "Welcome to the Farm, where growth begins.",
+    "Harvest the rewards at the Farm."
+]
+
+# Generic Shop
+GENERIC_SHOP_IMAGES = ["https://i.imgur.com/m8CtLFv.png"]
+GENERIC_SHOP_MESSAGES = [
+    "Browse our items at the Generic Shop.",
+    "Discover great deals at the Generic Shop."
+]
+
+# Megamart
+MEGAMART_IMAGES = ["https://i.imgur.com/m8CtLFv.png"]
+MEGAMART_MESSAGES = [
+    "Welcome to Megamart, your one-stop shop!",
+    "Find amazing deals at Megamart."
+]
+
+# Nursery
+NURSERY_IMAGES = ["https://i.imgur.com/m8CtLFv.png"]
+NURSERY_MESSAGES = [
+    "Welcome to the Nursery, where new life begins.",
+    "Explore the Nursery for the best eggs."
+]
+
+# Pirate's Dock
+PIRATES_DOCK_IMAGES = ["https://i.imgur.com/m8CtLFv.png"]
+PIRATES_DOCK_MESSAGES = [
+    "Set sail at Pirate's Dock for adventure.",
+    "Discover treasures at Pirate's Dock."
+]
+
+# Witch's Hut
+WITCHS_HUT_IMAGES = ["https://i.imgur.com/m8CtLFv.png"]
+WITCHS_HUT_MESSAGES = [
+    "Enter the Witch's Hut for mystical experiences.",
+    "Discover spells and potions at the Witch's Hut."
 ]
 
 # messages.py

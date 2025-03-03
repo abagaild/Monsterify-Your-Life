@@ -7,6 +7,8 @@ from typing import Optional
 
 from core.database import cursor, db
 from core.currency import add_currency
+import random
+import asyncio
 
 
 def get_active_boss() -> Optional[dict]:
@@ -41,9 +43,29 @@ def end_current_boss() -> None:
     db.commit()
 
 
+
+
+TAUNT_MESSAGES = [
+    "'tis but a scratch, is that all you've got?",
+    "Is that all you've got?",
+    "You'll need more than that!",
+    "Try harder, warrior!",
+    "Your attacks are no match for me!",
+    "Keep hitting—maybe you'll break through!"
+]
+
+EXTRA_TAUNT_MESSAGES = [
+    "You call that an attack?",
+    "I've seen snails move faster than you!",
+    "Is that the best you can do?",
+    "You'll never defeat me!",
+    "Pathetic!"
+]
+
+
 async def deal_boss_damage(user_id: str, damage_amount: int, bot=None, channel=None) -> None:
     """
-    Deals damage to the active boss, logs the attack, and finalizes defeat if necessary.
+    Deals damage to the active boss, logs the attack, and sends taunt messages from the boss.
     """
     boss = get_active_boss()
     if not boss:
@@ -62,8 +84,19 @@ async def deal_boss_damage(user_id: str, damage_amount: int, bot=None, channel=N
     db.commit()
 
     if channel:
-        msg = f"<@{user_id}> attacked {boss['name']} for **{damage_amount}** damage!"
-        await channel.send(msg)
+        # Report the player's damage.
+        attack_msg = f"<@{user_id}> attacked {boss['name']} for **{damage_amount}** damage! Take that!"
+        await channel.send(attack_msg)
+
+        # Send a random taunt message from the boss.
+        taunt_msg = random.choice(TAUNT_MESSAGES)
+        await asyncio.sleep(1)  # slight delay for pacing
+        await channel.send(taunt_msg)
+
+        # Send an extra random taunt message.
+        extra_taunt = random.choice(EXTRA_TAUNT_MESSAGES)
+        await asyncio.sleep(1)
+        await channel.send(extra_taunt)
 
     if new_health <= 0:
         await finalize_boss_defeat(boss["id"], bot=bot, channel=channel)

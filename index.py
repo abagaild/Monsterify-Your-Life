@@ -49,7 +49,8 @@ class MyBot(commands.Bot):
             self.add_view(view)
 
         # Uncomment if you want to run sheet synchronization periodically.
-        # self.loop.create_task(sync_sheets())
+        from core.google_sheets import sync_sheets
+        #self.loop.create_task(sync_sheets())
 
     async def on_message(self, message: discord.Message):
         # Ignore messages from bots.

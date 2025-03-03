@@ -15,7 +15,6 @@ from core.mon import should_ignore_column
 class BaseMonDetailView(discord.ui.View):
     """
     Loads a mon’s details from its Google Sheet row and builds an embed.
-    This base class is used by both editable (your own) and read-only (others) mon views.
     """
     def __init__(self, trainer: dict, mon: dict):
         super().__init__(timeout=None)
@@ -26,7 +25,7 @@ class BaseMonDetailView(discord.ui.View):
         self.row_number = None
 
     async def load_details(self):
-        result, header, row_number = await asyncio.to_thread(get_mon_sheet_row, self.trainer['name'], self.mon['mon_name'])
+        result, header, row_number = await get_mon_sheet_row(self.trainer['name'], self.mon['mon_name'])
         self.mon_details = result
         self.header = header
         self.row_number = row_number
@@ -74,7 +73,6 @@ class MonEditInfoButton(discord.ui.Button):
         super().__init__(label="Edit Information", style=discord.ButtonStyle.secondary)
     async def callback(self, interaction: discord.Interaction):
         view: MonDetailView = self.view  # type: ignore
-        # Define allowed fields for basic info editing.
         allowed_fields = {"mon name", "species1", "species2", "species3", "type1", "type2", "type3", "attribute"}
         options = []
         if view.header:
@@ -107,7 +105,6 @@ class MonDetailBackButton(discord.ui.Button):
     def __init__(self):
         super().__init__(label="Back", style=discord.ButtonStyle.danger)
     async def callback(self, interaction: discord.Interaction):
-        # Return to the trainer’s mons view.
         trainer = self.view.trainer  # type: ignore
         new_view = TrainerMonsView(trainer)
         embed = new_view.get_current_embed()
@@ -133,7 +130,9 @@ class MonEditSelect(discord.ui.Select):
         self.parent_view = parent_view
     async def callback(self, interaction: discord.Interaction):
         selected_key = self.values[0]
-        await interaction.response.send_message(f"Enter the new value for **{selected_key}**:", ephemeral=True)
+        # Defer immediately to extend the response window.
+        await interaction.response.defer(ephemeral=True)
+        await interaction.followup.send(f"Enter the new value for **{selected_key}**:", ephemeral=True)
         def check(m):
             return m.author == interaction.user and m.channel == interaction.channel
         try:
@@ -142,7 +141,6 @@ class MonEditSelect(discord.ui.Select):
             await interaction.followup.send("Timed out waiting for input.", ephemeral=True)
             return
         new_value = msg.content.strip()
-        # Update both the Google Sheet and the database.
         success_sheet = await update_mon_sheet_value(self.trainer['name'], self.mon_name, selected_key, new_value)
         success_db = await update_mon_in_db(self.mon_name, selected_key, new_value, str(interaction.user.id))
         if success_sheet and success_db:
@@ -151,7 +149,6 @@ class MonEditSelect(discord.ui.Select):
             await interaction.followup.send(f"Failed to update **{selected_key}** in sheet.", ephemeral=True)
         elif not success_db:
             await interaction.followup.send(f"Updated sheet but failed to update database for **{selected_key}**.", ephemeral=True)
-        # Refresh the mon detail view.
         new_detail_view = MonDetailView(self.trainer, {"mon_name": self.mon_name, "img_link": self.parent_view.mon.get("img_link", "")})
         embed = await new_detail_view.get_detail_embed()
         await interaction.followup.send("Refreshing details...", embed=embed, view=new_detail_view, ephemeral=True)
@@ -217,21 +214,20 @@ class TrainerMonsView(discord.ui.View):
         if not self.mons:
             await interaction.response.send_message("No mons to display.", ephemeral=True)
             return
+        # Defer the response so we have extra time to process the details.
+        await interaction.response.defer(ephemeral=True)
         mon = self.mons[self.current_index]
-        # Check if this mon belongs to the current user.
         current_user = str(interaction.user.id)
-        # Assuming mon['player'] is the owner user id.
         if mon.get("player") == current_user:
             detail_view = MonDetailView(self.trainer, mon)
         else:
             detail_view = OtherMonDetailView(self.trainer, mon)
         embed = await detail_view.get_detail_embed()
-        await interaction.response.send_message(embed=embed, view=detail_view, ephemeral=True)
+        await interaction.followup.send(embed=embed, view=detail_view, ephemeral=True)
 
     @discord.ui.button(label="Back", style=discord.ButtonStyle.danger, custom_id="mons_back", row=1)
     async def back(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # Return to trainer detail view.
-        from views.trainers import BaseTrainerDetailView  # ensure proper import
+        from views.trainers import BaseTrainerDetailView
         detail_view = BaseTrainerDetailView(self.trainer)
         embed = detail_view.get_page_embed()
         await interaction.response.send_message("Returning to trainer details...", embed=embed, view=detail_view, ephemeral=True)

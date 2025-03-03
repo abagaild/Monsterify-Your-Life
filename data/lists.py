@@ -1,13 +1,54 @@
-legendary_list = ["Articuno", "Zapdos", "Moltres", "Mewtwo", "Raikou", "Entei", "Suicune", "Lugia", "Ho-oh", "Regirock",
-                  "Regice", "Registeel", "Latias", "Latios", "Kyogre", "Groudon", "Rayquaza", "Uxie", "Mesprit",
-                  "Azelf", "Dialga", "Palkia", "Heatran", "Regigigas", "Giratina", "Cresselia", "Cobalion", "Terrakion",
-                  "Virizion", "Tornadus", "Thundurus", "Reshiram", "Zekrom", "Landorus", "Kyurem", "Xerneas", "Yveltal",
-                  "Zygarde", "Cosmog", "Cosmoem", "Solgaleo", "Lunala", "Necrozma", "Zacian", "Zamazenta", "Eternatus",
-                  "Calyrex", "Koraidon", "Miraidon", "Terapagos", "Wo-Chien", "Chien-Pao", "Ting-Lu", "Chi-Yu",
-                  "Ogerpon", "Okidogi", "Munkidori", "Fezandipiti"]
-mythical_list = ["Mew", "Celebi", "Jirachi", "Deoxys", "Phione", "Manaphy", "Darkrai", "Shaymin", "Arceus", "Victini",
-                 "Keldeo", "Meloetta", "Genesect", "Diancie", "Hoopa", "Volcanion", "Magearna", "Marshadow", "Zeraora",
-                 "Meltan", "Melmetal", "Zarude", "Pecharunt"]
+legendary_list = [
+    # Generation I
+    "Articuno", "Zapdos", "Moltres", "Galarian Articuno", "Galarian Zapdos", "Galarian Moltres", "Mewtwo",
+    # Generation II
+    "Raikou", "Entei", "Suicune", "Lugia", "Ho-Oh",
+    # Generation III
+    "Regirock", "Regice", "Registeel", "Latias", "Latios", "Kyogre", "Groudon", "Rayquaza",
+    # Generation IV
+    "Uxie", "Mesprit", "Azelf", "Dialga", "Palkia", "Giratina", "Heatran", "Regigigas", "Cresselia",
+    # Generation V
+    "Cobalion", "Terrakion", "Virizion", "Tornadus", "Thundurus", "Landorus", "Reshiram", "Zekrom", "Kyurem",
+    # Generation VI
+    "Xerneas", "Yveltal", "Zygarde",
+    # Generation VII
+    "Cosmog", "Cosmoem", "Solgaleo", "Lunala", "Necrozma", "Type: Null", "Silvally",
+    "Tapu Koko", "Tapu Lele", "Tapu Bulu", "Tapu Fini",
+    # Ultra Beasts (Gen VII)
+    "Nihilego", "Buzzwole", "Pheromosa", "Xurkitree", "Celesteela", "Kartana", "Guzzlord",
+    "Poipole", "Naganadel", "Stakataka", "Blacephalon",
+    # Generation VIII
+    "Zacian", "Zamazenta", "Eternatus", "Kubfu", "Urshifu", "Regieleki", "Regidrago",
+    "Glastrier", "Spectrier", "Calyrex", "Enamorus",
+    # Generation IX
+    "Wo-Chien", "Chien-Pao", "Ting-Lu", "Chi-Yu", "Koraidon", "Miraidon",
+    # Paradox Pokémon (Gen IX)
+    "Great Tusk", "Scream Tail", "Brute Bonnet", "Flutter Mane", "Slither Wing", "Sandy Shocks", "Roaring Moon",
+    "Iron Treads", "Iron Bundle", "Iron Hands", "Iron Jugulis", "Iron Moth", "Iron Thorns", "Iron Valiant",
+    "Walking Wake", "Iron Leaves", "Raging Bolt", "Gouging Fire", "Iron Crown", "Iron Boulder",
+    # Gen IX DLC: The Teal Mask & The Indigo Disk
+    "Okidogi", "Munkidori", "Fezandipiti", "Ogerpon", "Terapagos"
+]
+mythical_list = [
+    # Generation I
+    "Mew",
+    # Generation II
+    "Celebi",
+    # Generation III
+    "Jirachi", "Deoxys",
+    # Generation IV
+    "Phione", "Manaphy", "Darkrai", "Shaymin", "Arceus",
+    # Generation V
+    "Victini", "Keldeo", "Meloetta", "Genesect",
+    # Generation VI
+    "Diancie", "Hoopa", "Volcanion",
+    # Generation VII
+    "Magearna", "Marshadow", "Zeraora", "Meltan", "Melmetal",
+    # Generation VIII
+    "Zarude",
+    # Generation IX
+    "Pecharunt"
+]
 no_evolution = ["Farfetch'd", "Kangaskhan", "Pinsir", "Tauros", "Ditto", "Lapras", "Aerodactyl", "Unown", "Girafarig",
                 "Dunsparce", "Qwilfish", "Shuckle", "Heracross", "Delibird", "Skarmory", "Stantler", "Smeargle",
                 "Miltank", "Sableye", "Mawile", "Plusle", "Minun", "Volbeat", "Illumise", "Torkoal", "Spinda",

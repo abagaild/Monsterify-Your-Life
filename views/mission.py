@@ -4,10 +4,10 @@ import random
 from logic import mission as logic_missions
 from views.mainMenu import MainMenuView  # for returning to menu
 
-MISSION_SELECT_IMAGE = "https://example.com/mission_select.png"  # update with your actual image URL
+MISSION_SELECT_IMAGE = "https://i.imgur.com/m8CtLFv.png"  # update with your actual image URL
 MISSION_PROGRESS_IMAGES = {
-    "in_progress": "https://example.com/mission_in_progress.png",
-    "complete": "https://example.com/mission_complete.png"
+    "in_progress": "https://i.imgur.com/m8CtLFv.png",
+    "complete": "https://i.imgur.com/m8CtLFv.png"
 }
 MISSION_FLAVOR_TEXTS = [
     "Adventure awaits!",

@@ -1,12 +1,7 @@
 import discord
 from discord.ui import View, Button
+from logic.boss import get_active_boss, claim_boss_rewards
 
-from logic.boss import (
-    get_active_boss,
-    claim_boss_rewards
-)
-
-# Predefined taunt messages (unused now, but kept for potential future use)
 TAUNT_MESSAGES = [
     "Is that all you've got?",
     "You'll need more than that!",
@@ -19,6 +14,7 @@ class BossUIView(View):
     def __init__(self, user_id: str):
         super().__init__(timeout=None)  # Persistent view
         self.user_id = user_id
+        # Preload the boss embed immediately
         self.current_embed = self.get_embed()
         self.refresh_view()
 
@@ -43,16 +39,16 @@ class BossUIView(View):
         return embed
 
     def refresh_view(self):
-        # Clear any existing buttons and only add Refresh.
+        # Clear any existing buttons and then add the Refresh button.
         self.clear_items()
         self.add_item(RefreshButton())
-        # Add Claim Rewards if there is no active boss or if the boss is defeated.
+        # Add Claim Rewards button if there is no active boss or if the boss is defeated.
         boss = get_active_boss()
         if boss is None or boss["current_health"] <= 0:
             self.add_item(ClaimRewardsButton())
 
     async def refresh(self, interaction: discord.Interaction):
-        # Refresh the embed and buttons.
+        # Refresh the embed and the view, then update the message.
         self.current_embed = self.get_embed()
         self.refresh_view()
         await interaction.response.edit_message(embed=self.current_embed, view=self)

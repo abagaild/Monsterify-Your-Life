@@ -250,8 +250,12 @@ class RollMonsView(discord.ui.View):
         self.rolled_mons = rolled_mons
         self.claim_limit = claim_limit
         self.claimed = 0
-        for idx, mon in enumerate(rolled_mons, start=1):
-            button = discord.ui.Button(label=f"Claim #{idx}", style=discord.ButtonStyle.primary, custom_id=str(idx))
+        for mon in rolled_mons:
+            # Use species1 if available, otherwise fallback to the mon's name.
+            species_label = (mon.get("species1") or mon.get("name") or "Unknown").strip()
+            # Truncate label if necessary (Discord limits button label length to 80 characters)
+            species_label = species_label[:80]
+            button = discord.ui.Button(label=f"Claim {species_label}", style=discord.ButtonStyle.primary)
             button.callback = self.make_claim_callback(mon)
             self.add_item(button)
         skip_button = discord.ui.Button(label="Skip", style=discord.ButtonStyle.secondary, custom_id="skip")
@@ -315,3 +319,40 @@ async def roll_mons(ctx, variant: str = "default", amount: int = 10, unique_term
         await ctx.response.send_message(embed=embed, view=view, ephemeral=True)
     else:
         await ctx.send(embed=embed, view=view, ephemeral=True)
+
+
+def get_egg_pool():
+    """
+    Builds a pool for egg rolls.
+    Only includes:
+      - Pokémon that are in "Base Stage" (or "base") or whose name is in no_evolution,
+        excluding legendary and mythical Pokémon.
+      - Digimon whose stage is exactly "training 1" (case-insensitive).
+      - Yo-Kai whose rank is one of E, D, C, or B.
+    """
+    pokemon = fetch_pokemon_data()
+    digimon = fetch_digimon_data()
+    yokai = fetch_yokai_data()
+
+    legendary_set = set(name.lower() for name in legendary_list)
+    mythical_set = set(name.lower() for name in mythical_list)
+    no_evo_set = set(n.lower() for n in no_evolution)
+
+    # Filter Pokémon: only include those in base stage or in the no_evolution list.
+    filtered_pokemon = []
+    for p in pokemon:
+        name = (p.get("name") or "").lower()
+        stage = (p.get("stage") or "").lower()
+        if name in legendary_set or name in mythical_set:
+            continue
+        if stage in {"base", "base stage"} or name in no_evo_set:
+            filtered_pokemon.append(p)
+
+    # Filter Digimon: only include those with stage exactly "training 1".
+    filtered_digimon = [d for d in digimon if (d.get("stage") or "").strip().lower() == "training 1"]
+
+    # Filter Yo-Kai: only include those whose rank is E, D, C, or B.
+    allowed_ranks = {"e", "d", "c", "b"}
+    filtered_yokai = [y for y in yokai if (y.get("rank") or "").strip().lower() in allowed_ranks]
+
+    return filtered_pokemon + filtered_digimon + filtered_yokai

@@ -57,8 +57,8 @@ async def assign_levels_to_trainer(interaction, trainer_name: str, levels: int):
 
 def get_temporary_inventory_columns(
     trainer_name: str,
-    top_row: int = 1,
-    start_row: int = 2,
+    top_row: int = 4,
+    start_row: int = 6,
     min_quantity: int = 1
 ) -> dict:
     """

@@ -1,78 +1,88 @@
-import logging
+# nursery_options.py
+"""
+Nursery Options Module: Builds interactive dropdown views for the different
+options available to affect the egg roll. It reads the trainer's temporary
+inventory from Google Sheets (the "EGGS" column) and filters allowed items by
+stripping marker text from allowed option texts.
+"""
 
 import discord
-from discord.ui import View, Select
+import re
 
-from core.google_sheets import gc
-from data.lists import NURTURE_KITS, RANK_INSENSES, COLOR_INSENSES, ATTRIBUTE_TAGS, POFFINS, MILK_OPTIONS, \
-    ICE_CREAM_OPTIONS
+# Define allowed option templates with marker texts.
+ALLOWED_OPTIONS = {
+    "nurture_kit": "[type] Nurture Kit",
+    "corruption_code": "Corruption Code",
+    "repair_code": "Repair Code",
+    "shiny_new_code": "Shiny New Code",
+    "rank_incense": "[Rank] Rank Incense",
+    "color_insense": "[Yokai Attribute] Color Insense",
+    "spell_tag": "Spell Tag",
+    "summoning_stone": "Summoning Stone",
+    "digimeat": "DigiMeat",
+    "digitofu": "DigiTofu",
+    "soothe_bell": "SootheBell",
+    "broken_bell": "Broken Bell",
+    "poffin": "[type] Poffin",
+    "tag": "[attribute] tag",
+    "dna_splicer": "DNA Splicer",
+    "hot_chocolate": "Hot Chocolate",
+    "chocolate_milk": "Chocolate Milk",
+    "strawberry_milk": "Strawberry Milk",
+    "vanilla_ice_cream": "Vanilla Ice Cream",
+    "strawberry_ice_cream": "Strawberry Ice Cream",
+    "chocolate_ice_cream": "Chocolate Ice Cream",
+    "species_override": "Species Override"
+}
 
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+def normalize_option(text: str) -> str:
+    """Removes any marker text enclosed in square brackets and trims the result."""
+    return re.sub(r"\[.*?\]", "", text).strip().lower()
 
-def get_temp_inventory(trainer_name: str):
-    """Fetch temporary inventory for a trainer from Google Sheets."""
-    try:
-        ss = gc.open(trainer_name)
-        worksheet = ss.worksheet("Inventory")
-        rows = worksheet.get_all_values()
-        temp_inventory = []
-        for row in rows:
-            if len(row) >= 28:  # Assumes Column AA holds quantity and Column AB holds item name.
-                item_name = row[27].strip()
-                item_quantity = row[26].strip()
-                if item_name and item_quantity.isdigit() and int(item_quantity) > 0:
-                    temp_inventory.append(item_name)
-        logging.debug(f"Temp inventory for {trainer_name}: {temp_inventory}")
-        return temp_inventory
-    except Exception as e:
-        logging.error(f"Error fetching temp inventory for {trainer_name}: {e}")
-        return []
+async def build_nursery_options_view(trainer_name: str, inventory: dict, user: discord.User) -> discord.ui.View:
+    """
+    Constructs a Discord view containing dropdowns for each allowed option type,
+    based on the trainer's "EGGS" inventory. Each dropdown allows the player to
+    select an item that affects the egg roll.
+    """
+    eggs_inventory = inventory.get("EGGS", {})
+    view = discord.ui.View(timeout=180)
+    view.selections = {}  # Store player's selections here
 
-class NurseryOptionsView(View):
-    """A generic view for selecting nursery options from temporary inventory."""
-    def __init__(self, temp_inventory: list, options: list, placeholder: str, custom_id: str, multi_select: bool = False):
-        super().__init__(timeout=180)
-        self.selections = {}
-        select_options = [discord.SelectOption(label=item, value=item) for item in temp_inventory if item in options]
-        if not select_options:
-            select_options = [discord.SelectOption(label="None", value="None")]
-        else:
-            select_options.insert(0, discord.SelectOption(label="None", value="None"))
-        select = Select(
-            placeholder=placeholder,
-            custom_id=custom_id,
-            options=select_options,
-            min_values=1 if not multi_select else 0,
-            max_values=len(select_options) if multi_select else 1
-        )
-        select.callback = self.option_callback
-        self.add_item(select)
-        self.custom_id = custom_id
+    # Create a dropdown for each allowed option if matching items are found.
+    for key, allowed_text in ALLOWED_OPTIONS.items():
+        normalized_allowed = normalize_option(allowed_text)
+        matching_items = []
+        for item_name, qty in eggs_inventory.items():
+            if qty < 1:
+                continue
+            normalized_item = normalize_option(item_name)
+            if normalized_item == normalized_allowed:
+                # Include the item with quantity in the label.
+                matching_items.append(discord.SelectOption(label=f"{item_name} ({qty})", value=item_name))
+        if matching_items:
+            select = discord.ui.Select(
+                placeholder=f"Select {allowed_text}",
+                min_values=0,
+                max_values=1,
+                options=matching_items,
+                custom_id=key
+            )
+            async def select_callback(interaction: discord.Interaction, select=select):
+                selected_value = select.values[0] if select.values else None
+                view.selections[select.custom_id] = selected_value
+                await interaction.response.defer()
+            select.callback = select_callback
+            view.add_item(select)
 
-    async def option_callback(self, interaction: discord.Interaction):
-        await interaction.response.defer(ephemeral=True)
-        for child in self.children:
-            if isinstance(child, Select) and child.custom_id == self.custom_id:
-                self.selections[self.custom_id] = child.values if child.max_values > 1 else child.values[0]
-                logging.debug(f"{self.custom_id} selection: {self.selections[self.custom_id]}")
-                break
-        self.stop()
-
-async def collect_nursery_options(interaction: discord.Interaction, trainer_name: str, temp_inventory: list) -> dict:
-    """Collect nursery options over multiple pages and return a dictionary of selections."""
-    selections = {}
-    pages = [
-        (NURTURE_KITS, "Select a Nurture Kit", "nurture_kit"),
-        (RANK_INSENSES, "Select a Rank Incense", "rank_incense"),
-        (COLOR_INSENSES, "Select Color Incense(s)", "color_incense", True),
-        (ATTRIBUTE_TAGS, "Select Attribute Tag(s)", "attribute_tags", True),
-        (POFFINS, "Select Poffin(s)", "poffins", True),
-        (MILK_OPTIONS, "Select a Milk", "milk"),
-        (ICE_CREAM_OPTIONS, "Select an Ice Cream", "ice_cream")
-    ]
-    for options, placeholder, custom_id, *multi in pages:
-        view = NurseryOptionsView(temp_inventory, options, placeholder, custom_id, multi_select=bool(multi))
-        await interaction.followup.send(f"**{placeholder}**", view=view, ephemeral=True)
-        await view.wait()
-        selections.update(view.selections)
-    return selections
+    # Add a submit button to finalize the selections.
+    class SubmitButton(discord.ui.Button):
+        def __init__(self):
+            super().__init__(label="Submit Options", style=discord.ButtonStyle.success)
+        async def callback(self, interaction: discord.Interaction):
+            await interaction.response.send_message("Options submitted. Rolling eggs...", ephemeral=True)
+            # Call the nursery roll module to process the selections and roll eggs.
+            import nursery_roll
+            await nursery_roll.run_nursery_roll(interaction, view.selections, trainer_name)
+    view.add_item(SubmitButton())
+    return view
