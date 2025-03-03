@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "The First Expedition",
-    "flavor": "Embark on your first expedition into the unknown.",
+    "flavor": "Your mons have yet to wander out alone, not far, and certainly not often, but today that changes, today they become men! Well, not really, they're just going into the forest for a fetch quest, but it still counts. Plus they're mons, it's not like they can be men anyway.",
     "requirements": { "min_level": 1 },
     "difficulty": 1,
     "in_progress_artwork": "https://example.com/in_progress1.png",
