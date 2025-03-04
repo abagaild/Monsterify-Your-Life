@@ -56,29 +56,48 @@ class TradeModal(discord.ui.Modal, title="Trade Items"):
     )
 
     def __init__(self, trainer1: dict, trainer2: dict):
+        """
+        :param trainer1: A dict representing Trainer 1 (who receives items from trainer2).
+        :param trainer2: A dict representing Trainer 2 (who sends items to trainer1).
+        """
         super().__init__()
-        self.trainer1 = trainer1  # Trainer receiving items from trainer2
-        self.trainer2 = trainer2  # Trainer sending items to trainer1
+        self.trainer1 = trainer1
+        self.trainer2 = trainer2
 
     async def on_submit(self, interaction: discord.Interaction):
+        await interaction.response.defer(ephemeral=True)
         # Parse the input strings into dictionaries mapping item names to amounts.
         trade_for_trainer1 = parse_trade_input(self.trainer1_receiving.value)
         trade_for_trainer2 = parse_trade_input(self.trainer2_receiving.value)
         errors = []
 
-        # For Trainer 1: remove items from Trainer 2 and add them to Trainer 1.
+        # For Trainer 1: Remove items from Trainer 2's inventory and add to Trainer 1.
         for item, amount in trade_for_trainer1.items():
+            logging.info(f"Trading {amount} of {item} from {self.trainer2['name']} to {self.trainer1['name']}.")
             success_remove = await update_character_sheet_item(self.trainer2['name'], item, -amount)
             success_add = await update_character_sheet_item(self.trainer1['name'], item, amount)
-            if not (success_remove and success_add):
-                errors.append(f"Failed to trade {item} (x{amount}) from {self.trainer2['name']} to {self.trainer1['name']}.")
+            if not success_remove:
+                error_msg = f"Failed to remove {item} (x{amount}) from {self.trainer2['name']}."
+                logging.error(error_msg)
+                errors.append(error_msg)
+            if not success_add:
+                error_msg = f"Failed to add {item} (x{amount}) to {self.trainer1['name']}."
+                logging.error(error_msg)
+                errors.append(error_msg)
 
-        # For Trainer 2: remove items from Trainer 1 and add them to Trainer 2.
+        # For Trainer 2: Remove items from Trainer 1's inventory and add to Trainer 2.
         for item, amount in trade_for_trainer2.items():
+            logging.info(f"Trading {amount} of {item} from {self.trainer1['name']} to {self.trainer2['name']}.")
             success_remove = await update_character_sheet_item(self.trainer1['name'], item, -amount)
             success_add = await update_character_sheet_item(self.trainer2['name'], item, amount)
-            if not (success_remove and success_add):
-                errors.append(f"Failed to trade {item} (x{amount}) from {self.trainer1['name']} to {self.trainer2['name']}.")
+            if not success_remove:
+                error_msg = f"Failed to remove {item} (x{amount}) from {self.trainer1['name']}."
+                logging.error(error_msg)
+                errors.append(error_msg)
+            if not success_add:
+                error_msg = f"Failed to add {item} (x{amount}) to {self.trainer2['name']}."
+                logging.error(error_msg)
+                errors.append(error_msg)
 
         # Build an embed showing the result.
         if errors:
@@ -90,7 +109,7 @@ class TradeModal(discord.ui.Modal, title="Trade Items"):
         embed = discord.Embed(title="Trade Result", description=description, color=color)
         embed.set_image(url=random.choice(TRADE_ITEMS_IMAGES))
         embed.set_footer(text=random.choice(TRADE_ITEMS_FLAVOR_TEXTS))
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+        await interaction.followup.send(embed=embed, ephemeral=True)
 
 
 # ---------------------------------------------------
