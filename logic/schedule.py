@@ -1,9 +1,10 @@
 import datetime
-from core.database import fetch_habits, fetch_tasks
+from logic.habits import get_habits  # updated habits module
+from logic.tasks import get_tasks   # updated tasks module
 
 def build_schedule_message(user_id: str) -> str:
-    habits = fetch_habits(user_id)
-    tasks = fetch_tasks(user_id)
+    habits = get_habits(user_id)
+    tasks = get_tasks(user_id)
     combined = [("Habit", h) for h in habits] + [("Task", t) for t in tasks]
 
     def sort_key(item):
@@ -32,9 +33,7 @@ def reset_daily_schedules() -> None:
     from logic.tasks import reset_tasks
     from logic.habits import reset_habits
     from core.database import fetch_all
-    # Get distinct user IDs from the trainers table.
     users = fetch_all("SELECT DISTINCT player_user_id AS user_id FROM trainers")
     for user in users:
         reset_habits(user["user_id"])
         reset_tasks(user["user_id"])
-

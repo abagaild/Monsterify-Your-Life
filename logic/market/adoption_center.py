@@ -25,10 +25,6 @@ def can_adopt_today(user_id: str) -> bool:
 def mark_adopted_today(user_id: str):
     USER_ADOPTION_LAST[user_id] = datetime.date.today().isoformat()
 
-# -------------------------------------------------------------------
-# Async callback for trainer selection.
-# When the dropdown returns a selected trainer, resume the adoption flow.
-# -------------------------------------------------------------------
 async def trainer_select_callback(interaction: discord.Interaction, selected_value: str):
     from core.trainer import get_trainers
     user_id = str(interaction.user.id)
@@ -41,16 +37,11 @@ async def trainer_select_callback(interaction: discord.Interaction, selected_val
     from views.market.adoption_center import start_adoption_activity
     await start_adoption_activity(interaction, user_id, trainer_name)
 
-# -------------------------------------------------------------------
-# Main adoption flow.
-# If no trainer is provided, the function sends a paginated dropdown to select one.
-# Once a trainer is selected, the adoption flow continues.
-# -------------------------------------------------------------------
 async def start_adoption_activity(interaction, user_id: str, trainer_name: str = None):
     if not interaction.response.is_done():
         await interaction.response.defer(ephemeral=True)
 
-    # If trainer not yet selected, prompt the user to choose one.
+    # If trainer is not yet selected, prompt for trainer selection.
     if not trainer_name:
         from core.core_views import create_paginated_trainers_dropdown
         from core.trainer import get_trainers
@@ -59,12 +50,11 @@ async def start_adoption_activity(interaction, user_id: str, trainer_name: str =
             await interaction.followup.send("No trainers found. Please add a trainer first.", ephemeral=True)
             return
 
-        # Use the async callback defined above.
         view = create_paginated_trainers_dropdown(trainers, "Select your trainer", callback=trainer_select_callback)
         await interaction.followup.send("Please select the trainer for the adoption process:", view=view, ephemeral=True)
         return
 
-    # Check if the user has already adopted today.
+    # Check if the user already adopted today.
     if not can_adopt_today(user_id):
         await interaction.followup.send("You have already completed an adoption today. Try again tomorrow!", ephemeral=True)
         return
@@ -93,7 +83,6 @@ async def start_adoption_activity(interaction, user_id: str, trainer_name: str =
         return
 
     mark_adopted_today(user_id)
-    # Assume ADOPTION_FLAVOR_TEXTS is defined in your data/messages.py
     from data.messages import ADOPTION_FLAVOR_TEXTS
     flavor_text = random.choice(ADOPTION_FLAVOR_TEXTS.get(len(rolled_mons), ["A wonderful opportunity awaits you!"]))
 

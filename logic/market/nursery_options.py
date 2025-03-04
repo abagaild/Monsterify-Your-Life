@@ -1,88 +1,61 @@
-# nursery_options.py
-"""
-Nursery Options Module: Builds interactive dropdown views for the different
-options available to affect the egg roll. It reads the trainer's temporary
-inventory from Google Sheets (the "EGGS" column) and filters allowed items by
-stripping marker text from allowed option texts.
-"""
-
+import logging
 import discord
-import re
+from core.database import fetch_all
+from core.google_sheets import update_character_sheet_item
+from logic.market.nursery_options import get_temp_inventory, collect_nursery_options
+from logic.market.nursery_roll import run_egg_roll
+from core.items import check_inventory  # Assumes check_inventory(user_id, trainer_name, item, amount)
 
-# Define allowed option templates with marker texts.
-ALLOWED_OPTIONS = {
-    "nurture_kit": "[type] Nurture Kit",
-    "corruption_code": "Corruption Code",
-    "repair_code": "Repair Code",
-    "shiny_new_code": "Shiny New Code",
-    "rank_incense": "[Rank] Rank Incense",
-    "color_insense": "[Yokai Attribute] Color Insense",
-    "spell_tag": "Spell Tag",
-    "summoning_stone": "Summoning Stone",
-    "digimeat": "DigiMeat",
-    "digitofu": "DigiTofu",
-    "soothe_bell": "SootheBell",
-    "broken_bell": "Broken Bell",
-    "poffin": "[type] Poffin",
-    "tag": "[attribute] tag",
-    "dna_splicer": "DNA Splicer",
-    "hot_chocolate": "Hot Chocolate",
-    "chocolate_milk": "Chocolate Milk",
-    "strawberry_milk": "Strawberry Milk",
-    "vanilla_ice_cream": "Vanilla Ice Cream",
-    "strawberry_ice_cream": "Strawberry Ice Cream",
-    "chocolate_ice_cream": "Chocolate Ice Cream",
-    "species_override": "Species Override"
-}
+def get_trainers(user_id: str) -> list:
+    """Retrieve trainers for the user from the database."""
+    try:
+        query = "SELECT id, name FROM trainers WHERE player_user_id = ?"
+        rows = fetch_all(query, (user_id,))
+        return [{'id': row["id"], 'name': row["name"]} for row in rows]
+    except Exception as e:
+        logging.error(f"Error fetching trainers for {user_id}: {e}")
+        return []
 
-def normalize_option(text: str) -> str:
-    """Removes any marker text enclosed in square brackets and trims the result."""
-    return re.sub(r"\[.*?\]", "", text).strip().lower()
-
-async def build_nursery_options_view(trainer_name: str, inventory: dict, user: discord.User) -> discord.ui.View:
+async def run_nursery_activity(interaction: discord.Interaction, user_id: str):
     """
-    Constructs a Discord view containing dropdowns for each allowed option type,
-    based on the trainer's "EGGS" inventory. Each dropdown allows the player to
-    select an item that affects the egg roll.
+    Runs the complete nursery activity.
     """
-    eggs_inventory = inventory.get("EGGS", {})
-    view = discord.ui.View(timeout=180)
-    view.selections = {}  # Store player's selections here
+    await interaction.response.defer(ephemeral=True)
+    trainers = get_trainers(user_id)
+    if not trainers:
+        await interaction.followup.send("No trainers found.", ephemeral=True)
+        return
 
-    # Create a dropdown for each allowed option if matching items are found.
-    for key, allowed_text in ALLOWED_OPTIONS.items():
-        normalized_allowed = normalize_option(allowed_text)
-        matching_items = []
-        for item_name, qty in eggs_inventory.items():
-            if qty < 1:
-                continue
-            normalized_item = normalize_option(item_name)
-            if normalized_item == normalized_allowed:
-                # Include the item with quantity in the label.
-                matching_items.append(discord.SelectOption(label=f"{item_name} ({qty})", value=item_name))
-        if matching_items:
-            select = discord.ui.Select(
-                placeholder=f"Select {allowed_text}",
-                min_values=0,
-                max_values=1,
-                options=matching_items,
-                custom_id=key
-            )
-            async def select_callback(interaction: discord.Interaction, select=select):
-                selected_value = select.values[0] if select.values else None
-                view.selections[select.custom_id] = selected_value
-                await interaction.response.defer()
-            select.callback = select_callback
-            view.add_item(select)
-
-    # Add a submit button to finalize the selections.
-    class SubmitButton(discord.ui.Button):
-        def __init__(self):
-            super().__init__(label="Submit Options", style=discord.ButtonStyle.success)
-        async def callback(self, interaction: discord.Interaction):
-            await interaction.response.send_message("Options submitted. Rolling eggs...", ephemeral=True)
-            # Call the nursery roll module to process the selections and roll eggs.
-            import nursery_roll
-            await nursery_roll.run_nursery_roll(interaction, view.selections, trainer_name)
-    view.add_item(SubmitButton())
-    return view
+    # If multiple trainers exist, present a dropdown for selection.
+    if len(trainers) > 1:
+        from core.core_views import create_paginated_trainers_dropdown
+        async def trainer_selected_callback(inter, selected_value):
+            selected_trainer = next((t for t in trainers if str(t["id"]) == selected_value), None)
+            if not selected_trainer:
+                await inter.response.send_message("Invalid trainer selection.", ephemeral=True)
+                return
+            await inter.response.send_message(f"Checking if **{selected_trainer['name']}** has eggs to hatch...", ephemeral=True)
+            has_egg, egg_msg = check_inventory(user_id, selected_trainer['name'], "Standard Egg", 1)
+            if has_egg:
+                await inter.followup.send(f"**{selected_trainer['name']}** has a Standard Egg. Proceeding with egg roll...", ephemeral=True)
+                temp_inventory = get_temp_inventory(selected_trainer['name'])
+                selections = await collect_nursery_options(inter, selected_trainer['name'], temp_inventory)
+                splicer_count, _ = check_inventory(user_id, selected_trainer['name'], "DNA Splicer", 0)
+                max_select = 1 + splicer_count
+                await run_egg_roll(inter, selected_trainer['name'], selections, max_select)
+            else:
+                await inter.followup.send(f"**{selected_trainer['name']}** does not have any Standard Eggs. {egg_msg}", ephemeral=True)
+        view = create_paginated_trainers_dropdown(trainers, "Select the trainer whose eggs you want to hatch:", trainer_selected_callback)
+        await interaction.followup.send("Please select a trainer:", view=view, ephemeral=True)
+    else:
+        trainer = trainers[0]
+        has_egg, egg_msg = check_inventory(user_id, trainer['name'], "Standard Egg", 1)
+        if not has_egg:
+            await interaction.followup.send(f"{trainer['name']} does not have a Standard Egg.", ephemeral=True)
+            return
+        await interaction.followup.send(f"Using trainer **{trainer['name']}**. Checking inventory...", ephemeral=True)
+        temp_inventory = get_temp_inventory(trainer['name'])
+        selections = await collect_nursery_options(interaction, trainer['name'], temp_inventory)
+        splicer_count, _ = check_inventory(user_id, trainer['name'], "DNA Splicer", 0)
+        max_select = 1 + splicer_count
+        await run_egg_roll(interaction, trainer['name'], selections, max_select)

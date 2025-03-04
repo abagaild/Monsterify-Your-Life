@@ -1,6 +1,7 @@
-from core.database import db, fetch_one, execute_query
+
 
 def get_currency(user_id: str) -> int:
+    from core.database import fetch_one
     # Fetch currency_amount for the first trainer linked to this user_id
     row = fetch_one("SELECT currency_amount FROM trainers WHERE player_user_id = ? ORDER BY id LIMIT 1", (user_id,))
     if row is None:
@@ -9,6 +10,7 @@ def get_currency(user_id: str) -> int:
     return row[0]
 
 def add_currency(user_id: str, amount: int) -> int:
+    from core.database import fetch_one, execute_query
     # Retrieve the current balance for the first trainer of this user.
     row = fetch_one("SELECT id, currency_amount FROM trainers WHERE player_user_id = ? ORDER BY id LIMIT 1", (user_id,))
     if row is None:

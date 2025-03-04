@@ -2,7 +2,7 @@ import logging
 import random
 import discord
 from core.core_views import create_paginated_trainers_dropdown
-from core.database import cursor, get_mons_for_trainer, update_mon_data
+from core.database import fetch_all, update_mon_data, get_mons_for_trainer
 from core.trainer import get_other_trainers_from_db, get_trainers_from_db
 from core.rollmons import register_mon
 from core.currency import add_currency
@@ -23,7 +23,6 @@ async def transfer_mon(mon_id: int, old_trainer: dict, new_trainer: dict) -> boo
     """
     Transfers a mon from the old trainer to the new trainer by updating its
     trainer_id and player_user_id in the database.
-    This version only modifies the database.
     """
     try:
         new_trainer_id = new_trainer['id']

@@ -2,7 +2,7 @@ import json
 import os
 import random
 from core.currency import add_currency
-from core.database import cursor, db, update_mon_data, get_all_mons_for_user
+from core.database import execute_query, fetch_one, fetch_all, update_mon_data
 from core.database import update_character_sheet_level, update_character_sheet_item
 
 def load_missions():
@@ -45,6 +45,7 @@ def meets_requirements(mon: dict, requirements: dict) -> bool:
     return True
 
 def get_viable_mons(user_id: str, mission: dict) -> list:
+    from core.database import get_all_mons_for_user  # assumed exported from core.database
     all_mons = get_all_mons_for_user(user_id)
     reqs = mission.get("requirements")
     if not reqs:
@@ -69,22 +70,19 @@ def fetch_missions(user_id: str):
 
 def db_store_active_mission(user_id: str, mission_record: dict):
     data = json.dumps(mission_record)
-    cursor.execute("REPLACE INTO active_missions (user_id, data) VALUES (?, ?)", (user_id, data))
-    db.commit()
+    execute_query("REPLACE INTO active_missions (user_id, data) VALUES (?, ?)", (user_id, data))
 
 def db_get_active_mission(user_id: str) -> dict:
-    cursor.execute("SELECT data FROM active_missions WHERE user_id = ?", (user_id,))
-    row = cursor.fetchone()
+    row = fetch_one("SELECT data FROM active_missions WHERE user_id = ?", (user_id,))
     if row:
         try:
-            return json.loads(row[0])
+            return json.loads(row["data"])
         except Exception:
             return None
     return None
 
 def db_delete_active_mission(user_id: str):
-    cursor.execute("DELETE FROM active_missions WHERE user_id = ?", (user_id,))
-    db.commit()
+    execute_query("DELETE FROM active_missions WHERE user_id = ?", (user_id,))
 
 def start_mission(user_id: str, mission_id: int, selected_mons: list) -> dict:
     missions = load_missions()
@@ -124,16 +122,14 @@ def progress_mission(user_id: str, amount: int) -> dict:
     return mission
 
 async def process_mon_level_reward(user_id: str, mon_name: str, level_reward: int) -> str:
-    cursor.execute("SELECT mon_id, trainer_id, level FROM mons WHERE mon_name = ? AND player = ?", (mon_name, user_id))
-    res = cursor.fetchone()
-    if not res:
+    row = fetch_one("SELECT mon_id, trainer_id, level FROM mons WHERE mon_name = ? AND player_user_id = ?", (mon_name, user_id))
+    if not row:
         return f"Mon '{mon_name}' not found or does not belong to you."
-    mon_id, trainer_id, current_level = res
-    cursor.execute("SELECT name FROM trainers WHERE id = ?", (trainer_id,))
-    t_res = cursor.fetchone()
-    if not t_res:
+    mon_id, trainer_id, current_level = row["mon_id"], row["trainer_id"], row["level"]
+    trainer_row = fetch_one("SELECT name FROM trainers WHERE id = ?", (trainer_id,))
+    if not trainer_row:
         return "Trainer not found for that mon."
-    trainer_name = t_res[0]
+    trainer_name = trainer_row["name"]
     new_level = current_level + level_reward
     if current_level >= 100:
         extra_coins = level_reward * 25
@@ -186,14 +182,11 @@ async def claim_mission_rewards(ctx, user_id: str) -> str:
         rolled_items = await roll_items(num=num_items)
         if rolled_items:
             first_mon = mission["selected_mons"][0]
-            cursor.execute("SELECT trainer_id FROM mons WHERE mon_name = ? AND player = ?", (first_mon, user_id))
-            row = cursor.fetchone()
+            row = fetch_one("SELECT trainer_id FROM mons WHERE mon_name = ? AND player_user_id = ?", (first_mon, user_id))
             if row:
-                trainer_id = row[0]
-                cursor.execute("SELECT name FROM trainers WHERE id = ?", (trainer_id,))
-                t_row = cursor.fetchone()
-                if t_row:
-                    trainer_name = t_row[0]
+                trainer_row = fetch_one("SELECT name FROM trainers WHERE id = ?", (row["trainer_id"],))
+                if trainer_row:
+                    trainer_name = trainer_row["name"]
                     success_items = []
                     for item in rolled_items:
                         success = await update_character_sheet_item(trainer_name, item, 1)
@@ -224,8 +217,7 @@ async def claim_mission_rewards(ctx, user_id: str) -> str:
     return summary
 
 def mark_mission_done(user_id: str, mission_id: int):
-    cursor.execute("INSERT OR IGNORE INTO completed_missions (user_id, mission_id) VALUES (?,?)", (user_id, mission_id))
-    db.commit()
+    execute_query("INSERT OR IGNORE INTO completed_missions (user_id, mission_id) VALUES (?,?)", (user_id, mission_id))
 
 def get_active_mission(user_id: str) -> dict:
     return db_get_active_mission(user_id)

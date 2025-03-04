@@ -1,14 +1,14 @@
 import random
 import datetime
 import json
-from core.database import cursor, db
+from core.database import execute_query, fetch_one
 from core.items import roll_items
 
 def get_today_date():
     return datetime.date.today().isoformat()
 
 def create_shop_rolls_table():
-    cursor.execute("""
+    create_query = """
         CREATE TABLE IF NOT EXISTS shop_rolls (
             shop TEXT,
             user_id TEXT,
@@ -16,25 +16,18 @@ def create_shop_rolls_table():
             items TEXT,
             PRIMARY KEY (shop, user_id, date)
         )
-    """)
-    db.commit()
+    """
+    execute_query(create_query)
 
 create_shop_rolls_table()
 
 async def roll_shop_items(shop: str, user_id: str, *, category_filter: str = None, exclude_categories: list = None, count_range: tuple = (2, 5)):
-    """
-    Rolls a set of items for the given shop and user.
-    Before rolling, any previous roll (not matching today's date) is deleted,
-    ensuring that a new roll is generated only once per day.
-    """
-    today = datetime.date.today().isoformat()
-    # Delete previous rolls.
-    cursor.execute("DELETE FROM shop_rolls WHERE shop=? AND user_id=? AND date<>?", (shop, user_id, today))
-    db.commit()
+    today = get_today_date()
+    # Delete previous rolls (not matching today's date)
+    execute_query("DELETE FROM shop_rolls WHERE shop=? AND user_id=? AND date<>?", (shop, user_id, today))
 
     # Check if today's roll exists.
-    cursor.execute("SELECT items FROM shop_rolls WHERE shop=? AND user_id=? AND date=?", (shop, user_id, today))
-    row = cursor.fetchone()
+    row = fetch_one("SELECT items FROM shop_rolls WHERE shop=? AND user_id=? AND date=?", (shop, user_id, today))
     if row:
         return json.loads(row[0])
 
@@ -71,14 +64,12 @@ async def roll_shop_items(shop: str, user_id: str, *, category_filter: str = Non
             "purchased": 0
         })
     items_json = json.dumps(items)
-    cursor.execute("INSERT INTO shop_rolls (shop, user_id, date, items) VALUES (?, ?, ?, ?)", (shop, user_id, today, items_json))
-    db.commit()
+    execute_query("INSERT INTO shop_rolls (shop, user_id, date, items) VALUES (?, ?, ?, ?)", (shop, user_id, today, items_json))
     return items
 
 async def purchase_item(shop: str, user_id: str, item_name: str, quantity: int):
     today = get_today_date()
-    cursor.execute("SELECT items FROM shop_rolls WHERE shop=? AND user_id=? AND date=?", (shop, user_id, today))
-    row = cursor.fetchone()
+    row = fetch_one("SELECT items FROM shop_rolls WHERE shop=? AND user_id=? AND date=?", (shop, user_id, today))
     if not row:
         return False, "No items available in the shop for today."
     items = json.loads(row[0])
@@ -94,7 +85,6 @@ async def purchase_item(shop: str, user_id: str, item_name: str, quantity: int):
             add_currency(user_id, -total_price)
             item["purchased"] += quantity
             new_items_json = json.dumps(items)
-            cursor.execute("UPDATE shop_rolls SET items=? WHERE shop=? AND user_id=? AND date=?", (new_items_json, shop, user_id, today))
-            db.commit()
+            execute_query("UPDATE shop_rolls SET items=? WHERE shop=? AND user_id=? AND date=?", (new_items_json, shop, user_id, today))
             return True, f"Purchased {quantity} x {item_name} for {total_price} coins."
     return False, f"Item {item_name} not found in shop."

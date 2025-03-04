@@ -1,8 +1,7 @@
 import logging
 import discord
-
-from core.database import cursor
-from core.google_sheets import update_character_sheet_item
+from core.database import fetch_all
+from core.database import update_character_sheet_item
 from logic.market.nursery_options import get_temp_inventory, collect_nursery_options
 from logic.market.nursery_roll import run_egg_roll
 from core.items import check_inventory  # Assumes check_inventory(user_id, trainer_name, item, amount)
@@ -10,20 +9,16 @@ from core.items import check_inventory  # Assumes check_inventory(user_id, train
 def get_trainers(user_id: str) -> list:
     """Retrieve trainers for the user from the database."""
     try:
-        cursor.execute("SELECT id, name FROM trainers WHERE user_id = ?", (user_id,))
-        return [{'id': row[0], 'name': row[1]} for row in cursor.fetchall()]
+        query = "SELECT id, name FROM trainers WHERE player_user_id = ?"
+        rows = fetch_all(query, (user_id,))
+        return [{'id': row["id"], 'name': row["name"]} for row in rows]
     except Exception as e:
         logging.error(f"Error fetching trainers for {user_id}: {e}")
         return []
 
 async def run_nursery_activity(interaction: discord.Interaction, user_id: str):
     """
-    Runs the complete nursery activity:
-      1. Retrieve trainers.
-      2. If multiple trainers exist, present a dropdown for selection.
-      3. Check inventory for a Standard Egg and DNA Splicer count.
-      4. Retrieve temporary inventory and collect nursery options.
-      5. Run the egg roll using updated filters.
+    Runs the complete nursery activity.
     """
     await interaction.response.defer(ephemeral=True)
     trainers = get_trainers(user_id)
@@ -44,7 +39,6 @@ async def run_nursery_activity(interaction: discord.Interaction, user_id: str):
             if has_egg:
                 await inter.followup.send(f"**{selected_trainer['name']}** has a Standard Egg. Proceeding with egg roll...", ephemeral=True)
                 temp_inventory = get_temp_inventory(selected_trainer['name'])
-                print(temp_inventory)
                 selections = await collect_nursery_options(inter, selected_trainer['name'], temp_inventory)
                 splicer_count, _ = check_inventory(user_id, selected_trainer['name'], "DNA Splicer", 0)
                 max_select = 1 + splicer_count
@@ -61,7 +55,6 @@ async def run_nursery_activity(interaction: discord.Interaction, user_id: str):
             return
         await interaction.followup.send(f"Using trainer **{trainer['name']}**. Checking inventory...", ephemeral=True)
         temp_inventory = get_temp_inventory(trainer['name'])
-        print(temp_inventory)
         selections = await collect_nursery_options(interaction, trainer['name'], temp_inventory)
         splicer_count, _ = check_inventory(user_id, trainer['name'], "DNA Splicer", 0)
         max_select = 1 + splicer_count

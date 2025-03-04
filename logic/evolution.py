@@ -3,7 +3,7 @@ from discord.ui import Select, Modal, TextInput, Button, View
 from typing import List, Optional
 from logic.market.witchs_hut import evolve_mon
 from core.trainer import get_trainers
-from core.database import cursor
+from core.database import fetch_all
 
 EVOLUTION_ITEMS: List[str] = [
     "Normal Evolution Stone", "Fire Evolution Stone", "Fighting Evolution Stone", "Water Evolution Stone",
@@ -16,19 +16,15 @@ EVOLUTION_ITEMS: List[str] = [
 ]
 
 def get_full_mons_for_trainer(trainer_id: int) -> List[dict]:
-    cursor.execute(
-        "SELECT mon_id, mon_name, species1, species2, species3, trainer_id FROM mons WHERE trainer_id = ?",
-        (trainer_id,)
-    )
-    rows = cursor.fetchall()
+    rows = fetch_all("SELECT mon_id, mon_name, species1, species2, species3, trainer_id FROM mons WHERE trainer_id = ?", (trainer_id,))
     return [
         {
-            "id": row[0],
-            "mon_name": row[1],
-            "species1": row[2] or "",
-            "species2": row[3] or "",
-            "species3": row[4] or "",
-            "trainer_id": row[5]
+            "id": row["mon_id"],
+            "mon_name": row["mon_name"],
+            "species1": row["species1"] or "",
+            "species2": row["species2"] or "",
+            "species3": row["species3"] or "",
+            "trainer_id": row["trainer_id"]
         }
         for row in rows
     ]

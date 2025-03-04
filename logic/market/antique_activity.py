@@ -12,28 +12,15 @@ with open("data/antiques.JSON", "r") as f:
 
 ANTIQUES = {item["name"]: item for item in antique_list}
 
-
 def antique_appraise_item(antique_item: dict) -> list:
     """
     Rolls a list of mons based on an antique item's appraisal properties.
-
-    Expected antique_item keys:
-      - roll_count: number of mons to roll.
-      - override_parameters: may include:
-            "species_all": list to override every species slot,
-            "species1", "species2", "species3": overrides for individual species slots,
-            "type": list for overriding mon types,
-            "attribute": list for overriding attributes.
-      - force_fusion (bool): Force a fusion roll.
-      - allow_fusion (bool): Allow fusion rolls (if False, force a non-fusion roll).
-      - pool_variant (optional): Specify a different pool.
     """
     roll_count = antique_item.get("roll_count", 1)
     overrides = antique_item.get("override_parameters", {})
     force_fusion = antique_item.get("force_fusion", False)
     allow_fusion = antique_item.get("allow_fusion", True)
     pool_variant = antique_item.get("pool_variant")
-
     pool = get_default_pool()
     rolled_mons = []
 
@@ -43,7 +30,6 @@ def antique_appraise_item(antique_item: dict) -> list:
         else:
             mon = roll_single_mon(pool, force_fusion=force_fusion)
 
-        # --- Species Overrides ---
         original_name = mon.get("name", "Unknown")
         if "species_all" in overrides and overrides["species_all"]:
             if " / " in original_name:
@@ -65,9 +51,7 @@ def antique_appraise_item(antique_item: dict) -> list:
             else:
                 if "species1" in overrides and overrides["species1"]:
                     mon["name"] = random.choice(overrides["species1"])
-                # Else leave the original name
 
-        # --- Update species fields based on the overridden name ---
         if " / " in mon["name"]:
             parts = [p.strip() for p in mon["name"].split(" / ")]
             mon["species1"] = parts[0]
@@ -78,7 +62,6 @@ def antique_appraise_item(antique_item: dict) -> list:
             mon["species2"] = ""
             mon["species3"] = ""
 
-        # --- Type and Attribute Overrides ---
         if "type" in overrides and overrides["type"]:
             mon["types"] = [random.choice(overrides["type"])]
         if "attribute" in overrides and overrides["attribute"]:
@@ -86,7 +69,6 @@ def antique_appraise_item(antique_item: dict) -> list:
 
         rolled_mons.append(mon)
     return rolled_mons
-
 
 async def appraise_antique_activity(interaction: discord.Interaction, trainer: dict, antique_item: dict,
                                     claim_limit: int = 1):
@@ -100,7 +82,6 @@ async def appraise_antique_activity(interaction: discord.Interaction, trainer: d
         await interaction.followup.send(embed=embed, view=view, ephemeral=True)
     else:
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
-
 
 # --- Inventory Selection Views ---
 
@@ -117,23 +98,20 @@ class AntiqueInventorySelect(Select):
         if not interaction.response.is_done():
             await interaction.response.defer(ephemeral=True)
         selected_item = self.values[0]
-        # Look up the antique definition from the loaded JSON dictionary.
         antique_item = ANTIQUES.get(selected_item)
         if antique_item is None:
             await interaction.followup.send(f"No definition found for '{selected_item}'.", ephemeral=True)
             return
         await appraise_antique_activity(interaction, self.trainer, antique_item)
 
-
 class AntiqueInventorySelectView(View):
     def __init__(self, antique_items: dict, trainer: dict):
         super().__init__(timeout=60)
         self.add_item(AntiqueInventorySelect(antique_items, trainer))
 
-
 async def send_antique_inventory_view(interaction: discord.Interaction, trainer_name: str):
+    from core.trainer import get_temporary_inventory_columns
     inventory = get_temporary_inventory_columns(trainer_name)
-    # Use the same key as your sheet header (e.g. "COLLECTION").
     antique_items = inventory.get("COLLECTION", {}) or {}
     if not antique_items:
         if interaction.response.is_done():
@@ -153,9 +131,6 @@ async def send_antique_inventory_view(interaction: discord.Interaction, trainer_
     else:
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
-
-# --- Trainer Selection Views ---
-
 class AntiqueTrainerSelectionView(View):
     def __init__(self, trainers: list):
         super().__init__(timeout=60)
@@ -164,7 +139,6 @@ class AntiqueTrainerSelectionView(View):
             options.append(discord.SelectOption(label=trainer["name"], value=str(trainer["id"])))
         self.trainers = {str(trainer["id"]): trainer for trainer in trainers}
         self.add_item(AntiqueTrainerSelect(options, self.trainers))
-
 
 class AntiqueTrainerSelect(Select):
     def __init__(self, options, trainers: dict):

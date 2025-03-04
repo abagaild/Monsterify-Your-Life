@@ -1,0 +1,40 @@
+{
+  "trainers": [
+    {
+      "name": "Ash",
+      "image": "https://example.com/ash_image.png",
+      "mons": [
+        {
+          "name": "Pikachu",
+          "species": "Pikachu",
+          "hp": 100,
+          "attack": 30,
+          "defense": 20,
+          "image": "https://example.com/pikachu.png"
+        },
+        {
+          "name": "Charizard",
+          "species": "Charizard",
+          "hp": 150,
+          "attack": 40,
+          "defense": 25,
+          "image": "https://example.com/charizard.png"
+        }
+      ]
+    },
+    {
+      "name": "Misty",
+      "image": "https://example.com/misty_image.png",
+      "mons": [
+        {
+          "name": "Starmie",
+          "species": "Starmie",
+          "hp": 110,
+          "attack": 35,
+          "defense": 20,
+          "image": "https://example.com/starmie.png"
+        }
+      ]
+    }
+  ]
+}

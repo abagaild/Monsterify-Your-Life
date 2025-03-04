@@ -1,89 +1,83 @@
-import discord
-import logging
 import random
-from core.database import update_character_sheet_item
-from core.trainer import get_trainers, get_other_trainers_from_db
-from core.core_views import create_paginated_trainers_dropdown
+import datetime
+import json
+from core.database import execute_query
+from core.items import roll_items
 
-TRADE_ITEMS_IMAGES = [
-    "https://example.com/trade_items_img1.png",
-    "https://example.com/trade_items_img2.png",
-    "https://example.com/trade_items_img3.png"
-]
+def get_today_date():
+    return datetime.date.today().isoformat()
 
-TRADE_ITEMS_FLAVOR_TEXTS = [
-    "May your trades bring fortune!",
-    "A deal is a deal!",
-    "Trade winds are favorable today!"
-]
+def create_shop_rolls_table():
+    create_query = """
+        CREATE TABLE IF NOT EXISTS shop_rolls (
+            shop TEXT,
+            user_id TEXT,
+            date TEXT,
+            items TEXT,
+            PRIMARY KEY (shop, user_id, date)
+        )
+    """
+    execute_query(create_query)
 
-def parse_trade_input(input_str: str) -> dict:
-    trades = {}
-    parts = input_str.split(',')
-    for part in parts:
-        part = part.strip()
-        if not part or ':' not in part:
-            continue
-        item, amt = part.split(':', 1)
-        try:
-            trades[item.strip()] = int(amt.strip())
-        except ValueError:
-            logging.error(f"Invalid amount for item '{item}' in trade input.")
-    return trades
+create_shop_rolls_table()
 
-class TradeModal(discord.ui.Modal, title="Trade Items"):
-    trainer1_receiving = discord.ui.TextInput(
-        label="T1: Items to Receive",
-        placeholder="e.g., Pokeball:2, Potion:1",
-        required=False
-    )
-    trainer2_receiving = discord.ui.TextInput(
-        label="T2: Items to Receive",
-        placeholder="e.g., Berry:3, Elixir:1",
-        required=False
-    )
-
-    def __init__(self, trainer1: dict, trainer2: dict):
-        super().__init__()
-        self.trainer1 = trainer1
-        self.trainer2 = trainer2
-
-    async def on_submit(self, interaction: discord.Interaction):
-        await interaction.response.defer(ephemeral=True)
-        trade_for_trainer1 = parse_trade_input(self.trainer1_receiving.value)
-        trade_for_trainer2 = parse_trade_input(self.trainer2_receiving.value)
-        errors = []
-        for item, amount in trade_for_trainer1.items():
-            logging.info(f"Trading {amount} of {item} from {self.trainer2['name']} to {self.trainer1['name']}.")
-            success_remove = await update_character_sheet_item(self.trainer2['name'], item, -amount)
-            success_add = await update_character_sheet_item(self.trainer1['name'], item, amount)
-            if not success_remove:
-                error_msg = f"Failed to remove {item} (x{amount}) from {self.trainer2['name']}."
-                logging.error(error_msg)
-                errors.append(error_msg)
-            if not success_add:
-                error_msg = f"Failed to add {item} (x{amount}) to {self.trainer1['name']}."
-                logging.error(error_msg)
-                errors.append(error_msg)
-        for item, amount in trade_for_trainer2.items():
-            logging.info(f"Trading {amount} of {item} from {self.trainer1['name']} to {self.trainer2['name']}.")
-            success_remove = await update_character_sheet_item(self.trainer1['name'], item, -amount)
-            success_add = await update_character_sheet_item(self.trainer2['name'], item, amount)
-            if not success_remove:
-                error_msg = f"Failed to remove {item} (x{amount}) from {self.trainer1['name']}."
-                logging.error(error_msg)
-                errors.append(error_msg)
-            if not success_add:
-                error_msg = f"Failed to add {item} (x{amount}) to {self.trainer2['name']}."
-                logging.error(error_msg)
-                errors.append(error_msg)
-        if errors:
-            description = "Trade completed with errors:\n" + "\n".join(errors)
-            color = discord.Color.red()
+async def roll_shop_items(shop: str, user_id: str, *, category_filter: str = None, exclude_categories: list = None, count_range: tuple = (2, 5)):
+    today = get_today_date()
+    # Delete previous rolls.
+    execute_query("DELETE FROM shop_rolls WHERE shop=? AND user_id=? AND date<>?", (shop, user_id, today))
+    row = execute_query("SELECT items FROM shop_rolls WHERE shop=? AND user_id=? AND date=?", (shop, user_id, today)).fetchone()
+    if row:
+        return json.loads(row[0])
+    count = random.randint(*count_range)
+    if exclude_categories:
+        all_items = await roll_items(50)
+        filtered = [item for item in all_items if not any(ex in (item['name'].lower() if isinstance(item, dict) else item.lower()) for ex in exclude_categories)]
+        rolled = filtered if len(filtered) < count else random.sample(filtered, count)
+    else:
+        filter_keyword = category_filter if category_filter else None
+        rolled = await roll_items(count, filter_keyword=filter_keyword)
+    items = []
+    for item in rolled:
+        price = random.randint(2000, 60000)
+        max_purchase = random.randint(1, 3)
+        if isinstance(item, dict):
+            item_name = item.get("name", "")
+            effect = item.get("effect", "")
+            rarity = item.get("rarity", "")
         else:
-            description = "Trade completed successfully!"
-            color = discord.Color.green()
-        embed = discord.Embed(title="Trade Result", description=description, color=color)
-        embed.set_image(url=random.choice(TRADE_ITEMS_IMAGES))
-        embed.set_footer(text=random.choice(TRADE_ITEMS_FLAVOR_TEXTS))
-        await interaction.followup.send(embed=embed, ephemeral=True)
+            item_name = item
+            effect = ""
+            rarity = ""
+        items.append({
+            "name": item_name,
+            "effect": effect,
+            "rarity": rarity,
+            "price": price,
+            "max_purchase": max_purchase,
+            "purchased": 0
+        })
+    items_json = json.dumps(items)
+    execute_query("INSERT INTO shop_rolls (shop, user_id, date, items) VALUES (?, ?, ?, ?)", (shop, user_id, today, items_json))
+    return items
+
+async def purchase_item(shop: str, user_id: str, item_name: str, quantity: int):
+    today = get_today_date()
+    row = execute_query("SELECT items FROM shop_rolls WHERE shop=? AND user_id=? AND date=?", (shop, user_id, today)).fetchone()
+    if not row:
+        return False, "No items available in the shop for today."
+    items = json.loads(row[0])
+    for item in items:
+        if item["name"].lower() == item_name.lower():
+            if item["purchased"] + quantity > item["max_purchase"]:
+                return False, f"You can only purchase {item['max_purchase'] - item['purchased']} more of {item_name}."
+            total_price = item["price"] * quantity
+            from core.currency import get_currency, add_currency
+            funds = get_currency(user_id)
+            if funds < total_price:
+                return False, "Insufficient funds."
+            add_currency(user_id, -total_price)
+            item["purchased"] += quantity
+            new_items_json = json.dumps(items)
+            execute_query("UPDATE shop_rolls SET items=? WHERE shop=? AND user_id=? AND date=?", (new_items_json, shop, user_id, today))
+            return True, f"Purchased {quantity} x {item_name} for {total_price} coins."
+    return False, f"Item {item_name} not found in shop."

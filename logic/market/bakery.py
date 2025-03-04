@@ -7,7 +7,7 @@ MESSAGES = [
     "Step inside the Bakery for warm treats and sweet surprises."
 ]
 
-from core.google_sheets import update_character_sheet_item
+from core.database import update_character_sheet_item
 from core.mon import get_mon
 
 

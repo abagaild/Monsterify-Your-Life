@@ -3,7 +3,7 @@ import datetime
 import random
 import discord
 from discord import Embed
-from core.database import cursor, db, increment_garden_harvest, update_character_sheet_item
+from core.database import execute_query, fetch_one, update_character_sheet_item, increment_garden_harvest
 from core.items import roll_items
 from core.rollmons import roll_mons
 from data.garden_tasks import GARDEN_TASKS
@@ -18,9 +18,8 @@ from data.messages import (
 
 def claim_garden_harvest(ctx):
     user_id = str(ctx.user.id)
-    cursor.execute("SELECT amount FROM garden_harvest WHERE user_id = ?", (user_id,))
-    row = cursor.fetchone()
-    if row is None or row[0] <= 0:
+    row = fetch_one("SELECT amount FROM garden_harvest WHERE user_id = ?", (user_id,))
+    if row is None or row["amount"] <= 0:
         no_harvest_embed = Embed(
             title="No Harvest Available",
             description="🌱 You haven't completed any garden tasks yet. Tackle some tasks to grow your harvest!",
@@ -29,10 +28,10 @@ def claim_garden_harvest(ctx):
         no_harvest_embed.set_image(url=random.choice(GARDEN_NO_HARVESTS_IMAGES))
         no_harvest_embed.set_footer(text=random.choice(GARDEN_NO_HARVESTS_FLAVOR_TEXTS))
         return no_harvest_embed
-    harvest_amount = row[0]
+    harvest_amount = row["amount"]
     now = datetime.datetime.now().isoformat()
-    cursor.execute("UPDATE garden_harvest SET amount = 0, last_claimed = ? WHERE user_id = ?", (now, user_id))
-    db.commit()
+    execute_query("UPDATE garden_harvest SET amount = 0, last_claimed = ? WHERE user_id = ?", (now, user_id))
+    # Note: roll_items is async, so we use asyncio.run if not already in an async context.
     rolled_items = asyncio.run(roll_items(harvest_amount))
     harvested_embed = Embed(
         title="Harvest Claimed!",
