@@ -5,7 +5,9 @@ from discord.ui import View, Button
 from core.mon import register_mon
 from views.habits import HabitManagerView
 from views.tasks import TaskManagerView
-
+from discord.ui import Modal, TextInput
+import random
+from logic.schedule import build_schedule_message
 
 class ScheduleMenuView(View):
     def __init__(self):
@@ -28,10 +30,6 @@ class ScheduleMenuView(View):
     @discord.ui.button(label="Create Schedule", style=discord.ButtonStyle.success, custom_id="create_schedule", row=2)
     async def create_schedule_button(self, interaction: discord.Interaction, button: Button):
         await interaction.response.send_modal(CreateScheduleModal())
-
-from discord.ui import Modal, TextInput
-import random
-from logic.schedule import build_schedule_message
 
 class CreateScheduleModal(Modal, title="Create Daily Schedule"):
     tasks_input = TextInput(
@@ -99,7 +97,6 @@ class RewardAssignmentButtonView(discord.ui.View):
         if rolled_items:
             self.add_item(AssignItemsButton(rolled_items))
 
-import discord
 from discord.ui import Button
 from core.core_views import AssignRolledItemsModal
 

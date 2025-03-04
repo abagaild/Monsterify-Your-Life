@@ -1,15 +1,13 @@
 import discord
 from discord.ui import View, Button
+
+import core.trainer
+import views.trainer
 from core.config import (
     market_channel_id, garden_channel_id, schedule_channel_id,
     submissions_channel_id, mission_channel_id, ADVENTURE_CHANNEL_ID,
     game_corner_channel_id, boss_channel_id, admin_actions_channel_id
 )
-from views.trainers import get_trainers_from_db
-from core.trainer import get_other_trainers_from_db
-from logic.trade_items import TradeTrainerSelectionView
-from logic.trade_pokemon import TradePokemonSelectionView
-from views.trainers import PaginatedTrainersView
 
 TARGET_CHANNELS = {
     "menu_market": market_channel_id,
@@ -97,19 +95,16 @@ class TownMenuView(View):
     @discord.ui.button(label="Apothecary", style=discord.ButtonStyle.secondary, custom_id="town_apothecary", row=0)
     async def apothecary(self, interaction: discord.Interaction, button: discord.ui.Button):
         from views.market.apothecary import send_apothocary_overall_view
-        channel = interaction.channel
         await send_apothocary_overall_view(interaction, str(interaction.user.id))
 
     @discord.ui.button(label="Bakery", style=discord.ButtonStyle.secondary, custom_id="town_bakery", row=0)
     async def bakery(self, interaction: discord.Interaction, button: discord.ui.Button):
         from views.market.bakery import send_bakery_view
-        channel = interaction.channel
         await send_bakery_view(interaction, str(interaction.user.id))
 
     @discord.ui.button(label="Witch's Hut", style=discord.ButtonStyle.secondary, custom_id="town_witch", row=0)
     async def witch_hut(self, interaction: discord.Interaction, button: discord.ui.Button):
         from views.market.witchs_hut import send_witchs_hut_view
-        channel = interaction.channel
         await send_witchs_hut_view(interaction, str(interaction.user.id))
 
     @discord.ui.button(label="Antique Store", style=discord.ButtonStyle.secondary, custom_id="town_antique", row=0)
@@ -125,13 +120,11 @@ class TownMenuView(View):
     @discord.ui.button(label="Pirate's Dock", style=discord.ButtonStyle.secondary, custom_id="town_pirate", row=1)
     async def pirate_dock(self, interaction: discord.Interaction, button: discord.ui.Button):
         from views.market.pirates_dock import send_pirates_dock_view
-        channel = interaction.channel
         await send_pirates_dock_view(interaction, str(interaction.user.id))
 
     @discord.ui.button(label="Megamart", style=discord.ButtonStyle.secondary, custom_id="town_megamart", row=1)
     async def megamart(self, interaction: discord.Interaction, button: discord.ui.Button):
         from views.market.megamart import send_megamart_view
-        channel = interaction.channel
         await send_megamart_view(interaction, str(interaction.user.id))
 
     @discord.ui.button(label="Adventure", style=discord.ButtonStyle.success, custom_id="town_adventure", row=2)
@@ -139,32 +132,28 @@ class TownMenuView(View):
         from views.adventure import AdventureView
         embed = discord.Embed(title="Adventure Awaits!", description="Choose your adventure!", color=discord.Color.blue())
         embed.set_image(url="https://i.imgur.com/R48BhNs.png")
-        channel = interaction.channel
-        await channel.send(embed=embed, view=AdventureView(user_id=str(interaction.user.id)))
+        await interaction.channel.send(embed=embed, view=AdventureView(user_id=str(interaction.user.id)))
 
     @discord.ui.button(label="Mission", style=discord.ButtonStyle.success, custom_id="town_mission", row=2)
     async def mission(self, interaction: discord.Interaction, button: discord.ui.Button):
         from views.mission import MissionSelectView
         view = MissionSelectView(str(interaction.user.id))
-        channel = interaction.channel
         embed = view.get_embed()
-        await channel.send(embed=embed, view=view)
+        await interaction.channel.send(embed=embed, view=view)
 
     @discord.ui.button(label="Game Corner", style=discord.ButtonStyle.success, custom_id="town_game_corner", row=2)
     async def game_corner(self, interaction: discord.Interaction, button: discord.ui.Button):
         from views.gamecorner import GameCornerDurationView
         view = GameCornerDurationView(interaction.user)
-        channel = interaction.channel
         embed = discord.Embed(title="Game Corner", description="Welcome to the Pomodoro Game Corner!", color=discord.Color.green())
-        await channel.send(embed=embed, view=view)
+        await interaction.channel.send(embed=embed, view=view)
 
     @discord.ui.button(label="Garden", style=discord.ButtonStyle.secondary, custom_id="town_garden", row=3)
     async def garden(self, interaction: discord.Interaction, button: discord.ui.Button):
         from views.garden import GardenView
         view = GardenView(str(interaction.user.id))
-        channel = interaction.channel
         embed = discord.Embed(title="Garden", color=discord.Color.green())
-        await channel.send(embed=embed, view=view)
+        await interaction.channel.send(embed=embed, view=view)
 
     @discord.ui.button(label="Farm", style=discord.ButtonStyle.secondary, custom_id="town_farm", row=3)
     async def farm(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -176,12 +165,6 @@ class TownMenuView(View):
         from views.market.nursery import send_nursery_view
         await send_nursery_view(interaction, str(interaction.user.id))
 
-    @discord.ui.button(label="Poffin Crafting", style=discord.ButtonStyle.secondary, custom_id="town_poffin", row=3)
-    async def poffin(self, interaction: discord.Interaction, button: discord.ui.Button):
-        from views.town import send_poffin_view
-        channel = interaction.channel
-        await send_poffin_view(interaction, str(interaction.user.id), target_channel=channel)
-
 class CharacterMenuView(View):
     def __init__(self):
         super().__init__(timeout=120)
@@ -189,15 +172,15 @@ class CharacterMenuView(View):
     @discord.ui.button(label="View My Characters", style=discord.ButtonStyle.primary, custom_id="char_view_my", row=0)
     async def view_my_characters(self, interaction: discord.Interaction, button: discord.ui.Button):
         user_id = str(interaction.user.id)
-        trainers = get_trainers_from_db(str(user_id))
-        view = PaginatedTrainersView(trainers, editable=True, user_id=str(user_id))
+        trainers = core.trainer.get_trainers(str(user_id))
+        view = views.trainer.PaginatedTrainersView(trainers, editable=True, user_id=str(user_id))
         await interaction.response.send_message(embed=await view.get_current_embed(), view=view, ephemeral=True)
 
     @discord.ui.button(label="View Other Characters", style=discord.ButtonStyle.primary, custom_id="char_view_other", row=0)
     async def view_other_characters(self, interaction: discord.Interaction, button: discord.ui.Button):
         user_id = str(interaction.user.id)
-        other_trainers = get_other_trainers_from_db(user_id)
-        view = PaginatedTrainersView(other_trainers, editable=False, user_id=user_id)
+        other_trainers = core.trainer.get_other_trainers_from_db(user_id)
+        view = views.trainer.PaginatedTrainersView(other_trainers, editable=False, user_id=user_id)
         await interaction.response.send_message(embed=await view.get_current_embed(), view=view, ephemeral=True)
 
     @discord.ui.button(label="Trade Items", style=discord.ButtonStyle.secondary, custom_id="char_trade_items", row=1)

@@ -1,7 +1,7 @@
 import random
 from typing import List, Dict, Any, Optional
 
-from core.google_sheets import update_character_sheet_item, update_mon_sheet_data
+from core.database import update_character_sheet_item, update_mon_sheet_data
 from core.rollmons import fetch_pokemon_data, fetch_digimon_data, fetch_yokai_data
 from data.lists import legendary_list, mythical_list, no_evolution
 from core.database import cursor, update_mon_data

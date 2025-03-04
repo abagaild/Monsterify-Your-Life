@@ -9,8 +9,7 @@ class BakeryTrainerSelectionView(View):
         super().__init__(timeout=300)
         self.trainers = trainers
         self.selected_trainer = None
-        options = [discord.SelectOption(label=trainer["name"], value=str(trainer["id"])) for trainer in trainers] \
-                  if trainers else [discord.SelectOption(label="No Trainers Found", value="none")]
+        options = [discord.SelectOption(label=trainer["name"], value=str(trainer["id"])) for trainer in trainers] if trainers else [discord.SelectOption(label="No Trainers Found", value="none")]
         self.add_item(BakeryTrainerSelect(options))
 
 class BakeryTrainerSelect(Select):
@@ -43,12 +42,10 @@ class MonPastrySelectionView(View):
         self.selected_mon = None
         self.selected_pastry = None
 
-        mon_options = [discord.SelectOption(label=mon["mon_name"], value=mon["mon_name"]) for mon in mons] \
-                      if mons else [discord.SelectOption(label="No Mons Found", value="none")]
+        mon_options = [discord.SelectOption(label=mon["mon_name"], value=mon["mon_name"]) for mon in mons] if mons else [discord.SelectOption(label="No Mons Found", value="none")]
         self.add_item(MonDropdown(mon_options))
 
-        pastry_options = [discord.SelectOption(label=pastry.title(), value=pastry) for pastry in sorted(PASTRY_EFFECTS.keys())] \
-                         if PASTRY_EFFECTS else [discord.SelectOption(label="No Pastries Found", value="none")]
+        pastry_options = [discord.SelectOption(label=pastry.title(), value=pastry) for pastry in sorted(PASTRY_EFFECTS.keys())] if PASTRY_EFFECTS else [discord.SelectOption(label="No Pastries Found", value="none")]
         self.add_item(PastryDropdown(pastry_options))
 
         self.add_item(SubmitButtonBakery())
@@ -82,14 +79,11 @@ class SubmitButtonBakery(Button):
 
     async def callback(self, interaction: discord.Interaction):
         await interaction.response.defer(ephemeral=True)
-        view: MonPastrySelectionView = self.view
+        view: MonPastrySelectionView = self.view  # type: ignore
         if not view.selected_mon or not view.selected_pastry:
             await interaction.followup.send("Please select both a mon and a pastry.", ephemeral=True)
             return
-        await interaction.followup.send(
-            "Please enter the predetermined value for the selected pastry (e.g., type, attribute, or species):",
-            ephemeral=True
-        )
+        await interaction.followup.send("Please enter the predetermined value for the selected pastry (e.g., type, attribute, or species):", ephemeral=True)
         def check(m):
             return m.author.id == interaction.user.id and m.channel == interaction.channel
         try:

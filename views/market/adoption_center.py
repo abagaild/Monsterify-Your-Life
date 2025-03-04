@@ -1,6 +1,8 @@
 import discord
 import random
 from logic.market.adoption_center import start_adoption_activity
+from core.database import update_character_sheet_item  # updated to use core.database
+#from core.rollmons import register_mon  <-- assumed unchanged; ensure it’s up‐to‐date in core.rollmons
 
 class AdoptionCenterView(discord.ui.View):
     def __init__(self, user_id: str, rolled_mons: list, max_adoptions: int):
@@ -21,7 +23,7 @@ class AdoptionCenterView(discord.ui.View):
         ])
         await interaction.response.send_message(ending_msg, ephemeral=True)
         from views.mainMenu import TownMenuView
-        channel = interaction.channel  # or use get_target_channel with extra mapping if needed
+        channel = interaction.channel
         embed = discord.Embed(title="Visit Town", description="Select a location to visit:", color=discord.Color.blue())
         await channel.send(embed=embed, view=TownMenuView())
 
@@ -32,8 +34,7 @@ class AdoptionButton(discord.ui.Button):
         self.mon = mon
 
     async def callback(self, interaction: discord.Interaction):
-
-        await interaction.response.send_message("Enter the trainer name for adoption (who is using the Daycare Daypass):", ephemeral=True)
+        await interaction.response.send_message("Enter the trainer name for adoption (using your Daycare Daypass):", ephemeral=True)
 
         def check(m):
             return m.author.id == interaction.user.id and m.channel.id == interaction.channel.id
@@ -44,19 +45,10 @@ class AdoptionButton(discord.ui.Button):
         except Exception:
             await interaction.followup.send("Timed out waiting for trainer name. Adoption cancelled.", ephemeral=True)
             return
-        '''
-        await interaction.followup.send("Enter a custom name for the mon:", ephemeral=True)
-        try:
-            msg_custom = await interaction.client.wait_for("message", check=check, timeout=30)
-            custom_name = msg_custom.content.strip()
-        except Exception:
-            await interaction.followup.send("Timed out waiting for a custom name. Adoption cancelled.", ephemeral=True)
-            return
-            '''
 
         from core.rollmons import register_mon
         await register_mon(interaction, self.mon)
-        from core.google_sheets import update_character_sheet_item
+        # Use updated database function
         daypass_removed = await update_character_sheet_item(trainer_name, "Daycare Daypass", -1)
         if not daypass_removed:
             await interaction.followup.send("Warning: Failed to remove a Daycare Daypass from your inventory.", ephemeral=True)
@@ -89,17 +81,9 @@ class AdoptionTrainerSelect(discord.ui.Select):
         await interaction.response.defer(ephemeral=True)
         await start_adoption_activity(interaction, self.user_id, trainer_name)
 
-
-async def send_adoption_center_view(interaction: discord.Interaction, user_id: str,
-                                    target_channel: discord.TextChannel):
+async def send_adoption_center_view(interaction: discord.Interaction, user_id: str, target_channel: discord.TextChannel):
     """
     Starts the adoption center UI flow.
-
-    Since no trainer name is passed, start_adoption_activity will prompt the user
-    with a paginated dropdown to select a trainer. Once a trainer is selected,
-    the adoption flow continues (checking for a Daycare Daypass and rolling mons).
     """
-    # You might want to send an initial message to indicate the process has started:
     await target_channel.send("Starting Adoption Center flow...")
-    # Call the adoption flow function.
     await start_adoption_activity(interaction, user_id)

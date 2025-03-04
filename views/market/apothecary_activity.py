@@ -1,7 +1,6 @@
 import discord
 from discord.ui import View, Select, Button
 from typing import List, Optional
-
 from logic.market.apothecary_activity import apply_berry_effect, BERRY_EFFECTS
 from core.mon import get_mons_for_trainer
 
@@ -12,7 +11,7 @@ from core.mon import get_mons_for_trainer
 class TrainerSelectionView(View):
     def __init__(self, trainers: List[dict]) -> None:
         super().__init__(timeout=300)
-        self.trainers = trainers  # List of trainer dicts (with keys "id" and "name")
+        self.trainers = trainers  # Each trainer dict should include "id" and "name"
         self.selected_trainer = None
         options = []
         if trainers:

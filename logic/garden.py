@@ -1,13 +1,9 @@
-# logic_garden.py
 import asyncio
 import datetime
 import random
-
 import discord
 from discord import Embed
-
-from core.database import cursor, db
-from core.google_sheets import update_character_sheet_item
+from core.database import cursor, db, increment_garden_harvest, update_character_sheet_item
 from core.items import roll_items
 from core.rollmons import roll_mons
 from data.garden_tasks import GARDEN_TASKS
@@ -20,28 +16,7 @@ from data.messages import (
     GARDEN_SPECIAL_FLAVOR_TEXTS, GARDEN_SPECIAL_IMAGES
 )
 
-
-def increment_garden_harvest(user_id: str, count: int = 1):
-    """
-    Increments the garden harvest amount for the given user.
-    """
-    cursor.execute("SELECT amount FROM garden_harvest WHERE user_id = ?", (user_id,))
-    row = cursor.fetchone()
-    now = datetime.datetime.now().isoformat()
-    if row is None:
-        cursor.execute(
-            "INSERT INTO garden_harvest (user_id, amount, last_claimed) VALUES (?, ?, ?)",
-            (user_id, count, now)
-        )
-    else:
-        new_amount = row[0] + count
-        cursor.execute("UPDATE garden_harvest SET amount = ? WHERE user_id = ?", (new_amount, user_id))
-    db.commit()
-
-async def claim_garden_harvest(ctx):
-    """
-    Claims the garden harvest for the user.
-    """
+def claim_garden_harvest(ctx):
     user_id = str(ctx.user.id)
     cursor.execute("SELECT amount FROM garden_harvest WHERE user_id = ?", (user_id,))
     row = cursor.fetchone()
@@ -53,14 +28,12 @@ async def claim_garden_harvest(ctx):
         )
         no_harvest_embed.set_image(url=random.choice(GARDEN_NO_HARVESTS_IMAGES))
         no_harvest_embed.set_footer(text=random.choice(GARDEN_NO_HARVESTS_FLAVOR_TEXTS))
-        await ctx.followup.send(embed=no_harvest_embed)
-        return
-
+        return no_harvest_embed
     harvest_amount = row[0]
-    rolled_items = await roll_items(harvest_amount)
     now = datetime.datetime.now().isoformat()
     cursor.execute("UPDATE garden_harvest SET amount = 0, last_claimed = ? WHERE user_id = ?", (now, user_id))
     db.commit()
+    rolled_items = asyncio.run(roll_items(harvest_amount))
     harvested_embed = Embed(
         title="Harvest Claimed!",
         description=f"🌿 You harvested **{harvest_amount} item(s)**!\nYou received: {', '.join(rolled_items)}",
@@ -68,7 +41,7 @@ async def claim_garden_harvest(ctx):
     )
     harvested_embed.set_image(url=random.choice(GARDEN_HARVESTED_IMAGES))
     harvested_embed.set_footer(text=random.choice(GARDEN_HARVESTED_FLAVOR_TEXTS))
-    await ctx.followup.send(embed=harvested_embed)
+    return harvested_embed
 
 class TaskDoneView(discord.ui.View):
     def __init__(self):
@@ -82,14 +55,7 @@ class TaskDoneView(discord.ui.View):
         await interaction.response.send_message("Task confirmed!", ephemeral=True)
 
 async def process_garden(ctx, mode: str = "tend"):
-    """
-    Processes a garden task for the user.
-    If mode is "harvest", it directly claims the harvest.
-    Otherwise (mode "tend"), it presents a garden task for the user to complete.
-    """
     user_id = str(ctx.user.id)
-
-    # Display welcome embed
     welcome_embed = Embed(
         title="Welcome to Your Garden!",
         description=random.choice(GARDEN_WELCOME_FLAVOR_TEXTS),
@@ -97,12 +63,10 @@ async def process_garden(ctx, mode: str = "tend"):
     )
     welcome_embed.set_image(url=random.choice(GARDEN_WELCOME_IMAGES))
     await ctx.followup.send(embed=welcome_embed)
-
     if mode == "harvest":
-        await claim_garden_harvest(ctx)
+        embed = claim_garden_harvest(ctx)
+        await ctx.followup.send(embed=embed)
         return
-
-    # For "tend" mode, present a random garden task
     task_text = random.choice(GARDEN_TASKS)
     task_embed = Embed(
         title="Garden Task",
@@ -113,15 +77,11 @@ async def process_garden(ctx, mode: str = "tend"):
     task_embed.set_footer(text=random.choice(GARDEN_TASK_DOING_FLAVOR_TEXTS))
     task_view = TaskDoneView()
     await ctx.followup.send(embed=task_embed, view=task_view)
-
     await task_view.wait()
     if not task_view.completed:
         await ctx.followup.send("⏳ Task timeout. Try again when you're ready!")
         return
-
     increment_garden_harvest(user_id, count=1)
-
-    # With a 20% chance, trigger a special garden encounter.
     if random.random() < 0.20:
         special_embed = Embed(
             title="Special Garden Encounter",
@@ -138,27 +98,22 @@ async def process_garden(ctx, mode: str = "tend"):
         garden_item = rolled_item_list[0] if rolled_item_list else "Unknown Berry"
         reward_embed = Embed(
             title="Garden Reward",
-            description=f"🌱 You found **{garden_item}**!\nWhich character sheet should I add it to?\n"
-                        "Enter the **exact** sheet name or type `skip` to do nothing.",
+            description=f"🌱 You found **{garden_item}**!\nWhich character sheet should I add it to?\nEnter the **exact** sheet name or type `skip` to do nothing.",
             color=0x00FFFF
         )
         reward_embed.set_image(url=random.choice(GARDEN_TASK_ACCOMPLISHED_IMAGES))
         reward_embed.set_footer(text=random.choice(GARDEN_TASK_ACCOMPLISHED_FLAVOR_TEXTS))
         await ctx.followup.send(embed=reward_embed)
-
         def check_any(m):
             return m.author.id == ctx.user.id and m.channel.id == ctx.channel.id
-
         try:
             msg_sheet = await ctx.client.wait_for("message", check=check_any, timeout=60)
         except asyncio.TimeoutError:
             await ctx.followup.send("⏳ Timeout waiting for sheet name. Operation cancelled.")
             return
-
         if msg_sheet.content.lower() == "skip":
             await ctx.followup.send("Operation cancelled. Item remains unassigned.")
             return
-
         trainer_sheet = msg_sheet.content.strip()
         success = await update_character_sheet_item(trainer_sheet, garden_item, 1)
         if success:

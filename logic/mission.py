@@ -1,18 +1,11 @@
 import json
 import os
 import random
-
 from core.currency import add_currency
-from core.database import cursor, db, get_mons_from_db, update_mon_data
-from core.google_sheets import update_character_sheet_level, update_character_sheet_item
-
+from core.database import cursor, db, update_mon_data, get_all_mons_for_user
+from core.database import update_character_sheet_level, update_character_sheet_item
 
 def load_missions():
-    """
-    Loads mission definitions from a JSON file.
-    Each mission should include keys such as id, name, flavor, requirements,
-    difficulty, artwork for in-progress and complete states, rewards, repeatable flag, etc.
-    """
     filename = "../data/missions.JSON"
     if os.path.exists(filename):
         with open(filename, "r") as f:
@@ -52,11 +45,7 @@ def meets_requirements(mon: dict, requirements: dict) -> bool:
     return True
 
 def get_viable_mons(user_id: str, mission: dict) -> list:
-    """
-    Returns the list of mons for the given user that meet the mission requirements.
-    If no requirements are specified, returns all mons.
-    """
-    all_mons = get_mons_from_db(user_id)
+    all_mons = get_all_mons_for_user(user_id)
     reqs = mission.get("requirements")
     if not reqs:
         return all_mons
@@ -69,9 +58,6 @@ def get_viable_mons(user_id: str, mission: dict) -> list:
     return viable
 
 def fetch_missions(user_id: str):
-    """
-    Returns a list of up to six missions (randomly selected) that have at least one viable mon for the user.
-    """
     all_missions = load_missions()
     filtered = []
     for mission in all_missions:
@@ -80,8 +66,6 @@ def fetch_missions(user_id: str):
     if len(filtered) > 6:
         return random.sample(filtered, 6)
     return filtered
-
-# ---------- Persistent Mission Storage ----------
 
 def db_store_active_mission(user_id: str, mission_record: dict):
     data = json.dumps(mission_record)
@@ -101,8 +85,6 @@ def db_get_active_mission(user_id: str) -> dict:
 def db_delete_active_mission(user_id: str):
     cursor.execute("DELETE FROM active_missions WHERE user_id = ?", (user_id,))
     db.commit()
-
-# ---------- Mission Management ----------
 
 def start_mission(user_id: str, mission_id: int, selected_mons: list) -> dict:
     missions = load_missions()
@@ -142,7 +124,7 @@ def progress_mission(user_id: str, amount: int) -> dict:
     return mission
 
 async def process_mon_level_reward(user_id: str, mon_name: str, level_reward: int) -> str:
-    cursor.execute("SELECT id, trainer_id, level FROM mons WHERE mon_name = ? AND player = ?", (mon_name, user_id))
+    cursor.execute("SELECT mon_id, trainer_id, level FROM mons WHERE mon_name = ? AND player = ?", (mon_name, user_id))
     res = cursor.fetchone()
     if not res:
         return f"Mon '{mon_name}' not found or does not belong to you."
@@ -220,7 +202,7 @@ async def claim_mission_rewards(ctx, user_id: str) -> str:
                     if success_items:
                         reward_summary.append("Items: " + ", ".join(success_items))
                     else:
-                        reward_summary.append("Failed to update Log sheet with items.")
+                        reward_summary.append("Failed to update sheet with items.")
                 else:
                     reward_summary.append("Trainer not found for item reward.")
             else:
@@ -230,7 +212,7 @@ async def claim_mission_rewards(ctx, user_id: str) -> str:
     rollmons_reward = mission["reward"].get("rollmons_reward")
     if rollmons_reward:
         from core.rollmons import roll_mons
-        rolled_mon = roll_mons(ctx,'default',1)
+        rolled_mon = roll_mons(ctx, 'default', 1)
         if rolled_mon:
             reward_summary.append(f"Mon reward: {rolled_mon.get('name', 'Unknown')}")
         else:

@@ -1,7 +1,7 @@
 # views/art_submission.py
 import discord
 from discord.ui import View, Modal, TextInput, Button
-from logic.art_submissions import process_reference_art, process_game_art
+from logic.art_submissions import process_reference_art, process_game_art, launch_bonus_view
 
 class ArtSubmissionTypeView(View):
     def __init__(self):
@@ -17,7 +17,7 @@ class ArtSubmissionTypeView(View):
 
     @discord.ui.button(label="Other Art", style=discord.ButtonStyle.secondary, custom_id="art_other", row=0)
     async def other_art(self, interaction: discord.Interaction, button: Button):
-        from logic.art_submissions import launch_bonus_view
+        # Use the updated launch_bonus_view from logic.art_submissions
         await launch_bonus_view(interaction, art_type="other")
 
 class ReferenceArtModal(Modal, title="Reference Art Submission"):

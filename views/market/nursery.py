@@ -1,14 +1,9 @@
-# nursery.py
-"""
-Nursery Module: Provides the user interface for the nursery system,
-allowing players to choose between shopping for eggs and performing
-the nurture activity. It handles trainer selection, inventory checks,
-and transitions to the option selection view.
-"""
-
 import discord
+from discord.ui import View
 from core.core_views import create_paginated_trainers_dropdown
 from core.trainer import get_trainers, get_temporary_inventory_columns
+from logic.market.nursery_options import select_trainer_callback  # added import
+from views.market.generic_shop import send_generic_shop_view  # added import
 import logic.market.nursery_options  # custom module for option dropdowns
 import random
 
@@ -40,8 +35,7 @@ class NurseryView(discord.ui.View):
             return
         # If multiple trainers, present a paginated dropdown to select a trainer.
         view = create_paginated_trainers_dropdown(trainers, "Select Trainer", callback=select_trainer_callback)
-        await interaction.response.send_message("Select the trainer whose eggs you want to use:", view=view,
-                                                ephemeral=True)
+        await interaction.response.send_message("Select the trainer whose eggs you want to use:", view=view, ephemeral=True)
 
 async def send_nursery_view(interaction: discord.Interaction, user_id: str):
     view = NurseryView(user_id)

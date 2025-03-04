@@ -1,8 +1,8 @@
 import random
 import discord
 from discord.ui import View, Button, Modal, TextInput
-from core.shop import roll_generic_shop_items, purchase_generic_shop_item
-from core.google_sheets import update_character_sheet_item
+from core.shop import roll_generic_shop_items, purchase_shop_item
+from core.database import update_character_sheet_item  # updated import
 
 # Reuse common market messages and images.
 MARKET_IMAGES = [
@@ -15,7 +15,6 @@ MARKET_MESSAGES = [
     "Step into the Market where every corner holds a surprise.",
     "The Market buzzes with life; choose your treasure."
 ]
-
 
 class GenericShopPurchaseModal(Modal, title="Purchase Item"):
     quantity = TextInput(
@@ -43,7 +42,7 @@ class GenericShopPurchaseModal(Modal, title="Purchase Item"):
             return
 
         trainer_sheet_name = self.trainer_sheet.value.strip()
-        success, msg = await purchase_generic_shop_item(self.shop, self.user_id, self.item["name"], qty)
+        success, msg = await purchase_shop_item(self.shop, self.user_id, self.item["name"], qty)
         if success:
             update_success = await update_character_sheet_item(trainer_sheet_name, self.item["name"], qty)
             if update_success:
@@ -51,7 +50,6 @@ class GenericShopPurchaseModal(Modal, title="Purchase Item"):
             else:
                 msg += f" Purchase logged but failed to update sheet."
         await interaction.response.send_message(msg, ephemeral=True)
-
 
 class GenericShopItemButton(Button):
     def __init__(self, shop: str, user_id: str, item: dict, index: int):
@@ -66,13 +64,11 @@ class GenericShopItemButton(Button):
         modal = GenericShopPurchaseModal(self.shop, self.user_id, self.item)
         await interaction.response.send_modal(modal)
 
-
 class GenericShopView(View):
     """
-    A views that displays one button per shop item.
+    A view that displays one button per shop item.
     The refresh button has been removed so that the shop rerolls only once per day.
     """
-
     def __init__(self, shop: str, user_id: str, items: list):
         super().__init__(timeout=300)
         self.shop = shop
@@ -80,7 +76,6 @@ class GenericShopView(View):
         self.items = items
         for index, item in enumerate(items):
             self.add_item(GenericShopItemButton(shop, user_id, item, index))
-
 
 async def send_generic_shop_view(interaction: discord.Interaction, shop: str, user_id: str, category_filter: str = None,
                                  exclude_categories: list = None):

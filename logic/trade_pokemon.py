@@ -1,18 +1,12 @@
-# trade_pokemon.py
-
 import logging
 import random
-
 import discord
-
 from core.core_views import create_paginated_trainers_dropdown
-from core.database import cursor
-from core.database import get_trainers_from_db
-from core.google_sheets import get_mon_sheet_row, append_mon_to_sheet, safe_request
-from core.mon import update_mon_data
-from core.trainer import get_other_trainers_from_db
+from core.database import cursor, get_mons_for_trainer, update_mon_data
+from core.trainer import get_other_trainers_from_db, get_trainers_from_db
+from core.rollmons import register_mon
+from core.currency import add_currency
 
-# Random images and flavor texts for Pokémon trades.
 TRADE_MON_IMAGES = [
     "https://example.com/trade_mons_img1.png",
     "https://example.com/trade_mons_img2.png",
@@ -25,80 +19,36 @@ TRADE_MON_FLAVOR_TEXTS = [
     "A new bond is formed through trade!"
 ]
 
-
 async def transfer_mon(mon_id: int, old_trainer: dict, new_trainer: dict) -> bool:
     """
-    Transfers a mon from the old trainer to the new trainer.
-
-    Updates the database record (trainer_id and player),
-    removes the mon's row from the old trainer's "Pkm Data" sheet,
-    and appends it to the new trainer's sheet.
-
-    Returns True if successful; otherwise, False.
+    Transfers a mon from the old trainer to the new trainer by updating its
+    trainer_id and player_user_id in the database.
+    This version only modifies the database.
     """
     try:
-        # Update the database record.
         new_trainer_id = new_trainer['id']
         new_player = new_trainer.get('user_id')
         success_db = update_mon_data(mon_id, trainer_id=new_trainer_id, player=new_player)
         if not success_db:
             logging.error(f"DB update failed for mon id {mon_id}")
             return False
-
-        # Get the mon's name from the database.
-        cursor.execute("SELECT mon_name FROM mons WHERE id = ?", (mon_id,))
-        row = cursor.fetchone()
-        if not row:
-            logging.error(f"Mon with id {mon_id} not found in DB.")
-            return False
-        mon_name = row[0]
-
-        # Remove the mon from the old trainer's sheet.
-        old_sheet_data, old_header, old_row_number = await get_mon_sheet_row(old_trainer['name'], mon_name)
-        if old_row_number:
-            ss_old = await safe_request(lambda: __import__('google_sheets').gc.open(old_trainer['name']))
-            ws_old = await safe_request(ss_old.worksheet, "Pkm Data")
-            await safe_request(ws_old.delete_rows, old_row_number)
-        else:
-            logging.error(f"Mon '{mon_name}' not found in {old_trainer['name']}'s sheet.")
-
-        # Prepare the row data for appending.
-        if old_sheet_data:
-            sheet_row = old_sheet_data
-        else:
-            sheet_row = ["" for _ in range(15)]
-            sheet_row[1] = mon_name
-        # Append the mon row to the new trainer's sheet.
-        error = await append_mon_to_sheet(new_trainer['name'], sheet_row)
-        if error:
-            logging.error(f"Error appending mon '{mon_name}' to {new_trainer['name']}'s sheet: {error}")
-            return False
         return True
     except Exception as e:
         logging.error(f"Error transferring mon id {mon_id} from {old_trainer['name']} to {new_trainer['name']}: {e}")
         return False
 
-
 class TradePokemonSelectionView(discord.ui.View):
-    """
-    A view that lets the player select two trainers (one of which must be theirs)
-    and then select one Pokémon from each trainer (or 'None' if gifting).
-    """
-
     def __init__(self, player_id: str):
         super().__init__(timeout=180)
         self.player_id = player_id
-        self.trainer1 = None  # Player's trainer
-        self.trainer2 = None  # Other trainer
-        self.trainer1_mon = None  # Selected Pokémon ID from trainer1 or "none"
-        self.trainer2_mon = None  # Selected Pokémon ID from trainer2 or "none"
-
+        self.trainer1 = None
+        self.trainer2 = None
+        self.trainer1_mon = None
+        self.trainer2_mon = None
         own_trainers = get_trainers_from_db(player_id)
         other_trainers = get_other_trainers_from_db(player_id)
-        own_dropdown = create_paginated_trainers_dropdown(own_trainers, "Select Your Trainer",
-                                                          self.own_trainer_callback)
-        other_dropdown = create_paginated_trainers_dropdown(other_trainers, "Select Other Trainer",
-                                                            self.other_trainer_callback)
+        own_dropdown = create_paginated_trainers_dropdown(own_trainers, "Select Your Trainer", self.own_trainer_callback)
+        other_dropdown = create_paginated_trainers_dropdown(other_trainers, "Select Other Trainer", self.other_trainer_callback)
         self.add_item(own_dropdown.children[0])
         self.add_item(other_dropdown.children[0])
         self.add_item(TrainerSelectionConfirmButton())
@@ -117,7 +67,6 @@ class TradePokemonSelectionView(discord.ui.View):
                 break
         await interaction.response.send_message(f"Selected other trainer: {self.trainer2['name']}", ephemeral=True)
 
-
 class TrainerSelectionConfirmButton(discord.ui.Button):
     def __init__(self):
         super().__init__(label="Confirm Trainer Selection", style=discord.ButtonStyle.success)
@@ -127,12 +76,8 @@ class TrainerSelectionConfirmButton(discord.ui.Button):
         if view.trainer1 is None or view.trainer2 is None:
             await interaction.response.send_message("Please select both trainers before proceeding.", ephemeral=True)
             return
-        await interaction.response.send_message(
-            "Now select a Pokémon from each trainer (or select 'None' if gifting):",
-            ephemeral=True
-        )
+        await interaction.response.send_message("Now select a Pokémon from each trainer (or 'None' if gifting):", ephemeral=True)
         view.clear_items()
-        from core.database import get_mons_for_trainer
         mons1 = get_mons_for_trainer(view.trainer1['id'])
         mons2 = get_mons_for_trainer(view.trainer2['id'])
         mons1_options = [discord.SelectOption(label="None", value="none")]
@@ -149,9 +94,7 @@ class TrainerSelectionConfirmButton(discord.ui.Button):
         try:
             await interaction.message.edit(view=view)
         except discord.errors.NotFound:
-            logging.error("Message not found; it may have been deleted. Sending a new message with the view.")
             await interaction.followup.send("Continue with your selection:", view=view, ephemeral=True)
-
 
 class PokemonSelect(discord.ui.Select):
     def __init__(self, options, placeholder: str):
@@ -161,13 +104,10 @@ class PokemonSelect(discord.ui.Select):
         view: TradePokemonSelectionView = self.view  # type: ignore
         if "your trainer" in self.placeholder.lower():
             view.trainer1_mon = self.values[0]
-            await interaction.response.send_message(f"Selected Pokémon from your trainer: {self.values[0]}",
-                                                    ephemeral=True)
+            await interaction.response.send_message(f"Selected Pokémon from your trainer: {self.values[0]}", ephemeral=True)
         else:
             view.trainer2_mon = self.values[0]
-            await interaction.response.send_message(f"Selected Pokémon from other trainer: {self.values[0]}",
-                                                    ephemeral=True)
-
+            await interaction.response.send_message(f"Selected Pokémon from other trainer: {self.values[0]}", ephemeral=True)
 
 class PokemonTradeConfirmButton(discord.ui.Button):
     def __init__(self):
@@ -176,13 +116,10 @@ class PokemonTradeConfirmButton(discord.ui.Button):
     async def callback(self, interaction: discord.Interaction):
         view: TradePokemonSelectionView = self.view  # type: ignore
         if view.trainer1_mon is None or view.trainer2_mon is None:
-            await interaction.response.send_message(
-                "Please select a Pokémon from each trainer (or 'None') before confirming.", ephemeral=True)
+            await interaction.response.send_message("Please select a Pokémon from each trainer (or 'None') before confirming.", ephemeral=True)
             return
-
         messages = []
         success = True
-        # Determine trade type:
         if view.trainer1_mon != "none" and view.trainer2_mon != "none":
             s1 = await transfer_mon(int(view.trainer1_mon), view.trainer1, view.trainer2)
             s2 = await transfer_mon(int(view.trainer2_mon), view.trainer2, view.trainer1)
@@ -208,8 +145,6 @@ class PokemonTradeConfirmButton(discord.ui.Button):
         else:
             messages.append("No Pokémon selected for trading.")
             success = False
-
-        # Create an embed with a random image and flavor text.
         if success:
             title = "Trade Result"
             description = "\n".join(messages)

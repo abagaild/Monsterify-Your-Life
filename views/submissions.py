@@ -3,12 +3,10 @@ import discord
 from discord.ui import View, Button
 from discord import Interaction
 
-
 class SubmissionTypeView(View):
     def __init__(self, user_id: str):
         """
-        Initializes the top–level submission menu view.
-
+        Initializes the top-level submission menu view.
         :param user_id: The ID of the user for whom this menu is being displayed.
         """
         super().__init__(timeout=None)
@@ -28,7 +26,6 @@ class SubmissionTypeView(View):
         from views.writing_submissions import WritingSubmissionTypeView  # Ensure this path is correct
         writing_view = WritingSubmissionTypeView()
         if not interaction.response.is_done():
-            await interaction.response.send_message("Proceed with Writing Submission:", view=writing_view,
-                                                    ephemeral=True)
+            await interaction.response.send_message("Proceed with Writing Submission:", view=writing_view, ephemeral=True)
         else:
             await interaction.followup.send("Proceed with Writing Submission:", view=writing_view, ephemeral=True)

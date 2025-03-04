@@ -1,10 +1,11 @@
 import discord
 from discord.ext import commands
-from logic.adventure import active_adventure_sessions
+#from logic.adventure import active_adventure_sessions
 from core import config
 import logging
 
 # Import all views
+
 from views.mainMenu import MainMenuView, TownMenuView
 from views.garden import GardenView
 from views.schedule import ScheduleMenuView
@@ -48,10 +49,6 @@ class MyBot(commands.Bot):
         for view in views:
             self.add_view(view)
 
-        # Uncomment if you want to run sheet synchronization periodically.
-        from core.google_sheets import sync_sheets
-        #self.loop.create_task(sync_sheets())
-
     async def on_message(self, message: discord.Message):
         # Ignore messages from bots.
         if message.author.bot:
@@ -69,6 +66,8 @@ class MyBot(commands.Bot):
 
 # Create bot instance
 bot = MyBot(command_prefix="!", intents=intents)
+
+from views.mainMenu import MainMenuView
 
 @bot.command(name="menu")
 async def menu_command(ctx):

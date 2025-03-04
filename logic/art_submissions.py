@@ -1,7 +1,8 @@
 import discord
 from core.currency import add_currency
 from core.database import fetch_one, execute_query
-from core.google_sheets import update_character_sheet_level, update_mon_img_link
+from core.database import update_character_sheet_level, update_mon_img_link
+from core.database import add_item  # (alias for update_character_sheet_item)
 
 # Bonus mapping for art submissions.
 BONUS_VALUES = {
@@ -77,7 +78,6 @@ async def process_other_art(interaction: discord.Interaction, selected_bonuses: 
     a modal is launched to prompt the user.
     """
     if not recipient:
-        # Launch a modal to ask for the recipient.
         modal = OtherArtRecipientModal()
         await interaction.response.send_modal(modal)
         return "Please specify the recipient in the modal."
@@ -101,7 +101,6 @@ class OtherArtRecipientModal(discord.ui.Modal, title="Specify Recipient for Othe
 
     async def on_submit(self, interaction: discord.Interaction):
         recipient = self.recipient_input.value.strip()
-        # Here you might want to add validation logic.
         bonus_sum = 0  # No extra bonuses if not provided
         total_levels = bonus_sum + 2
         coins = total_levels * 50
@@ -118,12 +117,8 @@ class OtherArtRecipientModal(discord.ui.Modal, title="Specify Recipient for Othe
 
 # ---------------- Bonus View (Shared for Game/Other Art) ----------------
 async def launch_bonus_view(interaction: discord.Interaction, art_type: str, participants: list = None):
-    """
-    Launches a bonus selection view that lets the user select bonus options.
-    For game art, bonus levels are split among participants.
-    """
     from core.database import fetch_one
-    from core.google_sheets import update_character_sheet_level
+    from core.database import update_character_sheet_level
     class BonusSelectView(discord.ui.View):
         def __init__(self):
             super().__init__(timeout=60)
@@ -131,7 +126,6 @@ async def launch_bonus_view(interaction: discord.Interaction, art_type: str, par
             for bonus, value in BONUS_VALUES.items():
                 options.append(discord.SelectOption(label=bonus, description=f"+{value} levels", value=bonus))
             options.append(discord.SelectOption(label="No Bonus", description="Proceed with no bonus", value="none"))
-            # Optionally limit max_values (e.g. 3) if needed.
             self.select = discord.ui.Select(
                 placeholder="Select bonus options",
                 min_values=0,
@@ -181,7 +175,6 @@ async def launch_bonus_view(interaction: discord.Interaction, art_type: str, par
                     await interaction.followup.send(msg, ephemeral=True)
                 self.stop()
             except Exception as e:
-                # Log or print error for debugging
                 print("Error in bonus callback:", e)
                 self.stop()
 

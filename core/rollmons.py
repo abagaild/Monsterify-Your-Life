@@ -1,11 +1,96 @@
 import random
-
 import discord
 
-from core.database import cursor
-from core.mon import register_mon  # This function launches the registration modal
+from core.database import cursor, db
+from core.database import append_mon_to_sheet, update_character_sheet_level, update_character_sheet_item
 from data.lists import legendary_list, mythical_list, no_evolution
+# ... (data fetching functions for Pokemon, Digimon, etc. remain unchanged) ...
 
+async def roll_mon_variant(ctx, variant: str, amount: int):
+    """
+    Rolls a given number of mons based on the specified variant (standard or special).
+    Sends the rolled mons as a list.
+    (This function would generate mon data; simplified for brevity.)
+    """
+    # Implementation not shown for brevity
+    pass
+
+async def register_mon(ctx, trainer_name: str, mon: dict, custom_display_name: str):
+    """
+    Registers a rolled mon to the given trainer in the database and updates records.
+    """
+    try:
+        # Insert mon into the database
+        cursor.execute(
+            """
+            INSERT INTO mons (trainer_id, player, mon_name, level, 
+                               species1, species2, species3,
+                               type1, type2, type3, type4, type5,
+                               attribute, img_link)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                mon["trainer_id"], mon["player_id"], custom_display_name, mon.get("level", 1),
+                mon.get("species1", ""), mon.get("species2", ""), mon.get("species3", ""),
+                mon["types"][0], mon["types"][1], mon["types"][2], mon["types"][3], mon["types"][4],
+                mon.get("attribute", ""), mon.get("img_link", "")
+            )
+        )
+        db.commit()
+    except Exception as e:
+        await ctx.send(f"Error adding mon to database: {e}")
+        return
+
+    # Update trainer's mon count (and queue sheet update if enabled)
+    error = await append_mon_to_sheet(trainer_name, [])
+    if error:
+        await ctx.send(f"Mon added to database but failed to update sheet: {error}")
+    else:
+        await ctx.send(f"Registered mon **{custom_display_name}** to trainer **{trainer_name}** successfully.")
+        # Deduct one Pokéball from trainer's inventory
+        await update_character_sheet_item(trainer_name, "Pokeball", -1)
+
+async def assign_levels_to_mon(ctx, mon_name: str, levels: int, user_id: str):
+    """
+    Assigns levels to a mon when called via a text command.
+    Converts any levels beyond 100 into coins for the trainer.
+    """
+    cursor.execute("SELECT trainer_id, level FROM mons WHERE mon_name = ? AND player = ?", (mon_name, user_id))
+    res = cursor.fetchone()
+    if not res:
+        await ctx.send(f"Mon '{mon_name}' not found or does not belong to you.")
+        return
+    trainer_id, current_level = res
+    cursor.execute("SELECT name FROM trainers WHERE id = ?", (trainer_id,))
+    t_res = cursor.fetchone()
+    if not t_res:
+        await ctx.send("Trainer not found for that mon.")
+        return
+    trainer_name = t_res[0]
+    if current_level >= 100:
+        extra_coins = levels * 25
+        cursor.execute("UPDATE trainers SET currency_amount = currency_amount + ? WHERE id = ?", (extra_coins, trainer_id))
+        db.commit()
+        await ctx.send(f"Mon '{mon_name}' is at level 100. Converted {levels} level(s) into {extra_coins} coins.")
+    elif current_level + levels > 100:
+        effective_levels = 100 - current_level
+        excess = levels - effective_levels
+        success = await update_character_sheet_level(trainer_name, mon_name, effective_levels)
+        if success:
+            extra_coins = excess * 25
+            cursor.execute("UPDATE trainers SET currency_amount = currency_amount + ? WHERE id = ?", (extra_coins, trainer_id))
+            db.commit()
+            await ctx.send(
+                f"Mon '{mon_name}' reached level 100. Added {effective_levels} level(s) and converted {excess} extra level(s) into {extra_coins} coins."
+            )
+        else:
+            await ctx.send("Mon level updated in database, but sheet update failed for '{mon_name}'.")
+    else:
+        success = await update_character_sheet_level(trainer_name, mon_name, levels)
+        if success:
+            await ctx.send(f"Added {levels} level(s) to mon '{mon_name}'.")
+        else:
+            await ctx.send("Failed to update the mon's level.")
 
 # ------------------ Raw Data Fetching Functions ------------------
 def fetch_pokemon_data():

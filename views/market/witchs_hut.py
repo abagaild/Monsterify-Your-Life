@@ -1,10 +1,8 @@
 import random
-
 import discord
-from logic.evolution import EvolutionFlowView  # Use the new, centralized evolution flow view
+from logic.evolution import EvolutionFlowView  # centralized evolution flow view
 from logic.market.witchs_hut import IMAGES, MESSAGES
 from views.market.generic_shop import send_generic_shop_view
-
 
 class WitchsHutShopView(discord.ui.View):
     def __init__(self, user_id: str) -> None:

@@ -2,6 +2,7 @@ import discord
 import random
 from logic.market import bakery
 from views.market.generic_shop import send_generic_shop_view
+from core.trainer import get_trainers
 
 class BakeryShopView(discord.ui.View):
     def __init__(self, user_id: str):
@@ -17,7 +18,6 @@ class BakeryShopView(discord.ui.View):
     @discord.ui.button(label="Bakery Activity", style=discord.ButtonStyle.secondary, custom_id="bakery_activity")
     async def activity_button(self, interaction: discord.Interaction, button: discord.ui.Button):
         from views.market.bakery_pastries import BakeryTrainerSelectionView
-        from core.trainer import get_trainers
         trainers = get_trainers(str(interaction.user.id))
         if not trainers:
             await interaction.response.send_message("No trainers found for your account.", ephemeral=True)

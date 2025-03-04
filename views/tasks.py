@@ -1,7 +1,8 @@
 # views/view_tasks.py
 import discord
 from discord.ui import View, Select, Button, Modal, TextInput
-from core.database import get_tasks_from_db, delete_task_from_db, complete_task_in_db
+# Updated database function names for tasks:
+from core.database import fetch_tasks, remove_task, mark_task_complete
 from logic.tasks import add_task
 import random
 from logic.boss import deal_boss_damage
@@ -23,7 +24,7 @@ class TaskManagerView(View):
         self.add_item(self.task_select)
 
     def build_options(self):
-        tasks = get_tasks_from_db(str(self.user.id))
+        tasks = fetch_tasks(str(self.user.id))
         options = []
         for task in tasks:
             label = task.get("name", "Unnamed")
@@ -47,7 +48,7 @@ class TaskManagerView(View):
         if not selected:
             await interaction.response.send_message("No task selected to delete.", ephemeral=True)
             return
-        delete_task_from_db(str(interaction.user.id), selected)
+        remove_task(str(interaction.user.id), selected)
         await interaction.response.send_message(f"Task '{selected}' deleted.", ephemeral=True)
         self.refresh_items()
         await interaction.message.edit(view=self)
@@ -61,8 +62,8 @@ class TaskManagerView(View):
         if not selected:
             await interaction.response.send_message("No task selected to complete.", ephemeral=True)
             return
-        if complete_task_in_db(user_id, selected):
-            tasks = get_tasks_from_db(user_id)
+        if mark_task_complete(user_id, selected):
+            tasks = fetch_tasks(user_id)
             difficulty_str = "medium"
             for task in tasks:
                 if task["name"].lower() == selected.lower():

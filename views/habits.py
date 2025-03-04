@@ -1,8 +1,8 @@
 # views/view_habits.py
 import discord
 from discord.ui import View, Select, Button, Modal, TextInput
-from core.database import get_habits_from_db, delete_habit_from_db, complete_habit_in_db
-from logic.habits import add_habit
+# Updated database function names for habits:
+from core.database import fetch_habits, remove_habit, mark_habit_complete, add_habit
 import random
 from logic.boss import deal_boss_damage
 from logic.mission import progress_mission
@@ -23,7 +23,7 @@ class HabitManagerView(View):
         self.add_item(self.habit_select)
 
     def build_options(self):
-        habits = get_habits_from_db(str(self.user.id))
+        habits = fetch_habits(str(self.user.id))
         options = []
         for habit in habits:
             label = habit.get("name", "Unnamed")
@@ -46,7 +46,7 @@ class HabitManagerView(View):
         if not selected:
             await interaction.response.send_message("No habit selected to delete.", ephemeral=True)
             return
-        delete_habit_from_db(str(interaction.user.id), selected)
+        remove_habit(str(interaction.user.id), selected)
         await interaction.response.send_message(f"Habit '{selected}' deleted.", ephemeral=True)
         self.refresh_items()
         await interaction.message.edit(view=self)
@@ -60,12 +60,12 @@ class HabitManagerView(View):
         if not selected:
             await interaction.response.send_message("No habit selected to complete.", ephemeral=True)
             return
-        new_streak = complete_habit_in_db(user_id, selected)
+        new_streak = mark_habit_complete(user_id, selected)
         if new_streak is None:
             await interaction.response.send_message(f"Habit '{selected}' not found or already completed.", ephemeral=True)
         else:
             difficulty_str = "medium"
-            habits = get_habits_from_db(user_id)
+            habits = fetch_habits(user_id)
             for habit in habits:
                 if habit["name"].lower() == selected.lower():
                     difficulty_str = habit.get("difficulty", "medium")

@@ -2,7 +2,7 @@ import math
 import discord
 from core.currency import add_currency
 from core.database import fetch_one, execute_query
-from core.google_sheets import update_character_sheet_level
+from core.database import update_character_sheet_level
 
 async def process_writing_submission(
     writing_type: str,
@@ -18,7 +18,6 @@ async def process_writing_submission(
     Processes a writing submission by computing bonus levels based on word count,
     bonus options, and difficulty. It then awards coins and updates the trainer's sheet.
     """
-    # Defer the interaction early to prevent timeouts.
     if interaction and not interaction.response.is_done():
         await interaction.response.defer(ephemeral=True)
 
@@ -54,12 +53,10 @@ async def process_writing_submission(
         if recipient:
             assigned_levels = {recipient: total_levels}
             if interaction:
-                # If recipient starts with "t:" we treat it as a trainer.
                 if recipient.lower().startswith("t:"):
                     trainer_name_input = recipient[2:].strip()
                     await update_character_sheet_level(trainer_name_input, trainer_name_input, total_levels)
                     assigned_levels = {}
-                # If recipient starts with "m:" we treat it as a mon.
                 elif recipient.lower().startswith("m:"):
                     mon_name_input = recipient[2:].strip()
                     row = fetch_one("SELECT trainer_id FROM mons WHERE mon_name = ?", (mon_name_input,))

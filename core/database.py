@@ -1,482 +1,767 @@
+import sqlite3
 import asyncio
 import json
 import logging
-import sqlite3
-import time
+from datetime import date, datetime
 
-# Open (or create) the SQLite database.
-db = sqlite3.connect("bot_data.db", check_same_thread=False)
+import redis
+import discord  # Used for interactions and type hints
+
+# Setup database connection and Redis client
+db = sqlite3.connect("../dawn_and_dusk.db")
 cursor = db.cursor()
-
+redis_client = redis.Redis(host='localhost', port=6379, db=0)
 
 def create_tables():
-    cursor.executescript("""
-    CREATE TABLE IF NOT EXISTS prompts (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        Prompt TEXT,
-        Difficulty TEXT,
-        Bonus TEXT
-    );
+    cursor.executescript(
+        """
+        CREATE TABLE IF NOT EXISTS trainers (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            player TEXT,
+            player_user_id TEXT,
+            character_name TEXT,
+            nickname TEXT,
+            species TEXT,
+            faction TEXT,
+            title TEXT,
+            ribbon TEXT,
+            species1 TEXT,
+            species2 TEXT,
+            species3 TEXT,
+            type1 TEXT,
+            type2 TEXT,
+            type3 TEXT,
+            type4 TEXT,
+            type5 TEXT,
+            type6 TEXT,
+            alteration_level INTEGER,
+            shiny INTEGER,        
+            alpha INTEGER,        
+            paradox INTEGER,      
+            ability TEXT,
+            nature TEXT,
+            characteristic TEXT,
+            fav_berry TEXT,
+            fav_type1 TEXT,
+            fav_type2 TEXT,
+            fav_type3 TEXT,
+            fav_type4 TEXT,
+            fav_type5 TEXT,
+            fav_type6 TEXT,
+            gender TEXT,
+            pronouns TEXT,
+            sexuality TEXT,
+            age INTEGER,
+            birthday DATE,      
+            height_cm REAL,
+            height_ft INTEGER,
+            height_in INTEGER,
+            birthplace TEXT,
+            residence TEXT,
+            job TEXT,
+            theme_song TEXT,
+            label TEXT,
+            other_profile TEXT,
+            label2 TEXT,
+            google_sheets_link TEXT,
+            main_ref TEXT,
+            main_ref_artist TEXT,
+            tldr TEXT,
+            long_bio TEXT,
+            mega_evo TEXT,
+            mega_main_reference TEXT,
+            mega_artist TEXT,
+            mega_type1 TEXT,
+            mega_type2 TEXT,
+            mega_type3 TEXT,
+            mega_type4 TEXT,
+            mega_type5 TEXT,
+            mega_type6 TEXT,
+            mega_ability TEXT,
+            additional_ref1 TEXT,
+            additional_ref1_artist TEXT,
+            additional_ref2 TEXT,
+            additional_ref2_artist TEXT,
+            currency_amount INTEGER,
+            level INTEGER,
+            level_modifier INTEGER,
+            badges_earned TEXT,             
+            badge_amount INTEGER,
+            frontier_badges_earned TEXT,    
+            frontier_badges_amount INTEGER,
+            contest_ribbons_earned TEXT,    
+            mon_amount INTEGER,
+            reference_amount INTEGER,
+            reference_percent REAL,         
+            inventory TEXT,                 
+            achievements TEXT,              
+            prompts TEXT,                   
+            trainer_progression TEXT,
+            img_link TEXT
+        );
+        CREATE TABLE IF NOT EXISTS mons (
+            mon_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            mon_trainer_number INTEGER,
+            trainer_name TEXT,
+            trainer_id INTEGER,
+            player_user_id TEXT,
+            img_link TEXT,
+            box_img_link TEXT,
+            species1 TEXT,
+            species2 TEXT,
+            species3 TEXT,
+            type1 TEXT,
+            type2 TEXT,
+            type3 TEXT,
+            type4 TEXT,
+            type5 TEXT,
+            attribute TEXT,
+            level INTEGER,
+            hp_total INTEGER,
+            hp_ev INTEGER,
+            hp_iv INTEGER,
+            atk_total INTEGER,
+            atk_ev INTEGER,
+            atk_iv INTEGER,
+            def_total INTEGER,
+            def_ev INTEGER,
+            def_iv INTEGER,
+            spa_total INTEGER,
+            spa_ev INTEGER,
+            spa_iv INTEGER,
+            spd_total INTEGER,
+            spd_ev INTEGER,
+            spd_iv INTEGER,
+            spe_total INTEGER,
+            spe_ev INTEGER,
+            spe_iv INTEGER,
+            acquired TEXT,
+            poke_ball TEXT,
+            ability TEXT,
+            talk TEXT,
+            shiny INTEGER,
+            alpha INTEGER,
+            shadow INTEGER,
+            paradox INTEGER,
+            paradox_type TEXT,
+            fused INTEGER,
+            pokerus INTEGER,
+            moveset TEXT,
+            mega_stone TEXT,
+            mega_image TEXT,
+            mega_type1 TEXT,
+            mega_type2 TEXT,
+            mega_type3 TEXT,
+            mega_type4 TEXT,
+            mega_type5 TEXT,
+            mega_type6 TEXT,
+            mega_ability TEXT,
+            mega_stat_bonus INTEGER,
+            friendship INTEGER,
+            gender TEXT,
+            pronouns TEXT,
+            nature TEXT,
+            characteristic TEXT,
+            fav_berry TEXT,
+            held_item TEXT,
+            seal TEXT,
+            mark TEXT,
+            date_met TEXT,
+            where_met TEXT,
+            talking TEXT,
+            height_m REAL,
+            height_imperial TEXT,
+            tldr TEXT,
+            bio TEXT,
+            og_trainer_id INTEGER,
+            og_trainer_name TEXT,
+            box_number INTEGER
+        );
+        CREATE TABLE IF NOT EXISTS sheet_update_queue (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            action TEXT NOT NULL,
+            payload TEXT NOT NULL,
+            status TEXT NOT NULL DEFAULT 'pending',
+            attempts INTEGER NOT NULL DEFAULT 0,
+            error_message TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            processed_at TIMESTAMP
+        );
+        CREATE TABLE IF NOT EXISTS sheet_update_requests (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            entity TEXT NOT NULL,
+            entity_id INTEGER NOT NULL,
+            update_type TEXT NOT NULL,
+            payload TEXT,
+            status TEXT NOT NULL DEFAULT 'pending',
+            attempts INTEGER NOT NULL DEFAULT 0,
+            error_message TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            processed_at TIMESTAMP
+        );CREATE TABLE IF NOT EXISTS habits (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id TEXT NOT NULL,
+    habit_name TEXT NOT NULL,
+    time TEXT,
+    difficulty TEXT DEFAULT 'medium',
+    streak INTEGER DEFAULT 0,
+    last_completed DATETIME
+);
 
-    CREATE TABLE IF NOT EXISTS users (
-        user_id TEXT PRIMARY KEY,
-        currency INTEGER DEFAULT 0
-    );
+CREATE TABLE IF NOT EXISTS tasks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id TEXT NOT NULL,
+    task_name TEXT NOT NULL,
+    time TEXT,
+    carryover INTEGER DEFAULT 0,
+    difficulty TEXT DEFAULT 'medium',
+    completed INTEGER DEFAULT 0,
+    date_created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    date_completed DATETIME
+);
 
-    CREATE TABLE IF NOT EXISTS garden_harvest (
-        user_id TEXT,
-        amount INTEGER DEFAULT 0,
-        last_claimed TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users (user_id)
-    );
+CREATE TABLE IF NOT EXISTS schedules (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id TEXT NOT NULL,
+    entry_text TEXT NOT NULL,
+    schedule_date DATE DEFAULT CURRENT_DATE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 
-    CREATE TABLE IF NOT EXISTS boss (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        max_health INTEGER,
-        current_health INTEGER,
-        image_link TEXT,
-        flavor_text TEXT,
-        is_active INTEGER DEFAULT 1
-    );
-
-    CREATE TABLE IF NOT EXISTS boss_damage (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        boss_id INTEGER,
-        user_id TEXT,
-        damage INTEGER
-    );
-
-    CREATE TABLE IF NOT EXISTS missions (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT UNIQUE,
-        flavor TEXT,
-        requirements TEXT,
-        item_rewards TEXT,
-        mon_rewards BOOLEAN,
-        mon_rewards_params TEXT,
-        on_success TEXT,
-        on_fail TEXT,
-        difficulty INTEGER,
-        ephemeral BOOLEAN,
-        max_mons INTEGER
-    );
-
-    CREATE TABLE IF NOT EXISTS active_missions (
-        user_id TEXT PRIMARY KEY,
-        data TEXT
-    );
-
-    CREATE TABLE IF NOT EXISTS boss_rewards (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        boss_id INTEGER,
-        user_id TEXT,
-        levels INTEGER,
-        coins INTEGER,
-        claimed INTEGER DEFAULT 0
-    );
-
-    CREATE TABLE IF NOT EXISTS habits (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id TEXT,
-        name TEXT NOT NULL,
-        time TEXT DEFAULT NULL,
-        difficulty TEXT DEFAULT 'medium',
-        completed INTEGER DEFAULT 0,
-        streak INTEGER DEFAULT 0,
-        last_reset TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users (user_id)
-    );
-
-    CREATE TABLE IF NOT EXISTS tasks (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id TEXT,
-        name TEXT NOT NULL,
-        time TEXT DEFAULT NULL,
-        difficulty TEXT DEFAULT 'medium',
-        carryover INTEGER DEFAULT 0,
-        completed INTEGER DEFAULT 0,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users (user_id)
-    );
-
-    CREATE TABLE IF NOT EXISTS trainers (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id TEXT,
-        name TEXT,
-        level INTEGER,
-        img_link TEXT
-    );
-
-    CREATE TABLE IF NOT EXISTS mons (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        trainer_id INTEGER,
-        player TEXT,
-        mon_name TEXT,
-        level INTEGER,
-        species1 TEXT,
-        species2 TEXT,
-        species3 TEXT,
-        type1 TEXT,
-        type2 TEXT,
-        type3 TEXT,
-        type4 TEXT,
-        type5 TEXT,
-        attribute TEXT,
-        img_link TEXT,
-        FOREIGN KEY(trainer_id) REFERENCES trainers(id)
-    );
-
-    CREATE TABLE IF NOT EXISTS adventure_sessions (
-        channel_id TEXT PRIMARY KEY,
-        area_data TEXT,
-        progress INTEGER DEFAULT 0,
-        encounters_triggered INTEGER DEFAULT 0,
-        hard_mode INTEGER DEFAULT 0,
-        last_message_timestamp INTEGER,
-        active INTEGER DEFAULT 1
-    );
-    """)
+        """
+    )
     db.commit()
 
+#create_tables()
 
-create_tables()
-
-
-# --- Generic Helpers ---
+# --- Generic Database Helpers ---
 def execute_query(query, params=()):
     cursor.execute(query, params)
     db.commit()
     return cursor
 
-
 def fetch_one(query, params=()):
     cursor.execute(query, params)
     return cursor.fetchone()
-
 
 def fetch_all(query, params=()):
     cursor.execute(query, params)
     return cursor.fetchall()
 
-
-# --- User Functions ---
-def get_currency(user_id: str) -> int:
-    row = fetch_one("SELECT currency FROM users WHERE user_id = ?", (user_id,))
-    if row is None:
-        execute_query("INSERT INTO users (user_id, currency) VALUES (?, ?)", (user_id, 0))
-        return 0
-    return row[0]
-
-
-def add_currency(user_id: str, amount: int) -> int:
-    current = get_currency(user_id)
-    new_balance = current + amount
-    execute_query("UPDATE users SET currency = ? WHERE user_id = ?", (new_balance, user_id))
-    return new_balance
-
-
-# --- Habit Functions ---
-def add_habit_to_db(user_id: str, habit):
+# --- Messaging Integration ---
+def notify_sheet_update(entity, entity_id, update_type, payload):
     """
-    Expects 'habit' to have attributes: name, time, difficulty, streak.
+    Inserts a new update request into the sheet_update_requests table
+    and publishes a JSON message on the 'sheet_update' Redis channel.
     """
-    execute_query(
-        "INSERT INTO habits (user_id, name, time, difficulty, completed, streak) VALUES (?, ?, ?, ?, 0, ?)",
-        (user_id, habit.name, habit.time, habit.difficulty, habit.streak)
-    )
+    query = """
+        INSERT INTO sheet_update_requests (entity, entity_id, update_type, payload)
+        VALUES (?, ?, ?, ?)
+    """
+    execute_query(query, (entity, entity_id, update_type, json.dumps(payload)))
+    message = json.dumps({
+        "entity": entity,
+        "entity_id": entity_id,
+        "update_type": update_type,
+        "payload": payload
+    })
+    redis_client.publish("sheet_update", message)
+    logging.info("Notified sheet update: " + message)
 
-
-def get_habits_from_db(user_id: str):
-    rows = fetch_all("SELECT name, time, difficulty, completed, streak FROM habits WHERE user_id = ?", (user_id,))
-    return [{"name": row[0], "time": row[1], "difficulty": row[2], "completed": bool(row[3]), "streak": row[4]} for row
-            in rows]
-
-
-def delete_habit_from_db(user_id: str, habit_name: str):
-    execute_query("DELETE FROM habits WHERE user_id = ? AND LOWER(name) = ?", (user_id, habit_name.lower()))
-
-
-def complete_habit_in_db(user_id: str, habit_name: str):
-    row = fetch_one("SELECT id, streak, completed FROM habits WHERE user_id = ? AND LOWER(name) = ?",
-                    (user_id, habit_name.lower()))
-    if row and not row[2]:
-        new_streak = row[1] + 1
-        execute_query("UPDATE habits SET completed = 1, streak = ? WHERE id = ?", (new_streak, row[0]))
-        increment_task_habit_count(user_id)
-        return new_streak
+# --- Trainer Update Functions ---
+def fetch_trainer_by_name(trainer_name: str) -> dict:
+    """
+    Fetch a trainer's record by name (case-insensitive).
+    Returns a dictionary with keys: id, user_id, name, level, inventory, and img_link.
+    """
+    query = """
+        SELECT id, player_user_id, name, level, inventory, img_link
+        FROM trainers
+        WHERE LOWER(name) = ?
+    """
+    row = fetch_one(query, (trainer_name.lower(),))
+    if row:
+        return {
+            "id": row[0],
+            "user_id": row[1],
+            "name": row[2],
+            "level": row[3],
+            "inventory": row[4] if row[4] is not None else "{}",
+            "img_link": row[5]
+        }
     return None
 
-
-def reset_habits_for_user(user_id: str):
-    execute_query("UPDATE habits SET completed = 0 WHERE user_id = ?", (user_id,))
-
-
-# --- Task Functions ---
-def add_task_to_db(user_id: str, task):
+def update_trainer_field(trainer_id: int, field: str, new_value):
     """
-    Expects 'task' to have attributes: name, time, difficulty, carryover.
+    Updates a single field for a trainer record and notifies the sheet updater.
     """
-    execute_query(
-        "INSERT INTO tasks (user_id, name, time, difficulty, carryover, completed) VALUES (?, ?, ?, ?, ?, 0)",
-        (user_id, task.name, task.time, task.difficulty, int(task.carryover))
-    )
+    query = f"UPDATE trainers SET {field} = ? WHERE id = ?"
+    execute_query(query, (new_value, trainer_id))
+    notify_sheet_update("trainer", trainer_id, f"trainer_{field}", {field: new_value})
 
+def update_trainer_level(trainer_id: int, new_level: int):
+    return update_trainer_field(trainer_id, "level", new_level)
 
-def get_tasks_from_db(user_id: str):
-    rows = fetch_all("SELECT name, time, difficulty, carryover, completed FROM tasks WHERE user_id = ?", (user_id,))
-    return [{"name": row[0], "time": row[1], "difficulty": row[2], "carryover": bool(row[3]), "completed": bool(row[4])}
-            for row in rows]
+def update_trainer_currency(trainer_id: int, new_currency: int):
+    return update_trainer_field(trainer_id, "currency_amount", new_currency)
 
+def update_trainer_mon_amount(trainer_id: int, new_mon_amount: int):
+    return update_trainer_field(trainer_id, "mon_amount", new_mon_amount)
 
-def delete_task_from_db(user_id: str, task_name: str):
-    execute_query("DELETE FROM tasks WHERE user_id = ? AND LOWER(name) = ?", (user_id, task_name.lower()))
+def update_trainer_reference_amount(trainer_id: int, new_reference_amount: int):
+    return update_trainer_field(trainer_id, "reference_amount", new_reference_amount)
 
-
-def complete_task_in_db(user_id: str, task_name: str) -> bool:
-    row = fetch_one("SELECT id FROM tasks WHERE user_id = ? AND LOWER(name) = ?", (user_id, task_name.lower()))
+# --- Mon Update Functions ---
+def fetch_mon_by_name(trainer_name: str, name: str) -> dict:
+    """
+    Fetch a mon's record given the trainer's name and the mon's name (case-insensitive).
+    """
+    trainer = fetch_trainer_by_name(trainer_name)
+    if trainer is None:
+        return None
+    query = """
+        SELECT mon_id, name, level, player_user_id, img_link
+        FROM mons
+        WHERE trainer_id = ? AND LOWER(name) = ?
+    """
+    row = fetch_one(query, (trainer["id"], name.lower()))
     if row:
-        execute_query("UPDATE tasks SET completed = 1 WHERE id = ?", (row[0],))
-        return True
-    return False
+        return {
+            "id": row[0],
+            "name": row[1],
+            "level": row[2],
+            "player_user_id": row[3],
+            "img_link": row[4]
+        }
+    return None
 
-
-def reset_tasks_for_user(user_id: str):
-    execute_query("DELETE FROM tasks WHERE user_id = ? AND carryover = 0", (user_id,))
-    execute_query("UPDATE tasks SET completed = 0 WHERE user_id = ? AND carryover = 1", (user_id,))
-
-
-def increment_task_habit_count(user_id: str):
-    try:
-        cursor.execute(
-            "INSERT INTO garden_harvest (user_id, amount) VALUES (?, 1) ON CONFLICT(user_id) DO UPDATE SET amount = amount + 1",
-            (user_id,)
-        )
-        db.commit()
-    except Exception as e:
-        print("Error incrementing task habit count:", e)
-
-
-# --- Trainer Functions ---
-def add_trainer_to_db(user_id: str, name: str, level: int, img_link: str):
-    execute_query("INSERT INTO trainers (user_id, name, level, img_link) VALUES (?, ?, ?, ?)",
-                  (user_id, name, level, img_link))
-
-
-def get_trainers_from_db(user_id: str):
-    rows = fetch_all("SELECT id, name, level, img_link FROM trainers WHERE user_id = ?", (user_id,))
-    return [{"id": row[0], "name": row[1], "level": row[2], "img_link": row[3]} for row in rows]
-
-
-def delete_trainer_from_db(user_id: str, trainer_name: str):
-    execute_query("DELETE FROM trainers WHERE user_id = ? AND LOWER(name) = ?", (user_id, trainer_name.lower()))
-
-
-def update_trainer_data(trainer_id: int, **kwargs):
-    if not kwargs:
+def update_mon_row(mon_id: int, updated_fields: dict):
+    """
+    Updates specified fields for a mon record and notifies the sheet updater.
+    """
+    if not updated_fields:
         return
     fields = []
     values = []
-    for key, value in kwargs.items():
-        fields.append(f"{key} = ?")
-        values.append(value)
-    values.append(trainer_id)
-    query = "UPDATE trainers SET " + ", ".join(fields) + " WHERE id = ?"
-    execute_query(query, tuple(values))
-
-
-# --- Mon Functions ---
-def add_mon_to_db(trainer_id: int, player: str, mon_name: str, level: int,
-                  species1: str, species2: str, species3: str,
-                  type1: str, type2: str, type3: str, type4: str, type5: str,
-                  attribute: str, img_link: str = ""):
-    execute_query(
-        """
-        INSERT INTO mons (
-            trainer_id, player, mon_name, level, species1, species2, species3,
-            type1, type2, type3, type4, type5, attribute, img_link
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """,
-        (trainer_id, player, mon_name, level, species1, species2, species3,
-         type1, type2, type3, type4, type5, attribute, img_link)
-    )
-
-
-def get_mons_for_trainer(trainer_id: int) -> list:
-    cursor.execute("SELECT id, mon_name, level, player, img_link FROM mons WHERE trainer_id = ?", (trainer_id,))
-    rows = cursor.fetchall()
-    return [{
-        "id": row[0],
-        "mon_name": row[1],
-        "level": row[2],
-        "player": row[3],
-        "img_link": row[4]
-    } for row in rows]
-
-
-
-def get_mons_from_db(user_id: str):
-    rows = fetch_all(
-        """
-        SELECT m.id, t.name, m.mon_name, m.level, m.species1, m.species2, m.species3,
-               m.type1, m.type2, m.type3, m.type4, m.type5, m.attribute, m.img_link 
-        FROM mons m JOIN trainers t ON m.trainer_id = t.id 
-        WHERE m.player = ?
-        """, (user_id,)
-    )
-    return [{
-        "id": row[0],
-        "trainer": row[1],
-        "mon_name": row[2],
-        "level": row[3],
-        "species1": row[4],
-        "species2": row[5],
-        "species3": row[6],
-        "type1": row[7],
-        "type2": row[8],
-        "type3": row[9],
-        "type4": row[10],
-        "type5": row[11],
-        "attribute": row[12],
-        "img_link": row[13]
-    } for row in rows]
-
-
-def update_mon_data(mon_id: int, **kwargs):
-    if not kwargs:
-        return
-    fields = []
-    values = []
-    for key, value in kwargs.items():
+    for key, value in updated_fields.items():
         fields.append(f"{key} = ?")
         values.append(value)
     values.append(mon_id)
-    query = "UPDATE mons SET " + ", ".join(fields) + " WHERE id = ?"
+    query = "UPDATE mons SET " + ", ".join(fields) + " WHERE mon_id = ?"
     execute_query(query, tuple(values))
+    notify_sheet_update("mon", mon_id, "mon_update", updated_fields)
 
+def update_mon_level(mon_id: int, new_level: int):
+    return update_mon_row(mon_id, {"level": new_level})
 
-async def update_mon_in_db(mon_name: str, field: str, new_value: str, user_id: str) -> bool:
+def update_name(mon_id: int, new_name: str):
     """
-    Updates a field in the mons table for the specified mon record.
-
-    It updates the record where:
-      - mon_name matches the provided mon_name (case-sensitive), and
-      - player equals the provided user_id.
-
-    Returns:
-      True if the update is successful; False otherwise.
+    Updates the mon's display name. Adjust the column name if you have a dedicated mon name column.
     """
+    return update_mon_row(mon_id, {"name": new_name})
 
-    def _update():
-        try:
-            query = f"UPDATE mons SET {field} = ? WHERE mon_name = ? AND player = ?"
-            cursor.execute(query, (new_value, mon_name, user_id))
-            db.commit()
-            return True
-        except Exception as e:
-            logging.error(f"Database update error for mon '{mon_name}', field '{field}': {e}")
+def update_mon_species_and_type(mon_id: int, new_species_list: list, new_types_list: list, new_attribute: str = None):
+    """
+    Updates a mon's species (up to three) and types (up to five). Optionally updates the attribute.
+    """
+    update_fields = {}
+    for i in range(3):
+        key = f"species{i + 1}"
+        update_fields[key] = new_species_list[i] if i < len(new_species_list) else ""
+    for i in range(5):
+        key = f"type{i + 1}"
+        update_fields[key] = new_types_list[i] if i < len(new_types_list) else ""
+    if new_attribute is not None:
+        update_fields["attribute"] = new_attribute
+    return update_mon_row(mon_id, update_fields)
+
+def add_mon(trainer_id: int, player: str, name: str, level: int,
+            species1: str, species2: str, species3: str,
+            type1: str, type2: str, type3: str, type4: str, type5: str,
+            attribute: str, img_link: str = "") -> int:
+    """
+    Inserts a new mon into the database.
+    Returns the newly created mon's ID.
+    """
+    query = """
+    INSERT INTO mons (
+        trainer_id, player_user_id, name, level, 
+        species1, species2, species3,
+        type1, type2, type3, type4, type5,
+        attribute, img_link
+    )
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """
+    execute_query(query, (trainer_id, player, name, level,
+                           species1, species2, species3,
+                           type1, type2, type3, type4, type5,
+                           attribute, img_link))
+    return cursor.lastrowid
+
+def remove_mon(mon_id: int) -> bool:
+    """
+    Removes a mon record from the database by its ID.
+    """
+    try:
+        execute_query("DELETE FROM mons WHERE mon_id = ?", (mon_id,))
+        return True
+    except Exception as e:
+        logging.error("Error removing mon (ID %s): %s", mon_id, e)
+        return False
+
+# --- Currency Helpers ---
+from core.currency import get_currency, add_currency
+
+def add_currency_to_player(user_id: str, amount: int) -> int:
+    """
+    Adds the given amount of currency to the player's balance.
+    """
+    return add_currency(user_id, amount)
+
+def remove_currency_from_player(user_id: str, amount: int) -> int:
+    """
+    Removes the given amount of currency from the player's balance.
+    """
+    return add_currency(user_id, -amount)
+
+# --- Log Sheet Helpers ---
+async def update_character_sheet_item(trainer_name: str, item_name: str, quantity: int) -> bool:
+    """
+    Updates a trainer's inventory by adding (or removing) the specified item and quantity.
+    Returns True if successful, False otherwise.
+    """
+    try:
+        trainer = fetch_trainer_by_name(trainer_name)
+        if trainer is None:
+            logging.error(f"Trainer '{trainer_name}' not found for inventory update.")
             return False
+        inv_str = trainer["inventory"] if trainer["inventory"] is not None else "{}"
+        try:
+            inventory = {} if inv_str == "" else json.loads(inv_str)
+        except Exception as e:
+            logging.error(f"Error parsing inventory JSON for '{trainer_name}': {e}")
+            inventory = {}
+        item_key = str(item_name)
+        if quantity < 0:
+            if item_key not in inventory:
+                return False
+            inventory[item_key] += quantity
+            if inventory[item_key] <= 0:
+                inventory.pop(item_key, None)
+        else:
+            inventory[item_key] = inventory.get(item_key, 0) + quantity
+        new_inv_json = json.dumps(inventory)
+        execute_query("UPDATE trainers SET inventory = ? WHERE id = ?", (new_inv_json, trainer["id"]))
+        return True
+    except Exception as e:
+        logging.error(f"Inventory update failed for trainer '{trainer_name}': {e}")
+        return False
 
-    return await asyncio.to_thread(_update)
+# Alias for modules that reference "add_item"
+add_item = update_character_sheet_item
+
+async def update_character_sheet_level(trainer_name: str, target_name: str, level_amount: int) -> bool:
+    """
+    Adjusts levels for a trainer or one of their mons.
+    If target_name matches the trainer, the trainer's level is increased.
+    Otherwise, it updates the mon's level.
+    """
+    try:
+        trainer = fetch_trainer_by_name(trainer_name)
+        if trainer is None:
+            return False
+        if target_name.lower() == trainer_name.lower():
+            new_level = max(trainer["level"] + level_amount, 0)
+            update_trainer_level(trainer["id"], new_level)
+            return True
+        else:
+            mon_record = fetch_mon_by_name(trainer_name, target_name)
+            if mon_record is None:
+                return False
+            new_level = max(mon_record["level"] + level_amount, 0)
+            update_mon_row(mon_record["id"], {"level": new_level})
+            return True
+    except Exception as e:
+        logging.error(f"Level update failed for '{trainer_name}' target '{target_name}': {e}")
+        return False
+
+async def append_mon_to_sheet(trainer_name: str, mon_data: list) -> str:
+    """
+    Handles post-insertion steps for a new mon.
+    Increments the trainer's mon count.
+    Returns an empty string on success or an error message on failure.
+    """
+    try:
+        trainer = fetch_trainer_by_name(trainer_name)
+        if trainer is None:
+            return f"Trainer '{trainer_name}' not found."
+        execute_query("UPDATE trainers SET mon_amount = mon_amount + 1 WHERE id = ?", (trainer["id"],))
+        return ""
+    except Exception as e:
+        logging.error(f"Error finalizing new mon for trainer '{trainer_name}': {e}")
+        return f"Error updating trainer's mon count: {e}"
+
+# Habits
+def add_habit(user_id: str, habit_name: str, time: str = None, difficulty: str = "medium"):
+    query = "INSERT INTO habits (user_id, habit_name, time, difficulty) VALUES (?, ?, ?, ?)"
+    execute_query(query, (user_id, habit_name, time, difficulty))
+    return cursor.lastrowid
+
+def fetch_habits(user_id: str) -> list:
+    query = "SELECT habit_name, time, difficulty, streak, last_completed FROM habits WHERE user_id = ?"
+    cursor.execute(query, (user_id,))
+    rows = cursor.fetchall()
+    habits = []
+    for row in rows:
+        habits.append({
+            "name": row[0],
+            "time": row[1],
+            "difficulty": row[2],
+            "streak": row[3],
+            "last_completed": row[4]
+        })
+    return habits
+
+def remove_habit(user_id: str, habit_name: str) -> bool:
+    try:
+        execute_query("DELETE FROM habits WHERE user_id = ? AND habit_name = ?", (user_id, habit_name))
+        return True
+    except Exception as e:
+        logging.error(f"Error removing habit '{habit_name}' for user {user_id}: {e}")
+        return False
+
+def mark_habit_complete(user_id: str, habit_name: str):
+    query = "SELECT streak, last_completed FROM habits WHERE user_id = ? AND habit_name = ?"
+    row = fetch_one(query, (user_id, habit_name))
+    if not row:
+        return None
+    current_streak, last_completed = row
+    today_str = date.today().isoformat()
+    if last_completed and last_completed.startswith(today_str):
+        return None
+    new_streak = (current_streak or 0) + 1
+    update_query = "UPDATE habits SET streak = ?, last_completed = ? WHERE user_id = ? AND habit_name = ?"
+    execute_query(update_query, (new_streak, datetime.now().isoformat(), user_id, habit_name))
+    return new_streak
+
+# Tasks
+def add_task(user_id: str, task_name: str, time: str = None, carryover: bool = False, difficulty: str = "medium"):
+    query = "INSERT INTO tasks (user_id, task_name, time, carryover, difficulty) VALUES (?, ?, ?, ?, ?)"
+    carryover_int = 1 if carryover else 0
+    execute_query(query, (user_id, task_name, time, carryover_int, difficulty))
+    return cursor.lastrowid
+
+def fetch_tasks(user_id: str) -> list:
+    query = "SELECT task_name, time, carryover, difficulty, completed FROM tasks WHERE user_id = ? AND completed = 0"
+    cursor.execute(query, (user_id,))
+    rows = cursor.fetchall()
+    tasks = []
+    for row in rows:
+        tasks.append({
+            "name": row[0],
+            "time": row[1],
+            "carryover": bool(row[2]),
+            "difficulty": row[3],
+            "completed": bool(row[4])
+        })
+    return tasks
+
+def remove_task(user_id: str, task_name: str) -> bool:
+    try:
+        execute_query("DELETE FROM tasks WHERE user_id = ? AND task_name = ?", (user_id, task_name))
+        return True
+    except Exception as e:
+        logging.error(f"Error removing task '{task_name}' for user {user_id}: {e}")
+        return False
+
+def mark_task_complete(user_id: str, task_name: str) -> bool:
+    try:
+        update_query = "UPDATE tasks SET completed = 1, date_completed = ? WHERE user_id = ? AND task_name = ? AND completed = 0"
+        execute_query(update_query, (datetime.now().isoformat(), user_id, task_name))
+        row = fetch_one("SELECT completed FROM tasks WHERE user_id = ? AND task_name = ?", (user_id, task_name))
+        return (row and row[0] == 1)
+    except Exception as e:
+        logging.error(f"Error marking task '{task_name}' complete for user {user_id}: {e}")
+        return False
+
+# Schedules
+def add_schedule_entry(user_id: str, entry_text: str, schedule_date: str = None):
+    if schedule_date is None:
+        schedule_date = date.today().isoformat()
+    query = "INSERT INTO schedules (user_id, entry_text, schedule_date) VALUES (?, ?, ?)"
+    execute_query(query, (user_id, entry_text, schedule_date))
+    return cursor.lastrowid
+
+def fetch_schedule(user_id: str, schedule_date: str = None) -> list:
+    if schedule_date is None:
+        schedule_date = date.today().isoformat()
+    query = "SELECT entry_text, schedule_date, created_at FROM schedules WHERE user_id = ? AND schedule_date = ?"
+    cursor.execute(query, (user_id, schedule_date))
+    rows = cursor.fetchall()
+    schedule = []
+    for row in rows:
+        schedule.append({
+            "entry_text": row[0],
+            "schedule_date": row[1],
+            "created_at": row[2]
+        })
+    return schedule
+
+def increment_garden_harvest(user_id: str, count: int = 1) -> None:
+    query = "SELECT amount FROM garden_harvest WHERE user_id = ?"
+    row = fetch_one(query, (user_id,))
+    now = datetime.now().isoformat()
+    if row is None:
+        execute_query("INSERT INTO garden_harvest (user_id, amount, last_claimed) VALUES (?, ?, ?)", (user_id, count, now))
+    else:
+        new_amount = row[0] + count
+        execute_query("UPDATE garden_harvest SET amount = ? WHERE user_id = ?", (new_amount, user_id))
+
+# ----- Fetch mons for trainer -----
+def get_mons_for_trainer(trainer_id: int) -> list:
+    """
+    Retrieves all mons for a given trainer from the database.
+    Returns a list of dictionaries containing basic mon info.
+    """
+    query = "SELECT mon_id, name, level, img_link FROM mons WHERE trainer_id = ?"
+    rows = fetch_all(query, (trainer_id,))
+    mons = []
+    for row in rows:
+        mons.append({
+            "id": row[0],
+            "name": row[1],
+            "level": row[2],
+            "img_link": row[3]
+        })
+    return mons
+
+# ----- Update mon data -----
+def update_mon_data(mon_id: int, **kwargs) -> bool:
+    """
+    Updates the specified fields for a mon record.
+    Returns True if successful, False otherwise.
+    """
+    try:
+        if not kwargs:
+            return True
+        fields = []
+        values = []
+        for key, value in kwargs.items():
+            fields.append(f"{key} = ?")
+            values.append(value)
+        values.append(mon_id)
+        query = "UPDATE mons SET " + ", ".join(fields) + " WHERE mon_id = ?"
+        execute_query(query, tuple(values))
+        return True
+    except Exception as e:
+        logging.error("Error updating mon data: %s", e)
+        return False
+
+# ----- Fetch all trainers -----
+def fetch_all_trainers() -> list:
+    """
+    Retrieves all trainer records from the database.
+    Returns a list of dictionaries with basic trainer info.
+    """
+    query = "SELECT id, player_user_id, name, level, inventory, img_link FROM trainers"
+    rows = fetch_all(query)
+    trainers = []
+    for row in rows:
+        trainers.append({
+            "id": row[0],
+            "user_id": row[1],
+            "name": row[2],
+            "level": row[3],
+            "inventory": row[4],
+            "img_link": row[5]
+        })
+    return trainers
+
+# ----- Update mon img link -----
+async def update_mon_img_link(trainer_name: str, name: str, new_img_link: str) -> bool:
+    """
+    Updates the img_link column for a mon (identified by trainer and mon name).
+    Returns True if the update is successful.
+    """
+    try:
+        mon_record = fetch_mon_by_name(trainer_name, name)
+        if mon_record is None:
+            logging.error(f"Mon '{name}' for trainer '{trainer_name}' not found.")
+            return False
+        mon_id = mon_record["id"]
+        update_mon_row(mon_id, {"img_link": new_img_link})
+        return True
+    except Exception as e:
+        logging.error("Error updating mon image link: %s", e)
+        return False
+
+# ----- Adventure Session Functionality -----
+# Create the adventure_sessions table if it doesn't exist:
+def create_adventure_session_table():
+    query = """
+    CREATE TABLE IF NOT EXISTS adventure_sessions (
+        channel_id INTEGER PRIMARY KEY,
+        data TEXT
+    )
+    """
+    execute_query(query)
+
+create_adventure_session_table()
 
 def save_session(session) -> None:
     """
-    Saves a new adventure session in the database. If a session for the channel already exists,
-    it is replaced with the new data.
-
-    Parameters:
-      session: An adventure session object with attributes:
-          - channel: discord.TextChannel (use its id as the key)
-          - area_data: dict (will be stored as a JSON string)
-          - progress: int
-          - encounters_triggered: int
-          - hard_mode: bool (stored as 1 for True, 0 for False)
+    Saves the current adventure session to the database.
+    Expects session to have attributes: channel.id, area_data, hard_mode, progress, encounters_triggered, max_encounters, and players.
     """
-    channel_id = str(session.channel.id)
-    area_data_json = json.dumps(session.area_data)
-    progress = session.progress
-    encounters_triggered = session.encounters_triggered
-    hard_mode = 1 if session.hard_mode else 0
-    last_message_timestamp = int(time.time())
-    active = 1  # session is active
-    query = """
-    INSERT OR REPLACE INTO adventure_sessions 
-    (channel_id, area_data, progress, encounters_triggered, hard_mode, last_message_timestamp, active)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
-    """
-    cursor.execute(query, (channel_id, area_data_json, progress, encounters_triggered, hard_mode, last_message_timestamp, active))
-    db.commit()
+    session_data = {
+        "area_data": session.area_data,
+        "hard_mode": session.hard_mode,
+        "progress": session.progress,
+        "encounters_triggered": session.encounters_triggered,
+        "max_encounters": session.max_encounters,
+        "players": list(session.players)
+    }
+    data = json.dumps(session_data)
+    query = "INSERT OR REPLACE INTO adventure_sessions (channel_id, data) VALUES (?, ?)"
+    execute_query(query, (session.channel.id, data))
 
 def update_session(session) -> None:
     """
-    Updates an existing adventure session in the database with the current progress,
-    number of encounters, and last message timestamp.
-
-    Parameters:
-      session: An adventure session object as described in save_session.
+    Updates an existing adventure session in the database.
     """
-    channel_id = str(session.channel.id)
-    progress = session.progress
-    encounters_triggered = session.encounters_triggered
-    last_message_timestamp = int(time.time())
-    query = """
-    UPDATE adventure_sessions 
-    SET progress = ?, encounters_triggered = ?, last_message_timestamp = ?
-    WHERE channel_id = ?
-    """
-    cursor.execute(query, (progress, encounters_triggered, last_message_timestamp, channel_id))
-    db.commit()
+    session_data = {
+        "area_data": session.area_data,
+        "hard_mode": session.hard_mode,
+        "progress": session.progress,
+        "encounters_triggered": session.encounters_triggered,
+        "max_encounters": session.max_encounters,
+        "players": list(session.players)
+    }
+    data = json.dumps(session_data)
+    query = "UPDATE adventure_sessions SET data = ? WHERE channel_id = ?"
+    execute_query(query, (data, session.channel.id))
 
-def delete_session(channel_id: str) -> None:
+def delete_session(channel_id: int) -> None:
     """
-    Deletes the adventure session for the given channel ID.
-
-    Parameters:
-      channel_id: The Discord channel ID (as a string) where the session is stored.
+    Deletes an adventure session from the database using the channel ID.
     """
     query = "DELETE FROM adventure_sessions WHERE channel_id = ?"
-    cursor.execute(query, (channel_id,))
-    db.commit()
+    execute_query(query, (channel_id,))
 
-def get_all_users() -> list:
+def get_all_mons_for_user(user_id: str) -> list:
     """
-    Retrieves all users from the database.
-
-    Returns:
-        A list of dictionaries, each with the key 'user_id'.
+    Retrieves all mon records for a given user from the database.
+    Returns a list of dictionaries with basic mon information.
     """
-    cursor.execute("SELECT user_id FROM users")
-    rows = cursor.fetchall()
-    return [{"user_id": row[0]} for row in rows]
-
-
-from core.database import cursor
-
-
-def fetch_mon_from_db(mon_id: int) -> dict:
-    """
-    Retrieves a mon record from the database given its ID and returns it as a dictionary.
-
-    Parameters:
-      mon_id (int): The unique identifier of the mon.
-
-    Returns:
-      dict: A dictionary with keys "id", "trainer_id", "player", "mon_name",
-            "species1", "species2", "species3", "type1", "type2", "type3", "type4", "type5",
-            "attribute", "img_link". If the mon is not found, returns an empty dict.
-    """
-    query = """
-    SELECT id, trainer_id, player, mon_name, species1, species2, species3,
-           type1, type2, type3, type4, type5, attribute, img_link
-    FROM mons
-    WHERE id = ?
-    """
-    cursor.execute(query, (mon_id,))
-    row = cursor.fetchone()
-    if row:
-        keys = ["id", "trainer_id", "player", "mon_name", "species1", "species2", "species3",
-                "type1", "type2", "type3", "type4", "type5", "attribute", "img_link"]
-        return dict(zip(keys, row))
-    else:
-        return {}
+    query = "SELECT mon_id, name, level, img_link, trainer_id FROM mons WHERE player_user_id = ?"
+    rows = fetch_all(query, (user_id,))
+    mons = []
+    for row in rows:
+        mons.append({
+            "id": row[0],
+            "name": row[1],
+            "level": row[2],
+            "img_link": row[3],
+            "trainer_id": row[4]
+        })
+    return mons
