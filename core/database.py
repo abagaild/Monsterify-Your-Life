@@ -303,31 +303,17 @@ def add_mon_to_db(trainer_id: int, player: str, mon_name: str, level: int,
     )
 
 
-def get_mons_for_trainer(trainer_id: int):
-    rows = fetch_all(
-        """
-        SELECT m.id, t.name, m.mon_name, m.level, m.species1, m.species2, m.species3,
-               m.type1, m.type2, m.type3, m.type4, m.type5, m.attribute, m.img_link 
-        FROM mons m JOIN trainers t ON m.trainer_id = t.id 
-        WHERE m.trainer_id = ?
-        """, (trainer_id,)
-    )
+def get_mons_for_trainer(trainer_id: int) -> list:
+    cursor.execute("SELECT id, mon_name, level, player, img_link FROM mons WHERE trainer_id = ?", (trainer_id,))
+    rows = cursor.fetchall()
     return [{
         "id": row[0],
-        "trainer": row[1],
-        "mon_name": row[2],
-        "level": row[3],
-        "species1": row[4],
-        "species2": row[5],
-        "species3": row[6],
-        "type1": row[7],
-        "type2": row[8],
-        "type3": row[9],
-        "type4": row[10],
-        "type5": row[11],
-        "attribute": row[12],
-        "img_link": row[13]
+        "mon_name": row[1],
+        "level": row[2],
+        "player": row[3],
+        "img_link": row[4]
     } for row in rows]
+
 
 
 def get_mons_from_db(user_id: str):

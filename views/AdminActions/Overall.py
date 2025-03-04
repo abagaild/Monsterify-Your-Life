@@ -86,7 +86,7 @@ class AdminActionsView(View):
     # Row 3
     @discord.ui.button(label="Sheets Sync Debug", style=discord.ButtonStyle.primary, custom_id="admin_sheets_sync", row=3)
     async def sheets_sync(self, interaction: discord.Interaction, button: Button):
-        from views import SheetsSyncDebugView  # Ensure this file exists
+        from views.AdminActions.SyncDebug import SheetsSyncDebugView  # Ensure this file exists
         view = SheetsSyncDebugView()
         await interaction.response.send_message("Sheets Sync Debug Admin Actions:", view=view, ephemeral=True)
 

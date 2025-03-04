@@ -1,21 +1,17 @@
 import random
 import asyncio
-from typing import Any
 import discord
 from core.database import cursor, db, add_currency, update_mon_in_db, get_mons_for_trainer
-from core.google_sheets import append_mon_to_sheet, update_mon_sheet_value, update_character_sheet_level, \
+from core.google_sheets import (
+    append_mon_to_sheet, update_mon_sheet_value, update_character_sheet_level,
     update_character_sheet_item, get_mon_sheet_row
+)
 from data.lists import no_evolution, mythical_list, legendary_list
 from logic.market.farm_breeding import get_parent_species
 from core.mon import should_ignore_column
 
-# ---------------------------------------------
 # Base Mon Detail View (common functionality)
-# ---------------------------------------------
 class BaseMonDetailView(discord.ui.View):
-    """
-    Loads a mon’s details from its Google Sheet row and builds an embed.
-    """
     def __init__(self, trainer: dict, mon: dict):
         super().__init__(timeout=None)
         self.trainer = trainer
@@ -47,9 +43,7 @@ class BaseMonDetailView(discord.ui.View):
             embed.set_image(url=self.mon["img_link"])
         return embed
 
-# ---------------------------------------------
 # Editable Mon Detail View – for your own mons.
-# ---------------------------------------------
 class MonDetailView(BaseMonDetailView):
     def __init__(self, trainer: dict, mon: dict):
         super().__init__(trainer, mon)
@@ -57,17 +51,13 @@ class MonDetailView(BaseMonDetailView):
         self.add_item(MonEditDetailsButton())
         self.add_item(MonDetailBackButton())
 
-# ---------------------------------------------
 # Read-Only Mon Detail View – for others' mons.
-# ---------------------------------------------
 class OtherMonDetailView(BaseMonDetailView):
     def __init__(self, trainer: dict, mon: dict):
         super().__init__(trainer, mon)
         self.add_item(MonDetailBackButton())
 
-# ---------------------------------------------
 # Mon Detail View Buttons
-# ---------------------------------------------
 class MonEditInfoButton(discord.ui.Button):
     def __init__(self):
         super().__init__(label="Edit Information", style=discord.ButtonStyle.secondary)
@@ -110,9 +100,6 @@ class MonDetailBackButton(discord.ui.Button):
         embed = new_view.get_current_embed()
         await interaction.response.send_message("Returning to mons view...", embed=embed, view=new_view, ephemeral=True)
 
-# ---------------------------------------------
-# Base Edit View for Mon Editing (used by both info and details editing)
-# ---------------------------------------------
 class BaseMonEditView(discord.ui.View):
     def __init__(self, trainer: dict, mon_name: str, options: list, parent_view: BaseMonDetailView):
         super().__init__(timeout=120)
@@ -130,7 +117,6 @@ class MonEditSelect(discord.ui.Select):
         self.parent_view = parent_view
     async def callback(self, interaction: discord.Interaction):
         selected_key = self.values[0]
-        # Defer immediately to extend the response window.
         await interaction.response.defer(ephemeral=True)
         await interaction.followup.send(f"Enter the new value for **{selected_key}**:", ephemeral=True)
         def check(m):
@@ -164,20 +150,15 @@ class MonEditBackButton(discord.ui.Button):
         embed = await new_detail_view.get_detail_embed()
         await interaction.response.send_message("Returning to mon details...", embed=embed, view=new_detail_view, ephemeral=True)
 
-# ---------------------------------------------
-# Mon Edit Select View – a convenience view for editing.
-# ---------------------------------------------
 class MonEditSelectView(BaseMonEditView):
     def __init__(self, trainer: dict, mon_name: str, options: list, parent_view: BaseMonDetailView):
         super().__init__(trainer, mon_name, options, parent_view)
 
-# ---------------------------------------------
-# Trainer's Mons View – paginated list of mons.
-# ---------------------------------------------
 class TrainerMonsView(discord.ui.View):
     def __init__(self, trainer: dict):
         super().__init__(timeout=None)
         self.trainer = trainer
+        # IMPORTANT: Ensure get_mons_for_trainer returns the "player" field!
         self.mons = get_mons_for_trainer(trainer['id'])
         self.current_index = 0
 
@@ -214,20 +195,15 @@ class TrainerMonsView(discord.ui.View):
         if not self.mons:
             await interaction.response.send_message("No mons to display.", ephemeral=True)
             return
-        # Defer the response so we have extra time to process the details.
-        await interaction.response.defer(ephemeral=True)
         mon = self.mons[self.current_index]
-        current_user = str(interaction.user.id)
-        if mon.get("player") == current_user:
+        # Check ownership using the "player" field.
+        if mon.get("player") == str(interaction.user.id):
             detail_view = MonDetailView(self.trainer, mon)
         else:
             detail_view = OtherMonDetailView(self.trainer, mon)
         embed = await detail_view.get_detail_embed()
-        await interaction.followup.send(embed=embed, view=detail_view, ephemeral=True)
+        await interaction.response.send_message("Displaying mon details:", embed=embed, view=detail_view, ephemeral=True)
 
     @discord.ui.button(label="Back", style=discord.ButtonStyle.danger, custom_id="mons_back", row=1)
     async def back(self, interaction: discord.Interaction, button: discord.ui.Button):
-        from views.trainers import BaseTrainerDetailView
-        detail_view = BaseTrainerDetailView(self.trainer)
-        embed = detail_view.get_page_embed()
-        await interaction.response.send_message("Returning to trainer details...", embed=embed, view=detail_view, ephemeral=True)
+        await interaction.response.send_message("Returning to previous menu...", ephemeral=True)

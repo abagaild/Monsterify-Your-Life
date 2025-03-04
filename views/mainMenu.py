@@ -5,7 +5,7 @@ from core.config import (
     submissions_channel_id, mission_channel_id, ADVENTURE_CHANNEL_ID,
     game_corner_channel_id, boss_channel_id, admin_actions_channel_id
 )
-from core.database import get_trainers_from_db
+from views.trainers import get_trainers_from_db
 from core.trainer import get_other_trainers_from_db
 from logic.trade_items import TradeTrainerSelectionView
 from logic.trade_pokemon import TradePokemonSelectionView

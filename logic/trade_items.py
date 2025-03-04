@@ -43,35 +43,22 @@ def parse_trade_input(input_str: str) -> dict:
 
 
 class TradeModal(discord.ui.Modal, title="Trade Items"):
-    """
-    A modal for trading items between two trainers.
-
-    Two text fields are presented:
-      - Trainer 1 Receiving: Items that Trainer 1 (which must belong to the player)
-        will receive from Trainer 2.
-      - Trainer 2 Receiving: Items that Trainer 2 will receive from Trainer 1.
-
-    Each field should list comma-separated item:amount pairs.
-    """
+    # Using concise labels (under 45 characters) for Discord’s limits.
     trainer1_receiving = discord.ui.TextInput(
-        label="Items for Trainer 1 to Receive (from Trainer 2)",
+        label="T1: Items to Receive",
         placeholder="e.g., Pokeball:2, Potion:1",
         required=False
     )
     trainer2_receiving = discord.ui.TextInput(
-        label="Items for Trainer 2 to Receive (from Trainer 1)",
+        label="T2: Items to Receive",
         placeholder="e.g., Berry:3, Elixir:1",
         required=False
     )
 
     def __init__(self, trainer1: dict, trainer2: dict):
-        """
-        :param trainer1: A dict representing Trainer 1 (must belong to the player).
-        :param trainer2: A dict representing Trainer 2.
-        """
         super().__init__()
-        self.trainer1 = trainer1
-        self.trainer2 = trainer2
+        self.trainer1 = trainer1  # Trainer receiving items from trainer2
+        self.trainer2 = trainer2  # Trainer sending items to trainer1
 
     async def on_submit(self, interaction: discord.Interaction):
         # Parse the input strings into dictionaries mapping item names to amounts.
@@ -79,25 +66,21 @@ class TradeModal(discord.ui.Modal, title="Trade Items"):
         trade_for_trainer2 = parse_trade_input(self.trainer2_receiving.value)
         errors = []
 
-        # Process trade for Trainer 1:
-        # Remove items from Trainer 2 and add them to Trainer 1.
+        # For Trainer 1: remove items from Trainer 2 and add them to Trainer 1.
         for item, amount in trade_for_trainer1.items():
             success_remove = await update_character_sheet_item(self.trainer2['name'], item, -amount)
             success_add = await update_character_sheet_item(self.trainer1['name'], item, amount)
             if not (success_remove and success_add):
-                errors.append(
-                    f"Failed to trade {item} (x{amount}) from {self.trainer2['name']} to {self.trainer1['name']}.")
+                errors.append(f"Failed to trade {item} (x{amount}) from {self.trainer2['name']} to {self.trainer1['name']}.")
 
-        # Process trade for Trainer 2:
-        # Remove items from Trainer 1 and add them to Trainer 2.
+        # For Trainer 2: remove items from Trainer 1 and add them to Trainer 2.
         for item, amount in trade_for_trainer2.items():
             success_remove = await update_character_sheet_item(self.trainer1['name'], item, -amount)
             success_add = await update_character_sheet_item(self.trainer2['name'], item, amount)
             if not (success_remove and success_add):
-                errors.append(
-                    f"Failed to trade {item} (x{amount}) from {self.trainer1['name']} to {self.trainer2['name']}.")
+                errors.append(f"Failed to trade {item} (x{amount}) from {self.trainer1['name']} to {self.trainer2['name']}.")
 
-        # Build an embed with a random image and flavor text.
+        # Build an embed showing the result.
         if errors:
             description = "Trade completed with errors:\n" + "\n".join(errors)
             color = discord.Color.red()

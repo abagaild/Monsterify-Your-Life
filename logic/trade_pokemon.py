@@ -127,8 +127,10 @@ class TrainerSelectionConfirmButton(discord.ui.Button):
         if view.trainer1 is None or view.trainer2 is None:
             await interaction.response.send_message("Please select both trainers before proceeding.", ephemeral=True)
             return
-        await interaction.response.send_message("Now select a Pokémon from each trainer (or select 'None' if gifting):",
-                                                ephemeral=True)
+        await interaction.response.send_message(
+            "Now select a Pokémon from each trainer (or select 'None' if gifting):",
+            ephemeral=True
+        )
         view.clear_items()
         from core.database import get_mons_for_trainer
         mons1 = get_mons_for_trainer(view.trainer1['id'])
@@ -144,7 +146,11 @@ class TrainerSelectionConfirmButton(discord.ui.Button):
         view.add_item(pkm1_select)
         view.add_item(pkm2_select)
         view.add_item(PokemonTradeConfirmButton())
-        await interaction.message.edit(view=view)
+        try:
+            await interaction.message.edit(view=view)
+        except discord.errors.NotFound:
+            logging.error("Message not found; it may have been deleted. Sending a new message with the view.")
+            await interaction.followup.send("Continue with your selection:", view=view, ephemeral=True)
 
 
 class PokemonSelect(discord.ui.Select):
