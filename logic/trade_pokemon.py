@@ -3,7 +3,7 @@ import random
 import discord
 from core.core_views import create_paginated_trainers_dropdown
 from core.database import fetch_all, update_mon_data, get_mons_for_trainer
-from core.trainer import get_other_trainers_from_db, get_trainers_from_db
+from core.trainer import get_other_trainers_from_db, get_trainers, get_all_trainers
 from core.rollmons import register_mon
 from core.currency import add_currency
 
@@ -44,7 +44,7 @@ class TradePokemonSelectionView(discord.ui.View):
         self.trainer2 = None
         self.trainer1_mon = None
         self.trainer2_mon = None
-        own_trainers = get_trainers_from_db(player_id)
+        own_trainers = get_trainers(player_id)
         other_trainers = get_other_trainers_from_db(player_id)
         own_dropdown = create_paginated_trainers_dropdown(own_trainers, "Select Your Trainer", self.own_trainer_callback)
         other_dropdown = create_paginated_trainers_dropdown(other_trainers, "Select Other Trainer", self.other_trainer_callback)
@@ -53,7 +53,7 @@ class TradePokemonSelectionView(discord.ui.View):
         self.add_item(TrainerSelectionConfirmButton())
 
     async def own_trainer_callback(self, interaction: discord.Interaction, selected_value: str):
-        for trainer in get_trainers_from_db(self.player_id):
+        for trainer in get_trainers(self.player_id):
             if str(trainer["id"]) == selected_value:
                 self.trainer1 = trainer
                 break

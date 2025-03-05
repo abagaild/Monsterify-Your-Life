@@ -2,7 +2,7 @@ import math
 import discord
 from core.currency import add_currency
 from core.database import fetch_one, execute_query
-from core.database import update_character_sheet_level
+from core.database import update_character_level
 
 async def process_writing_submission(
     writing_type: str,
@@ -55,7 +55,7 @@ async def process_writing_submission(
             if interaction:
                 if recipient.lower().startswith("t:"):
                     trainer_name_input = recipient[2:].strip()
-                    await update_character_sheet_level(trainer_name_input, trainer_name_input, total_levels)
+                    await update_character_level(trainer_name_input, trainer_name_input, total_levels)
                     assigned_levels = {}
                 elif recipient.lower().startswith("m:"):
                     mon_name_input = recipient[2:].strip()
@@ -64,7 +64,7 @@ async def process_writing_submission(
                         trainer_id = row[0]
                         trainer_row = fetch_one("SELECT name FROM trainers WHERE id = ?", (trainer_id,))
                         if trainer_row:
-                            await update_character_sheet_level(trainer_row[0], mon_name_input, total_levels)
+                            await update_character_level(trainer_row[0], mon_name_input, total_levels)
                     assigned_levels = {}
         else:
             assigned_levels = {}

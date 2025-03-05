@@ -5,7 +5,7 @@ from typing import Tuple, Any
 import logging
 from core.database import cursor, db, update_mon_row, add_mon
 from core.currency import add_currency
-from core.database import append_mon_to_sheet, update_character_sheet_level, update_character_sheet_item
+from core.database import append_mon, update_character_level, update_character_sheet_item
 from data.lists import no_evolution, mythical_list, legendary_list
 
 def should_ignore_column(index: int) -> bool:
@@ -124,7 +124,7 @@ class RegisterMonModal(discord.ui.Modal, title="Register Mon"):
             return
 
         # Finalize registration (update mon count) and attempt to update Google Sheet (if sync is enabled)
-        error = await append_mon_to_sheet(trainer, [])
+        error = await append_mon(trainer, [])
         if error:
             await interaction.followup.send(f"Mon added to database but failed to update sheet: {error}", ephemeral=True)
         else:
@@ -163,7 +163,7 @@ async def assign_levels_to_mon(interaction: discord.Interaction, name: str, leve
     elif current_level + levels > 100:
         effective_levels = 100 - current_level
         excess = levels - effective_levels
-        success = await update_character_sheet_level(trainer_name, name, effective_levels)
+        success = await update_character_level(trainer_name, name, effective_levels)
         if success:
             # Mon reached level 100; convert remaining levels to currency
             extra_coins = excess * 25
@@ -176,7 +176,7 @@ async def assign_levels_to_mon(interaction: discord.Interaction, name: str, leve
         else:
             await interaction.response.send_message("Failed to update the mon's level in the database.", ephemeral=True)
     else:
-        success = await update_character_sheet_level(trainer_name, name, levels)
+        success = await update_character_level(trainer_name, name, levels)
         if success:
             await interaction.response.send_message(
                 f"Added {levels} level(s) to mon '{name}' (Trainer: {trainer_name}).",
@@ -340,3 +340,50 @@ def get_mons_for_trainer(trainer_id: int) -> list:
     cursor.execute("SELECT mon_id, name, level, img_link FROM mons WHERE trainer_id = ?", (trainer_id,))
     rows = cursor.fetchall()
     return [{"id": row[0], "name": row[1], "level": row[2], "img_link": row[3]} for row in rows]
+
+
+from core.database import execute_query
+
+
+def add_full_mon(trainer_id: int, player: str, mon_data: dict) -> int:
+    """
+    Inserts a new mon into the mons table using the data provided in mon_data.
+
+    Mandatory fields:
+      - "name": The mon's name.
+      - "species1": At least one species must be provided.
+      - "type1": At least one type must be provided.
+
+    Additionally, this function sets:
+      - "trainer_id": Provided as parameter.
+      - "player_user_id": Provided as parameter.
+      - "trainer_name": Defaults to an empty string if not already in mon_data.
+
+    The function builds the INSERT query dynamically from the keys present in mon_data.
+
+    Returns:
+      The new mon's ID.
+    """
+    # Check for required fields.
+    if "name" not in mon_data or not mon_data["name"]:
+        raise ValueError("Mon name is required.")
+    if "species1" not in mon_data or not mon_data["species1"]:
+        raise ValueError("At least one species (species1) is required.")
+    if "type1" not in mon_data or not mon_data["type1"]:
+        raise ValueError("At least one type (type1) is required.")
+
+    # Ensure mandatory columns are set.
+    mon_data["trainer_id"] = trainer_id
+    mon_data["player_user_id"] = player
+    if "trainer_name" not in mon_data:
+        mon_data["trainer_name"] = ""
+
+    # Build the INSERT query dynamically.
+    columns = list(mon_data.keys())
+    placeholders = ", ".join("?" for _ in columns)
+    column_list = ", ".join(columns)
+    params = tuple(mon_data[col] for col in columns)
+
+    query = f"INSERT INTO mons ({column_list}) VALUES ({placeholders})"
+    cur = execute_query(query, params)
+    return cur.lastrowid

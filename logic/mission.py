@@ -3,7 +3,7 @@ import os
 import random
 from core.currency import add_currency
 from core.database import execute_query, fetch_one, fetch_all, update_mon_data
-from core.database import update_character_sheet_level, update_character_sheet_item
+from core.database import update_character_level, update_character_sheet_item
 
 def load_missions():
     filename = "../data/missions.JSON"
@@ -138,7 +138,7 @@ async def process_mon_level_reward(user_id: str, mon_name: str, level_reward: in
     elif new_level > 100:
         effective_levels = 100 - current_level
         excess = level_reward - effective_levels
-        success = await update_character_sheet_level(trainer_name, mon_name, effective_levels)
+        success = await update_character_level(trainer_name, mon_name, effective_levels)
         if success:
             update_mon_data(mon_id, level=new_level)
             extra_coins = excess * 25
@@ -147,7 +147,7 @@ async def process_mon_level_reward(user_id: str, mon_name: str, level_reward: in
         else:
             return "Failed to update the mon's sheet."
     else:
-        success = await update_character_sheet_level(trainer_name, mon_name, level_reward)
+        success = await update_character_level(trainer_name, mon_name, level_reward)
         if success:
             update_mon_data(mon_id, level=new_level)
             return f"Added {level_reward} level(s) to mon '{mon_name}' on trainer {trainer_name}'s sheet."

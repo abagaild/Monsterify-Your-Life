@@ -2,7 +2,7 @@ import random
 import discord
 
 from core.database import cursor, db
-from core.database import append_mon_to_sheet, update_character_sheet_level, update_character_sheet_item
+from core.database import append_mon, update_character_level, update_character_sheet_item
 from data.lists import legendary_list, mythical_list, no_evolution
 # ... (data fetching functions for Pokemon, Digimon, etc. remain unchanged) ...
 
@@ -42,7 +42,7 @@ async def register_mon(ctx, trainer_name: str, mon: dict, custom_display_name: s
         return
 
     # Update trainer's mon count (and queue sheet update if enabled)
-    error = await append_mon_to_sheet(trainer_name, [])
+    error = await append_mon(trainer_name, [])
     if error:
         await ctx.send(f"Mon added to database but failed to update sheet: {error}")
     else:
@@ -75,7 +75,7 @@ async def assign_levels_to_mon(ctx, mon_name: str, levels: int, user_id: str):
     elif current_level + levels > 100:
         effective_levels = 100 - current_level
         excess = levels - effective_levels
-        success = await update_character_sheet_level(trainer_name, mon_name, effective_levels)
+        success = await update_character_level(trainer_name, mon_name, effective_levels)
         if success:
             extra_coins = excess * 25
             cursor.execute("UPDATE trainers SET currency_amount = currency_amount + ? WHERE id = ?", (extra_coins, trainer_id))
@@ -86,7 +86,7 @@ async def assign_levels_to_mon(ctx, mon_name: str, levels: int, user_id: str):
         else:
             await ctx.send("Mon level updated in database, but sheet update failed for '{mon_name}'.")
     else:
-        success = await update_character_sheet_level(trainer_name, mon_name, levels)
+        success = await update_character_level(trainer_name, mon_name, levels)
         if success:
             await ctx.send(f"Added {levels} level(s) to mon '{mon_name}'.")
         else:

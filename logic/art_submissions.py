@@ -1,7 +1,7 @@
 import discord
 from core.currency import add_currency
 from core.database import fetch_one, execute_query
-from core.database import update_character_sheet_level, update_mon_img_link
+from core.database import update_character_level, update_mon_img_link
 from core.database import add_item  # (alias for update_character_sheet_item)
 
 # Bonus mapping for art submissions.
@@ -24,7 +24,7 @@ async def process_reference_art(interaction: discord.Interaction, mon_name: str,
     """
     Processes a reference art submission by:
       - Looking up the mon and its trainer,
-      - Updating the mon’s image link in Google Sheets and the database,
+      - Updating the mon’s image link in Google_Sheets and the database,
       - Awarding bonus levels and coins.
     """
     row = fetch_one("SELECT trainer_id, player FROM mons WHERE mon_name = ? LIMIT 1", (mon_name,))
@@ -43,7 +43,7 @@ async def process_reference_art(interaction: discord.Interaction, mon_name: str,
     execute_query("UPDATE mons SET img_link = ? WHERE mon_name = ? AND trainer_id = ?",
                   (image_link, mon_name, trainer_id))
 
-    update_success = await update_character_sheet_level(trainer_name, mon_name, 6)
+    update_success = await update_character_level(trainer_name, mon_name, 6)
     if not update_success:
         return "Failed to update mon's level in the sheet."
     execute_query("UPDATE mons SET level = level + 6 WHERE mon_name = ? AND trainer_id = ?",
@@ -62,7 +62,7 @@ async def process_game_art(interaction: discord.Interaction, character_names: li
     from core.database import fetch_one  # ensure helper is used
     trainers, mons = [], []
     for name in character_names:
-        if fetch_one("SELECT id FROM trainers WHERE name = ?", (name,)):
+        if fetch_one("SELECT id FROM trainers WHERE character_name = ?", (name,)):
             trainers.append(name)
         else:
             mons.append(name)
@@ -86,7 +86,7 @@ async def process_other_art(interaction: discord.Interaction, selected_bonuses: 
     total_levels = bonus_sum + 2
     coins = total_levels * 50
 
-    success = await update_character_sheet_level(recipient, recipient, total_levels)
+    success = await update_character_level(recipient, recipient, total_levels)
     if not success:
         return "Failed to update the recipient's sheet with the new levels."
     add_currency(str(interaction.user.id), coins)
@@ -104,7 +104,7 @@ class OtherArtRecipientModal(discord.ui.Modal, title="Specify Recipient for Othe
         bonus_sum = 0  # No extra bonuses if not provided
         total_levels = bonus_sum + 2
         coins = total_levels * 50
-        success = await update_character_sheet_level(recipient, recipient, total_levels)
+        success = await update_character_level(recipient, recipient, total_levels)
         if not success:
             await interaction.response.send_message("Failed to update recipient's sheet.", ephemeral=True)
         else:
@@ -118,7 +118,7 @@ class OtherArtRecipientModal(discord.ui.Modal, title="Specify Recipient for Othe
 # ---------------- Bonus View (Shared for Game/Other Art) ----------------
 async def launch_bonus_view(interaction: discord.Interaction, art_type: str, participants: list = None):
     from core.database import fetch_one
-    from core.database import update_character_sheet_level
+    from core.database import update_character_level
     class BonusSelectView(discord.ui.View):
         def __init__(self):
             super().__init__(timeout=60)
@@ -148,13 +148,13 @@ async def launch_bonus_view(interaction: discord.Interaction, art_type: str, par
                 if art_type == "game" and participants:
                     resolved = []
                     for name in participants:
-                        if fetch_one("SELECT id FROM trainers WHERE name = ?", (name,)):
+                        if fetch_one("SELECT id FROM trainers WHERE character_name = ?", (name,)):
                             resolved.append(name)
                         else:
-                            row = fetch_one("SELECT trainer_id FROM mons WHERE mon_name = ?", (name,))
+                            row = fetch_one("SELECT trainer_id FROM mons WHERE name = ?", (name,))
                             if row:
                                 trainer_id = row[0]
-                                trainer_row = fetch_one("SELECT name FROM trainers WHERE id = ?", (trainer_id,))
+                                trainer_row = fetch_one("SELECT character_name FROM trainers WHERE id = ?", (trainer_id,))
                                 if trainer_row:
                                     resolved.append(trainer_row[0])
                     if not resolved:
@@ -162,7 +162,7 @@ async def launch_bonus_view(interaction: discord.Interaction, art_type: str, par
                     import math
                     per_participant = math.ceil(total_levels / len(resolved))
                     for recipient in resolved:
-                        await update_character_sheet_level(recipient, recipient, per_participant)
+                        await update_character_level(recipient, recipient, per_participant)
                     msg = (f"Game art submission: Total bonus levels = {total_levels} "
                            f"(split as {per_participant} each among {len(resolved)} participants) "
                            f"and {coins} coins awarded.")

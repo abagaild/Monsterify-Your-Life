@@ -268,7 +268,7 @@ def get_mon(trainer_id: str, mon_name: str) -> Optional[Dict[str, Any]]:
     """
     cursor.execute(
         "SELECT id, species1, species2, species3, type1, type2, type3, type4, type5, attribute "
-        "FROM mons WHERE mon_name = ? AND player = ?",
+        "FROM mons WHERE mon_name = ? AND player_user_id = ?",
         (mon_name, trainer_id)
     )
     row = cursor.fetchone()
@@ -321,7 +321,7 @@ async def update_mon(trainer_sheet: str, trainer_id: str, mon_name: str, mon: Di
             12: types[4] if len(types) > 4 else "",
             13: mon.get("attribute", "")
         }
-        success = await update_mon_sheet_data(trainer_sheet, mon_name, data)
+        success = await update_mon(trainer_sheet, mon_name, data)
         if not success:
             print("Failed to update mon data in Google Sheet.")
             return False

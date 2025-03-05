@@ -2,7 +2,7 @@ import random
 from discord.ui import Modal, TextInput
 import discord
 
-from core.database import update_character_sheet_item, update_character_sheet_level, fetch_trainer_by_name, \
+from core.database import update_character_sheet_item, update_character_level, fetch_trainer_by_name, \
     update_trainer_level
 
 
@@ -113,7 +113,7 @@ class AwardLevelsModal(Modal, title="Award Levels"):
         target_name = mon_name if mon_name else trainer_name
 
         # Update levels via database (trainer or mon depending on input)
-        success = await update_character_sheet_level(trainer_name, target_name, self.awarded_levels)
+        success = await update_character_level(trainer_name, target_name, self.awarded_levels)
         message = f"Awarded {self.awarded_levels} levels to {target_name} (via trainer {trainer_name}).\n"
         if self.rolled_item:
             # Assign rolled item to trainer's inventory

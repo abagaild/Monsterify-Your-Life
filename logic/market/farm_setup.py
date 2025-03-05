@@ -27,13 +27,13 @@ class FarmInitialViewLogic(discord.ui.View):
         player_options = []
         for t in player_trainers:
             self.player_trainer_map[t["id"]] = t
-            player_options.append(discord.SelectOption(label=t["name"], value=str(t["id"])))
+            player_options.append(discord.SelectOption(label=t["character_name"], value=str(t["id"])))
         if not player_options:
             player_options = [discord.SelectOption(label="No trainers available", value="none", default=True)]
         all_options = []
         for t in all_trainers:
             self.all_trainer_map[t["id"]] = t
-            all_options.append(discord.SelectOption(label=t["name"], value=str(t["id"])))
+            all_options.append(discord.SelectOption(label=t["character_name"], value=str(t["id"])))
         if not all_options:
             all_options = [discord.SelectOption(label="No trainers available", value="none", default=True)]
         self.player_dropdown = PaginatedDropdownView(

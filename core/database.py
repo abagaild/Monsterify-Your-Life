@@ -41,31 +41,35 @@ cursor = db.get_connection().cursor()
 
 pool = SQLitePool("dawn_and_dusk.db", pool_size=5)
 
-# ----------------------------
-# Redis Client Setup
-# ----------------------------
-redis_client = redis.Redis(host='localhost', port=6379, db=0)
-
-
 def notify_sheet_update(entity, entity_id, update_type, payload):
-    """
-    Inserts a new update request into the sheet_update_requests table
-    and publishes a JSON message on the 'sheet_update' Redis channel.
-    """
     try:
         query = """
             INSERT INTO sheet_update_requests (entity, entity_id, update_type, payload)
             VALUES (?, ?, ?, ?)
         """
-        execute_query(query, (entity, entity_id, update_type, json.dumps(payload)))
-        message = json.dumps({
+        # Execute the query and capture the cursor to retrieve the update ID.
+        cur = execute_query(query, (entity, entity_id, update_type, json.dumps(payload)))
+        update_id = cur.lastrowid
+
+        # Construct an update dictionary that mimics the redis message.
+        update = {
+            "id": update_id,
             "entity": entity,
             "entity_id": entity_id,
             "update_type": update_type,
             "payload": payload
-        })
-        redis_client.publish("sheet_update", message)
-        logging.info("Notified sheet update: " + message)
+        }
+
+        # Directly process the update in a background thread.
+        import threading
+        from Google_Sheets.google_sheets_authentication import process_update_request, mark_update_processed
+
+        def process_and_mark():
+            process_update_request(update)
+            mark_update_processed(update_id)
+
+        threading.Thread(target=process_and_mark).start()
+        logging.info("Directly processed sheet update: " + json.dumps(update))
     except Exception as e:
         logging.error(f"Error notifying sheet update: {e}")
 
@@ -165,12 +169,10 @@ def create_tables():
             );
             CREATE TABLE IF NOT EXISTS mons (
                 mon_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                mon_trainer_number INTEGER,
-                trainer_name TEXT,
                 trainer_id INTEGER,
                 player_user_id TEXT,
-                img_link TEXT,
-                box_img_link TEXT,
+                name TEXT,
+                level INTEGER,
                 species1 TEXT,
                 species2 TEXT,
                 species3 TEXT,
@@ -180,7 +182,9 @@ def create_tables():
                 type4 TEXT,
                 type5 TEXT,
                 attribute TEXT,
-                level INTEGER,
+                img_link TEXT,
+                box_img_link TEXT,
+                mon_trainer_number INTEGER,
                 hp_total INTEGER,
                 hp_ev INTEGER,
                 hp_iv INTEGER,
@@ -201,7 +205,6 @@ def create_tables():
                 spe_iv INTEGER,
                 acquired TEXT,
                 poke_ball TEXT,
-                ability TEXT,
                 talk TEXT,
                 shiny INTEGER,
                 alpha INTEGER,
@@ -289,6 +292,11 @@ def create_tables():
                 entry_text TEXT NOT NULL,
                 schedule_date DATE DEFAULT CURRENT_DATE,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+            CREATE TABLE IF NOT EXISTS garden_harvest (
+                user_id TEXT PRIMARY KEY,
+                amount INTEGER DEFAULT 0,
+                last_claimed TEXT
             );
             """
         )
@@ -631,7 +639,7 @@ async def update_character_sheet_item(trainer_name: str, item_name: str, quantit
 add_item = update_character_sheet_item
 
 
-async def update_character_sheet_level(trainer_name: str, target_name: str, level_amount: int) -> bool:
+async def update_character_level(trainer_name: str, target_name: str, level_amount: int) -> bool:
     """
     Adjusts levels for a trainer or one of their mons.
     If target_name matches the trainer (i.e. character_name), the trainer's level is increased.
@@ -657,7 +665,7 @@ async def update_character_sheet_level(trainer_name: str, target_name: str, leve
         return False
 
 
-async def append_mon_to_sheet(trainer_name: str, mon_data: list) -> str:
+async def append_mon(trainer_name: str, mon_data: list) -> str:
     """
     Handles post-insertion steps for a new mon.
     Increments the trainer's mon count.
@@ -721,7 +729,6 @@ def mark_habit_complete(user_id: str, habit_name: str):
     update_query = "UPDATE habits SET streak = ?, last_completed = ? WHERE user_id = ? AND habit_name = ?"
     execute_query(update_query, (new_streak, datetime.now().isoformat(), user_id, habit_name))
     return new_streak
-
 
 # ----------------------------
 # Tasks
@@ -860,6 +867,35 @@ def create_adventure_session_table():
     execute_query(query)
 
 
+from datetime import datetime
+
+def increment_garden_harvest(user_id: str, count: int = 1) -> None:
+    """
+    Increments the garden harvest amount for the given user.
+    If the record does not exist, it is created.
+    After the update, a sheet update notification is posted.
+    """
+    now = datetime.now().isoformat()
+    row = fetch_one("SELECT amount FROM garden_harvest WHERE user_id = ?", (user_id,))
+    if row is None:
+        # No record exists – insert a new one.
+        execute_query(
+            "INSERT INTO garden_harvest (user_id, amount, last_claimed) VALUES (?, ?, ?)",
+            (user_id, count, now)
+        )
+        new_amount = count
+    else:
+        new_amount = row["amount"] + count
+        execute_query(
+            "UPDATE garden_harvest SET amount = ? WHERE user_id = ?",
+            (new_amount, user_id)
+        )
+    # Post an update so that the helper can catch this change.
+    notify_sheet_update("garden_harvest", user_id, "garden_harvest_update", {"new_amount": new_amount})
+
+
+
+
 create_adventure_session_table()
 
 
@@ -948,3 +984,4 @@ def update_mon_sheet_value(trainer_name: str, mon_name: str, field: str, value):
     mon = fetch_mon_by_name(trainer_name, mon_name)
     if mon:
         update_mon_row(mon["id"], {field: value})
+

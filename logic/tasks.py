@@ -8,18 +8,34 @@ def add_task(user_id: str, name: str, time: str = None, carryover: bool = False,
     )
 
 def get_tasks(user_id: str) -> list:
-    rows = fetch_all("SELECT task_name, time, difficulty, carryover, completed FROM tasks WHERE user_id = ?", (user_id,))
-    return [{"name": row["task_name"], "time": row["time"], "difficulty": row["difficulty"],
-             "carryover": bool(row["carryover"]), "completed": bool(row["completed"])} for row in rows]
+    rows = fetch_all(
+        "SELECT task_name, time, difficulty, carryover, completed FROM tasks WHERE user_id = ?",
+        (user_id,)
+    )
+    return [
+        {
+            "name": row["task_name"],
+            "time": row["time"],
+            "difficulty": row["difficulty"],
+            "carryover": bool(row["carryover"]),
+            "completed": bool(row["completed"])
+        } for row in rows
+    ]
 
 def delete_task(user_id: str, task_name: str) -> None:
-    execute_query("DELETE FROM tasks WHERE user_id = ? AND LOWER(task_name) = ?", (user_id, task_name.lower()))
+    execute_query(
+        "DELETE FROM tasks WHERE user_id = ? AND LOWER(task_name) = ?",
+        (user_id, task_name.lower())
+    )
 
 def complete_task(user_id: str, task_name: str) -> bool:
-    row = fetch_all("SELECT id, carryover FROM tasks WHERE user_id = ? AND LOWER(task_name) = ?", (user_id, task_name.lower()))
-    if row:
-        task_id = row[0]["id"]
-        carryover = row[0]["carryover"]
+    rows = fetch_all(
+        "SELECT id, carryover FROM tasks WHERE user_id = ? AND LOWER(task_name) = ?",
+        (user_id, task_name.lower())
+    )
+    if rows:
+        task_id = rows[0]["id"]
+        carryover = rows[0]["carryover"]
         if carryover:
             execute_query("UPDATE tasks SET completed = 1 WHERE id = ?", (task_id,))
         else:
