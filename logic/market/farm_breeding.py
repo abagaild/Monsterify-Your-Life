@@ -2,7 +2,7 @@ import random
 from typing import Dict, List
 import discord
 from core.database import cursor
-from core.google_sheets import update_character_sheet_item
+from core.database import update_character_sheet_item
 
 # Global constants for breeding randomization.
 POSSIBLE_TYPES = [

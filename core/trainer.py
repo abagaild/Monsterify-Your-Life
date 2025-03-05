@@ -7,21 +7,21 @@ def get_trainers(user_id: str) -> list:
     """
     Retrieves all trainer records for the given user.
     """
-    cursor.execute("SELECT id, name, level, main_ref, user_id FROM trainers WHERE user_id = ?", (user_id,))
+    cursor.execute("SELECT id, character_name, level, main_ref, player_user_id FROM trainers WHERE player_user_id = ?", (user_id,))
     rows = cursor.fetchall()
-    return [{"id": row[0], "name": row[1], "level": row[2], "main_ref": row[3], "user_id": row[4]} for row in rows]
+    return [{"id": row[0], "character_name": row[1], "level": row[2], "main_ref": row[3], "player_user_id": row[4]} for row in rows]
 
 def get_other_trainers_from_db(user_id: str) -> list:
-    cursor.execute("SELECT id, name, level, main_ref, user_id FROM trainers WHERE user_id != ?", (user_id,))
+    cursor.execute("SELECT id, character_name, level, main_ref, player_user_id FROM trainers WHERE player_user_id != ?", (user_id,))
     rows = cursor.fetchall()
-    return [{"id": row[0], "name": row[1], "level": row[2], "main_ref": row[3], "user_id": row[4]} for row in rows]
+    return [{"id": row[0], "character_name": row[1], "level": row[2], "main_ref": row[3], "player_user_id": row[4]} for row in rows]
 
 def add_trainer(user_id: str, name: str, level: int = 1, main_ref: str = ""):
-    cursor.execute("INSERT INTO trainers (user_id, name, level, main_ref) VALUES (?, ?, ?, ?)", (user_id, name, level, main_ref))
+    cursor.execute("INSERT INTO trainers (player_user_id, character_name, level, main_ref) VALUES (?, ?, ?, ?)", (user_id, name, level, main_ref))
     db.commit()
 
 def delete_trainer(user_id: str, trainer_name: str):
-    cursor.execute("DELETE FROM trainers WHERE user_id = ? AND LOWER(name) = ?", (user_id, trainer_name.lower()))
+    cursor.execute("DELETE FROM trainers WHERE player_user_id = ? AND LOWER(name) = ?", (user_id, trainer_name.lower()))
     db.commit()
 
 def update_trainer(trainer_id: int, **kwargs):
@@ -39,7 +39,7 @@ def update_trainer(trainer_id: int, **kwargs):
 
 async def assign_levels_to_trainer(interaction, trainer_name: str, levels: int):
     user_id = str(interaction.user.id)
-    cursor.execute("SELECT id, level FROM trainers WHERE user_id = ? AND LOWER(name)=?", (user_id, trainer_name.lower()))
+    cursor.execute("SELECT id, level FROM trainers WHERE player_user_id = ? AND LOWER(name)=?", (user_id, trainer_name.lower()))
     row = cursor.fetchone()
     if not row:
         await interaction.response.send_message(f"Trainer '{trainer_name}' not found. Please add the trainer first.", ephemeral=True)
@@ -56,9 +56,9 @@ def get_all_trainers() -> list:
     """
     Retrieves all trainers from the database.
     """
-    cursor.execute("SELECT id, name, level, main_ref, user_id FROM trainers")
+    cursor.execute("SELECT id, character_name, level, main_ref, player_user_id FROM trainers")
     rows = cursor.fetchall()
-    return [{"id": row[0], "name": row[1], "level": row[2], "main_ref": row[3], "user_id": row[4]} for row in rows]
+    return [{"id": row[0], "character_name": row[1], "level": row[2], "main_ref": row[3], "player_user_id": row[4]} for row in rows]
 
 def get_mons_for_trainer_dict(trainer_id: int) -> list:
     """

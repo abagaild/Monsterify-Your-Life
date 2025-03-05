@@ -4,7 +4,7 @@ import random
 
 import discord
 
-from core.database import cursor, fetch_one, execute_query, add_item
+from core.database import cursor, fetch_one, execute_query, add_item, fetch_trainer_by_name
 from core.currency import get_currency, add_currency
 
 
@@ -118,3 +118,45 @@ async def process_reward(interaction: discord.Interaction, feedback: str, durati
     coins_awarded = int(duration_minutes * 100 * multiplier)
     add_currency(str(interaction.user.id), coins_awarded)
     await interaction.followup.send(f"You earned {coins_awarded} coins for your work session!", ephemeral=True)
+
+def get_temporary_inventory_columns(trainer: dict) -> list:
+    """
+    Returns a list of keys from the trainer's inventory JSON that are considered temporary.
+    For this example, we assume that any key starting with "temp_" is temporary.
+    If none are found, returns an empty list.
+    """
+    inv_str = trainer.get("inventory", "{}")
+    try:
+        inventory = json.loads(inv_str) if inv_str else {}
+    except Exception as e:
+        inventory = {}
+    return [key for key in inventory.keys() if key.startswith("temp_")]
+
+def get_inventory_quantity(trainer_name: str, item_name: str) -> int:
+    """
+    Returns the quantity of a given item in the trainer's inventory.
+    The inventory is stored as a JSON string in the trainer record.
+    If the item is not found, returns 0.
+    """
+    trainer = fetch_trainer_by_name(trainer_name)
+    if not trainer:
+        logging.error(f"Trainer {trainer_name} not found while getting inventory quantity.")
+        return 0
+    inv_str = trainer.get("inventory", "{}")
+    try:
+        inventory = json.loads(inv_str) if inv_str else {}
+    except Exception as e:
+        logging.error(f"Error parsing inventory for {trainer_name}: {e}")
+        inventory = {}
+    return inventory.get(item_name, 0)
+
+def check_inventory(user_id: str, trainer_name: str, item_name: str, required: int) -> (bool, str):
+    """
+    Checks whether the trainer has at least the required number of the given item.
+    Returns a tuple: (True, message) if enough items are present; otherwise (False, message).
+    """
+    qty = get_inventory_quantity(trainer_name, item_name)
+    if qty >= required:
+        return True, f"{trainer_name} has {qty} {item_name}(s)."
+    else:
+        return False, f"Not enough {item_name}. Required: {required}, available: {qty}."

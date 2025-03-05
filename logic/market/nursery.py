@@ -1,10 +1,8 @@
 import logging
 import discord
-from core.database import fetch_all
-from core.database import update_character_sheet_item
+from core.database import fetch_all, update_character_sheet_item
 from logic.market.nursery_options import get_temp_inventory, collect_nursery_options
-from logic.market.nursery_roll import run_egg_roll
-from core.items import check_inventory  # Assumes check_inventory(user_id, trainer_name, item, amount)
+from core.items import check_inventory
 
 def get_trainers(user_id: str) -> list:
     """Retrieve trainers for the user from the database."""
@@ -19,6 +17,7 @@ def get_trainers(user_id: str) -> list:
 async def run_nursery_activity(interaction: discord.Interaction, user_id: str):
     """
     Runs the complete nursery activity.
+    This version uses the modern inventory architecture (a keyed JSON dictionary) to check for Standard Eggs and DNA Splicers.
     """
     await interaction.response.defer(ephemeral=True)
     trainers = get_trainers(user_id)
@@ -40,8 +39,10 @@ async def run_nursery_activity(interaction: discord.Interaction, user_id: str):
                 await inter.followup.send(f"**{selected_trainer['name']}** has a Standard Egg. Proceeding with egg roll...", ephemeral=True)
                 temp_inventory = get_temp_inventory(selected_trainer['name'])
                 selections = await collect_nursery_options(inter, selected_trainer['name'], temp_inventory)
+                # DNA Splicer may increase allowed selections.
                 splicer_count, _ = check_inventory(user_id, selected_trainer['name'], "DNA Splicer", 0)
                 max_select = 1 + splicer_count
+                from logic.market.nursery_roll import run_egg_roll
                 await run_egg_roll(inter, selected_trainer['name'], selections, max_select)
             else:
                 await inter.followup.send(f"**{selected_trainer['name']}** does not have any Standard Eggs. {egg_msg}", ephemeral=True)
@@ -58,4 +59,5 @@ async def run_nursery_activity(interaction: discord.Interaction, user_id: str):
         selections = await collect_nursery_options(interaction, trainer['name'], temp_inventory)
         splicer_count, _ = check_inventory(user_id, trainer['name'], "DNA Splicer", 0)
         max_select = 1 + splicer_count
+        from logic.market.nursery_roll import run_egg_roll
         await run_egg_roll(interaction, trainer['name'], selections, max_select)

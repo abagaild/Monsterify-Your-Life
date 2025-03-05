@@ -1,6 +1,5 @@
 import discord
 from discord.ui import View, Button
-#from core.database import get_trainers_from_db, get_mons_from_db  # removed; use updated functions
 from core.trainer import get_trainers
 from core.mon import get_mons_for_trainer
 from views.market.generic_shop import send_generic_shop_view
@@ -10,7 +9,7 @@ class ApothecaryShopView(discord.ui.View):
     def __init__(self, user_id: str) -> None:
         super().__init__(timeout=None)
         self.user_id = user_id
-        # Fetch trainers using updated function.
+        # Fetch trainers using the updated function.
         self.trainers = get_trainers(user_id)
         # For simplicity, if trainers exist, fetch mons for the first trainer.
         if self.trainers:

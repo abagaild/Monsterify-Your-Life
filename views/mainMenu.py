@@ -8,6 +8,7 @@ from core.config import (
     submissions_channel_id, mission_channel_id, ADVENTURE_CHANNEL_ID,
     game_corner_channel_id, boss_channel_id, admin_actions_channel_id
 )
+from views.add_trainer import AddTrainerEmbedView
 
 TARGET_CHANNELS = {
     "menu_market": market_channel_id,
@@ -195,3 +196,15 @@ class CharacterMenuView(View):
         player_id = str(interaction.user.id)
         view = TradePokemonSelectionView(player_id)
         await interaction.response.send_message("Select trainers for the Pokémon trade:", view=view, ephemeral=True)
+
+    @discord.ui.button(label="Add Trainer", style=discord.ButtonStyle.primary, custom_id="char_add_trainer", row=2)
+    async def add_trainer_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Send an embed with two options for self vs. NPC/Other
+        embed = discord.Embed(
+            title="Add Trainer",
+            description="Choose one of the following options:",
+            color=discord.Color.blue()
+        )
+        embed.set_image(url="https://i.imgur.com/example.jpg")  # Replace with your desired image URL
+        view = AddTrainerEmbedView()
+        await interaction.response.send_message(embed=embed, view=view, ephemeral=True)

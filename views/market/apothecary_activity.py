@@ -1,8 +1,9 @@
 import discord
 from discord.ui import View, Select, Button
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 from logic.market.apothecary_activity import apply_berry_effect, BERRY_EFFECTS
 from core.mon import get_mons_for_trainer
+from core.database import fetch_one  # use our helper for queries
 
 # ============================================
 # Step 1: Trainer Selection View
@@ -36,7 +37,7 @@ class TrainerSelect(Select):
                 view.selected_trainer = trainer
                 break
         await interaction.response.send_message(
-            f"Trainer '{view.selected_trainer['name']}' selected. Preparing mon and berry selection...",
+            f"Trainer '{view.selected_trainer['character_name']}' selected. Preparing mon and berry selection...",
             ephemeral=True
         )
         mons = get_mons_for_trainer(view.selected_trainer["id"])
@@ -59,7 +60,8 @@ class MonBerrySelectionView(View):
         mon_options: List[discord.SelectOption] = []
         if mons:
             for mon in mons:
-                mon_options.append(discord.SelectOption(label=mon["mon_name"], value=mon["mon_name"]))
+                # Use the "name" key (not "mon_name")
+                mon_options.append(discord.SelectOption(label=mon["name"], value=mon["name"]))
         else:
             mon_options.append(discord.SelectOption(label="No Mons Found", value="none"))
         self.add_item(MonSelect(mon_options))
@@ -130,3 +132,31 @@ async def send_mon_berry_selection_view(interaction: discord.Interaction, traine
         color=discord.Color.purple()
     )
     await interaction.followup.send(embed=embed, view=view, ephemeral=True)
+
+# ============================================
+# Database Helper Function for Mon Retrieval
+# ============================================
+
+def get_mon(trainer_id: str, mon_name: str) -> Optional[Dict[str, Any]]:
+    """
+    Retrieves a mon record from the database for the given trainer and mon name.
+    Uses the correct database helper function.
+    """
+    query = """
+        SELECT mon_id, species1, species2, species3, type1, type2, type3, type4, type5, attribute, name
+        FROM mons WHERE name = ? AND player_user_id = ?
+    """
+    row = fetch_one(query, (mon_name, trainer_id))
+    if row:
+        mon = {
+            "id": row["mon_id"],
+            "species1": row["species1"],
+            "species2": row["species2"],
+            "species3": row["species3"],
+            "types": [row["type1"], row["type2"], row["type3"], row["type4"], row["type5"]],
+            "attribute": row["attribute"],
+            "name": row["name"]
+        }
+        mon["types"] = [t for t in mon["types"] if t]
+        return mon
+    return None

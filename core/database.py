@@ -14,7 +14,6 @@ import discord  # Used for interactions and type hints
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s [%(levelname)s] %(message)s')
 
-
 # ----------------------------
 # SQLite Connection Pool
 # ----------------------------
@@ -359,20 +358,20 @@ def fetch_all(query, params=()):
 # ----------------------------
 def fetch_trainer_by_name(trainer_name: str) -> dict:
     """
-    Fetch a trainer's record by name (case-insensitive).
-    Returns a dictionary with keys: id, user_id, name, level, inventory, and img_link.
+    Fetch a trainer's record by character_name (case-insensitive).
+    Returns a dictionary with keys: id, user_id, character_name, level, inventory, and img_link.
     """
     query = """
-        SELECT id, player_user_id, name, level, inventory, img_link
+        SELECT id, player_user_id, character_name, level, inventory, img_link
         FROM trainers
-        WHERE LOWER(name) = ?
+        WHERE LOWER(character_name) = ?
     """
     row = fetch_one(query, (trainer_name.lower(),))
     if row:
         return {
             "id": row["id"],
             "user_id": row["player_user_id"],
-            "name": row["name"],
+            "character_name": row["character_name"],
             "level": row["level"],
             "inventory": row["inventory"] if row["inventory"] is not None else "{}",
             "img_link": row["img_link"]
@@ -410,7 +409,7 @@ def update_trainer_reference_amount(trainer_id: int, new_reference_amount: int):
 # ----------------------------
 def fetch_mon_by_name(trainer_name: str, name: str) -> dict:
     """
-    Fetch a mon's record given the trainer's name and the mon's name (case-insensitive).
+    Fetch a mon's record given the trainer's character_name and the mon's name (case-insensitive).
     """
     trainer = fetch_trainer_by_name(trainer_name)
     if trainer is None:
@@ -555,7 +554,7 @@ def update_mon_data(mon_id: int, **kwargs) -> bool:
 
 async def update_mon_img_link(trainer_name: str, name: str, new_img_link: str) -> bool:
     """
-    Updates the img_link column for a mon (identified by trainer and mon name).
+    Updates the img_link column for a mon (identified by trainer's character_name and mon name).
     Returns True if the update is successful.
     """
     try:
@@ -635,7 +634,7 @@ add_item = update_character_sheet_item
 async def update_character_sheet_level(trainer_name: str, target_name: str, level_amount: int) -> bool:
     """
     Adjusts levels for a trainer or one of their mons.
-    If target_name matches the trainer, the trainer's level is increased.
+    If target_name matches the trainer (i.e. character_name), the trainer's level is increased.
     Otherwise, it updates the mon's level.
     """
     try:
@@ -833,14 +832,14 @@ def fetch_all_trainers() -> list:
     Retrieves all trainer records from the database.
     Returns a list of dictionaries with basic trainer info.
     """
-    query = "SELECT id, player_user_id, name, level, inventory, img_link FROM trainers"
+    query = "SELECT id, player_user_id, character_name, level, inventory, img_link FROM trainers"
     rows = fetch_all(query)
     trainers = []
     for row in rows:
         trainers.append({
             "id": row["id"],
             "user_id": row["player_user_id"],
-            "name": row["name"],
+            "character_name": row["character_name"],
             "level": row["level"],
             "inventory": row["inventory"],
             "img_link": row["img_link"]
@@ -938,6 +937,14 @@ def get_trainers_from_database(user_id: str) -> list:
     """
     query = "SELECT * FROM trainers WHERE player_user_id = ?"
     rows = fetch_all(query, (user_id,))
-    # Convert each row (sqlite3.Row) to a dictionary
     trainers = [dict(row) for row in rows]
     return trainers
+
+def update_mon_sheet_value(trainer_name: str, mon_name: str, field: str, value):
+    """
+    Updates a specific field for a mon, given the trainer's character_name and the mon's name.
+    This is a thin wrapper that fetches the mon and then calls update_mon_row.
+    """
+    mon = fetch_mon_by_name(trainer_name, mon_name)
+    if mon:
+        update_mon_row(mon["id"], {field: value})
