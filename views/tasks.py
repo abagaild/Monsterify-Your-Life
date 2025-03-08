@@ -5,8 +5,8 @@ from discord.ui import View, Select, Button, Modal, TextInput
 from core.database import fetch_tasks, remove_task, mark_task_complete
 from logic.tasks import add_task
 import random
-from logic.boss import deal_boss_damage
-from logic.mission import progress_mission
+from views.boss import deal_boss_damage
+from logic.missions import progress_mission
 from core.core_views import CompletionRewardModal
 
 class TaskSelect(Select):

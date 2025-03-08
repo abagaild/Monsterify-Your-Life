@@ -1,86 +1,93 @@
 import asyncio
 import logging
-from core.database import cursor, db, update_trainer_field
-from core.database import fetch_trainer_by_name
+from core.database import (
+    fetch_trainer_by_name, get_trainers_from_database, add_trainer, delete_trainer, update_trainer_field, get_all_trainers
+)
 
-def get_trainers(user_id: str) -> list:
+def list_trainers(user_id: str) -> list:
     """
     Retrieves all trainer records for the given user.
     """
-    cursor.execute("SELECT id, character_name, level, main_ref, player_user_id FROM trainers WHERE player_user_id = ?", (user_id,))
-    rows = cursor.fetchall()
-    return [{"id": row[0], "character_name": row[1], "level": row[2], "main_ref": row[3], "player_user_id": row[4]} for row in rows]
+    return get_trainers_from_database(user_id)
 
-def get_other_trainers_from_db(user_id: str) -> list:
-    cursor.execute("SELECT id, character_name, level, main_ref, player_user_id FROM trainers WHERE player_user_id != ?", (user_id,))
-    rows = cursor.fetchall()
-    return [{"id": row[0], "character_name": row[1], "level": row[2], "main_ref": row[3], "player_user_id": row[4]} for row in rows]
+def create_trainer(user_id: str, name: str, level: int = 1, main_ref: str = ""):
+    """
+    Adds a new trainer to the database.
+    """
+    return add_trainer(user_id, name, level, main_ref)
 
-def add_trainer(user_id: str, name: str, level: int = 1, main_ref: str = ""):
-    cursor.execute("INSERT INTO trainers (player_user_id, character_name, level, main_ref) VALUES (?, ?, ?, ?)", (user_id, name, level, main_ref))
-    db.commit()
-
-def delete_trainer(user_id: str, trainer_name: str):
-    cursor.execute("DELETE FROM trainers WHERE player_user_id = ? AND LOWER(name) = ?", (user_id, trainer_name.lower()))
-    db.commit()
-
-def update_trainer(trainer_id: int, **kwargs):
-    if not kwargs:
-        return
-    fields = []
-    values = []
-    for key, value in kwargs.items():
-        fields.append(f"{key} = ?")
-        values.append(value)
-    values.append(trainer_id)
-    query = "UPDATE trainers SET " + ", ".join(fields) + " WHERE id = ?"
-    cursor.execute(query, tuple(values))
-    db.commit()
+def remove_trainer(user_id: str, trainer_name: str):
+    """
+    Deletes a trainer by name.
+    """
+    return delete_trainer(user_id, trainer_name)
 
 async def assign_levels_to_trainer(interaction, trainer_name: str, levels: int):
+    """
+    Assigns levels to a trainer.
+    """
     user_id = str(interaction.user.id)
-    cursor.execute("SELECT id, level FROM trainers WHERE player_user_id = ? AND LOWER(name)=?", (user_id, trainer_name.lower()))
-    row = cursor.fetchone()
-    if not row:
-        await interaction.response.send_message(f"Trainer '{trainer_name}' not found. Please add the trainer first.", ephemeral=True)
+    trainer = fetch_trainer_by_name(trainer_name)
+
+    if not trainer:
+        await interaction.response.send_message(f"Trainer '{trainer_name}' not found.", ephemeral=True)
         return
-    trainer_id, current_level = row
-    new_level = current_level + levels
-    update_trainer_field(trainer_id, "level", new_level)
+
+    new_level = trainer["level"] + levels
+    update_trainer_field(trainer["id"], "level", new_level)
+
     await interaction.response.send_message(
         f"Assigned {levels} levels to trainer '{trainer_name}'. New level: {new_level}.",
         ephemeral=True
     )
 
-def get_all_trainers() -> list:
-    """
-    Retrieves all trainers from the database.
-    """
-    cursor.execute("SELECT id, character_name, level, main_ref, player_user_id FROM trainers")
-    rows = cursor.fetchall()
-    return [{"id": row[0], "character_name": row[1], "level": row[2], "main_ref": row[3], "player_user_id": row[4]} for row in rows]
+    trainer_id = trainer["id"]
+    asyncio.create_task(level_up_check_trainer(trainer_id, new_level))
 
-def get_mons_for_trainer_dict(trainer_id: int) -> list:
+def list_all_trainers() -> list:
     """
-    Retrieves all mons for the given trainer as a list of dictionaries.
+    Retrieves all trainers in the database.
     """
-    query = """
-        SELECT id, mon_name, level, species1, species2, species3, main_ref 
-        FROM mons 
-        WHERE trainer_id = ?
+    return get_all_trainers()
+
+
+# Define prompt thresholds for trainers.
+PROMPT_LEVELS = [10, 25, 50, 75, 100]
+
+
+async def level_up_check_trainer(trainer_id: int, new_level: int):
     """
-    cursor.execute(query, (trainer_id,))
-    rows = cursor.fetchall()
-    mons = []
-    for row in rows:
-        mon = {
-            "id": row[0],
-            "mon_name": row[1],
-            "level": row[2],
-            "species1": row[3] if row[3] is not None else "",
-            "species2": row[4] if row[4] is not None else "",
-            "species3": row[5] if row[5] is not None else "",
-            "main_ref": row[6] if row[6] is not None else ""
-        }
-        mons.append(mon)
-    return mons
+    Background function to check trainer level-ups.
+    - Computes a new level modifier (new_level // 100)
+    - If the new modifier is higher than the stored one, updates the trainer record and sends a message.
+    - Checks if the trainer has passed any threshold levels and, if so, sends a prompt message.
+    """
+    # Retrieve the full trainer record.
+    conn = pool.get_connection()
+    try:
+        conn.row_factory = lambda cursor, row: {col[0]: row[idx] for idx, col in enumerate(cursor.description)}
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM trainers WHERE id = ?", (trainer_id,))
+        trainer = cur.fetchone()
+        if not trainer:
+            return
+    finally:
+        pool.return_connection(conn)
+
+    user_id = trainer.get("player_user_id", "unknown")
+    # Calculate new level modifier.
+    new_modifier = new_level // 100
+    old_modifier = trainer.get("level_modifier", 0)
+    if new_modifier > old_modifier:
+        update_trainer_field(trainer_id, "level_modifier", new_modifier)
+        await send_player_message(user_id, f"Congratulations! Your level modifier increased to {new_modifier}.")
+
+    # Check prompt thresholds.
+    # (Assuming the trainer record has a field 'last_prompt_level' to track the highest prompt given.)
+    last_prompt = trainer.get("last_prompt_level", 0)
+    for prompt_level in PROMPT_LEVELS:
+        if last_prompt < prompt_level <= new_level:
+            update_trainer_field(trainer_id, "last_prompt_level", prompt_level)
+            await send_player_message(user_id,
+                                      f"You've reached level {new_level} and unlocked a new prompt: 'Prompt for level {prompt_level}'.")
+    # End of trainer level-up check.

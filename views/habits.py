@@ -4,8 +4,8 @@ from discord.ui import View, Select, Button, Modal, TextInput
 # Updated database function names for habits:
 from core.database import fetch_habits, remove_habit, mark_habit_complete, add_habit
 import random
-from logic.boss import deal_boss_damage
-from logic.mission import progress_mission
+from views.boss import deal_boss_damage
+from logic.missions import progress_mission
 from core.core_views import CompletionRewardModal
 
 class HabitSelect(Select):

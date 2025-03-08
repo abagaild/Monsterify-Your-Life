@@ -1,9 +1,10 @@
 # cogs/battle/battle_ui.py
 import json
 import os
+import random
 
 import discord
-from discord.ui import Button, View, Modal, Select
+from discord.ui import Button, View, Modal, Select, TextInput
 from Battles import battle_core, battle_modes  # Import battle_modes to access active battles
 
 
@@ -30,11 +31,11 @@ class AttackSubmissionModal(Modal):
 
     def __init__(self):
         super().__init__(title="Submit Your Attack")
-        self.attack_name = InputText(label="Attack Name", placeholder="Enter the move name")
+        self.attack_name = TextInput(label="Attack Name", placeholder="Enter the move name")
         self.add_item(self.attack_name)
-        self.artwork_url = InputText(label="Artwork URL", placeholder="Enter the link to your artwork")
+        self.artwork_url = TextInput(label="Artwork URL", placeholder="Enter the link to your artwork")
         self.add_item(self.artwork_url)
-        self.bonus = InputText(label="Bonus (number)", placeholder="Enter any bonus damage (e.g. 5)", required=False)
+        self.bonus = TextInput(label="Bonus (number)", placeholder="Enter any bonus damage (e.g. 5)", required=False)
         self.add_item(self.bonus)
 
     async def callback(self, interaction: discord.Interaction):
@@ -94,9 +95,8 @@ class SummonBattleMenuButton(discord.ui.Button):
 
     async def callback(self, interaction: discord.Interaction):
         # When the button is clicked, send the EnemyTrainerSelectView.
-        view = EnemyTrainerSelectView()
-        await interaction.response.send_message("Select an enemy trainer to battle:", view=view, ephemeral=True)
-
+        view = BattleMenuView()
+        await interaction.response.send_message("Select a battle mode:", view=view, ephemeral=True)
 
 class EnemyTrainerSelectView(View):
     """

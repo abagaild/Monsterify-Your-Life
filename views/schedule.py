@@ -2,7 +2,7 @@
 import discord
 from discord.ui import View, Button
 
-from core.mon import register_mon
+from core.rollmons import register_mon
 from views.habits import HabitManagerView
 from views.tasks import TaskManagerView
 from discord.ui import Modal, TextInput

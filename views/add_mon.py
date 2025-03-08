@@ -1,9 +1,9 @@
 import discord
-from discord.ui import View, Button, Select
+from discord.ui import View, Select
 import asyncio
 
-from core.trainer import get_trainers, fetch_trainer_by_name  # to retrieve trainer info
-from core.mon import add_mon, add_full_mon  # simple and complex mon insertion functions
+from core.trainer import fetch_trainer_by_name
+from core.database import get_trainers_from_database
 
 
 # ==================================================
@@ -15,7 +15,7 @@ class TrainerSelectForMonView(View):
         super().__init__(timeout=60)
         self.user_id = user_id
         self.selected_trainer = None
-        trainers = get_trainers(user_id)
+        trainers = get_trainers_from_database(user_id)
         options = []
         for t in trainers:
             options.append(discord.SelectOption(label=t["character_name"], value=str(t["id"])))
@@ -54,7 +54,7 @@ class TrainerSelectDropdown(Select):
                 await interaction.followup.send("Timed out waiting for trainer name.", ephemeral=True)
         else:
             trainer_id = int(value)
-            trainers = get_trainers(str(interaction.user.id))
+            trainers = get_trainers_from_database(str(interaction.user.id))
             trainer = next((t for t in trainers if t["id"] == trainer_id), None)
             if not trainer:
                 await interaction.response.send_message("Trainer not found.", ephemeral=True)
@@ -278,9 +278,9 @@ async def ask_add_another_mon(interaction: discord.Interaction, trainer: dict):
             await send_trainer_select_for_mon(interaction, str(interaction.user.id))
         else:
             await interaction.followup.send("Returning to main menu...", ephemeral=True)
-            from views.mainMenu import MainMenuView
+            from mainMenu import MainMenuView
             await interaction.followup.send(view=MainMenuView(), ephemeral=True)
     except asyncio.TimeoutError:
         await interaction.followup.send("Timed out. Returning to main menu...", ephemeral=True)
-        from views.mainMenu import MainMenuView
+        from mainMenu import MainMenuView
         await interaction.followup.send(view=MainMenuView(), ephemeral=True)

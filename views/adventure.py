@@ -119,7 +119,7 @@ class ModeSelectView(discord.ui.View):
         )
         await interaction.channel.send(embed=embed)
         await interaction.followup.send(f"Starting adventure in {mode_text}!", ephemeral=True)
-        from logic.adventure import AdventureSession
+        from OLD.logic.adventure import AdventureSession
         session = AdventureSession(interaction.channel, self.area_data, hard_mode=hard_mode)
         # Inform players that the session has started.
         await interaction.channel.send("Adventure session started! Type your messages to progress, 'next' for encounters, or 'end' to finish.")

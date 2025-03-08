@@ -1,38 +1,21 @@
 {
   "trainers": [
     {
-      "name": "Ash",
+      "name": "Ichiro",
       "image": "https://example.com/ash_image.png",
+      "taunts": ["We're gonna give it everything we've got!", "You've never seen a team as strong as ours!", "You're a worthy opponent, we won't go easy on you!"],
+      "prompt": "The bonds that tie us are never truly invisible, be it through the ways we are together, or the time we are apart, true friendship is built in every moment we spend knowing eachother. What has defined the relationship between your trainer and mons? Or the mons themselves?",
       "mons": [
         {
           "name": "Pikachu",
-          "species": "Pikachu",
+          "species": "Pikachu/Biyomon",
+          "types" : "Grass/Electric",
           "hp": 100,
           "attack": 30,
+          "special attack": 25,
           "defense": 20,
+          "special defense": 20,
           "image": "https://example.com/pikachu.png"
-        },
-        {
-          "name": "Charizard",
-          "species": "Charizard",
-          "hp": 150,
-          "attack": 40,
-          "defense": 25,
-          "image": "https://example.com/charizard.png"
-        }
-      ]
-    },
-    {
-      "name": "Misty",
-      "image": "https://example.com/misty_image.png",
-      "mons": [
-        {
-          "name": "Starmie",
-          "species": "Starmie",
-          "hp": 110,
-          "attack": 35,
-          "defense": 20,
-          "image": "https://example.com/starmie.png"
         }
       ]
     }
